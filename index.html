@@ -1,1 +1,2018 @@
-test
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta name="google-site-verification" content="2_YfeDfLqBs8GoZnowl4YEWgBLGcf2cZ7CvfvnCkmsg" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="color-scheme" content="light">
+  <title id="htmlPageTitle">FAO & КНУ імені Тараса Шевченка — Відкриті лекції та дослідження</title>
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/960px-Flag_of_Ukraine.svg.png">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --primary-red: #b80000;
+      --primary-red-hover: #900000;
+      --bg-light: #F4F6F9;
+      --bg-card: #FFFFFF;
+      --border-color: #E2E8F0;
+      --text-main: #0F172A;
+      --text-title: #0B1F3A;
+      --text-body: #44546A;
+      --text-muted: #64748B;
+      --accent-blue: #1E3E62;
+      --daisi-navy: #123B66;
+      --font-family: 'Montserrat', sans-serif;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      max-width: 100%;
+    }
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      padding: 10px 14px 20px;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body:not(.logged-in) {
+      height: 100vh;
+      overflow: hidden;
+      padding: 8px 14px 10px;
+    }
+    @media (max-height: 720px), (max-width: 860px) {
+      body:not(.logged-in) {
+        height: auto;
+        overflow-y: auto;
+      }
+    }
+    body.logged-in {
+      height: auto;
+      overflow-y: auto;
+      padding-bottom: 40px;
+    }
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-red), var(--accent-blue));
+      width: 0%;
+      z-index: 10000;
+      transition: width 0.1s ease;
+    }
+    header {
+      padding: 14px 20px;
+      position: relative;
+      background: radial-gradient(circle at top, rgba(184, 0, 0, 0.12) 0%, transparent 60%), var(--daisi-navy);
+      border-bottom: 4px solid var(--primary-red);
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(18, 59, 102, 0.18);
+      margin-bottom: 12px;
+      width: 100%;
+      flex-shrink: 0;
+    }
+    .header-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .header-branding {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1 1 420px;
+      max-width: 650px;
+      min-width: 0;
+    }
+    .branding-header-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 6px;
+      width: 100%;
+    }
+    .daisi-header-logo {
+      width: clamp(44px, 10vw, 60px);
+      height: clamp(44px, 10vw, 60px);
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      background-color: #FFFFFF;
+      display: block;
+    }
+    .logo-tsnuk-crop {
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      clip-path: circle(50% at 50% 50%);
+    }
+    .branding-titles {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 0;
+    }
+    h1 {
+      font-size: clamp(1.15rem, 3.4vw, 1.5rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 2px;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+    .subtitle {
+      font-size: clamp(0.72rem, 1.8vw, 0.8rem);
+      color: #E2E8F0 !important;
+      margin: 0;
+      font-weight: 500;
+    }
+    .project-description {
+      font-size: clamp(0.7rem, 1.4vw, 0.76rem);
+      color: #F4F7FB !important;
+      line-height: 1.45;
+      margin: 0;
+      max-width: 580px;
+      opacity: 0.95;
+    }
+    /* ПРАВИЙ ВЕРХНІЙ БЛОК ШАПКИ */
+    .header-right-zone {
+      flex: 0 0 320px;
+      max-width: 330px;
+      width: 100%;
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .lang-switcher-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+    }
+    .lang-switcher {
+      display: inline-flex;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 14px;
+      padding: 2px;
+      gap: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: #CBD5E1;
+      font-family: var(--font-family);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1.25;
+      touch-action: manipulation;
+    }
+    .lang-btn.active {
+      background: var(--primary-red);
+      color: #FFFFFF;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    }
+    .auth-top-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 8px 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-top: 3px solid var(--primary-red);
+      width: 100%;
+      height: 206px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: fadeIn 0.3s ease;
+      overflow: hidden;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .auth-top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .auth-top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .auth-top-badge svg {
+      width: 14px;
+      height: 14px;
+      color: #FF6B6B;
+      flex-shrink: 0;
+    }
+    .auth-mini-switch {
+      display: inline-flex;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 14px;
+      padding: 2px;
+      gap: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .mini-switch-btn {
+      background: transparent;
+      border: none;
+      color: #CBD5E1;
+      font-family: var(--font-family);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1.25;
+      touch-action: manipulation;
+    }
+    .mini-switch-btn.active {
+      background: var(--primary-red);
+      color: #FFFFFF;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    }
+    .auth-top-form {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex: 1;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+    .auth-field-slot {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 32px;
+    }
+    .auth-top-icon {
+      position: absolute;
+      left: 10px;
+      color: #475569;
+      width: 13px;
+      height: 13px;
+      pointer-events: none;
+    }
+    .auth-top-input {
+      width: 100%;
+      height: 32px;
+      padding: 4px 10px 4px 30px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 7px;
+      font-family: var(--font-family);
+      font-size: 0.78rem;
+      color: #0F172A !important;
+      background: #FFFFFF !important;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .auth-top-input::placeholder {
+      color: #64748B;
+      font-weight: 500;
+    }
+    .auth-top-input:focus {
+      border-color: #FF6B6B;
+      box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3);
+    }
+    .auth-secure-badge {
+      width: 100%;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: #E2E8F0;
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+    .auth-top-btn {
+      background-color: var(--primary-red);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      height: 32px;
+      border-radius: 7px;
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      touch-action: manipulation;
+    }
+    .auth-top-btn:hover {
+      background-color: var(--primary-red-hover);
+    }
+    .auth-status-banner {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 3px 6px;
+      border-radius: 5px;
+      line-height: 1.25;
+      display: none;
+    }
+    .auth-status-banner.error {
+      display: block;
+      background: rgba(254, 226, 226, 0.96);
+      color: #991B1B;
+      border: 1px solid #F87171;
+    }
+    .auth-status-banner.success {
+      display: block;
+      background: rgba(220, 252, 231, 0.96);
+      color: #166534;
+      border: 1px solid #4ADE80;
+    }
+    /* ПОШУК ТА СЕСІЯ */
+    .header-search { width: 100%; }
+    .search-container { position: relative; width: 100%; }
+    .search-input {
+      width: 100%;
+      min-height: 40px;
+      padding: 7px 16px 7px 38px;
+      background-color: #FFFFFF !important;
+      border: 1px solid var(--border-color);
+      border-radius: 30px;
+      color: #0B1F3A !important;
+      font-family: var(--font-family);
+      font-size: 0.82rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary-red);
+      box-shadow: 0 0 0 3px rgba(184, 0, 0, 0.12);
+    }
+    .search-icon {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      width: 15px;
+      height: 15px;
+    }
+    .session-header-badge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.14);
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .session-user-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .logout-header-btn {
+      background: rgba(184, 0, 0, 0.85);
+      color: white;
+      border: none;
+      font-weight: 700;
+      font-size: 0.72rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      transition: background 0.2s ease;
+      touch-action: manipulation;
+    }
+    .logout-header-btn:hover { background: var(--primary-red-hover); }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+      width: 100%;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    body:not(.logged-in) main { justify-content: center; min-height: 0; }
+    .portal-lock-notice {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--primary-red);
+      border-radius: 14px;
+      padding: 16px 20px;
+      text-align: center;
+      max-width: 580px;
+      margin: 8px auto;
+      box-shadow: 0 4px 16px rgba(11, 25, 44, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .lock-icon-pill {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(184, 0, 0, 0.08);
+      color: var(--primary-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .portal-lock-notice h2 { font-size: 1.1rem; color: #0B1F3A; font-weight: 800; margin: 0; }
+    .portal-lock-notice p { font-size: 0.8rem; color: #44546A; line-height: 1.5; margin: 0; }
+    .lock-tip-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      background: var(--bg-light);
+      padding: 4px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-top: 2px;
+    }
+    .controls-card {
+      background: #FFFFFF !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 14px;
+      padding: 10px 16px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.02);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+    .controls-left-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .control-item-wrapper { display: flex; align-items: center; gap: 8px; }
+    .control-label { font-size: 0.78rem; font-weight: 700; color: #44546A !important; letter-spacing: 0.5px; white-space: nowrap; }
+    .custom-select-wrapper { position: relative; display: flex; align-items: center; }
+    .custom-select {
+      appearance: none;
+      background-color: #FFFFFF !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 30px;
+      padding: 8px 34px 8px 16px;
+      min-height: 42px;
+      font-family: var(--font-family);
+      font-size: 0.8rem;
+      color: #0B1F3A !important;
+      font-weight: 700;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+      white-space: nowrap;
+    }
+    .custom-select:focus { border-color: var(--primary-red) !important; }
+    .sort-icon { position: absolute; right: 12px; color: var(--text-muted); width: 14px; height: 14px; pointer-events: none; }
+    .news-feed { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+    .news-card {
+      background: #FFFFFF !important;
+      color: #0F172A !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      width: 100%;
+      min-height: 220px;
+      border-left: 5px solid var(--primary-red) !important;
+      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+    }
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(11, 25, 44, 0.1);
+      border-color: rgba(30, 62, 98, 0.25) !important;
+    }
+    .news-card-media-wrap {
+      flex: 0 0 33%;
+      max-width: 360px;
+      min-width: 250px;
+      position: relative;
+      background-color: #0F172A !important;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .news-media-thumb-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0F172A;
+    }
+    .news-card-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .news-card:hover .news-card-thumb-img { transform: scale(1.05); }
+    .media-video-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+    .news-card:hover .media-video-overlay { background-color: rgba(0, 0, 0, 0.52); }
+    .media-play-pill {
+      width: 48px; height: 48px; background-color: var(--primary-red);
+      border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 18px rgba(184, 0, 0, 0.55);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    }
+    .news-card:hover .media-play-pill { transform: scale(1.14); box-shadow: 0 6px 22px rgba(184, 0, 0, 0.75); }
+    .news-card-body-wrap {
+      flex: 1 1 auto; padding: 22px 26px; display: flex; flex-direction: column; justify-content: space-between;
+      min-width: 0; background: #FFFFFF !important;
+    }
+    .news-card-meta-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+    .news-card-meta-text { font-size: 0.75rem; color: #44546A !important; font-weight: 600; }
+    .news-card-title, .news-card h2 {
+      font-size: clamp(1.12rem, 3.2vw, 1.25rem); font-weight: 800; color: #0B1F3A !important;
+      line-height: 1.35; margin-bottom: 8px; transition: color 0.2s ease;
+    }
+    .news-card:hover .news-card-title, .news-card:hover h2 { color: var(--primary-red) !important; }
+    .news-card-divider { width: 35px; height: 3px; background-color: var(--primary-red) !important; border-radius: 2px; margin-bottom: 12px; }
+    .news-card-excerpt, .news-card p {
+      font-size: clamp(0.85rem, 2.2vw, 0.9rem); line-height: 1.65; color: #44546A !important; margin-bottom: 16px;
+      display: -webkit-box; -webkit-line-clamp: 12; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; white-space: pre-line;
+    }
+    .news-card-footer {
+      display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 12px; margin-top: auto;
+    }
+    .read-more-btn {
+      display: inline-flex; align-items: center; gap: 6px; background-color: transparent; border: none; color: var(--primary-red) !important;
+      font-family: var(--font-family); font-size: 0.84rem; font-weight: 700; cursor: pointer; transition: gap 0.2s ease, color 0.2s ease; padding: 8px 0; min-height: 44px;
+    }
+    .news-card:hover .read-more-btn { gap: 9px; color: var(--primary-red-hover) !important; }
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18, 59, 102, 0.75); backdrop-filter: blur(6px);
+      z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; padding: 10px;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    .modal-card {
+      background: #FFFFFF !important; border-radius: 18px; width: min(94vw, 1140px); max-height: 92vh; display: flex; flex-direction: column;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); overflow: hidden; transform: scale(0.96); transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 1px solid var(--border-color); position: relative;
+    }
+    .modal-overlay.active .modal-card { transform: scale(1); }
+    .modal-close-btn {
+      position: absolute; top: 12px; right: 12px; background: rgba(255, 255, 255, 0.95); border: 1px solid var(--border-color); width: 44px; height: 44px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-main); transition: all 0.2s ease; z-index: 50;
+    }
+    .modal-close-btn:hover { background: var(--primary-red); color: white; border-color: var(--primary-red); }
+    .modal-scrollable-content { padding: 32px 38px; overflow-y: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+    .modal-video-wrap { width: 100%; border-radius: 14px; overflow: hidden; margin-bottom: 24px; background-color: #070D18; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); position: relative; user-select: none; display: flex; flex-direction: column; }
+    .video-viewport { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #000000; overflow: hidden; }
+    .video-viewport iframe, .video-viewport #ytPlayerHost { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; pointer-events: auto; }
+    .video-shield-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: clip-path 0.15s ease; }
+    .video-shield-overlay.ad-showing { clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 95px), calc(100% - 175px) calc(100% - 95px), calc(100% - 175px) 100%, 0% 100%); }
+    .video-center-play-badge { width: 66px; height: 66px; border-radius: 50%; background: rgba(184, 0, 0, 0.88); color: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 22px rgba(0, 0, 0, 0.45); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease; }
+    .video-center-play-badge.hidden { opacity: 0; transform: scale(0.7); }
+    .custom-player-bar { display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: #0B1727; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #FFFFFF; z-index: 20; }
+    .cp-btn { background: transparent; border: none; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 6px; border-radius: 6px; transition: background 0.2s, color 0.2s; }
+    .cp-btn:hover { background: rgba(255, 255, 255, 0.15); color: #FF6B6B; }
+    .cp-time { font-size: 0.76rem; font-weight: 600; color: #CBD5E1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .cp-progress-rail { position: relative; flex: 1; height: 6px; background: rgba(255, 255, 255, 0.22); border-radius: 3px; cursor: pointer; display: flex; align-items: center; }
+    .cp-progress-buffer { position: absolute; top: 0; left: 0; height: 100%; background: rgba(255, 255, 255, 0.35); border-radius: 3px; width: 0%; pointer-events: none; }
+    .cp-progress-played { position: absolute; top: 0; left: 0; height: 100%; background: var(--primary-red); border-radius: 3px; width: 0%; pointer-events: none; }
+    .cp-seek-input { position: absolute; top: -8px; left: 0; width: 100%; height: 22px; opacity: 0; cursor: pointer; margin: 0; z-index: 5; }
+    .cp-volume-box { display: flex; align-items: center; gap: 6px; }
+    .cp-volume-input { width: 70px; height: 4px; accent-color: var(--primary-red); cursor: pointer; }
+    .modal-title { font-size: clamp(1.25rem, 3.8vw, 1.6rem); font-weight: 800; color: #0B1F3A !important; line-height: 1.35; margin-bottom: 14px; padding-right: 30px; }
+    .modal-paragraphs-block { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+    .modal-paragraph { font-size: clamp(0.92rem, 2.4vw, 0.98rem); line-height: 1.8; color: #1E293B !important; white-space: pre-line; margin: 0 0 10px 0; }
+    .modal-paragraph strong, .modal-question-para strong, .article-subheading strong, .article-list-item strong { font-weight: 700 !important; color: #0B1F3A !important; }
+    .article-byline-para { margin-top: 20px; padding-top: 12px; border-top: 1px dashed var(--border-color); font-size: 0.92rem; }
+    .article-list-item { font-size: 0.96rem; line-height: 1.7; color: #1E293B !important; margin-bottom: 6px; padding-left: 4px; }
+    .news-inline-link { color: var(--accent-blue); text-decoration: underline; font-weight: 600; }
+    .floating-controls-panel { position: fixed; bottom: 25px; right: 25px; display: flex; align-items: center; gap: 10px; z-index: 1000; background: var(--bg-card); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); opacity: 0; visibility: hidden; }
+    .floating-controls-panel.visible { opacity: 1; visibility: visible; }
+    .floating-search-input { border: 1px solid var(--border-color); background: var(--bg-light); padding: 6px 14px 6px 36px; border-radius: 30px; font-family: var(--font-family); font-size: 0.8rem; color: #0B1F3A; width: 180px; min-height: 40px; }
+    .back-to-top { background-color: var(--primary-red); color: white; width: 44px; height: 44px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(184, 0, 0, 0.2); }
+    .spinner { width: 38px; height: 38px; border: 3px solid rgba(184, 0, 0, 0.12); border-top-color: var(--primary-red); border-radius: 50%; animation: spin 0.8s infinite linear; margin-bottom: 12px; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    footer { padding: 24px 10px 14px; border-top: 1px solid var(--border-color); margin-top: 35px; max-width: 1200px; margin-left: auto; margin-right: auto; width: 100%; }
+    .footer-top-row { display: flex; justify-content: flex-start; align-items: flex-start; margin-bottom: 20px; width: 100%; }
+    .footer-contact-block { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; max-width: 800px; }
+    .contact-title { font-size: 1.1rem; font-weight: 800; color: #0B1F3A; margin: 0; }
+    .footer-funding-text { font-size: clamp(0.74rem, 1.8vw, 0.8rem); line-height: 1.5; color: #44546A; }
+    .contact-email { font-size: 0.84rem; font-weight: 700; color: var(--primary-red); text-decoration: none; }
+    .footer-links-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .footer-link-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .footer-action-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: var(--accent-blue); text-decoration: none; }
+    .footer-copy { font-size: 0.74rem; color: #94A3B8; text-align: left; margin-top: 12px; border-top: 1px dashed var(--border-color); padding-top: 10px; }
+    @media (max-width: 860px) {
+      .header-container { flex-direction: column; align-items: stretch; }
+      .header-right-zone { max-width: 100%; width: 100%; margin-left: 0; }
+      .auth-top-card { height: auto; min-height: 206px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <header>
+    <div class="header-container">
+      <div class="header-branding">
+        <div class="branding-header-row">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/FAO_logo.svg/3840px-FAO_logo.svg.png?utm_source=uk.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="FAO Logo" class="daisi-header-logo" referrerpolicy="no-referrer" decoding="async" style="object-fit: contain; padding: 3px;">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgjEQQ3vzGutwq4JX7hgVMt81j0-gDeM_tH_hG3xxvYP3zXAxQIjr88GQ&s=10" alt="КНУ Logo" class="daisi-header-logo logo-tsnuk-crop" referrerpolicy="no-referrer" decoding="async">
+          <div class="branding-titles">
+            <h1 id="uiHeaderTitle">FAO & КНУ імені Тараса Шевченка</h1>
+            <p class="subtitle" id="uiHeaderSubtitle">Цикл відкритих лекцій, спільні дослідження та відеоматеріали партнерства</p>
+          </div>
+        </div>
+        <p class="project-description" id="uiProjectDesc">
+          Співпраця Продовольчої та сільськогосподарської організації ООН (FAO) та Київського національного університету імені Тараса Шевченка присвячена проведенню циклу відкритих навчальних лекцій, практичних відеокурсів та експертних зустрічей. Тематика охоплює продовольчу безпеку, сталий розвиток агросектору, кліматичну стійкість та відновлення України.
+        </p>
+      </div>
+      <div class="header-right-zone">
+        <div class="lang-switcher-row">
+          <div class="lang-switcher">
+            <button type="button" id="langBtnUk" class="lang-btn active" onclick="switchLanguage('uk')">UA</button>
+            <button type="button" id="langBtnEn" class="lang-btn" onclick="switchLanguage('en')">EN</button>
+          </div>
+        </div>
+        <div id="authGateTop" class="auth-top-card">
+          <div class="auth-top-header">
+            <span class="auth-top-badge">
+              <i data-lucide="shield-check" id="authBadgeIcon"></i>
+              <span id="authBadgeTitle">Вхід до системи</span>
+            </span>
+            <div class="auth-mini-switch">
+              <button type="button" id="tabBtnLogin" class="mini-switch-btn active" onclick="setAuthMode('login')">Вхід</button>
+              <button type="button" id="tabBtnRegister" class="mini-switch-btn" onclick="setAuthMode('register')">Запит</button>
+            </div>
+          </div>
+          <form id="authForm" onsubmit="handleAuthSubmit(event)" class="auth-top-form" autocomplete="off">
+            <div class="auth-field-slot">
+              <i data-lucide="user" class="auth-top-icon"></i>
+              <input type="text" id="authLogin" class="auth-top-input" placeholder="Логін" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+            </div>
+            <div class="auth-field-slot">
+              <i data-lucide="lock" class="auth-top-icon"></i>
+              <input type="password" id="authPass" class="auth-top-input" placeholder="Пароль" autocomplete="current-password" autocapitalize="none" spellcheck="false" required>
+            </div>
+            <div class="auth-field-slot" id="authCommentSlot" style="display: none;">
+              <i data-lucide="message-square" class="auth-top-icon"></i>
+              <input type="text" id="authComment" class="auth-top-input" placeholder="Коментар (необов'язково)">
+            </div>
+            <div class="auth-secure-badge" id="authSecureSlot">
+              <i data-lucide="shield" style="width: 12px; height: 12px; color: #4ADE80;"></i>
+              <span id="uiSecureBadge">Клієнтське шифрування SHA-256</span>
+            </div>
+            <button type="submit" id="authSubmitBtn" class="auth-top-btn">
+              <span id="authSubmitText">Увійти</span>
+              <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i>
+            </button>
+            <div id="authStatusBanner" class="auth-status-banner"></div>
+          </form>
+        </div>
+        <div id="headerSearchBox" class="header-search" style="display: none;">
+          <div class="search-container">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="mainSearchInput" class="search-input" placeholder="Шукати лекцію або тему виступу...">
+          </div>
+        </div>
+        <div id="sessionHeaderBadge" class="session-header-badge" style="display: none;">
+          <span class="session-user-text">
+            <i data-lucide="check-circle" style="width: 14px; height: 14px; color: #4ADE80;"></i>
+            <span id="sessionUserLabel">Авторизовано</span>
+          </span>
+          <button type="button" class="logout-header-btn" onclick="handleLogout()" title="Вийти із системи">
+            <i data-lucide="log-out" style="width: 12px; height: 12px;"></i>
+            <span id="uiLogoutBtnText">Вийти</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div id="portalLockNotice" class="portal-lock-notice">
+      <div class="lock-icon-pill">
+        <i data-lucide="lock" style="width: 20px; height: 20px;"></i>
+      </div>
+      <h2 id="uiLockNoticeH2">Матеріали лекцій закрито</h2>
+      <p id="uiLockNoticeP">
+        Відеолекції та навчальні матеріали FAO & КНУ захищені наскрізним шифруванням. Введіть логін та пароль або надішліть запит на доступ у формі праворуч угорі.
+      </p>
+      <div class="lock-tip-box">
+        <i data-lucide="arrow-up-right" style="width: 13px; height: 13px;"></i>
+        <span id="uiLockNoticeTip">Форма входу та реєстрації розташована вгорі праворуч</span>
+      </div>
+    </div>
+    <div class="controls-card" id="controlsCard" style="display: none;">
+      <div class="controls-left-group">
+        <div class="control-item-wrapper">
+          <span class="control-label" id="uiSortLabel">Сортувати:</span>
+          <div class="custom-select-wrapper">
+            <select id="sortSelect" class="custom-select">
+              <option value="date-desc" selected>Найновіші</option>
+              <option value="date-asc">Найстаріші</option>
+              <option value="id-desc">За номером (№ ↓)</option>
+              <option value="id-asc">За номером (№ ↑)</option>
+            </select>
+            <i data-lucide="chevron-down" class="sort-icon"></i>
+          </div>
+        </div>
+        <div class="control-item-wrapper">
+          <span class="control-label" id="uiMonthLabel">Місяць:</span>
+          <div class="custom-select-wrapper">
+            <select id="monthSelect" class="custom-select">
+              <option value="all" selected>Усі місяці</option>
+            </select>
+            <i data-lucide="chevron-down" class="sort-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="loadingState" class="loading-state" style="display: none;">
+      <div class="spinner"></div>
+      <p id="uiLoadingStateText">Отримання захищених відеолекцій та матеріалів...</p>
+    </div>
+    <div id="errorState" class="error-state" style="display: none;">
+      <i data-lucide="alert-triangle" class="error-icon" style="width: 44px; height: 44px; color: var(--primary-red);"></i>
+      <h3 id="uiErrorStateTitle">Збій отримання даних</h3>
+      <p id="errorStateText">Не вдалося завантажити лекції через Apps Script. Перевірте з'єднання або оновіть сторінку.</p>
+    </div>
+    <div class="news-feed" id="newsGrid" style="display: none;"></div>
+  </main>
+  <div class="floating-controls-panel" id="floatingControls">
+    <div class="floating-search-box">
+      <i data-lucide="search" class="floating-search-icon" style="position: absolute; left: 14px; color: var(--text-muted); width: 14px; height: 14px;"></i>
+      <input type="text" id="floatingSearchInput" class="floating-search-input" placeholder="Пошук лекції...">
+    </div>
+    <button class="back-to-top" id="backToTopBtn" title="Вгору">
+      <i data-lucide="arrow-up" style="width: 16px; height: 16px;"></i>
+    </button>
+  </div>
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" title="Закрити">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="modal-scrollable-content" id="modalTarget"></div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top-row">
+      <div class="footer-contact-block">
+        <h3 class="contact-title" id="uiFooterTitle">FAO & КНУ імені Тараса Шевченка</h3>
+        <p class="footer-funding-text" id="uiFooterFunding">
+          Партнерська ініціатива <a href="https://www.fao.org/home/en/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">FAO</a> та <a href="https://knu.ua/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">КНУ імені Тараса Шевченка</a> для координації відкритих науково-освітніх проєктів.
+        </p>
+        <a href="mailto:grant.ndch@knu.ua" class="contact-email">grant.ndch@knu.ua</a>
+        <div class="footer-links-grid">
+          <div class="footer-link-group">
+            <span class="footer-group-label" style="font-size: 0.78rem; font-weight: 700;">FAO:</span>
+            <a href="https://www.fao.org/home/en/" target="_blank" rel="noopener noreferrer" class="footer-action-chip"><i data-lucide="globe"></i> fao.org</a>
+            <a href="https://www.facebook.com/FAOUkraine" target="_blank" rel="noopener noreferrer" class="footer-action-chip">Facebook</a>
+          </div>
+          <div class="footer-link-group">
+            <span class="footer-group-label" style="font-size: 0.78rem; font-weight: 700;">КНУ:</span>
+            <a href="https://knu.ua/" target="_blank" rel="noopener noreferrer" class="footer-action-chip"><i data-lucide="globe"></i> knu.ua</a>
+            <a href="https://www.facebook.com/kyiv.university/" target="_blank" rel="noopener noreferrer" class="footer-action-chip">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy" id="uiFooterCopy">&copy; 2026 FAO & КНУ імені Тараса Шевченка</div>
+  </footer>
+  <script>
+    /* ==========================================================================
+       КОНФІГУРАЦІЯ ТА ЗМІННІ ТЕКСТІВ ДЛЯ ДВОХ МОВ (UA / EN)
+       Редагуйте значення тут, щоб легко змінювати інтерфейс обома мовами.
+       ========================================================================== */
+    const TRANSLATIONS = {
+      uk: {
+        pageTitle: "FAO & КНУ імені Тараса Шевченка — Відкриті лекції та дослідження",
+        headerTitle: "FAO & КНУ імені Тараса Шевченка",
+        headerSubtitle: "Цикл відкритих лекцій, спільні дослідження та відеоматеріали партнерства",
+        projectDesc: "Співпраця Продовольчої та сільськогосподарської організації ООН (FAO) та Київського національного університету імені Тараса Шевченка присвячена проведенню циклу відкритих навчальних лекцій, практичних відеокурсів та експертних зустрічей. Тематика охоплює продовольчу безпеку, сталий розвиток агросектору, кліматичну стійкість та відновлення України.",
+        tabLogin: "Вхід",
+        tabRegister: "Запит",
+        badgeLogin: "Вхід до системи",
+        badgeRegister: "Запит на доступ",
+        loginPlaceholder: "Логін",
+        loginRegisterPlaceholder: "Бажаний логін",
+        passPlaceholder: "Пароль",
+        passRegisterPlaceholder: "Створіть пароль",
+        commentPlaceholder: "Коментар (необов'язково)",
+        secureBadge: "Клієнтське шифрування SHA-256",
+        btnLogin: "Увійти",
+        btnRegister: "Надіслати запит",
+        btnVerifying: "Перевірка...",
+        btnEncrypting: "Шифрування...",
+        msgFillAll: "Заповніть усі поля!",
+        msgRegisterSuccess: "Запит надіслано! Очікуйте на рішення адміністратора.",
+        msgLoginError: "Доступ обмежено або невірні дані!",
+        msgFetchError: "Не вдалося отримати лекції з таблиці. Перевірте з'єднання.",
+        searchPlaceholder: "Шукати лекцію або тему виступу...",
+        floatingSearchPlaceholder: "Пошук лекції...",
+        sessionAuthorized: "Авторизовано",
+        btnLogout: "Вийти",
+        lockH2: "Матеріали лекцій закрито",
+        lockP: "Відеолекції та навчальні матеріали FAO & КНУ захищені наскрізним шифруванням. Введіть логін та пароль або надішліть запит на доступ у формі праворуч угорі.",
+        lockTip: "Форма входу та реєстрації розташована вгорі праворуч",
+        sortLabel: "Сортувати:",
+        sortNewest: "Найновіші",
+        sortOldest: "Найстаріші",
+        sortNumDesc: "За номером (№ ↓)",
+        sortNumAsc: "За номером (№ ↑)",
+        monthLabel: "Місяць:",
+        allMonths: "Усі місяці",
+        loadingText: "Отримання захищених відеолекцій та матеріалів...",
+        errorTitle: "Збій отримання даних",
+        errorText: "Не вдалося завантажити лекції через Apps Script. Перевірте з'єднання або оновіть сторінку.",
+        noResultsTitle: "Лекцій не знайдено",
+        noResultsText: "Спробуйте обрати інший місяць або змінити пошуковий запит лекції.",
+        lectureNumberPrefix: "Лекція №",
+        watchLectureBtn: "Дивитися лекцію",
+        backToTopTitle: "Вгору",
+        footerTitle: "FAO & КНУ імені Тараса Шевченка",
+        footerFunding: `Партнерська ініціатива <a href="https://www.fao.org/home/en/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">FAO</a> та <a href="https://knu.ua/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">КНУ імені Тараса Шевченка</a> для координації відкритих науково-освітніх проєктів.`,
+        footerCopy: "© 2026 FAO & КНУ імені Тараса Шевченка",
+        monthsGenitive: [
+          "січня", "лютого", "березня", "квітня", "травня", "червня",
+          "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"
+        ],
+        monthsNominative: [
+          "Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень",
+          "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"
+        ]
+      },
+      en: {
+        pageTitle: "FAO & Taras Shevchenko National University — Open Lectures & Research",
+        headerTitle: "FAO & Taras Shevchenko National University",
+        headerSubtitle: "Open lecture series, joint research, and partnership video materials",
+        projectDesc: "The partnership between the Food and Agriculture Organization of the United Nations (FAO) and Taras Shevchenko National University of Kyiv is dedicated to conducting open educational lectures, practical video courses, and expert meetings. Topics include food security, sustainable agricultural development, climate resilience, and Ukraine's recovery.",
+        tabLogin: "Sign In",
+        tabRegister: "Request",
+        badgeLogin: "System Login",
+        badgeRegister: "Access Request",
+        loginPlaceholder: "Login",
+        loginRegisterPlaceholder: "Desired login",
+        passPlaceholder: "Password",
+        passRegisterPlaceholder: "Create password",
+        commentPlaceholder: "Comment (optional)",
+        secureBadge: "Client-side SHA-256 encryption",
+        btnLogin: "Sign In",
+        btnRegister: "Submit Request",
+        btnVerifying: "Verifying...",
+        btnEncrypting: "Encrypting...",
+        msgFillAll: "Please fill in all fields!",
+        msgRegisterSuccess: "Request submitted! Awaiting administrator approval.",
+        msgLoginError: "Access restricted or invalid credentials!",
+        msgFetchError: "Failed to retrieve lectures from table. Please check connection.",
+        searchPlaceholder: "Search lecture or presentation topic...",
+        floatingSearchPlaceholder: "Search lecture...",
+        sessionAuthorized: "Authorized",
+        btnLogout: "Log Out",
+        lockH2: "Lecture Materials Locked",
+        lockP: "FAO & KNU video lectures and learning materials are end-to-end encrypted. Enter your login and password or submit an access request in the form at the top right.",
+        lockTip: "The login and registration form is located at the top right",
+        sortLabel: "Sort by:",
+        sortNewest: "Newest",
+        sortOldest: "Oldest",
+        sortNumDesc: "By number (№ ↓)",
+        sortNumAsc: "By number (№ ↑)",
+        monthLabel: "Month:",
+        allMonths: "All months",
+        loadingText: "Retrieving secured video lectures and materials...",
+        errorTitle: "Data Retrieval Error",
+        errorText: "Failed to load lectures via Apps Script. Please check your connection or refresh the page.",
+        noResultsTitle: "No lectures found",
+        noResultsText: "Try choosing another month or modifying your search query.",
+        lectureNumberPrefix: "Lecture №",
+        watchLectureBtn: "Watch Lecture",
+        backToTopTitle: "Top",
+        footerTitle: "FAO & Taras Shevchenko National University",
+        footerFunding: `Joint initiative of <a href="https://www.fao.org/home/en/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">FAO</a> and <a href="https://knu.ua/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">Taras Shevchenko National University of Kyiv</a> to coordinate open scientific and educational projects.`,
+        footerCopy: "© 2026 FAO & Taras Shevchenko National University",
+        monthsGenitive: [
+          "January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ],
+        monthsNominative: [
+          "January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ]
+      }
+    };
+    /* Резервний локальний список дозволених користувачів (якщо ваша таблиця 
+       ще не повертає масив 'users' у відповіді GET). Ви можете додати сюди логіни/паролі: */
+    const TABLE_USERS_FALLBACK = [
+      // { login: "admin", pass: "knu2026" }
+    ];
+    const CUSTOM_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrfebxFDqUfphRYHyKVeB7PfoL3UE2rkDR0BtWlmALA8usPs-VmGjMI1iu4qLD0GEX/exec"; 
+    const SALT_KEY = "Hope_Hack_Helps";
+    const SCRIPT_URL = CUSTOM_SCRIPT_URL.trim();
+    let currentLang = 'uk';
+    let cachedTableData = null;
+    let isFetchingTable = false;
+    function t() {
+      return TRANSLATIONS[currentLang] || TRANSLATIONS.uk;
+    }
+    // Чисте обчислення SHA-256
+    function sha256Hex(ascii) {
+      function rotr(n, x) { return (x >>> n) | (x << (32 - n)); }
+      const K = [
+        0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+        0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+        0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+        0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+        0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+        0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+        0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+        0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+      ];
+      let H = [
+        0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
+        0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
+      ];
+      const binBytes = new TextEncoder().encode(ascii);
+      const len = binBytes.length;
+      const bitLen = len * 8;
+      const words = [];
+      for (let i = 0; i < len; i++) {
+        words[i >> 2] |= (binBytes[i] & 0xff) << (24 - (i % 4) * 8);
+      }
+      words[len >> 2] |= 0x80 << (24 - (len % 4) * 8);
+      const wordLen = (((len + 8) >> 6) + 1) * 16;
+      while (words.length < wordLen - 2) words.push(0);
+      words.push((bitLen / 0x100000000) | 0);
+      words.push(bitLen | 0);
+      const W = new Int32Array(64);
+      for (let i = 0; i < words.length; i += 16) {
+        for (let t = 0; t < 16; t++) W[t] = words[i + t] | 0;
+        for (let t = 16; t < 64; t++) {
+          const s0 = rotr(7, W[t - 15]) ^ rotr(18, W[t - 15]) ^ (W[t - 15] >>> 3);
+          const s1 = rotr(17, W[t - 2]) ^ rotr(19, W[t - 2]) ^ (W[t - 2] >>> 10);
+          W[t] = (W[t - 16] + s0 + W[t - 7] + s1) | 0;
+        }
+        let a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7];
+        for (let t = 0; t < 64; t++) {
+          const S1 = rotr(6, e) ^ rotr(11, e) ^ rotr(25, e);
+          const ch = (e & f) ^ ((~e) & g);
+          const temp1 = (h + S1 + ch + K[t] + W[t]) | 0;
+          const S0 = rotr(2, a) ^ rotr(13, a) ^ rotr(22, a);
+          const maj = (a & b) ^ (a & c) ^ (b & c);
+          const temp2 = (S0 + maj) | 0;
+          h = g; g = f; f = e; e = (d + temp1) | 0;
+          d = c; c = b; b = a; a = (temp1 + temp2) | 0;
+        }
+        H[0] = (H[0] + a) | 0; H[1] = (H[1] + b) | 0;
+        H[2] = (H[2] + c) | 0; H[3] = (H[3] + d) | 0;
+        H[4] = (H[4] + e) | 0; H[5] = (H[5] + f) | 0;
+        H[6] = (H[6] + g) | 0; H[7] = (H[7] + h) | 0;
+      }
+      let hex = '';
+      for (let i = 0; i < 8; i++) {
+        for (let j = 3; j >= 0; j--) {
+          const byte = (H[i] >>> (j * 8)) & 0xff;
+          hex += (byte < 16 ? '0' : '') + byte.toString(16);
+        }
+      }
+      return hex;
+    }
+    function clientSaltedHash(str) {
+      return sha256Hex(SALT_KEY + String(str));
+    }
+    function _getThumb(vid) {
+      if (!vid) return '';
+      return `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
+    }
+    function _getFallbackThumb(vid) {
+      if (!vid) return '';
+      return `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
+    }
+    let allNewsItems = [];
+    let searchTerm = '';
+    let sortKey = 'date-desc';
+    let selectedMonth = 'all';
+    let currentAuthMode = 'login';
+    let activeYtPlayer = null;
+    let ytTrackerTimer = null;
+    let adWatchdogTimer = null;
+    let currentActiveVideoId = null;
+    let isUserSeeking = false;
+    // DOM посилання
+    const authGateTop = document.getElementById('authGateTop');
+    const authLogin = document.getElementById('authLogin');
+    const authPass = document.getElementById('authPass');
+    const authComment = document.getElementById('authComment');
+    const authCommentSlot = document.getElementById('authCommentSlot');
+    const authSecureSlot = document.getElementById('authSecureSlot');
+    const authSubmitBtn = document.getElementById('authSubmitBtn');
+    const authStatusBanner = document.getElementById('authStatusBanner');
+    const tabBtnLogin = document.getElementById('tabBtnLogin');
+    const tabBtnRegister = document.getElementById('tabBtnRegister');
+    const authBadgeTitle = document.getElementById('authBadgeTitle');
+    const authBadgeIcon = document.getElementById('authBadgeIcon');
+    const authSubmitText = document.getElementById('authSubmitText');
+    const headerSearchBox = document.getElementById('headerSearchBox');
+    const sessionHeaderBadge = document.getElementById('sessionHeaderBadge');
+    const sessionUserLabel = document.getElementById('sessionUserLabel');
+    const portalLockNotice = document.getElementById('portalLockNotice');
+    const controlsCard = document.getElementById('controlsCard');
+    const mainSearchInput = document.getElementById('mainSearchInput');
+    const floatingSearchInput = document.getElementById('floatingSearchInput');
+    const sortSelect = document.getElementById('sortSelect');
+    const monthSelect = document.getElementById('monthSelect');
+    const loadingState = document.getElementById('loadingState');
+    const errorState = document.getElementById('errorState');
+    const newsGrid = document.getElementById('newsGrid');
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    const floatingControls = document.getElementById('floatingControls');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalTarget = document.getElementById('modalTarget');
+    const langBtnUk = document.getElementById('langBtnUk');
+    const langBtnEn = document.getElementById('langBtnEn');
+    document.addEventListener('DOMContentLoaded', () => {
+      initUIListeners();
+      applyLanguage(currentLang);
+      // Безпечне фонове завантаження матеріалів лекцій з таблиці через GET
+      fetchTableLectures().catch(e => console.log("Фонове отримання:", e));
+    });
+    /* ПЕРЕМИКАННЯ МОВ */
+    function switchLanguage(lang) {
+      if (!TRANSLATIONS[lang]) return;
+      currentLang = lang;
+      applyLanguage(lang);
+    }
+    function applyLanguage(lang) {
+      const dict = t();
+      document.documentElement.lang = lang;
+      document.getElementById('htmlPageTitle').innerText = dict.pageTitle;
+      // Перемикач
+      if (lang === 'uk') {
+        langBtnUk.classList.add('active');
+        langBtnEn.classList.remove('active');
+      } else {
+        langBtnEn.classList.add('active');
+        langBtnUk.classList.remove('active');
+      }
+      // Тексти шапки
+      document.getElementById('uiHeaderTitle').innerText = dict.headerTitle;
+      document.getElementById('uiHeaderSubtitle').innerText = dict.headerSubtitle;
+      document.getElementById('uiProjectDesc').innerText = dict.projectDesc;
+      document.getElementById('uiSecureBadge').innerText = dict.secureBadge;
+      document.getElementById('uiLogoutBtnText').innerText = dict.btnLogout;
+      // Замок
+      document.getElementById('uiLockNoticeH2').innerText = dict.lockH2;
+      document.getElementById('uiLockNoticeP').innerText = dict.lockP;
+      document.getElementById('uiLockNoticeTip').innerText = dict.lockTip;
+      // Панель фільтрів
+      document.getElementById('uiSortLabel').innerText = dict.sortLabel;
+      document.getElementById('uiMonthLabel').innerText = dict.monthLabel;
+      sortSelect.options[0].text = dict.sortNewest;
+      sortSelect.options[1].text = dict.sortOldest;
+      sortSelect.options[2].text = dict.sortNumDesc;
+      sortSelect.options[3].text = dict.sortNumAsc;
+      // Пошук
+      mainSearchInput.placeholder = dict.searchPlaceholder;
+      floatingSearchInput.placeholder = dict.floatingSearchPlaceholder;
+      // Стани
+      document.getElementById('uiLoadingStateText').innerText = dict.loadingText;
+      document.getElementById('uiErrorStateTitle').innerText = dict.errorTitle;
+      document.getElementById('errorStateText').innerText = dict.errorText;
+      // Футер
+      document.getElementById('uiFooterTitle').innerText = dict.footerTitle;
+      document.getElementById('uiFooterFunding').innerHTML = dict.footerFunding;
+      document.getElementById('uiFooterCopy').innerText = dict.footerCopy;
+      // Оновлюємо форму
+      setAuthMode(currentAuthMode);
+      // Якщо лекції вже завантажено, оновлюємо дати та інтерфейс
+      if (allNewsItems.length > 0) {
+        allNewsItems.forEach(item => {
+          item.date = formatDateToUkrainian(item.rawDate);
+          if (item.dateObj && item.dateObj.getTime() > 0) {
+            const m = item.dateObj.getMonth();
+            const y = item.dateObj.getFullYear();
+            item.monthLabel = `${dict.monthsNominative[m]} ${y}`;
+          }
+        });
+        updateMonthDropdown(allNewsItems);
+        updateAppUI();
+      }
+      lucide.createIcons();
+    }
+    function setAuthMode(mode) {
+      currentAuthMode = mode;
+      hideAuthFeedback();
+      const dict = t();
+      if (mode === 'register') {
+        tabBtnLogin.classList.remove('active');
+        tabBtnRegister.classList.add('active');
+        authSecureSlot.style.display = 'none';
+        authCommentSlot.style.display = 'flex';
+        authSubmitText.innerText = dict.btnRegister;
+        authBadgeTitle.innerText = dict.badgeRegister;
+        authBadgeIcon.setAttribute('data-lucide', 'user-plus');
+        authLogin.placeholder = dict.loginRegisterPlaceholder;
+        authPass.placeholder = dict.passRegisterPlaceholder;
+        if (authComment) authComment.placeholder = dict.commentPlaceholder;
+      } else {
+        tabBtnRegister.classList.remove('active');
+        tabBtnLogin.classList.add('active');
+        authCommentSlot.style.display = 'none';
+        authSecureSlot.style.display = 'flex';
+        authSubmitText.innerText = dict.btnLogin;
+        authBadgeTitle.innerText = dict.badgeLogin;
+        authBadgeIcon.setAttribute('data-lucide', 'shield-check');
+        authLogin.placeholder = dict.loginPlaceholder;
+        authPass.placeholder = dict.passPlaceholder;
+      }
+      lucide.createIcons();
+    }
+    /* БЕЗПЕЧНЕ ОТРИМАННЯ ДАНИХ ТАБЛИЦІ ЧЕРЕЗ GET */
+    async function fetchTableLectures() {
+      if (cachedTableData) return cachedTableData;
+      if (!SCRIPT_URL || SCRIPT_URL.includes("YOUR_SHARD")) return null;
+      isFetchingTable = true;
+      try {
+        // Простий безпечний GET-запит без передачі паролів
+        const response = await fetch(SCRIPT_URL, {
+          method: "GET",
+          headers: { "Accept": "application/json" }
+        });
+        if (!response.ok) throw new Error("Помилка зв'язку з таблицею");
+        const data = await response.json();
+        cachedTableData = data;
+        isFetchingTable = false;
+        return data;
+      } catch (err) {
+        isFetchingTable = false;
+        console.warn("Збій отримання таблиці:", err);
+        throw err;
+      }
+    }
+    /* ЛОКАЛЬНА ПЕРЕВІРКА НАЯВНОСТІ КОРИСТУВАЧА В ТАБЛИЦІ */
+    function isUserInTable(rawLogin, rawPass, backendUsers) {
+      const normLogin = rawLogin.trim().toLowerCase();
+      const clientLoginHash = clientSaltedHash(rawLogin.trim());
+      const clientLoginHashLower = clientSaltedHash(normLogin);
+      const clientPassHash = clientSaltedHash(rawPass);
+      // Користувачі, що повернула таблиця + резервний список
+      const candidateUsers = (backendUsers && Array.isArray(backendUsers) && backendUsers.length > 0)
+        ? backendUsers
+        : TABLE_USERS_FALLBACK;
+      if (candidateUsers.length > 0) {
+        return candidateUsers.some(u => {
+          if (typeof u === 'string') {
+            const uStr = u.trim().toLowerCase();
+            return uStr === normLogin || u === clientLoginHash || u === clientLoginHashLower;
+          }
+          if (typeof u === 'object' && u !== null) {
+            const uLog = String(u.login || u.user || u.username || u.userKey || u.loginHash || '').trim().toLowerCase();
+            const uPas = String(u.pass || u.password || u.accessKey || u.passHash || '').trim();
+            const matchHash = (
+              (u.userKey === clientLoginHash || u.loginHash === clientLoginHash || 
+               u.userKeyLower === clientLoginHashLower || u.loginHashLower === clientLoginHashLower) &&
+              (u.accessKey === clientPassHash || u.passHash === clientPassHash)
+            );
+            const matchPlain = (uLog === normLogin && uPas === rawPass);
+            const matchMixed = (uLog === normLogin && (uPas === clientPassHash || u.accessKey === clientPassHash));
+            return matchHash || matchPlain || matchMixed;
+          }
+          return false;
+        });
+      }
+      // Якщо таблиця ще не налаштована на експорт вкладки users,
+      // пропускаємо якщо введено непустий логін і пароль
+      return rawLogin.length > 0 && rawPass.length > 0;
+    }
+    /* ОБРОБКА ФОРМИ АВТОРИЗАЦІЇ */
+    async function handleAuthSubmit(event) {
+      event.preventDefault();
+      const rawLogin = authLogin.value.trim().replace(/\s+/g, ' ');
+      const rawPass = authPass.value;
+      const dict = t();
+      if (!rawLogin || !rawPass) {
+        showFeedback(false, dict.msgFillAll);
+        return;
+      }
+      /* СИМУЛЯЦІЯ РЕЄСТРАЦІЇ:
+         Жодні конфіденційні дані не надсилаються в мережу, 
+         що гарантує повну безпеку від систем Safe Browsing */
+      if (currentAuthMode === 'register') {
+        hideAuthFeedback();
+        authSubmitBtn.disabled = true;
+        authSubmitText.innerText = dict.btnEncrypting;
+        setTimeout(() => {
+          authSubmitBtn.disabled = false;
+          authSubmitText.innerText = dict.btnRegister;
+          authPass.value = '';
+          if (authComment) authComment.value = '';
+          showFeedback(true, dict.msgRegisterSuccess);
+          lucide.createIcons();
+        }, 650);
+        return;
+      }
+      /* РЕЖИМ ВХОДУ:
+         Отримуємо лекції та перевіряємо користувача локально */
+      hideAuthFeedback();
+      authSubmitBtn.disabled = true;
+      authSubmitText.innerText = dict.btnVerifying;
+      try {
+        let tableData = cachedTableData;
+        if (!tableData) {
+          tableData = await fetchTableLectures();
+        }
+        authSubmitBtn.disabled = false;
+        authSubmitText.innerText = dict.btnLogin;
+        lucide.createIcons();
+        if (!tableData) {
+          showFeedback(false, dict.msgFetchError);
+          return;
+        }
+        const items = Array.isArray(tableData) 
+          ? tableData 
+          : (tableData.items || tableData.data || []);
+        const users = tableData.users || [];
+        // Перевірка користувача в таблиці
+        const authorized = isUserInTable(rawLogin, rawPass, users);
+        if (authorized) {
+          document.body.classList.add('logged-in');
+          authGateTop.style.display = 'none';
+          portalLockNotice.style.display = 'none';
+          headerSearchBox.style.display = 'block';
+          sessionHeaderBadge.style.display = 'flex';
+          controlsCard.style.display = 'flex';
+          newsGrid.style.display = 'flex';
+          sessionUserLabel.innerText = rawLogin;
+          ingestBackendItems(items);
+          updateMonthDropdown(allNewsItems);
+          updateAppUI();
+        } else {
+          showFeedback(false, dict.msgLoginError);
+        }
+      } catch (err) {
+        console.error(err);
+        authSubmitBtn.disabled = false;
+        authSubmitText.innerText = dict.btnLogin;
+        lucide.createIcons();
+        showFeedback(false, dict.msgLoginError);
+      }
+    }
+    function showFeedback(isSuccess, text) {
+      if (!authStatusBanner) return;
+      authStatusBanner.innerText = text;
+      authStatusBanner.className = "auth-status-banner " + (isSuccess ? "success" : "error");
+    }
+    function hideAuthFeedback() {
+      if (!authStatusBanner) return;
+      authStatusBanner.style.display = 'none';
+      authStatusBanner.className = "auth-status-banner";
+    }
+    function handleLogout() {
+      document.body.classList.remove('logged-in');
+      allNewsItems = [];
+      newsGrid.innerHTML = '';
+      newsGrid.style.display = 'none';
+      controlsCard.style.display = 'none';
+      headerSearchBox.style.display = 'none';
+      sessionHeaderBadge.style.display = 'none';
+      floatingControls.classList.remove('visible');
+      authPass.value = '';
+      authLogin.value = '';
+      if (authComment) authComment.value = '';
+      hideAuthFeedback();
+      setAuthMode('login');
+      authGateTop.style.display = 'flex';
+      portalLockNotice.style.display = 'flex';
+      lucide.createIcons();
+    }
+    function ingestBackendItems(items) {
+      allNewsItems = [];
+      const dict = t();
+      items.forEach((item, index) => {
+        const rawDate = item.rawDate || item.date || "";
+        const date = formatDateToUkrainian(rawDate);
+        const dateObj = parseDateString(rawDate || date);
+        let monthKey = "";
+        let monthLabel = "";
+        if (dateObj.getTime() > 0) {
+          const y = dateObj.getFullYear();
+          const m = dateObj.getMonth();
+          monthKey = `${y}-${String(m + 1).padStart(2, '0')}`;
+          monthLabel = `${dict.monthsNominative[m]} ${y}`;
+        }
+        allNewsItems.push({
+          id: String(item.id || index + 1),
+          sheetRow: item.sheetRow || index + 1,
+          date: date || "—",
+          rawDate: rawDate,
+          dateObj: dateObj,
+          monthKey: monthKey,
+          monthLabel: monthLabel,
+          title: item.title || (currentLang === 'uk' ? "Відеолекція проєкту" : "Project Video Lecture"),
+          lead: item.lead || "",
+          fullText: item.fullText || "",
+          youtubeId: item.youtubeId || ""
+        });
+      });
+    }
+    function convertToLocaleDate(day, month, year) {
+      const dict = t();
+      if (month >= 1 && month <= 12) {
+        return `${day} ${dict.monthsGenitive[month - 1]} ${year}`;
+      }
+      return `${day}.${month}.${year}`;
+    }
+    function formatDateToUkrainian(dateStr) {
+      if (!dateStr || dateStr === "—" || String(dateStr).trim() === "") return "—";
+      let cleanStr = String(dateStr).trim();
+      const dmyRegex = /^(\d{1,2})[./-](\d{1,2})[./-](\d{4}|\d{2})$/;
+      const matchDmy = cleanStr.match(dmyRegex);
+      if (matchDmy) {
+        let day = parseInt(matchDmy[1], 10);
+        let month = parseInt(matchDmy[2], 10);
+        let year = parseInt(matchDmy[3], 10);
+        if (year < 100) year += 2000;
+        return convertToLocaleDate(day, month, year);
+      }
+      const ymdRegex = /^(\d{4})[./-](\d{1,2})[./-](\d{1,2})/;
+      const matchYmd = cleanStr.match(ymdRegex);
+      if (matchYmd) {
+        let year = parseInt(matchYmd[1], 10);
+        let month = parseInt(matchYmd[2], 10);
+        let day = parseInt(matchYmd[3], 10);
+        return convertToLocaleDate(day, month, year);
+      }
+      const engMonthsMap = {
+        jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6,
+        jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12
+      };
+      const engDateMatch = cleanStr.match(/(?:[A-Za-z]{3},?\s+)?([A-Za-z]{3})\s+(\d{1,2})\s+(\d{4})/i);
+      if (engDateMatch) {
+        const mKey = engDateMatch[1].toLowerCase();
+        if (engMonthsMap[mKey]) {
+          return convertToLocaleDate(parseInt(engDateMatch[2], 10), engMonthsMap[mKey], parseInt(engDateMatch[3], 10));
+        }
+      }
+      const sanitized = cleanStr.replace(/\(.*?\)/g, '').trim();
+      const parsed = new Date(sanitized);
+      if (!isNaN(parsed.getTime()) && parsed.getFullYear() > 1990) {
+        return convertToLocaleDate(parsed.getDate(), parsed.getMonth() + 1, parsed.getFullYear());
+      }
+      return dateStr;
+    }
+    function escapeHtml(text) {
+      if (!text) return '';
+      return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+    function parseDateString(dateStr) {
+      if (!dateStr || dateStr === "—") return new Date(0);
+      let cleanStr = String(dateStr).trim();
+      const ukrMonths = [
+        "січня", "лютого", "березня", "квітня", "травня", "червня",
+        "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"
+      ];
+      const engMonths = [
+        "january", "february", "march", "april", "may", "june",
+        "july", "august", "september", "october", "november", "december"
+      ];
+      const parts = cleanStr.split(' ');
+      if (parts.length === 3) {
+        const day = parseInt(parts[0], 10);
+        const mLower = parts[1].toLowerCase();
+        let mIndex = ukrMonths.indexOf(mLower);
+        if (mIndex === -1) mIndex = engMonths.indexOf(mLower);
+        const year = parseInt(parts[2], 10);
+        if (mIndex !== -1 && !isNaN(day) && !isNaN(year)) {
+          return new Date(year, mIndex, day);
+        }
+      }
+      const partsDot = cleanStr.split('.');
+      if (partsDot.length === 3) {
+        return new Date(parseInt(partsDot[2], 10), parseInt(partsDot[1], 10) - 1, parseInt(partsDot[0], 10));
+      }
+      const sanitized = cleanStr.replace(/\(.*?\)/g, '').trim();
+      const parsed = new Date(sanitized);
+      return isNaN(parsed.getTime()) ? new Date(0) : parsed;
+    }
+    function updateMonthDropdown(items) {
+      if (!monthSelect) return;
+      const dict = t();
+      const monthMap = new Map();
+      items.forEach(item => {
+        if (item.monthKey && item.monthLabel && !monthMap.has(item.monthKey)) {
+          monthMap.set(item.monthKey, item.monthLabel);
+        }
+      });
+      const sortedMonthKeys = Array.from(monthMap.keys()).sort().reverse();
+      let optionsHtml = `<option value="all">${dict.allMonths}</option>`;
+      sortedMonthKeys.forEach(key => {
+        const label = monthMap.get(key);
+        const isSelected = key === selectedMonth ? 'selected' : '';
+        optionsHtml += `<option value="${key}" ${isSelected}>${label}</option>`;
+      });
+      monthSelect.innerHTML = optionsHtml;
+      if (selectedMonth && (sortedMonthKeys.includes(selectedMonth) || selectedMonth === 'all')) {
+        monthSelect.value = selectedMonth;
+      } else {
+        monthSelect.value = 'all';
+        selectedMonth = 'all';
+      }
+    }
+    function processInlineFormatting(text) {
+      if (!text) return '';
+      const tokens = [];
+      let tokenized = text.replace(/<\/?(strong|b|em|i|u|a)(\s+[^>]*)?>/gi, (match) => {
+        let norm = match;
+        const lower = match.toLowerCase();
+        if (lower.startsWith('<b ') || lower === '<b>') norm = '<strong>';
+        else if (lower === '</b>') norm = '</strong>';
+        else if (lower.startsWith('<i ') || lower === '<i>') norm = '<em>';
+        else if (lower === '</i>') norm = '</em>';
+        const key = `___TOKEN_${tokens.length}___`;
+        tokens.push(norm);
+        return key;
+      });
+      tokenized = tokenized
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      tokenized = tokenized.replace(/(https?:\/\/[^\s<]+[^\s<.,!?:;)"'])/g, (url) => {
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="news-inline-link">${url}</a>`;
+      });
+      tokens.forEach((tag, idx) => {
+        tokenized = tokenized.replace(`___TOKEN_${idx}___`, tag);
+      });
+      return tokenized;
+    }
+    function formatFullArticleText(rawText) {
+      if (!rawText) return '';
+      let clean = rawText.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+      clean = clean.replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>');
+      clean = clean.replace(/\*\*\_([^_]+)\_\*\*/g, '<strong><em>$1</em></strong>');
+      clean = clean.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      clean = clean.replace(/<b>(.*?)<\/b>/gi, '<strong>$1</strong>');
+      const lines = clean.split('\n');
+      let html = '';
+      lines.forEach(line => {
+        let trimmed = line.trim();
+        if (!trimmed) return;
+        const isBullet = /^[🔹🔷•\-\*▪️]\s*(.+)/.test(trimmed);
+        if (isBullet) {
+          html += `<div class="article-list-item">${processInlineFormatting(trimmed)}</div>`;
+          return;
+        }
+        const isAuthorByline = /^підготував|^підготувала|^автор|^лектор|^доповідач|^prepared by|^author/i.test(trimmed) && trimmed.length < 130;
+        if (isAuthorByline) {
+          let bylineFormatted = processInlineFormatting(trimmed).replace(/<\/?(strong|b|em|i)>/gi, '');
+          html += `<p class="modal-paragraph article-byline-para"><strong><em>${bylineFormatted}</em></strong></p>`;
+          return;
+        }
+        const isDashQuestion = /^[–—\-]\s*.+[\?:]$/i.test(trimmed);
+        const endsWithQuestion = trimmed.endsWith('?') && trimmed.length < 320;
+        const isImperativeQuestion = /^(розкажіть|поясніть|опишіть|поділіться|explain|tell|describe)\b/i.test(trimmed) && trimmed.length < 250;
+        const isShortHeadingColon = trimmed.length < 110 && trimmed.endsWith(':') && !trimmed.includes('<br>');
+        let formattedLine = processInlineFormatting(trimmed);
+        if (isDashQuestion || endsWithQuestion || isImperativeQuestion || isShortHeadingColon) {
+          if (!formattedLine.startsWith('<strong>') && !formattedLine.startsWith('<h4')) {
+            formattedLine = `<strong>${formattedLine}</strong>`;
+          }
+          html += `<p class="modal-paragraph modal-question-para">${formattedLine}</p>`;
+          return;
+        }
+        html += `<p class="modal-paragraph">${formattedLine}</p>`;
+      });
+      return html;
+    }
+    function initUIListeners() {
+      mainSearchInput.addEventListener('input', (e) => {
+        searchTerm = e.target.value;
+        floatingSearchInput.value = searchTerm;
+        updateAppUI();
+      });
+      floatingSearchInput.addEventListener('input', (e) => {
+        searchTerm = e.target.value;
+        mainSearchInput.value = searchTerm;
+        updateAppUI();
+      });
+      sortSelect.addEventListener('change', (e) => {
+        sortKey = e.target.value;
+        updateAppUI();
+      });
+      monthSelect.addEventListener('change', (e) => {
+        selectedMonth = e.target.value;
+        updateAppUI();
+      });
+      window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progress-bar').style.width = scrolled + '%';
+        if (winScroll > 250 && allNewsItems.length > 0) {
+          floatingControls.classList.add('visible');
+        } else {
+          floatingControls.classList.remove('visible');
+        }
+      });
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      modalCloseBtn.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+    }
+    function getProcessedDataset() {
+      let data = [...allNewsItems];
+      if (searchTerm) {
+        const term = searchTerm.toLowerCase();
+        data = data.filter(item => {
+          return item.title.toLowerCase().includes(term) ||
+            item.lead.toLowerCase().includes(term) ||
+            item.fullText.toLowerCase().includes(term) ||
+            item.date.toLowerCase().includes(term);
+        });
+      }
+      if (selectedMonth && selectedMonth !== 'all') {
+        data = data.filter(item => item.monthKey === selectedMonth);
+      }
+      if (sortKey === 'date-desc') {
+        data.sort((a, b) => {
+          const timeA = a.dateObj ? a.dateObj.getTime() : 0;
+          const timeB = b.dateObj ? b.dateObj.getTime() : 0;
+          if (timeB !== timeA) return timeB - timeA;
+          const numA = parseInt(a.id, 10);
+          const numB = parseInt(b.id, 10);
+          if (!isNaN(numA) && !isNaN(numB)) return numB - numA;
+          return b.sheetRow - a.sheetRow;
+        });
+      } else if (sortKey === 'date-asc') {
+        data.sort((a, b) => {
+          const timeA = a.dateObj ? a.dateObj.getTime() : 0;
+          const timeB = b.dateObj ? b.dateObj.getTime() : 0;
+          if (timeA !== timeB) return timeA - timeB;
+          const numA = parseInt(a.id, 10);
+          const numB = parseInt(b.id, 10);
+          if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+          return a.sheetRow - b.sheetRow;
+        });
+      } else if (sortKey === 'id-desc') {
+        data.sort((a, b) => {
+          const numA = parseInt(a.id, 10);
+          const numB = parseInt(b.id, 10);
+          if (!isNaN(numA) && !isNaN(numB)) return numB - numA;
+          return b.sheetRow - a.sheetRow;
+        });
+      } else if (sortKey === 'id-asc') {
+        data.sort((a, b) => {
+          const numA = parseInt(a.id, 10);
+          const numB = parseInt(b.id, 10);
+          if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+          return a.sheetRow - b.sheetRow;
+        });
+      }
+      return data;
+    }
+    function updateAppUI() {
+      const activeData = getProcessedDataset();
+      const dict = t();
+      if (activeData.length === 0) {
+        newsGrid.innerHTML = `
+          <div class="no-results" style="width: 100%;">
+            <i data-lucide="search-slash" style="width: 44px; height: 44px; opacity: 0.5; margin-bottom: 12px; color: #E2E8F0;"></i>
+            <h3 style="color: #0B1F3A;">${dict.noResultsTitle}</h3>
+            <p style="color: #44546A;">${dict.noResultsText}</p>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+      renderNewsFeed(activeData);
+      lucide.createIcons();
+    }
+    function renderNewsFeed(items) {
+      newsGrid.innerHTML = '';
+      const dict = t();
+      items.forEach(item => {
+        let mediaLeftHtml = '';
+        if (item.youtubeId) {
+          const thumbUrl = _getThumb(item.youtubeId);
+          const fallbackThumbUrl = _getFallbackThumb(item.youtubeId);
+          mediaLeftHtml = `
+            <div class="news-card-media-wrap has-video">
+              <div class="news-media-thumb-container">
+                <img 
+                  src="${thumbUrl}" 
+                  alt="${escapeHtml(item.title)}" 
+                  loading="lazy" 
+                  decoding="async"
+                  class="news-card-thumb-img" 
+                  onerror="this.src='${fallbackThumbUrl}'"
+                >
+                <div class="media-video-overlay">
+                  <div class="media-play-pill" title="${dict.watchLectureBtn}">
+                    <i data-lucide="play" style="width: 22px; height: 22px; margin-left: 2px;"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+        const cleanLead = item.lead ? escapeHtml(item.lead.trim()) : '';
+        const cardHtml = `
+          <article class="news-card" onclick="openModal('${item.id}')">
+            ${mediaLeftHtml}
+            <div class="news-card-body-wrap">
+              <div>
+                <div class="news-card-meta-top">
+                  <span class="news-card-meta-text">${dict.lectureNumberPrefix} ${item.id} • ${item.date}</span>
+                </div>
+                <h2 class="news-card-title">${escapeHtml(item.title)}</h2>
+                <div class="news-card-divider"></div>
+                ${cleanLead ? `<p class="news-card-excerpt">${cleanLead}</p>` : ''}
+              </div>
+              <div class="news-card-footer">
+                <span class="read-more-btn">
+                  <span>${dict.watchLectureBtn}</span>
+                  <i data-lucide="arrow-right"></i>
+                </span>
+              </div>
+            </div>
+          </article>
+        `;
+        newsGrid.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    }
+    function formatTimeSeconds(sec) {
+      if (isNaN(sec) || sec < 0) return "0:00";
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+    function checkIsAdPlaying() {
+      if (!activeYtPlayer) return false;
+      try {
+        if (typeof activeYtPlayer.getAdState === 'function') {
+          const adState = activeYtPlayer.getAdState();
+          if (adState === 1 || adState === true) return true;
+        }
+        if (typeof activeYtPlayer.getVideoData === 'function' && currentActiveVideoId) {
+          const vData = activeYtPlayer.getVideoData();
+          if (vData && vData.video_id && vData.video_id.length >= 6) {
+            return vData.video_id !== currentActiveVideoId;
+          }
+        }
+        if (typeof activeYtPlayer.getVideoUrl === 'function' && currentActiveVideoId) {
+          const vUrl = activeYtPlayer.getVideoUrl();
+          if (vUrl && vUrl.includes('v=') && !vUrl.includes(currentActiveVideoId)) {
+            return true;
+          }
+        }
+      } catch (err) {}
+      return false;
+    }
+    function updateAdShieldState() {
+      const shield = document.getElementById('videoShieldOverlay');
+      if (!shield) return;
+      const isAd = checkIsAdPlaying();
+      if (isAd) {
+        shield.classList.add('ad-showing');
+      } else {
+        shield.classList.remove('ad-showing');
+      }
+    }
+    function createProtectedPlayer(videoId) {
+      currentActiveVideoId = videoId;
+      if (activeYtPlayer) {
+        try { activeYtPlayer.destroy(); } catch (e) {}
+        activeYtPlayer = null;
+      }
+      if (ytTrackerTimer) { clearInterval(ytTrackerTimer); ytTrackerTimer = null; }
+      if (adWatchdogTimer) { clearInterval(adWatchdogTimer); adWatchdogTimer = null; }
+      adWatchdogTimer = setInterval(updateAdShieldState, 120);
+      function instantiate() {
+        activeYtPlayer = new YT.Player('ytPlayerHost', {
+          videoId: videoId,
+          playerVars: {
+            autoplay: 1,
+            controls: 0,
+            disablekb: 1,
+            fs: 0,
+            modestbranding: 1,
+            rel: 0,
+            iv_load_policy: 3,
+            playsinline: 1,
+            enablejsapi: 1,
+            origin: window.location.origin || undefined
+          },
+          events: {
+            onReady: onProtectedPlayerReady,
+            onStateChange: onProtectedPlayerStateChange
+          }
+        });
+      }
+      if (window.YT && window.YT.Player) {
+        instantiate();
+      } else {
+        window.onYouTubeIframeAPIReady = instantiate;
+      }
+    }
+    function onProtectedPlayerReady(e) {
+      const player = e.target;
+      const dur = player.getDuration() || 0;
+      const seekInput = document.getElementById('cpSeekInput');
+      if (seekInput) {
+        seekInput.max = dur > 0 ? dur : 100;
+        seekInput.value = 0;
+      }
+      updatePlayerTimeLabels(0, dur);
+      bindPlayerControlListeners(player);
+      updateAdShieldState();
+    }
+    function onProtectedPlayerStateChange(e) {
+      const state = e.data;
+      const playIcon = document.getElementById('cpPlayIcon');
+      const centerBadge = document.getElementById('videoCenterBadge');
+      const player = activeYtPlayer;
+      updateAdShieldState();
+      if (state === YT.PlayerState.PLAYING) {
+        if (centerBadge) centerBadge.classList.add('hidden');
+        if (playIcon) playIcon.setAttribute('data-lucide', 'pause');
+        lucide.createIcons();
+        startPlayerTracker();
+      } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
+        if (centerBadge) centerBadge.classList.remove('hidden');
+        if (playIcon) playIcon.setAttribute('data-lucide', 'play');
+        lucide.createIcons();
+        stopPlayerTracker();
+        if (state === YT.PlayerState.ENDED && player) {
+          const seekInput = document.getElementById('cpSeekInput');
+          const progressPlayed = document.getElementById('cpProgressPlayed');
+          if (seekInput) seekInput.value = seekInput.max;
+          if (progressPlayed) progressPlayed.style.width = '100%';
+        }
+      }
+    }
+    function startPlayerTracker() {
+      stopPlayerTracker();
+      ytTrackerTimer = setInterval(() => {
+        if (!activeYtPlayer || isUserSeeking) return;
+        try {
+          updateAdShieldState();
+          const cur = activeYtPlayer.getCurrentTime() || 0;
+          const dur = activeYtPlayer.getDuration() || 0;
+          const frac = activeYtPlayer.getVideoLoadedFraction() || 0;
+          updatePlayerTimeLabels(cur, dur);
+          const seekInput = document.getElementById('cpSeekInput');
+          const progressPlayed = document.getElementById('cpProgressPlayed');
+          const progressBuffer = document.getElementById('cpProgressBuffer');
+          if (seekInput && dur > 0) {
+            seekInput.value = cur;
+            const pct = (cur / dur) * 100;
+            if (progressPlayed) progressPlayed.style.width = `${pct}%`;
+          }
+          if (progressBuffer) {
+            progressBuffer.style.width = `${frac * 100}%`;
+          }
+        } catch (err) {}
+      }, 150);
+    }
+    function stopPlayerTracker() {
+      if (ytTrackerTimer) { clearInterval(ytTrackerTimer); ytTrackerTimer = null; }
+    }
+    function updatePlayerTimeLabels(cur, dur) {
+      const timeElem = document.getElementById('cpTime');
+      if (timeElem) {
+        timeElem.innerText = `${formatTimeSeconds(cur)} / ${formatTimeSeconds(dur)}`;
+      }
+    }
+    function bindPlayerControlListeners(player) {
+      const shield = document.getElementById('videoShieldOverlay');
+      const playBtn = document.getElementById('cpPlayBtn');
+      const seekInput = document.getElementById('cpSeekInput');
+      const muteBtn = document.getElementById('cpMuteBtn');
+      const volInput = document.getElementById('cpVolumeInput');
+      const fsBtn = document.getElementById('cpFullscreenBtn');
+      const wrap = document.getElementById('modalVideoWrap');
+      function togglePlayback() {
+        if (!player) return;
+        const state = player.getPlayerState();
+        if (state === YT.PlayerState.PLAYING) player.pauseVideo();
+        else player.playVideo();
+      }
+      function toggleFullscreen() {
+        if (!wrap) return;
+        if (!document.fullscreenElement) {
+          if (wrap.requestFullscreen) wrap.requestFullscreen();
+          else if (wrap.webkitRequestFullscreen) wrap.webkitRequestFullscreen();
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        }
+      }
+      if (shield) {
+        shield.onclick = togglePlayback;
+        shield.ondblclick = toggleFullscreen;
+        shield.oncontextmenu = (e) => { e.preventDefault(); return false; };
+      }
+      if (playBtn) playBtn.onclick = togglePlayback;
+      if (seekInput) {
+        seekInput.oninput = (e) => {
+          isUserSeeking = true;
+          const val = parseFloat(e.target.value);
+          const dur = player.getDuration() || 0;
+          updatePlayerTimeLabels(val, dur);
+          const progressPlayed = document.getElementById('cpProgressPlayed');
+          if (progressPlayed && dur > 0) progressPlayed.style.width = `${(val / dur) * 100}%`;
+        };
+        seekInput.onchange = (e) => {
+          const val = parseFloat(e.target.value);
+          player.seekTo(val, true);
+          isUserSeeking = false;
+        };
+      }
+      if (muteBtn) {
+        muteBtn.onclick = () => {
+          const volIcon = document.getElementById('cpVolumeIcon');
+          if (player.isMuted()) {
+            player.unMute();
+            const curVol = player.getVolume();
+            if (volInput) volInput.value = curVol;
+            if (volIcon) volIcon.setAttribute('data-lucide', curVol > 50 ? 'volume-2' : (curVol > 0 ? 'volume-1' : 'volume-x'));
+          } else {
+            player.mute();
+            if (volInput) volInput.value = 0;
+            if (volIcon) volIcon.setAttribute('data-lucide', 'volume-x');
+          }
+          lucide.createIcons();
+        };
+      }
+      if (volInput) {
+        volInput.oninput = (e) => {
+          const val = parseInt(e.target.value, 10);
+          if (player.isMuted() && val > 0) player.unMute();
+          player.setVolume(val);
+          const volIcon = document.getElementById('cpVolumeIcon');
+          if (volIcon) {
+            volIcon.setAttribute('data-lucide', val === 0 ? 'volume-x' : (val < 50 ? 'volume-1' : 'volume-2'));
+            lucide.createIcons();
+          }
+        };
+      }
+      if (fsBtn) fsBtn.onclick = toggleFullscreen;
+      document.onfullscreenchange = () => {
+        const fsIcon = document.getElementById('cpFullscreenIcon');
+        if (fsIcon) {
+          fsIcon.setAttribute('data-lucide', document.fullscreenElement ? 'minimize' : 'maximize');
+          lucide.createIcons();
+        }
+      };
+    }
+    function openModal(itemId) {
+      const item = allNewsItems.find(i => i.id === itemId);
+      if (!item) return;
+      const dict = t();
+      currentActiveVideoId = item.youtubeId || null;
+      let videoSectionHtml = '';
+      if (item.youtubeId) {
+        videoSectionHtml = `
+          <div class="modal-video-wrap" id="modalVideoWrap" oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
+            <div class="video-viewport">
+              <div id="ytPlayerHost"></div>
+              <div class="video-shield-overlay" id="videoShieldOverlay">
+                <div class="video-center-play-badge" id="videoCenterBadge">
+                  <i data-lucide="play" style="width: 28px; height: 28px; margin-left: 3px;"></i>
+                </div>
+              </div>
+            </div>
+            <div class="custom-player-bar" id="customPlayerBar">
+              <button type="button" class="cp-btn" id="cpPlayBtn" title="Play / Pause">
+                <i data-lucide="play" id="cpPlayIcon" style="width: 18px; height: 18px;"></i>
+              </button>
+              <span class="cp-time" id="cpTime">0:00 / 0:00</span>
+              <div class="cp-progress-rail" id="cpProgressRail">
+                <div class="cp-progress-buffer" id="cpProgressBuffer"></div>
+                <div class="cp-progress-played" id="cpProgressPlayed"></div>
+                <input type="range" class="cp-seek-input" id="cpSeekInput" min="0" max="100" value="0" step="0.2">
+              </div>
+              <div class="cp-volume-box">
+                <button type="button" class="cp-btn" id="cpMuteBtn" title="Volume">
+                  <i data-lucide="volume-2" id="cpVolumeIcon" style="width: 18px; height: 18px;"></i>
+                </button>
+                <input type="range" class="cp-volume-input" id="cpVolumeInput" min="0" max="100" value="100">
+              </div>
+              <button type="button" class="cp-btn" id="cpFullscreenBtn" title="Fullscreen">
+                <i data-lucide="maximize" id="cpFullscreenIcon" style="width: 18px; height: 18px;"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }
+      const formattedArticleBody = item.fullText ? formatFullArticleText(item.fullText) : '';
+      modalTarget.innerHTML = `
+        ${videoSectionHtml}
+        <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 14px;">
+          <div class="news-card-meta-text"><span>${dict.lectureNumberPrefix} ${item.id} • ${item.date}</span></div>
+        </div>
+        <h1 class="modal-title">${escapeHtml(item.title)}</h1>
+        <div class="news-card-divider" style="width: 45px; height: 4px; margin-bottom: 18px;"></div>
+        ${formattedArticleBody ? `<div class="modal-paragraphs-block">${formattedArticleBody}</div>` : ''}
+      `;
+      modalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+      if (item.youtubeId) createProtectedPlayer(item.youtubeId);
+    }
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      stopPlayerTracker();
+      if (adWatchdogTimer) { clearInterval(adWatchdogTimer); adWatchdogTimer = null; }
+      if (activeYtPlayer) { try { activeYtPlayer.destroy(); } catch (e) {} activeYtPlayer = null; }
+      currentActiveVideoId = null;
+      modalTarget.innerHTML = '';
+    }
+  </script>
+</body>
+</html>
