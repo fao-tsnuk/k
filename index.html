@@ -31,6 +31,9 @@
       --text-muted: #64748B;
       --accent-blue: #1E3E62;
       --daisi-navy: #123B66;
+      --success-green: #166534;
+      --success-bg: #F0FDF4;
+      --success-border: #86EFAC;
       --font-family: 'Montserrat', sans-serif;
     }
     *, *::before, *::after {
@@ -520,12 +523,13 @@
       color: #166534;
       border: 1px solid #86EFAC;
     }
+    /* ПАНЕЛЬ ФІЛЬТРІВ */
     .controls-card {
       background: #FFFFFF !important;
       border: 1px solid var(--border-color) !important;
       border-radius: 14px;
       padding: 12px 16px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       box-shadow: 0 4px 15px rgba(11, 25, 44, 0.02);
       display: flex;
       flex-direction: column;
@@ -609,7 +613,158 @@
       background: var(--primary-red);
       color: #FFFFFF;
     }
-    .news-feed { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+    /* ПОКРОКОВЕ ПРОХОДЖЕННЯ МОДУЛІВ (WALKTHROUGH STEPPER) */
+    .walkthrough-panel {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--daisi-navy);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 16px rgba(11, 25, 44, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    .walkthrough-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .walkthrough-progress-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1 1 280px;
+    }
+    .walkthrough-title-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-title);
+    }
+    .walkthrough-sub-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--daisi-navy);
+      background: #EEF2FF;
+      padding: 2px 10px;
+      border-radius: 12px;
+    }
+    .walkthrough-track {
+      width: 100%;
+      max-width: 440px;
+      height: 7px;
+      background: #E2E8F0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .walkthrough-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--daisi-navy), var(--primary-red));
+      transition: width 0.3s ease;
+    }
+    .walkthrough-nav-btns {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .wt-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: #F8FAFC;
+      color: var(--text-title);
+      font-family: var(--font-family);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .wt-nav-btn:hover:not(:disabled) {
+      border-color: var(--primary-red);
+      color: var(--primary-red);
+      background: #FFFFFF;
+    }
+    .wt-nav-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .wt-reset-btn {
+      background: transparent;
+      border: 1px dashed var(--border-color);
+      color: var(--text-muted);
+    }
+    .walkthrough-steps-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .wt-step-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 22px;
+      font-family: var(--font-family);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      background: #F8FAFC;
+      color: var(--text-body);
+      transition: all 0.2s ease;
+    }
+    .wt-step-chip.completed {
+      background: var(--success-bg);
+      border-color: var(--success-border);
+      color: var(--success-green);
+    }
+    .wt-step-chip.unlocked {
+      background: #FFFFFF;
+      border-color: var(--daisi-navy);
+      color: var(--daisi-navy);
+    }
+    .wt-step-chip.active {
+      background: var(--primary-red);
+      border-color: var(--primary-red);
+      color: #FFFFFF;
+      box-shadow: 0 3px 10px rgba(184, 0, 0, 0.28);
+    }
+    .wt-step-chip.locked {
+      background: #F1F5F9;
+      border-color: #E2E8F0;
+      color: #94A3B8;
+      cursor: not-allowed;
+    }
+    .walkthrough-notice {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #92400E;
+      background: #FFFBEB;
+      border: 1px solid #FCD34D;
+      padding: 7px 12px;
+      border-radius: 10px;
+    }
+    .walkthrough-notice.visible {
+      display: flex;
+    }
+    .news-feed { display: flex; flex-direction: column; gap: 18px; width: 100%; }
     .news-card {
       background: #FFFFFF !important;
       color: #0F172A !important;
@@ -620,7 +775,7 @@
       flex-direction: row;
       align-items: stretch;
       width: 100%;
-      min-height: 210px;
+      min-height: 220px;
       border-left: 5px solid var(--primary-red) !important;
       box-shadow: 0 4px 15px rgba(11, 25, 44, 0.04);
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -630,6 +785,17 @@
       transform: translateY(-3px);
       box-shadow: 0 12px 28px rgba(11, 25, 44, 0.1);
       border-color: rgba(30, 62, 98, 0.25) !important;
+    }
+    .news-card.is-locked-card {
+      border-left-color: #94A3B8 !important;
+      background: #F8FAFC !important;
+      opacity: 0.85;
+      cursor: default;
+      min-height: 110px;
+    }
+    .news-card.is-locked-card:hover {
+      transform: none;
+      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.04);
     }
     .news-card-media-wrap {
       flex: 0 0 33%;
@@ -674,9 +840,26 @@
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
     }
     .news-card:hover .media-play-pill { transform: scale(1.14); box-shadow: 0 6px 22px rgba(184, 0, 0, 0.75); }
+    .media-default-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(11, 31, 58, 0.85);
+      color: #FFFFFF;
+      font-size: 0.66rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(4px);
+    }
     .news-card-body-wrap {
       flex: 1 1 auto; padding: 22px 26px; display: flex; flex-direction: column; justify-content: space-between;
       min-width: 0; background: #FFFFFF !important;
+    }
+    .news-card.is-locked-card .news-card-body-wrap {
+      background: #F8FAFC !important;
+      padding: 18px 22px;
     }
     .news-card-meta-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
     .news-card-meta-text { font-size: 0.75rem; color: #44546A !important; font-weight: 600; }
@@ -697,31 +880,148 @@
       color: var(--primary-red);
       border-color: rgba(184, 0, 0, 0.18);
     }
+    .meta-chip.done {
+      background: var(--success-bg);
+      color: var(--success-green);
+      border-color: var(--success-border);
+    }
     .news-card-title, .news-card h2 {
       font-size: clamp(1.1rem, 3.2vw, 1.24rem); font-weight: 800; color: #0B1F3A !important;
       line-height: 1.35; margin-bottom: 8px; transition: color 0.2s ease;
     }
     .news-card:hover .news-card-title, .news-card:hover h2 { color: var(--primary-red) !important; }
+    .news-card.is-locked-card:hover .news-card-title { color: #0B1F3A !important; }
     .news-card-divider { width: 35px; height: 3px; background-color: var(--primary-red) !important; border-radius: 2px; margin-bottom: 10px; }
     .news-card-attribution {
       font-size: 0.79rem;
       color: var(--accent-blue);
       font-weight: 600;
-      margin-bottom: 8px;
-      line-height: 1.45;
+      margin-bottom: 10px;
+      line-height: 1.6;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+    /* ВИДІЛЕННЯ ІМЕН (CARD & MODAL) */
+    .card-lecturer-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-title);
+      font-weight: 800;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      padding: 2px 9px;
+      border-radius: 8px;
+      font-size: 0.77rem;
+    }
+    .card-dept-label {
+      color: var(--text-body);
+      font-weight: 600;
+    }
+    .person-entry-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 6px;
+    }
+    .person-entry-row:last-child {
+      margin-bottom: 0;
+    }
+    .person-name-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      align-self: flex-start;
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--daisi-navy);
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      padding: 2px 9px;
+      border-radius: 8px;
+    }
+    .person-credentials-muted {
+      font-size: 0.77rem;
+      font-weight: 500;
+      color: var(--text-body);
+      padding-left: 2px;
+      line-height: 1.4;
+    }
+    .bib-author-highlight {
+      font-weight: 800;
+      color: var(--daisi-navy);
+    }
+    .grade-badge-highlight {
+      display: inline-block;
+      font-weight: 800;
+      color: var(--primary-red);
+      background: rgba(184, 0, 0, 0.08);
+      padding: 0 6px;
+      border-radius: 5px;
     }
     .news-card-excerpt, .news-card p.news-card-excerpt {
       font-size: clamp(0.85rem, 2.2vw, 0.9rem); line-height: 1.65; color: #44546A !important; margin-bottom: 14px;
       display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; white-space: pre-line;
     }
     .news-card-footer {
-      display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 10px; margin-top: auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      border-top: 1px solid var(--border-color); padding-top: 12px; margin-top: auto;
     }
     .read-more-btn {
       display: inline-flex; align-items: center; gap: 6px; background-color: transparent; border: none; color: var(--primary-red) !important;
       font-family: var(--font-family); font-size: 0.84rem; font-weight: 700; cursor: pointer; transition: gap 0.2s ease, color 0.2s ease; padding: 6px 0; min-height: 40px;
     }
     .news-card:hover .read-more-btn { gap: 9px; color: var(--primary-red-hover) !important; }
+    .card-complete-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 22px;
+      border: 1px solid var(--daisi-navy);
+      background: var(--daisi-navy);
+      color: #FFFFFF;
+      font-family: var(--font-family);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .card-complete-btn:hover {
+      background: var(--primary-red);
+      border-color: var(--primary-red);
+    }
+    .locked-teaser-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      border-radius: 14px;
+      padding: 14px 18px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .course-complete-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      border-left: 5px solid var(--success-green);
+      border-radius: 14px;
+      padding: 16px 20px;
+      color: var(--success-green);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
     .reset-filters-btn {
       margin-top: 10px;
       background: var(--primary-red);
@@ -753,6 +1053,15 @@
     }
     .modal-close-btn:hover { background: var(--primary-red); color: white; border-color: var(--primary-red); }
     .modal-scrollable-content { padding: 32px 38px; overflow-y: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+    .modal-top-meta-bar {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-right: 54px;
+    }
     .modal-video-wrap { width: 100%; border-radius: 14px; overflow: hidden; margin-bottom: 16px; background-color: #070D18; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); position: relative; user-select: none; display: flex; flex-direction: column; }
     .video-viewport { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #000000; overflow: hidden; }
     .video-viewport iframe, .video-viewport #ytPlayerHost { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; pointer-events: auto; }
@@ -811,21 +1120,21 @@
       border-color: var(--primary-red);
       color: #FFFFFF;
     }
-    .modal-title { font-size: clamp(1.25rem, 3.8vw, 1.6rem); font-weight: 800; color: #0B1F3A !important; line-height: 1.35; margin-bottom: 14px; padding-right: 30px; }
+    .modal-title { font-size: clamp(1.25rem, 3.8vw, 1.6rem); font-weight: 800; color: #0B1F3A !important; line-height: 1.35; margin-bottom: 14px; padding-right: 44px; }
     .module-passport-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 10px 16px;
+      gap: 12px 18px;
       background: var(--bg-light);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 14px 16px;
+      padding: 16px 18px;
       margin-bottom: 20px;
     }
     .passport-item {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 4px;
     }
     .passport-label {
       font-size: 0.7rem;
@@ -845,7 +1154,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 3px;
+      margin-top: 2px;
     }
     .module-tag-pill {
       display: inline-flex;
@@ -912,6 +1221,36 @@
       transition: border-color 0.2s, color 0.2s;
     }
     .module-link-chip:hover { border-color: var(--primary-red); color: var(--primary-red); }
+    .modal-walkthrough-footer {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .modal-complete-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 26px;
+      border: none;
+      background: var(--primary-red);
+      color: #FFFFFF;
+      font-family: var(--font-family);
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(184, 0, 0, 0.25);
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .modal-complete-btn:hover {
+      background: var(--primary-red-hover);
+      transform: translateY(-1px);
+    }
     .floating-controls-panel { position: fixed; bottom: 25px; right: 25px; display: flex; align-items: center; gap: 10px; z-index: 1000; background: var(--bg-card); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); opacity: 0; visibility: hidden; }
     .floating-controls-panel.visible { opacity: 1; visibility: visible; }
     .floating-search-box { position: relative; display: flex; align-items: center; }
@@ -1169,6 +1508,40 @@
         </button>
       </div>
     </div>
+    <!-- ПАНЕЛЬ ПОКРОКОВОГО ПРОХОДЖЕННЯ МОДУЛІВ -->
+    <section id="walkthroughPanel" class="walkthrough-panel" style="display: none;">
+      <div class="walkthrough-top-row">
+        <div class="walkthrough-progress-info">
+          <div class="walkthrough-title-line">
+            <i data-lucide="compass" style="width: 17px; height: 17px; color: var(--primary-red);"></i>
+            <span id="wtStepLabel">Покрокове навчання</span>
+            <span class="walkthrough-sub-badge" id="wtProgressBadge">0 / 0</span>
+          </div>
+          <div class="walkthrough-track">
+            <div class="walkthrough-fill" id="wtProgressFill"></div>
+          </div>
+        </div>
+        <div class="walkthrough-nav-btns">
+          <button type="button" class="wt-nav-btn" id="wtPrevBtn" onclick="stepWalkthrough(-1)">
+            <i data-lucide="chevron-left" style="width: 14px; height: 14px;"></i>
+            <span id="uiWtPrevText">Попередній</span>
+          </button>
+          <button type="button" class="wt-nav-btn" id="wtNextBtn" onclick="stepWalkthrough(1)">
+            <span id="uiWtNextText">Наступний</span>
+            <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+          </button>
+          <button type="button" class="wt-nav-btn wt-reset-btn" id="wtResetBtn" onclick="resetWalkthroughProgress()" style="display: none;" title="Почати проходження спочатку">
+            <i data-lucide="rotate-ccw" style="width: 13px; height: 13px;"></i>
+            <span id="uiWtResetText">Спочатку</span>
+          </button>
+        </div>
+      </div>
+      <div class="walkthrough-steps-row" id="walkthroughStepsRow"></div>
+      <div class="walkthrough-notice" id="walkthroughNotice">
+        <i data-lucide="lock" style="width: 14px; height: 14px; flex-shrink: 0;"></i>
+        <span id="walkthroughNoticeText"></span>
+      </div>
+    </section>
     <div id="loadingState" class="loading-state" style="display: none;">
       <div class="spinner"></div>
       <p id="uiLoadingStateText">Отримання навчальних матеріалів із бази даних...</p>
@@ -1283,6 +1656,19 @@
         formatTheory: "Теорія та СРС (без лаб.)",
         formatNotes: "Із конспектом",
         showingCount: "Показано {shown} із {total} матеріалів",
+        walkthroughTitle: "Маршрут навчання: Крок {step} із {total}",
+        walkthroughCompletedCount: "Завершено: {done} / {total}",
+        wtPrevText: "Попередній",
+        wtNextText: "Наступний",
+        wtResetText: "Спочатку",
+        wtLockedHint: "Спочатку завершіть поточний модуль ({current}), щоб відкрити наступні етапи.",
+        wtNextLockedPrefix: "Наступний крок (заблоковано):",
+        wtNextLockedTip: "Натисніть «Завершити і далі» у поточному модулі, щоб розблокувати.",
+        wtCompleteBtn: "Завершити модуль і перейти далі",
+        wtCompleteLastBtn: "Завершити курс",
+        wtCardDoneBadge: "Опрацьовано",
+        wtAllDoneBanner: "Вітаємо! Усі модулі програми пройдено. Ви можете вільно переглядати будь-який модуль вище.",
+        wtGoToCurrentBtn: "Перейти до активного модуля",
         resetFiltersBtn: "Скинути фільтри",
         retryBtn: "Спробувати ще раз",
         loadingText: "Отримання навчальних матеріалів із бази даних...",
@@ -1293,6 +1679,7 @@
         lectureNumberPrefix: "Матеріал №",
         watchLectureBtn: "Дивитися лекцію",
         viewDetailsBtn: "Відкрити програму модуля",
+        defaultVideoBadge: "Оглядове відео FAO",
         videoPlaylistTitle: "Відеозаписи модуля",
         videoPartPrefix: "Відео",
         videosCountBadge: "відео",
@@ -1389,6 +1776,19 @@
         formatTheory: "Theory & self-study (no lab)",
         formatNotes: "With full notes",
         showingCount: "Showing {shown} of {total} items",
+        walkthroughTitle: "Learning Path: Step {step} of {total}",
+        walkthroughCompletedCount: "Completed: {done} / {total}",
+        wtPrevText: "Previous",
+        wtNextText: "Next",
+        wtResetText: "Restart",
+        wtLockedHint: "Complete the current module ({current}) first to unlock upcoming modules.",
+        wtNextLockedPrefix: "Next step (locked):",
+        wtNextLockedTip: "Click «Complete & Next» on the current module to unlock.",
+        wtCompleteBtn: "Complete Module & Continue",
+        wtCompleteLastBtn: "Finish Course",
+        wtCardDoneBadge: "Completed",
+        wtAllDoneBanner: "Congratulations! You have completed all modules in this program and can freely review any module above.",
+        wtGoToCurrentBtn: "Go to Active Module",
         resetFiltersBtn: "Reset filters",
         retryBtn: "Try again",
         loadingText: "Retrieving course materials from database...",
@@ -1399,6 +1799,7 @@
         lectureNumberPrefix: "Entry №",
         watchLectureBtn: "Watch Lecture",
         viewDetailsBtn: "Open Module Syllabus",
+        defaultVideoBadge: "FAO Overview Video",
         videoPlaylistTitle: "Module Video Recordings",
         videoPartPrefix: "Video",
         videosCountBadge: "videos",
@@ -1445,8 +1846,10 @@
     };
     const CUSTOM_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrfebxFDqUfphRYHyKVeB7PfoL3UE2rkDR0BtWlmALA8usPs-VmGjMI1iu4qLD0GEX/exec";
     const KEY_NAMESPACE = "FAO_KNU_2026";
+    const DEFAULT_YOUTUBE_ID = "QMDuUHk7wHI";
     const SCRIPT_URL = CUSTOM_SCRIPT_URL.trim();
     let currentLang = 'uk';
+    let currentUserKey = '';
     let allNewsItems = [];
     let searchTerm = '';
     let sortKey = 'id-asc';
@@ -1455,6 +1858,9 @@
     let selectedCategory = 'all';
     let selectedLecturer = 'all';
     let selectedFormat = 'all';
+    let completedModuleIds = new Set();
+    let activeWalkthroughUid = null;
+    let noticeTimer = null;
     let activeYtPlayer = null;
     let ytTrackerTimer = null;
     let adWatchdogTimer = null;
@@ -1626,6 +2032,16 @@
     const controlsStatusBar = document.getElementById('controlsStatusBar');
     const resultsCountLabel = document.getElementById('resultsCountLabel');
     const inlineResetBtn = document.getElementById('inlineResetBtn');
+    const walkthroughPanel = document.getElementById('walkthroughPanel');
+    const wtStepLabel = document.getElementById('wtStepLabel');
+    const wtProgressBadge = document.getElementById('wtProgressBadge');
+    const wtProgressFill = document.getElementById('wtProgressFill');
+    const wtPrevBtn = document.getElementById('wtPrevBtn');
+    const wtNextBtn = document.getElementById('wtNextBtn');
+    const wtResetBtn = document.getElementById('wtResetBtn');
+    const walkthroughStepsRow = document.getElementById('walkthroughStepsRow');
+    const walkthroughNotice = document.getElementById('walkthroughNotice');
+    const walkthroughNoticeText = document.getElementById('walkthroughNoticeText');
     const loadingState = document.getElementById('loadingState');
     const errorState = document.getElementById('errorState');
     const newsGrid = document.getElementById('newsGrid');
@@ -1685,6 +2101,9 @@
       document.getElementById('uiLecturerLabel').innerText = dict.lecturerLabel;
       document.getElementById('uiFormatLabel').innerText = dict.formatLabel;
       document.getElementById('uiInlineResetText').innerText = dict.resetFiltersBtn;
+      document.getElementById('uiWtPrevText').innerText = dict.wtPrevText;
+      document.getElementById('uiWtNextText').innerText = dict.wtNextText;
+      document.getElementById('uiWtResetText').innerText = dict.wtResetText;
       document.getElementById('uiRetryBtn').innerText = dict.retryBtn;
       const sortTextMap = {
         'id-asc': dict.sortNumAsc,
@@ -1797,6 +2216,7 @@
         accessSubmitText.innerText = dict.btnOpenMaterials;
         refreshIcons();
         if (data && data.success) {
+          currentUserKey = rawGroupNum;
           document.body.classList.add('logged-in');
           landingOverviewGrid.style.display = 'none';
           const prevBox = document.getElementById('publicSchedulePreview');
@@ -1807,6 +2227,7 @@
           newsGrid.style.display = 'flex';
           sessionUserLabel.innerText = rawGroupNum;
           ingestBackendItems(data.items || [], data.headers || null);
+          loadWalkthroughProgress();
           chooseSmartInitialSort(allNewsItems);
           updateAllFilterDropdowns(allNewsItems);
           updateAppUI();
@@ -1842,7 +2263,10 @@
     function handleLogout() {
       closeModal();
       document.body.classList.remove('logged-in');
+      currentUserKey = '';
       allNewsItems = [];
+      completedModuleIds = new Set();
+      activeWalkthroughUid = null;
       sortKey = 'id-asc';
       sortSelect.value = 'id-asc';
       selectedMonth = 'all';
@@ -1856,6 +2280,7 @@
       syncSearchClearButtons();
       newsGrid.innerHTML = '';
       newsGrid.style.display = 'none';
+      walkthroughPanel.style.display = 'none';
       loadingState.style.display = 'none';
       errorState.style.display = 'none';
       controlsCard.style.display = 'none';
@@ -1878,7 +2303,180 @@
       refreshIcons();
     }
     /* ==========================================================================
-       СТАНДАРТИЗАЦІЯ ТА ОЧИЩЕННЯ ДАНИХ ІЗ ТАБЛИЦІ (ДЛЯ КАРТОК І ВИПАДНИХ СПИСКІВ)
+       УПРАВЛІННЯ ПОКРОКОВИМ ПРОХОДЖЕННЯМ МОДУЛІВ (WALKTHROUGH)
+       ========================================================================== */
+    function getProgressStorageKey() {
+      const idHash = clientSaltedHash((currentUserKey || 'guest').toLowerCase());
+      return `${KEY_NAMESPACE}_PROGRESS_${idHash.slice(0, 16)}`;
+    }
+    function getOrderedCurriculumItems() {
+      return [...allNewsItems].sort((a, b) => {
+        const numA = parseInt(a.id, 10);
+        const numB = parseInt(b.id, 10);
+        if (!isNaN(numA) && !isNaN(numB) && numA !== numB) return numA - numB;
+        return a.sheetRow - b.sheetRow;
+      });
+    }
+    function loadWalkthroughProgress() {
+      completedModuleIds = new Set();
+      try {
+        const saved = localStorage.getItem(getProgressStorageKey());
+        if (saved) {
+          const arr = JSON.parse(saved);
+          if (Array.isArray(arr)) {
+            arr.forEach(id => completedModuleIds.add(String(id)));
+          }
+        }
+      } catch (err) {}
+      const ordered = getOrderedCurriculumItems();
+      if (ordered.length > 0) {
+        const frontierIdx = getUnlockedLimitIndex(ordered);
+        activeWalkthroughUid = ordered[frontierIdx]._uid;
+      } else {
+        activeWalkthroughUid = null;
+      }
+    }
+    function saveWalkthroughProgress() {
+      try {
+        localStorage.setItem(getProgressStorageKey(), JSON.stringify(Array.from(completedModuleIds)));
+      } catch (err) {}
+    }
+    function getUnlockedLimitIndex(ordered) {
+      if (!ordered || ordered.length === 0) return 0;
+      for (let i = 0; i < ordered.length; i++) {
+        if (!completedModuleIds.has(String(ordered[i].id))) {
+          return i;
+        }
+      }
+      return ordered.length - 1;
+    }
+    function isItemUnlocked(item) {
+      const ordered = getOrderedCurriculumItems();
+      const idx = ordered.findIndex(x => x._uid === item._uid);
+      if (idx === -1) return true;
+      const limit = getUnlockedLimitIndex(ordered);
+      return idx <= limit;
+    }
+    function showWalkthroughNotice(text) {
+      if (!walkthroughNotice || !walkthroughNoticeText) return;
+      walkthroughNoticeText.innerText = text;
+      walkthroughNotice.classList.add('visible');
+      if (noticeTimer) clearTimeout(noticeTimer);
+      noticeTimer = setTimeout(() => {
+        walkthroughNotice.classList.remove('visible');
+      }, 4200);
+    }
+    function selectWalkthroughStep(itemUid) {
+      const ordered = getOrderedCurriculumItems();
+      const targetIdx = ordered.findIndex(i => i._uid === itemUid);
+      if (targetIdx === -1) return;
+      const limitIdx = getUnlockedLimitIndex(ordered);
+      if (targetIdx > limitIdx) {
+        const dict = t();
+        const currentItem = ordered[limitIdx];
+        const currentLabel = currentItem.moduleLabel || `${dict.lectureNumberPrefix} ${currentItem.id}`;
+        showWalkthroughNotice(dict.wtLockedHint.replace('{current}', currentLabel));
+        return;
+      }
+      walkthroughNotice.classList.remove('visible');
+      activeWalkthroughUid = itemUid;
+      updateAppUI();
+    }
+    function stepWalkthrough(delta) {
+      const ordered = getOrderedCurriculumItems();
+      if (ordered.length === 0) return;
+      const curIdx = Math.max(0, ordered.findIndex(i => i._uid === activeWalkthroughUid));
+      const nextIdx = curIdx + delta;
+      if (nextIdx < 0 || nextIdx >= ordered.length) return;
+      selectWalkthroughStep(ordered[nextIdx]._uid);
+    }
+    function completeModuleAndAdvance(itemUid, fromModal = false) {
+      const ordered = getOrderedCurriculumItems();
+      const idx = ordered.findIndex(i => i._uid === itemUid);
+      if (idx === -1) return;
+      const item = ordered[idx];
+      completedModuleIds.add(String(item.id));
+      saveWalkthroughProgress();
+      const nextItem = ordered[idx + 1] || null;
+      if (nextItem) {
+        activeWalkthroughUid = nextItem._uid;
+      } else {
+        activeWalkthroughUid = item._uid;
+      }
+      if (fromModal) {
+        closeModal();
+      }
+      walkthroughNotice.classList.remove('visible');
+      updateAppUI();
+      if (fromModal && nextItem) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+    function resetWalkthroughProgress() {
+      completedModuleIds = new Set();
+      saveWalkthroughProgress();
+      const ordered = getOrderedCurriculumItems();
+      if (ordered.length > 0) {
+        activeWalkthroughUid = ordered[0]._uid;
+      }
+      walkthroughNotice.classList.remove('visible');
+      updateAppUI();
+    }
+    function goToCurrentActiveModule() {
+      const ordered = getOrderedCurriculumItems();
+      if (ordered.length === 0) return;
+      const limitIdx = getUnlockedLimitIndex(ordered);
+      activeWalkthroughUid = ordered[limitIdx]._uid;
+      resetAllFilters();
+    }
+    function renderWalkthroughPanel() {
+      if (!walkthroughPanel) return;
+      const ordered = getOrderedCurriculumItems();
+      if (ordered.length === 0) {
+        walkthroughPanel.style.display = 'none';
+        return;
+      }
+      walkthroughPanel.style.display = 'flex';
+      const dict = t();
+      const limitIdx = getUnlockedLimitIndex(ordered);
+      let curIdx = ordered.findIndex(i => i._uid === activeWalkthroughUid);
+      if (curIdx === -1 || curIdx > limitIdx) {
+        curIdx = limitIdx;
+        activeWalkthroughUid = ordered[curIdx]._uid;
+      }
+      const doneCount = ordered.filter(i => completedModuleIds.has(String(i.id))).length;
+      const pct = Math.round((doneCount / ordered.length) * 100);
+      wtStepLabel.innerText = dict.walkthroughTitle
+        .replace('{step}', String(curIdx + 1))
+        .replace('{total}', String(ordered.length));
+      wtProgressBadge.innerText = dict.walkthroughCompletedCount
+        .replace('{done}', String(doneCount))
+        .replace('{total}', String(ordered.length));
+      wtProgressFill.style.width = `${pct}%`;
+      wtPrevBtn.disabled = curIdx <= 0;
+      wtNextBtn.disabled = curIdx >= limitIdx;
+      wtResetBtn.style.display = doneCount > 0 ? 'inline-flex' : 'none';
+      walkthroughStepsRow.innerHTML = ordered.map((item, idx) => {
+        const isDone = completedModuleIds.has(String(item.id));
+        const isActive = item._uid === activeWalkthroughUid;
+        const isLocked = idx > limitIdx;
+        let cls = 'wt-step-chip';
+        if (isActive) cls += ' active';
+        else if (isDone) cls += ' completed';
+        else if (isLocked) cls += ' locked';
+        else cls += ' unlocked';
+        const iconName = isDone ? 'check-circle-2' : (isLocked ? 'lock' : 'play-circle');
+        const shortChipText = item.moduleLabel || `№ ${item.id}`;
+        return `
+          <button type="button" class="${cls}" data-uid="${escapeHtml(item._uid)}" onclick="selectWalkthroughStep(this.getAttribute('data-uid'))" title="${escapeHtml(item.title)}">
+            <i data-lucide="${iconName}" style="width: 13px; height: 13px;"></i>
+            <span>${escapeHtml(shortChipText)}</span>
+          </button>
+        `;
+      }).join('');
+    }
+    /* ==========================================================================
+       СТАНДАРТИЗАЦІЯ, ОЧИЩЕННЯ ДАНИХ ТА ВИДІЛЕННЯ ІМЕН
        ========================================================================== */
     function normalizeHeaderKey(key) {
       return String(key || '')
@@ -1962,7 +2560,6 @@
       return { raw: null, text: '' };
     }
     function sanitizeLatinLookalikes(str) {
-      // Виправлення кириличної 'і' / 'І' всередині латинських слів (напр., Serhiі -> Serhii)
       return String(str || '')
         .replace(/([A-Za-z])і([A-Za-z]?)/g, '$1i$2')
         .replace(/([A-Za-z])І([A-Za-z]?)/g, '$1I$2')
@@ -2002,7 +2599,6 @@
     function sanitizeModuleTitle(rawTitle) {
       let s = String(rawTitle || '').replace(/\s+/g, ' ').trim();
       if (!s) return '';
-      // Видаляємо випадкові URL, [In Ukrainian] та уламки шляху на початку заголовка
       s = s.replace(/^(?:https?:\/\/\S+\s*)+/gi, '').trim();
       s = s.replace(/^(?:\[(?:in\s+)?(?:ukrainian|english|укр\.?)\]\.?\s*)+/gi, '').trim();
       s = s.replace(/^[a-z0-9_-]{6,}\/[a-z0-9_.-]+\s+/i, '').trim();
@@ -2111,7 +2707,6 @@
         if (!word) return '';
         const letters = word.replace(/[^a-zA-Zа-яА-ЯіїєґІЇЄҐ'’\-]/g, '');
         if (!letters) return word;
-        // Якщо прізвище написано ВСІМА ВЕЛИКИМИ (напр. IVANOK, UDOVYCHENKO, SMIRNOV)
         if (letters.length >= 2 && letters === letters.toUpperCase()) {
           return word.toLowerCase().replace(/(^|[\-'])([a-zа-яіїєґ])/g, (m, p1, p2) => p1 + p2.toUpperCase());
         }
@@ -2120,9 +2715,8 @@
     }
     function extractPeopleEntries(rawText) {
       let text = sanitizeLatinLookalikes(String(rawText || '').trim());
-      if (!text) return { formattedFull: '', cleanNames: [] };
+      if (!text) return { formattedFull: '', cleanNames: [], entries: [] };
       text = text.replace(/^(?:лектори?|викладачі?|lecturers?|instructors?)\s*:\s*/gi, '').trim();
-      // Розділяємо, якщо дві людини склеїлися в одному рядку без переносу
       text = text.replace(
         /(Researcher|Associate Professor|Professor|Faculty of Chemistry|Institute of Geology|Candidate of [A-Za-z]+ Sciences|Ph\.?\s*D\.?|кандидат[^;\n]*|доктор[^;\n]*)\s+([A-ZА-ЯІЇЄҐ][a-zа-яіїєґ'’]+(?:\s+[A-ZА-ЯІЇЄҐ][a-zа-яіїєґ'’]+|\s+[A-ZА-ЯІЇЄҐ]{2,}),\s*(?:Ph\.?\s*D|Doctor|Candidate|Associate|Senior|Professor|доктор|кандидат|доцент|професор))/gi,
         '$1\n$2'
@@ -2130,13 +2724,14 @@
       const lines = text.split(/[\n;]+/).map(s => s.trim()).filter(Boolean);
       const formattedLines = [];
       const cleanNames = [];
+      const entries = [];
       const seenNameKeys = new Set();
       lines.forEach(line => {
         const cleanedLine = line.replace(/^(?:лектор|викладач|lecturer|instructor)s?\s*:\s*/i, '').trim();
         if (!cleanedLine) return;
         const commaIdx = cleanedLine.indexOf(',');
         const rawPersonName = commaIdx > 0 ? cleanedLine.slice(0, commaIdx).trim() : cleanedLine;
-        const restCredentials = commaIdx > 0 ? cleanedLine.slice(commaIdx).trim() : '';
+        const restCredentials = commaIdx > 0 ? cleanedLine.slice(commaIdx + 1).trim() : '';
         const cleanPersonName = formatPersonNameClean(rawPersonName);
         if (cleanPersonName) {
           const nameKey = cleanPersonName.toLowerCase();
@@ -2144,26 +2739,37 @@
             seenNameKeys.add(nameKey);
             cleanNames.push(cleanPersonName);
           }
-          formattedLines.push(restCredentials ? `${cleanPersonName}${restCredentials}` : cleanPersonName);
+          entries.push({ name: cleanPersonName, credentials: restCredentials });
+          formattedLines.push(restCredentials ? `${cleanPersonName}, ${restCredentials}` : cleanPersonName);
         }
       });
       return {
         formattedFull: formattedLines.join('\n'),
-        cleanNames: cleanNames
+        cleanNames: cleanNames,
+        entries: entries
       };
+    }
+    function renderHighlightedPeopleHtml(peopleEntries) {
+      if (!peopleEntries || peopleEntries.length === 0) return '';
+      return peopleEntries.map(p => `
+        <div class="person-entry-row">
+          <span class="person-name-highlight">
+            <i data-lucide="user" style="width: 12px; height: 12px;"></i>
+            <span>${escapeHtml(p.name)}</span>
+          </span>
+          ${p.credentials ? `<span class="person-credentials-muted">${escapeHtml(p.credentials)}</span>` : ''}
+        </div>
+      `).join('');
     }
     function normalizeInstitutionAndLecturers(instRaw, lecRaw) {
       let inst = String(instRaw || '').replace(/\s+/g, ' ').trim();
       let lec = String(lecRaw || '').trim();
-      // Якщо лектори випадково склеїлись у поле institution (як у рядках 4 і 7)
       const gluedFacultyMatch = inst.match(
         /^(Taras Shevchenko National University of Kyiv,\s*(?:Educational and Scientific (?:Institute|Center)\s*[“"«]?[^”"»]+?[”"»]?|Faculty of [A-Za-z]+)|Faculty of [A-Za-z]+|Institute of [A-Za-z]+)\s+([A-ZА-ЯІЇЄҐ][a-zа-яіїєґ'’]+\s+[A-ZА-ЯІЇЄҐ][a-zа-яіїєґ'’]+,\s*(?:Ph\.?\s*D|Doctor|Candidate|Associate|Senior|Professor).*)$/i
       );
       if (gluedFacultyMatch) {
         inst = gluedFacultyMatch[1].trim();
-        if (!lec) {
-          lec = gluedFacultyMatch[2].trim();
-        }
+        if (!lec) lec = gluedFacultyMatch[2].trim();
       }
       const deptMeta = canonicalizeDepartment(inst);
       const people = extractPeopleEntries(lec);
@@ -2171,7 +2777,8 @@
         deptMeta: deptMeta,
         institutionClean: deptMeta ? deptMeta.enFull : inst,
         lecturerFull: people.formattedFull,
-        lecturerNames: people.cleanNames
+        lecturerNames: people.cleanNames,
+        lecturerEntries: people.entries
       };
     }
     function cleanLanguageAndAudience(langRaw, audRaw) {
@@ -2220,28 +2827,21 @@
       lines.forEach(line => {
         let s = line.trim();
         if (!s) return;
-        // Нормалізуємо пробіли після номера списку: 18)Rouessac -> 18) Rouessac, 304 p.Https -> 304 p. Https
         s = s.replace(/^(\d{1,3}[.)])(?=\S)/, '$1 ');
         s = s.replace(/([a-z0-9.])(https?:\/\/)/gi, '$1 $2');
-        // Збираємо повні URL з дужок (https://...)
         const parenUrls = [];
         s = s.replace(/\((https?:\/\/[^\s)]+)\)/gi, (m, url) => {
           parenUrls.push(url);
           return ' ___PAREN_URL___ ';
         });
-        // Виправляємо розірвані URL навколо видаленого ___PAREN_URL___
-        // напр.: https://itrcweb.org/wp- ___PAREN_URL___ content/uploads/.../file.pdf
         s = s.replace(/(https?:\/\/[^\s]+)\s+___PAREN_URL___\s+([^\s]+)/gi, (m, leftFrag, rightFrag) => {
           const matchedFull = parenUrls.find(u => u.indexOf(leftFrag.replace(/-$/, '')) === 0);
           if (matchedFull) return matchedFull;
           return `${leftFrag}${rightFrag}`;
         });
-        // Залишки ___PAREN_URL___ прибираємо з середини тексту
         s = s.replace(/\s*___PAREN_URL___\s*/g, ' ').replace(/\s{2,}/g, ' ').trim();
-        // Виправляємо артефакт пробілу перед розширенням/шляхом типу "https://geo.knu.ua/wp- l.f.-samojlenko..."
         parenUrls.forEach(u => {
           if (s.toLowerCase().indexOf(u.toLowerCase()) === -1) {
-            // Перевірка, чи в рядку залишився обірваний префікс цього URL
             const prefixMatch = s.match(/(https?:\/\/[^\s]{12,})(?:\s+[^\s]{5,})?/i);
             if (prefixMatch && u.toLowerCase().startsWith(prefixMatch[1].replace(/-$/, '').toLowerCase())) {
               s = s.replace(prefixMatch[0], u);
@@ -2250,7 +2850,6 @@
             }
           }
         });
-        // Прибираємо випадкові повтори того самого URL в одному рядку
         const seenLineUrls = new Set();
         s = s.replace(/https?:\/\/[^\s<>"']+/gi, (u) => {
           const key = u.replace(/[.,;]+$/, '').toLowerCase();
@@ -2266,7 +2865,6 @@
       const lead = String(leadText || '').trim();
       const obj = String(objectiveText || '').trim();
       if (lead) {
-        // Якщо опис обірваний на півслові з '...' і мета навчання містить повне речення
         if (/\.\.\.\s*$/.test(lead) && obj.length > lead.length) {
           const probe = lead.slice(0, Math.min(35, lead.length - 3)).toLowerCase();
           if (obj.toLowerCase().startsWith(probe)) {
@@ -2496,8 +3094,13 @@
         const explicitCategoryMeta = fCategory.text ? canonicalizeDepartment(fCategory.text) : null;
         const deptMeta = explicitCategoryMeta || instAndLec.deptMeta;
         const externalLinks = extractExternalLinks(fMaterialsUrl.raw !== null ? fMaterialsUrl.raw : fMaterialsUrl.text);
+        // Відео з таблиці або відео за замовчуванням FAO
         const ytMedia = extractYoutubeMedia(fYoutube.raw !== null ? fYoutube.raw : fYoutube.text);
-        const primaryYoutubeId = ytMedia.videos.length > 0 ? ytMedia.videos[0].id : '';
+        const hasCustomVideo = ytMedia.videos.length > 0 || Boolean(ytMedia.playlistId);
+        const primaryYoutubeId = ytMedia.videos.length > 0
+          ? ytMedia.videos[0].id
+          : (!ytMedia.playlistId && DEFAULT_YOUTUBE_ID ? DEFAULT_YOUTUBE_ID : '');
+        const isDefaultVideo = !hasCustomVideo && Boolean(primaryYoutubeId);
         const tagList = splitTagsList(fTags.text);
         const item = {
           _uid: `item_${index}`,
@@ -2517,13 +3120,17 @@
           youtubeId: primaryYoutubeId,
           youtubeVideos: ytMedia.videos,
           youtubePlaylistId: ytMedia.playlistId,
+          hasCustomVideo: hasCustomVideo,
+          isDefaultVideo: isDefaultVideo,
           _deptMeta: deptMeta,
           categoryKey: deptMeta ? deptMeta.key : '',
           categoryLabel: deptMeta ? (currentLang === 'uk' ? deptMeta.ukShort : deptMeta.enShort) : '',
           institution: instAndLec.institutionClean,
           lecturer: instAndLec.lecturerFull,
           lecturerNames: instAndLec.lecturerNames,
+          lecturerEntries: instAndLec.lecturerEntries,
           instructors: instructorsPeople.formattedFull,
+          instructorEntries: instructorsPeople.entries,
           workload: workloadData.summary,
           _workloadParts: workloadData.partsObj,
           totalHoursBadge: totalHoursBadge,
@@ -2733,7 +3340,6 @@
         }
       });
       const sortedMonthKeys = Array.from(monthMap.keys()).sort().reverse();
-      // Якщо місяць лише один або дат немає — не захаращуємо панель фільтрів
       if (sortedMonthKeys.length < 2) {
         monthFilterWrapper.style.display = 'none';
         selectedMonth = 'all';
@@ -2834,13 +3440,13 @@
     }
     function updateFormatDropdown(items) {
       if (!formatSelect || !formatFilterWrapper) return;
-      const hasVideo = items.some(i => Boolean(i.youtubeId || i.youtubePlaylistId));
-      const noVideo = items.some(i => !i.youtubeId && !i.youtubePlaylistId);
+      const hasCustomVideo = items.some(i => Boolean(i.hasCustomVideo));
+      const noCustomVideo = items.some(i => !i.hasCustomVideo);
       const hasLab = items.some(i => Boolean(i.labWork));
       const noLab = items.some(i => !i.labWork);
       const hasNotes = items.some(i => Boolean(i.fullText));
       const noNotes = items.some(i => !i.fullText);
-      const isMixed = (hasVideo && noVideo) || (hasLab && noLab) || (hasNotes && noNotes);
+      const isMixed = (hasCustomVideo && noCustomVideo) || (hasLab && noLab) || (hasNotes && noNotes);
       if (!isMixed) {
         formatFilterWrapper.style.display = 'none';
         selectedFormat = 'all';
@@ -2848,7 +3454,7 @@
       }
       formatFilterWrapper.style.display = 'flex';
       Array.from(formatSelect.options).forEach(opt => {
-        if (opt.value === 'video') opt.hidden = !hasVideo;
+        if (opt.value === 'video') opt.hidden = !(hasCustomVideo && noCustomVideo);
         if (opt.value === 'lab') opt.hidden = !hasLab;
         if (opt.value === 'theory') opt.hidden = !(hasLab && noLab);
         if (opt.value === 'notes') opt.hidden = !hasNotes;
@@ -2899,7 +3505,7 @@
       updateAppUI();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    function processInlineFormatting(text) {
+    function processInlineFormatting(text, sectionKind = '') {
       if (!text) return '';
       const tokens = [];
       let tokenized = String(text).replace(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, inner) => {
@@ -2928,6 +3534,20 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
+      // Виділення авторів та року на початку бібліографічного запису
+      if (sectionKind === 'resources') {
+        tokenized = tokenized.replace(
+          /^(\d{1,3}[.)]\s+)?([^(.\n]{3,95}?\(\d{4}[a-z]?\)\.?)/i,
+          (m, numPrefix, authorYear) => `${numPrefix || ''}<strong class="bib-author-highlight">${authorYear}</strong>`
+        );
+      }
+      // Виділення оцінок у шкалі оцінювання
+      if (sectionKind === 'grading') {
+        tokenized = tokenized.replace(
+          /([“"‘'][A-F][”"’'])/g,
+          '<span class="grade-badge-highlight">$1</span>'
+        );
+      }
       tokenized = tokenized.replace(/(https?:\/\/[^\s<>"']+)/gi, (rawUrl) => {
         let cleanUrl = rawUrl;
         let trailing = '';
@@ -2955,7 +3575,7 @@
       });
       return tokenized;
     }
-    function formatFullArticleText(rawText) {
+    function formatFullArticleText(rawText, sectionKind = '') {
       if (!rawText) return '';
       let clean = String(rawText).replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
       clean = clean.replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>');
@@ -2967,30 +3587,30 @@
       lines.forEach(line => {
         let trimmed = line.trim();
         if (!trimmed) return;
-        const isLectureSubheading = /^(lecture|лекція|part|частина|модуль|module)\s*\d*[\.:]/i.test(trimmed) && trimmed.length < 140 && !trimmed.endsWith('?');
+        const isLectureSubheading = /^(lecture|лекція|laboratory work|practical work|part|частина|модуль|module)\s*\d*[\.:]/i.test(trimmed) && trimmed.length < 150 && !trimmed.endsWith('?');
         if (isLectureSubheading) {
-          html += `<h4 class="article-subheading">${processInlineFormatting(trimmed)}</h4>`;
+          html += `<h4 class="article-subheading">${processInlineFormatting(trimmed, sectionKind)}</h4>`;
           return;
         }
         const isSubBullet = /^[🔹🔷•\*\u25AA\uF02D\u2212]\s*(.+)/.test(trimmed) || /^[–—\-]\s+[^?]+$/.test(trimmed);
         const isNumberedNested = /^\d+\.\d+\.?\s+/.test(trimmed);
         const isNumberedTop = /^\d+[.)]\s+/.test(trimmed) && !isNumberedNested;
         if (isNumberedNested) {
-          html += `<div class="article-list-item level-2">${processInlineFormatting(trimmed)}</div>`;
+          html += `<div class="article-list-item level-2">${processInlineFormatting(trimmed, sectionKind)}</div>`;
           return;
         }
         if (isSubBullet) {
           const normalizedBullet = trimmed.replace(/^\uF02D\s*/, '• ').replace(/^\u2212\s*/, '– ');
-          html += `<div class="article-list-item level-3">${processInlineFormatting(normalizedBullet)}</div>`;
+          html += `<div class="article-list-item level-3">${processInlineFormatting(normalizedBullet, sectionKind)}</div>`;
           return;
         }
         if (isNumberedTop) {
-          html += `<div class="article-list-item level-1">${processInlineFormatting(trimmed)}</div>`;
+          html += `<div class="article-list-item level-1">${processInlineFormatting(trimmed, sectionKind)}</div>`;
           return;
         }
         const isAuthorByline = /^підготував|^підготувала|^автор|^лектор|^доповідач|^prepared by|^author/i.test(trimmed) && trimmed.length < 130;
         if (isAuthorByline) {
-          let bylineFormatted = processInlineFormatting(trimmed).replace(/<\/?(strong|b|em|i)>/gi, '');
+          let bylineFormatted = processInlineFormatting(trimmed, sectionKind).replace(/<\/?(strong|b|em|i)>/gi, '');
           html += `<p class="modal-paragraph article-byline-para"><strong><em>${bylineFormatted}</em></strong></p>`;
           return;
         }
@@ -2998,7 +3618,7 @@
         const endsWithQuestion = trimmed.endsWith('?') && trimmed.length < 320;
         const isImperativeQuestion = /^(розкажіть|поясніть|опишіть|поділіться|explain|tell|describe)\b/i.test(trimmed) && trimmed.length < 250;
         const isShortHeadingColon = trimmed.length < 110 && trimmed.endsWith(':') && !trimmed.includes('<br>');
-        let formattedLine = processInlineFormatting(trimmed);
+        let formattedLine = processInlineFormatting(trimmed, sectionKind);
         if (isDashQuestion || endsWithQuestion || isImperativeQuestion || isShortHeadingColon) {
           if (!formattedLine.startsWith('<strong>') && !formattedLine.startsWith('<h4')) {
             formattedLine = `<strong>${formattedLine}</strong>`;
@@ -3097,7 +3717,7 @@
       }
       if (selectedFormat && selectedFormat !== 'all') {
         if (selectedFormat === 'video') {
-          data = data.filter(item => Boolean(item.youtubeId || item.youtubePlaylistId));
+          data = data.filter(item => Boolean(item.hasCustomVideo));
         } else if (selectedFormat === 'lab') {
           data = data.filter(item => Boolean(item.labWork));
         } else if (selectedFormat === 'theory') {
@@ -3185,6 +3805,7 @@
       const activeData = getProcessedDataset();
       const dict = t();
       const hasActiveFilters = updateFilterVisualStates();
+      renderWalkthroughPanel();
       if (controlsStatusBar && resultsCountLabel) {
         controlsStatusBar.style.display = allNewsItems.length > 0 ? 'flex' : 'none';
         resultsCountLabel.innerText = dict.showingCount
@@ -3206,13 +3827,94 @@
         refreshIcons();
         return;
       }
-      renderNewsFeed(activeData);
+      if (hasActiveFilters) {
+        renderNewsFeed(activeData, true);
+      } else {
+        // Покроковий режим: показуємо активний модуль + наступний заблокований тизер
+        const ordered = getOrderedCurriculumItems();
+        const activeItem = ordered.find(i => i._uid === activeWalkthroughUid) || ordered[0];
+        renderNewsFeed([activeItem], false);
+        const curIdx = ordered.findIndex(i => i._uid === activeItem._uid);
+        const nextItem = ordered[curIdx + 1] || null;
+        const allDone = ordered.every(i => completedModuleIds.has(String(i.id)));
+        if (nextItem && !isItemUnlocked(nextItem)) {
+          const nextBadge = nextItem.moduleLabel || `${dict.lectureNumberPrefix} ${nextItem.id}`;
+          newsGrid.insertAdjacentHTML('beforeend', `
+            <div class="locked-teaser-row">
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <i data-lucide="lock" style="width: 17px; height: 17px; color: #64748B; flex-shrink: 0;"></i>
+                <span>
+                  <strong>${escapeHtml(dict.wtNextLockedPrefix)}</strong>
+                  ${escapeHtml(nextBadge)} — ${escapeHtml(nextItem.title)}
+                </span>
+              </div>
+              <span style="font-size: 0.74rem; color: #64748B;">${escapeHtml(dict.wtNextLockedTip)}</span>
+            </div>
+          `);
+        } else if (allDone) {
+          newsGrid.insertAdjacentHTML('beforeend', `
+            <div class="course-complete-banner">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <i data-lucide="award" style="width: 22px; height: 22px; flex-shrink: 0;"></i>
+                <span>${escapeHtml(dict.wtAllDoneBanner)}</span>
+              </div>
+            </div>
+          `);
+        }
+      }
       refreshIcons();
     }
-    function renderNewsFeed(items) {
+    function buildCardAttributionHtml(item) {
+      const parts = [];
+      if (item.lecturerNames && item.lecturerNames.length > 0) {
+        parts.push(
+          item.lecturerNames
+            .map(name => `<span class="card-lecturer-name"><i data-lucide="user" style="width:11px;height:11px;"></i>${escapeHtml(name)}</span>`)
+            .join('')
+        );
+      } else if (item.lecturer) {
+        parts.push(`<span class="card-lecturer-name">${escapeHtml(item.lecturer)}</span>`);
+      }
+      const deptStr = item.categoryLabel || item.institution;
+      if (deptStr) {
+        parts.push(`<span class="card-dept-label">• ${escapeHtml(deptStr)}</span>`);
+      }
+      if (parts.length === 0) return '';
+      return `<div class="news-card-attribution">${parts.join(' ')}</div>`;
+    }
+    function renderNewsFeed(items, isFilteredView = false) {
       newsGrid.innerHTML = '';
       const dict = t();
+      const ordered = getOrderedCurriculumItems();
       items.forEach(item => {
+        const unlocked = isItemUnlocked(item);
+        const isDone = completedModuleIds.has(String(item.id));
+        const isLastStep = ordered.length > 0 && ordered[ordered.length - 1]._uid === item._uid;
+        if (!unlocked && isFilteredView) {
+          const lockedBadge = item.moduleLabel ? `<span class="meta-chip">${escapeHtml(item.moduleLabel)}</span>` : '';
+          newsGrid.insertAdjacentHTML('beforeend', `
+            <article class="news-card is-locked-card">
+              <div class="news-card-body-wrap">
+                <div>
+                  <div class="news-card-meta-top">
+                    <span class="meta-chip"><i data-lucide="lock" style="width:11px;height:11px;"></i> ${escapeHtml(dict.lectureNumberPrefix)} ${escapeHtml(item.id)}</span>
+                    ${lockedBadge}
+                  </div>
+                  <h2 class="news-card-title">${escapeHtml(item.title)}</h2>
+                  ${buildCardAttributionHtml(item)}
+                </div>
+                <div class="news-card-footer">
+                  <span style="font-size: 0.78rem; font-weight: 600; color: #64748B;">${escapeHtml(dict.wtNextLockedTip)}</span>
+                  <button type="button" class="card-complete-btn" onclick="goToCurrentActiveModule()">
+                    <span>${escapeHtml(dict.wtGoToCurrentBtn)}</span>
+                    <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+          `);
+          return;
+        }
         let mediaLeftHtml = '';
         if (item.youtubeId) {
           const thumbUrl = _getThumb(item.youtubeId);
@@ -3233,6 +3935,7 @@
                     <i data-lucide="play" style="width: 22px; height: 22px; margin-left: 2px;"></i>
                   </div>
                 </div>
+                ${item.isDefaultVideo ? `<span class="media-default-badge">${escapeHtml(dict.defaultVideoBadge)}</span>` : ''}
               </div>
             </div>
           `;
@@ -3240,6 +3943,9 @@
         const metaChips = [];
         if (item.moduleLabel) {
           metaChips.push(`<span class="meta-chip accent">${escapeHtml(item.moduleLabel)}</span>`);
+        }
+        if (isDone) {
+          metaChips.push(`<span class="meta-chip done"><i data-lucide="check" style="width:11px;height:11px;"></i> ${escapeHtml(dict.wtCardDoneBadge)}</span>`);
         }
         if (item.ects) {
           metaChips.push(`<span class="meta-chip">${escapeHtml(item.ects)}</span>`);
@@ -3257,15 +3963,15 @@
           metaChips.push(`<span class="meta-chip">${dict.labBadge}</span>`);
         }
         const dateSuffix = item.date && item.date !== "—" ? ` • ${escapeHtml(item.date)}` : '';
-        const attributionParts = [
-          item.lecturerNames && item.lecturerNames.length > 0 ? item.lecturerNames.join(', ') : item.lecturer,
-          item.categoryLabel || item.institution
-        ].filter(Boolean);
-        const attributionHtml = attributionParts.length > 0
-          ? `<div class="news-card-attribution">${escapeHtml(attributionParts.join(' • '))}</div>`
-          : '';
+        const attributionHtml = buildCardAttributionHtml(item);
         const cleanLead = item.lead ? escapeHtml(item.lead.trim()) : '';
-        const actionBtnLabel = (item.youtubeId || item.youtubePlaylistId) ? dict.watchLectureBtn : dict.viewDetailsBtn;
+        const actionBtnLabel = item.hasCustomVideo ? dict.watchLectureBtn : dict.viewDetailsBtn;
+        const completeBtnHtml = !isDone ? `
+          <button type="button" class="card-complete-btn" data-uid="${escapeHtml(item._uid)}" onclick="event.stopPropagation(); completeModuleAndAdvance(this.getAttribute('data-uid'), false)">
+            <i data-lucide="check" style="width: 14px; height: 14px;"></i>
+            <span>${escapeHtml(isLastStep ? dict.wtCompleteLastBtn : dict.wtCompleteBtn)}</span>
+          </button>
+        ` : '';
         const cardHtml = `
           <article class="news-card" onclick="openModal('${escapeHtml(item._uid)}')">
             ${mediaLeftHtml}
@@ -3285,6 +3991,7 @@
                   <span>${actionBtnLabel}</span>
                   <i data-lucide="arrow-right"></i>
                 </span>
+                ${completeBtnHtml}
               </div>
             </div>
           </article>
@@ -3553,7 +4260,7 @@
         }
       };
     }
-    function buildSectionBlock(title, rawContent, iconName, highlightRed = false) {
+    function buildSectionBlock(title, rawContent, iconName, highlightRed = false, sectionKind = '') {
       if (!rawContent) return '';
       return `
         <div class="module-section-box${highlightRed ? ' highlight-red' : ''}">
@@ -3562,7 +4269,7 @@
             <span>${escapeHtml(title)}</span>
           </div>
           <div class="modal-paragraphs-block" style="margin-bottom: 0;">
-            ${formatFullArticleText(rawContent)}
+            ${formatFullArticleText(rawContent, sectionKind)}
           </div>
         </div>
       `;
@@ -3570,9 +4277,22 @@
     function openModal(itemUid, skipVideoRecreate = false) {
       const item = allNewsItems.find(i => i._uid === itemUid || i.id === String(itemUid));
       if (!item) return;
-      currentModalUid = item._uid;
       const dict = t();
+      if (!isItemUnlocked(item)) {
+        const ordered = getOrderedCurriculumItems();
+        const limitIdx = getUnlockedLimitIndex(ordered);
+        const curItem = ordered[limitIdx];
+        const curLabel = curItem ? (curItem.moduleLabel || `${dict.lectureNumberPrefix} ${curItem.id}`) : '';
+        showWalkthroughNotice(dict.wtLockedHint.replace('{current}', curLabel));
+        return;
+      }
+      currentModalUid = item._uid;
       const L = dict.labels;
+      const isDone = completedModuleIds.has(String(item.id));
+      const ordered = getOrderedCurriculumItems();
+      const curIdx = ordered.findIndex(i => i._uid === item._uid);
+      const isLastStep = curIdx !== -1 && curIdx === ordered.length - 1;
+      const nextItem = curIdx !== -1 && ordered[curIdx + 1] ? ordered[curIdx + 1] : null;
       const hasAnyVideo = Boolean(item.youtubeId || item.youtubePlaylistId);
       currentActiveVideoId = item.youtubeId || null;
       currentActivePlaylistId = item.youtubePlaylistId || null;
@@ -3627,21 +4347,21 @@
         ? (currentLang === 'uk' ? item._deptMeta.ukFull : item._deptMeta.enFull)
         : item.institution;
       const passportRows = [
-        { label: L.moduleNumber, val: item.moduleLabel, isTags: false },
-        { label: L.institution, val: instDisplay, isTags: false },
-        { label: L.lecturer, val: item.lecturer, isTags: false },
-        { label: L.instructors, val: item.instructors, isTags: false },
-        { label: L.workload, val: item.workload, isTags: false },
-        { label: L.ects, val: item.ects, isTags: false },
-        { label: L.language, val: item.languageLabel, isTags: false },
-        { label: L.targetAudience, val: item.targetAudience, isTags: false },
-        { label: L.assessmentFormat, val: item.assessmentFormat, isTags: false },
-        { label: L.tags, val: item.tags, isTags: true }
+        { label: L.moduleNumber, val: item.moduleLabel, kind: 'text' },
+        { label: L.institution, val: instDisplay, kind: 'text' },
+        { label: L.lecturer, val: item.lecturer, kind: 'people', entries: item.lecturerEntries },
+        { label: L.instructors, val: item.instructors, kind: 'people', entries: item.instructorEntries },
+        { label: L.workload, val: item.workload, kind: 'text' },
+        { label: L.ects, val: item.ects, kind: 'text' },
+        { label: L.language, val: item.languageLabel, kind: 'text' },
+        { label: L.targetAudience, val: item.targetAudience, kind: 'text' },
+        { label: L.assessmentFormat, val: item.assessmentFormat, kind: 'text' },
+        { label: L.tags, val: item.tags, kind: 'tags' }
       ].filter(r => r.val && String(r.val).trim() !== '');
       const passportHtml = passportRows.length > 0 ? `
         <div class="module-passport-grid">
           ${passportRows.map(r => {
-            if (r.isTags && item.tagList && item.tagList.length > 0) {
+            if (r.kind === 'tags' && item.tagList && item.tagList.length > 0) {
               return `
                 <div class="passport-item">
                   <span class="passport-label">${escapeHtml(r.label)}</span>
@@ -3650,6 +4370,14 @@
                       <button type="button" class="module-tag-pill" data-tag="${escapeHtml(tg)}" onclick="filterByTag(this.getAttribute('data-tag'))">${escapeHtml(tg)}</button>
                     `).join('')}
                   </div>
+                </div>
+              `;
+            }
+            if (r.kind === 'people' && r.entries && r.entries.length > 0) {
+              return `
+                <div class="passport-item">
+                  <span class="passport-label">${escapeHtml(r.label)}</span>
+                  <div class="passport-value">${renderHighlightedPeopleHtml(r.entries)}</div>
                 </div>
               `;
             }
@@ -3663,19 +4391,19 @@
         </div>
       ` : '';
       const sectionsHtml = [
-        buildSectionBlock(L.learningObjective, item.learningObjective, 'target', true),
-        buildSectionBlock(L.learningOutcomes, item.learningOutcomes, 'award', false),
-        buildSectionBlock(L.lectureContent, item.lectureContent, 'book-open', false),
-        buildSectionBlock(L.labWork, item.labWork, 'flask-conical', false),
-        buildSectionBlock(L.independentStudy, item.independentStudy, 'clipboard-list', false),
-        buildSectionBlock(L.gradingScale, item.gradingScale, 'check-square', false),
-        buildSectionBlock(L.resources, item.resources, 'library', false)
+        buildSectionBlock(L.learningObjective, item.learningObjective, 'target', true, ''),
+        buildSectionBlock(L.learningOutcomes, item.learningOutcomes, 'award', false, ''),
+        buildSectionBlock(L.lectureContent, item.lectureContent, 'book-open', false, ''),
+        buildSectionBlock(L.labWork, item.labWork, 'flask-conical', false, ''),
+        buildSectionBlock(L.independentStudy, item.independentStudy, 'clipboard-list', false, ''),
+        buildSectionBlock(L.gradingScale, item.gradingScale, 'check-square', false, 'grading'),
+        buildSectionBlock(L.resources, item.resources, 'library', false, 'resources')
       ].join('');
       const hasStructuredSections = Boolean(sectionsHtml.trim());
       const formattedArticleBody = item.fullText ? formatFullArticleText(item.fullText) : '';
       const fullTextBlockHtml = formattedArticleBody
         ? (hasStructuredSections
-            ? buildSectionBlock(L.fullText, item.fullText, 'file-text', false)
+            ? buildSectionBlock(L.fullText, item.fullText, 'file-text', false, '')
             : `<div class="modal-paragraphs-block">${formattedArticleBody}</div>`)
         : '';
       const externalLinksHtml = (item.externalLinks && item.externalLinks.length > 0) ? `
@@ -3713,12 +4441,36 @@
           </div>
         </div>
       ` : '';
+      const walkthroughFooterHtml = `
+        <div class="modal-walkthrough-footer">
+          <span class="meta-chip ${isDone ? 'done' : ''}" style="font-size: 0.78rem; padding: 5px 12px;">
+            <i data-lucide="${isDone ? 'check-circle-2' : 'compass'}" style="width: 14px; height: 14px;"></i>
+            <span>${isDone ? escapeHtml(dict.wtCardDoneBadge) : escapeHtml(dict.walkthroughTitle.replace('{step}', String(curIdx + 1)).replace('{total}', String(ordered.length)))}</span>
+          </span>
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            ${!isDone ? `
+              <button type="button" class="modal-complete-btn" data-uid="${escapeHtml(item._uid)}" onclick="completeModuleAndAdvance(this.getAttribute('data-uid'), true)">
+                <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+                <span>${escapeHtml(isLastStep ? dict.wtCompleteLastBtn : dict.wtCompleteBtn)}</span>
+                ${!isLastStep ? '<i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>' : ''}
+              </button>
+            ` : (nextItem ? `
+              <button type="button" class="modal-complete-btn" data-uid="${escapeHtml(nextItem._uid)}" onclick="activeWalkthroughUid = this.getAttribute('data-uid'); updateAppUI(); openModal(this.getAttribute('data-uid'), false);">
+                <span>${escapeHtml(dict.wtNextText)}</span>
+                <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+              </button>
+            ` : '')}
+          </div>
+        </div>
+      `;
       const modalDateSuffix = item.date && item.date !== "—" ? ` • ${escapeHtml(item.date)}` : '';
       modalTarget.innerHTML = `
         ${!skipVideoRecreate ? videoSectionHtml : ''}
-        <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 14px; gap: 8px; flex-wrap: wrap;">
+        <div class="modal-top-meta-bar">
           ${item.moduleLabel ? `<span class="meta-chip accent">${escapeHtml(item.moduleLabel)}</span>` : ''}
-          <div class="news-card-meta-text"><span>${dict.lectureNumberPrefix} ${escapeHtml(item.id)}${modalDateSuffix}</span></div>
+          <span class="news-card-meta-text">${dict.lectureNumberPrefix} ${escapeHtml(item.id)}${modalDateSuffix}</span>
+          ${isDone ? `<span class="meta-chip done"><i data-lucide="check" style="width: 11px; height: 11px;"></i> ${escapeHtml(dict.wtCardDoneBadge)}</span>` : ''}
+          ${!item.hasCustomVideo && item.youtubeId ? `<span class="meta-chip">${escapeHtml(dict.defaultVideoBadge)}</span>` : ''}
         </div>
         <h1 class="modal-title">${escapeHtml(item.title)}</h1>
         <div class="news-card-divider" style="width: 45px; height: 4px; margin-bottom: 18px;"></div>
@@ -3727,6 +4479,7 @@
         ${fullTextBlockHtml}
         ${externalLinksHtml}
         ${extraFieldsHtml}
+        ${walkthroughFooterHtml}
       `;
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
