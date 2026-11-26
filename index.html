@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="color-scheme" content="light">
   <title id="htmlPageTitle">FAO & КНУ імені Тараса Шевченка — Відкриті лекції та дослідження</title>
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/960px-Flag_of_Ukraine.svg.png">
+  <!-- Inline SVG Favicon (без зовнішніх редіректів) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='16' fill='%230057B7'/%3E%3Crect y='16' width='32' height='16' fill='%23FFD700'/%3E%3C/svg%3E">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <!-- Шрифт Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,28 +46,16 @@
       color: var(--text-main);
       font-family: var(--font-family);
       line-height: 1.6;
-      padding: 10px 14px 20px;
+      padding: 10px 14px 32px;
       overflow-wrap: break-word;
       word-break: break-word;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-    }
-    body:not(.logged-in) {
-      height: 100vh;
-      overflow: hidden;
-      padding: 8px 14px 10px;
-    }
-    @media (max-height: 720px), (max-width: 860px) {
-      body:not(.logged-in) {
-        height: auto;
-        overflow-y: auto;
-      }
+      overflow-y: auto;
     }
     body.logged-in {
-      height: auto;
-      overflow-y: auto;
       padding-bottom: 40px;
     }
     #progress-bar {
@@ -87,7 +75,7 @@
       border-bottom: 4px solid var(--primary-red);
       border-radius: 16px;
       box-shadow: 0 8px 25px rgba(18, 59, 102, 0.18);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       width: 100%;
       flex-shrink: 0;
     }
@@ -206,20 +194,20 @@
       color: #FFFFFF;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
     }
-    .auth-top-card {
+    .access-top-card {
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-radius: 12px;
-      padding: 8px 12px;
+      padding: 10px 12px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-top: 3px solid var(--primary-red);
       width: 100%;
-      height: 206px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 8px;
       animation: fadeIn 0.3s ease;
       overflow: hidden;
     }
@@ -227,69 +215,48 @@
       from { opacity: 0; transform: translateY(-3px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .auth-top-header {
+    .access-top-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 24px;
+      min-height: 22px;
       flex-shrink: 0;
     }
-    .auth-top-badge {
+    .access-top-badge {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.75rem;
+      gap: 6px;
+      font-size: 0.76rem;
       font-weight: 700;
       color: #FFFFFF;
     }
-    .auth-top-badge svg {
+    .access-top-badge svg {
       width: 14px;
       height: 14px;
-      color: #FF6B6B;
+      color: #4ADE80;
       flex-shrink: 0;
     }
-    .auth-mini-switch {
-      display: inline-flex;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 14px;
-      padding: 2px;
-      gap: 2px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    .mini-switch-btn {
-      background: transparent;
-      border: none;
-      color: #CBD5E1;
-      font-family: var(--font-family);
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 2px 8px;
+    .access-manual-pill {
+      font-size: 0.64rem;
+      font-weight: 600;
+      color: #E2E8F0;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 2px 7px;
       border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      line-height: 1.25;
-      touch-action: manipulation;
+      border: 1px solid rgba(255, 255, 255, 0.16);
     }
-    .mini-switch-btn.active {
-      background: var(--primary-red);
-      color: #FFFFFF;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-    }
-    .auth-top-form {
+    .access-top-group {
       display: flex;
       flex-direction: column;
-      gap: 5px;
-      flex: 1;
-      justify-content: space-between;
-      margin-top: 4px;
+      gap: 6px;
     }
-    .auth-field-slot {
+    .access-field-slot {
       position: relative;
       display: flex;
       align-items: center;
-      height: 32px;
+      height: 34px;
     }
-    .auth-top-icon {
+    .access-top-icon {
       position: absolute;
       left: 10px;
       color: #475569;
@@ -297,10 +264,10 @@
       height: 13px;
       pointer-events: none;
     }
-    .auth-top-input {
+    .access-top-input {
       width: 100%;
-      height: 32px;
-      padding: 4px 10px 4px 30px;
+      height: 34px;
+      padding: 4px 32px 4px 30px;
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 7px;
       font-family: var(--font-family);
@@ -310,17 +277,41 @@
       outline: none;
       transition: all 0.2s ease;
     }
-    .auth-top-input::placeholder {
+    .access-top-input.code-masked {
+      -webkit-text-security: disc;
+      letter-spacing: 0.08em;
+    }
+    .access-top-input::placeholder {
       color: #64748B;
       font-weight: 500;
+      letter-spacing: normal;
+      -webkit-text-security: none;
     }
-    .auth-top-input:focus {
+    .access-top-input:focus {
       border-color: #FF6B6B;
       box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3);
     }
-    .auth-secure-badge {
+    .toggle-vis-btn {
+      position: absolute;
+      right: 6px;
+      background: transparent;
+      border: none;
+      color: #64748B;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      border-radius: 4px;
+      transition: color 0.15s ease;
+    }
+    .toggle-vis-btn:hover {
+      color: #0F172A;
+    }
+    .access-secure-badge {
       width: 100%;
-      height: 32px;
+      min-height: 28px;
+      padding: 3px 8px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px dashed rgba(255, 255, 255, 0.2);
       border-radius: 7px;
@@ -329,14 +320,15 @@
       justify-content: center;
       gap: 6px;
       color: #E2E8F0;
-      font-size: 0.68rem;
+      font-size: 0.67rem;
       font-weight: 600;
+      text-align: center;
     }
-    .auth-top-btn {
+    .access-top-btn {
       background-color: var(--primary-red);
       color: white;
       border: 1px solid rgba(255, 255, 255, 0.15);
-      height: 32px;
+      height: 34px;
       border-radius: 7px;
       font-family: var(--font-family);
       font-weight: 700;
@@ -349,25 +341,29 @@
       gap: 6px;
       touch-action: manipulation;
     }
-    .auth-top-btn:hover {
+    .access-top-btn:hover {
       background-color: var(--primary-red-hover);
     }
-    .auth-status-banner {
+    .access-top-btn:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+    .access-status-banner {
       font-size: 0.68rem;
       font-weight: 600;
       text-align: center;
-      padding: 3px 6px;
+      padding: 4px 8px;
       border-radius: 5px;
-      line-height: 1.25;
+      line-height: 1.3;
       display: none;
     }
-    .auth-status-banner.error {
+    .access-status-banner.error {
       display: block;
       background: rgba(254, 226, 226, 0.96);
       color: #991B1B;
       border: 1px solid #F87171;
     }
-    .auth-status-banner.success {
+    .access-status-banner.success {
       display: block;
       background: rgba(220, 252, 231, 0.96);
       color: #166534;
@@ -450,35 +446,34 @@
       display: flex;
       flex-direction: column;
     }
-    body:not(.logged-in) main { justify-content: center; min-height: 0; }
-    .portal-lock-notice {
+    .course-gate-notice {
       background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-left: 5px solid var(--primary-red);
       border-radius: 14px;
-      padding: 16px 20px;
+      padding: 16px 22px;
       text-align: center;
-      max-width: 580px;
-      margin: 8px auto;
+      width: 100%;
+      margin: 0 0 18px 0;
       box-shadow: 0 4px 16px rgba(11, 25, 44, 0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
     }
-    .lock-icon-pill {
-      width: 40px;
-      height: 40px;
+    .gate-icon-pill {
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: rgba(184, 0, 0, 0.08);
-      color: var(--primary-red);
+      background: rgba(18, 59, 102, 0.08);
+      color: var(--daisi-navy);
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .portal-lock-notice h2 { font-size: 1.1rem; color: #0B1F3A; font-weight: 800; margin: 0; }
-    .portal-lock-notice p { font-size: 0.8rem; color: #44546A; line-height: 1.5; margin: 0; }
-    .lock-tip-box {
+    .course-gate-notice h2 { font-size: 1.08rem; color: #0B1F3A; font-weight: 800; margin: 0; }
+    .course-gate-notice p { font-size: 0.82rem; color: #44546A; line-height: 1.55; margin: 0; max-width: 760px; }
+    .gate-tip-box {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -486,10 +481,86 @@
       font-weight: 600;
       color: var(--accent-blue);
       background: var(--bg-light);
-      padding: 4px 12px;
+      padding: 5px 12px;
       border-radius: 16px;
       border: 1px solid var(--border-color);
       margin-top: 2px;
+    }
+    /* ПУБЛІЧНИЙ ОГЛЯД ПРОГРАМИ МОДУЛІВ (ДО ВХОДУ) */
+    .public-overview-section {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px 22px;
+      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.04);
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    .public-overview-head {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+    }
+    .public-overview-head h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-title);
+      margin: 0;
+    }
+    .public-overview-head p {
+      font-size: 0.8rem;
+      color: var(--text-body);
+      margin: 0;
+    }
+    .public-overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 14px;
+    }
+    .public-module-card {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-top: 3px solid var(--daisi-navy);
+      border-radius: 12px;
+      padding: 13px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .public-module-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--primary-red);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .public-module-ects {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      color: var(--accent-blue);
+      padding: 1px 7px;
+      border-radius: 10px;
+      font-size: 0.68rem;
+      text-transform: none;
+    }
+    .public-module-title {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-title);
+      line-height: 1.35;
+    }
+    .public-module-meta {
+      font-size: 0.74rem;
+      color: var(--text-body);
+      line-height: 1.45;
+      margin-top: auto;
     }
     .controls-card {
       background: #FFFFFF !important;
@@ -532,6 +603,8 @@
       transition: all 0.2s ease;
       touch-action: manipulation;
       white-space: nowrap;
+      max-width: 260px;
+      text-overflow: ellipsis;
     }
     .custom-select:focus { border-color: var(--primary-red) !important; }
     .sort-icon { position: absolute; right: 12px; color: var(--text-muted); width: 14px; height: 14px; pointer-events: none; }
@@ -604,17 +677,41 @@
       flex: 1 1 auto; padding: 22px 26px; display: flex; flex-direction: column; justify-content: space-between;
       min-width: 0; background: #FFFFFF !important;
     }
-    .news-card-meta-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+    .news-card-meta-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
     .news-card-meta-text { font-size: 0.75rem; color: #44546A !important; font-weight: 600; }
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 12px;
+      background: #F1F5F9;
+      color: var(--accent-blue);
+      border: 1px solid var(--border-color);
+    }
+    .meta-chip.accent {
+      background: rgba(184, 0, 0, 0.08);
+      color: var(--primary-red);
+      border-color: rgba(184, 0, 0, 0.18);
+    }
     .news-card-title, .news-card h2 {
       font-size: clamp(1.12rem, 3.2vw, 1.25rem); font-weight: 800; color: #0B1F3A !important;
       line-height: 1.35; margin-bottom: 8px; transition: color 0.2s ease;
     }
     .news-card:hover .news-card-title, .news-card:hover h2 { color: var(--primary-red) !important; }
-    .news-card-divider { width: 35px; height: 3px; background-color: var(--primary-red) !important; border-radius: 2px; margin-bottom: 12px; }
-    .news-card-excerpt, .news-card p {
+    .news-card-divider { width: 35px; height: 3px; background-color: var(--primary-red) !important; border-radius: 2px; margin-bottom: 10px; }
+    .news-card-attribution {
+      font-size: 0.78rem;
+      color: var(--accent-blue);
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+    .news-card-excerpt, .news-card p.news-card-excerpt {
       font-size: clamp(0.85rem, 2.2vw, 0.9rem); line-height: 1.65; color: #44546A !important; margin-bottom: 16px;
-      display: -webkit-box; -webkit-line-clamp: 12; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; white-space: pre-line;
+      display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; white-space: pre-line;
     }
     .news-card-footer {
       display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 12px; margin-top: auto;
@@ -659,16 +756,95 @@
     .cp-volume-box { display: flex; align-items: center; gap: 6px; }
     .cp-volume-input { width: 70px; height: 4px; accent-color: var(--primary-red); cursor: pointer; }
     .modal-title { font-size: clamp(1.25rem, 3.8vw, 1.6rem); font-weight: 800; color: #0B1F3A !important; line-height: 1.35; margin-bottom: 14px; padding-right: 30px; }
-    .modal-paragraphs-block { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
-    .modal-paragraph { font-size: clamp(0.92rem, 2.4vw, 0.98rem); line-height: 1.8; color: #1E293B !important; white-space: pre-line; margin: 0 0 10px 0; }
+    /* СТРУКТУРОВАНІ ДАНІ МОДУЛЯ В МОДАЛЦІ */
+    .module-passport-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px 16px;
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+    .passport-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .passport-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .passport-value {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-title);
+      line-height: 1.45;
+      white-space: pre-line;
+    }
+    .module-section-box {
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-blue);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      background: #FFFFFF;
+    }
+    .module-section-box.highlight-red {
+      border-left-color: var(--primary-red);
+    }
+    .module-section-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text-title);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .modal-paragraphs-block { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+    .modal-paragraph { font-size: clamp(0.9rem, 2.4vw, 0.96rem); line-height: 1.75; color: #1E293B !important; white-space: pre-line; margin: 0 0 8px 0; }
     .modal-paragraph strong, .modal-question-para strong, .article-subheading strong, .article-list-item strong { font-weight: 700 !important; color: #0B1F3A !important; }
     .article-byline-para { margin-top: 20px; padding-top: 12px; border-top: 1px dashed var(--border-color); font-size: 0.92rem; }
-    .article-list-item { font-size: 0.96rem; line-height: 1.7; color: #1E293B !important; margin-bottom: 6px; padding-left: 4px; }
-    .news-inline-link { color: var(--accent-blue); text-decoration: underline; font-weight: 600; }
+    .article-list-item { font-size: 0.93rem; line-height: 1.65; color: #1E293B !important; margin-bottom: 5px; padding-left: 4px; }
+    .news-inline-link { color: var(--accent-blue); text-decoration: underline; font-weight: 600; word-break: break-all; }
+    .module-links-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .module-link-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      color: var(--accent-blue);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .module-link-chip:hover { border-color: var(--primary-red); color: var(--primary-red); }
     .floating-controls-panel { position: fixed; bottom: 25px; right: 25px; display: flex; align-items: center; gap: 10px; z-index: 1000; background: var(--bg-card); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); opacity: 0; visibility: hidden; }
     .floating-controls-panel.visible { opacity: 1; visibility: visible; }
+    .floating-search-box { position: relative; display: flex; align-items: center; }
     .floating-search-input { border: 1px solid var(--border-color); background: var(--bg-light); padding: 6px 14px 6px 36px; border-radius: 30px; font-family: var(--font-family); font-size: 0.8rem; color: #0B1F3A; width: 180px; min-height: 40px; }
     .back-to-top { background-color: var(--primary-red); color: white; width: 44px; height: 44px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(184, 0, 0, 0.2); }
+    .loading-state, .error-state, .no-results {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 36px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
     .spinner { width: 38px; height: 38px; border: 3px solid rgba(184, 0, 0, 0.12); border-top-color: var(--primary-red); border-radius: 50%; animation: spin 0.8s infinite linear; margin-bottom: 12px; }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     footer { padding: 24px 10px 14px; border-top: 1px solid var(--border-color); margin-top: 35px; max-width: 1200px; margin-left: auto; margin-right: auto; width: 100%; }
@@ -677,6 +853,7 @@
     .contact-title { font-size: 1.1rem; font-weight: 800; color: #0B1F3A; margin: 0; }
     .footer-funding-text { font-size: clamp(0.74rem, 1.8vw, 0.8rem); line-height: 1.5; color: #44546A; }
     .contact-email { font-size: 0.84rem; font-weight: 700; color: var(--primary-red); text-decoration: none; }
+    .contact-inline-link { color: var(--accent-blue); text-decoration: underline; font-weight: 600; }
     .footer-links-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
     .footer-link-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .footer-action-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: var(--accent-blue); text-decoration: none; }
@@ -684,7 +861,12 @@
     @media (max-width: 860px) {
       .header-container { flex-direction: column; align-items: stretch; }
       .header-right-zone { max-width: 100%; width: 100%; margin-left: 0; }
-      .auth-top-card { height: auto; min-height: 206px; }
+    }
+    @media (max-width: 760px) {
+      .news-card { flex-direction: column; }
+      .news-card-media-wrap { flex: none; max-width: 100%; min-width: 0; height: 210px; }
+      .news-card-body-wrap { padding: 18px 18px; }
+      .modal-scrollable-content { padding: 22px 18px; }
     }
   </style>
 </head>
@@ -694,8 +876,23 @@
     <div class="header-container">
       <div class="header-branding">
         <div class="branding-header-row">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/FAO_logo.svg/3840px-FAO_logo.svg.png?utm_source=uk.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="FAO Logo" class="daisi-header-logo" referrerpolicy="no-referrer" decoding="async" style="object-fit: contain; padding: 3px;">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgjEQQ3vzGutwq4JX7hgVMt81j0-gDeM_tH_hG3xxvYP3zXAxQIjr88GQ&s=10" alt="КНУ Logo" class="daisi-header-logo logo-tsnuk-crop" referrerpolicy="no-referrer" decoding="async">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/FAO_logo.svg/512px-FAO_logo.svg.png"
+            alt="FAO Logo"
+            class="daisi-header-logo"
+            referrerpolicy="no-referrer"
+            decoding="async"
+            style="object-fit: contain; padding: 3px;"
+            onerror="this.style.display='none'"
+          >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/9/9f/%D0%9A%D0%B8%D1%97%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BD%D0%B0%D1%86%D1%96%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%83%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82_%D1%96%D0%BC%D0%B5%D0%BD%D1%96_%D0%A2%D0%B0%D1%80%D0%B0%D1%81%D0%B0_%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%B0.png"
+            alt="КНУ Logo"
+            class="daisi-header-logo logo-tsnuk-crop"
+            referrerpolicy="no-referrer"
+            decoding="async"
+            onerror="this.style.display='none'"
+          >
           <div class="branding-titles">
             <h1 id="uiHeaderTitle">FAO & КНУ імені Тараса Шевченка</h1>
             <p class="subtitle" id="uiHeaderSubtitle">Цикл відкритих лекцій, спільні дослідження та відеоматеріали партнерства</p>
@@ -714,40 +911,63 @@
             <button type="button" id="langBtnEn" class="lang-btn" onclick="switchLanguage('en')">EN</button>
           </div>
         </div>
-        <div id="authGateTop" class="auth-top-card">
-          <div class="auth-top-header">
-            <span class="auth-top-badge">
-              <i data-lucide="shield-check" id="authBadgeIcon"></i>
-              <span id="authBadgeTitle">Вхід до системи</span>
+        <!-- Панель перевірки доступу слухачів (без form і type="password") -->
+        <div id="accessGateTop" class="access-top-card">
+          <div class="access-top-header">
+            <span class="access-top-badge">
+              <i data-lucide="book-open-check" id="accessBadgeIcon"></i>
+              <span id="accessBadgeTitle">Портал слухачів</span>
             </span>
-            <div class="auth-mini-switch">
-              <button type="button" id="tabBtnLogin" class="mini-switch-btn active" onclick="setAuthMode('login')">Вхід</button>
-              <button type="button" id="tabBtnRegister" class="mini-switch-btn" onclick="setAuthMode('register')">Запит</button>
-            </div>
+            <span class="access-manual-pill" id="uiManualRegPill">За реєстрацією</span>
           </div>
-          <form id="authForm" onsubmit="handleAuthSubmit(event)" class="auth-top-form" autocomplete="off">
-            <div class="auth-field-slot">
-              <i data-lucide="user" class="auth-top-icon"></i>
-              <input type="text" id="authLogin" class="auth-top-input" placeholder="Логін" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+          <div id="accessPanelContainer" class="access-top-group" role="group" aria-labelledby="accessBadgeTitle">
+            <div class="access-field-slot">
+              <i data-lucide="user" class="access-top-icon"></i>
+              <input
+                type="text"
+                id="participantIdInput"
+                class="access-top-input"
+                placeholder="Логін (ідентифікатор)"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="none"
+                spellcheck="false"
+                data-lpignore="true"
+                data-1p-ignore="true"
+                data-bwignore="true"
+                data-form-type="other"
+              >
             </div>
-            <div class="auth-field-slot">
-              <i data-lucide="lock" class="auth-top-icon"></i>
-              <input type="password" id="authPass" class="auth-top-input" placeholder="Пароль" autocomplete="current-password" autocapitalize="none" spellcheck="false" required>
+            <div class="access-field-slot">
+              <i data-lucide="key-round" class="access-top-icon"></i>
+              <input
+                type="text"
+                id="participantCodeInput"
+                class="access-top-input code-masked"
+                placeholder="Пароль (код доступу)"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="none"
+                spellcheck="false"
+                data-lpignore="true"
+                data-1p-ignore="true"
+                data-bwignore="true"
+                data-form-type="other"
+              >
+              <button type="button" id="toggleCodeVisBtn" class="toggle-vis-btn" onclick="toggleCodeVisibility()" title="Показати / приховати код">
+                <i data-lucide="eye" id="toggleCodeVisIcon" style="width: 14px; height: 14px;"></i>
+              </button>
             </div>
-            <div class="auth-field-slot" id="authCommentSlot" style="display: none;">
-              <i data-lucide="message-square" class="auth-top-icon"></i>
-              <input type="text" id="authComment" class="auth-top-input" placeholder="Коментар (необов'язково)">
+            <div class="access-secure-badge" id="accessSecureSlot">
+              <i data-lucide="shield-check" style="width: 12px; height: 12px; color: #4ADE80; flex-shrink: 0;"></i>
+              <span id="uiSecureBadge">Перевірка хеш-ключа SHA-256</span>
             </div>
-            <div class="auth-secure-badge" id="authSecureSlot">
-              <i data-lucide="shield" style="width: 12px; height: 12px; color: #4ADE80;"></i>
-              <span id="uiSecureBadge">Клієнтське шифрування SHA-256</span>
-            </div>
-            <button type="submit" id="authSubmitBtn" class="auth-top-btn">
-              <span id="authSubmitText">Увійти</span>
+            <button type="button" id="accessSubmitBtn" class="access-top-btn" onclick="handleAccessCheck()">
+              <span id="accessSubmitText">Відкрити матеріали</span>
               <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i>
             </button>
-            <div id="authStatusBanner" class="auth-status-banner"></div>
-          </form>
+            <div id="accessStatusBanner" class="access-status-banner"></div>
+          </div>
         </div>
         <div id="headerSearchBox" class="header-search" style="display: none;">
           <div class="search-container">
@@ -760,7 +980,7 @@
             <i data-lucide="check-circle" style="width: 14px; height: 14px; color: #4ADE80;"></i>
             <span id="sessionUserLabel">Авторизовано</span>
           </span>
-          <button type="button" class="logout-header-btn" onclick="handleLogout()" title="Вийти із системи">
+          <button type="button" class="logout-header-btn" onclick="handleLogout()" title="Завершити сеанс">
             <i data-lucide="log-out" style="width: 12px; height: 12px;"></i>
             <span id="uiLogoutBtnText">Вийти</span>
           </button>
@@ -769,19 +989,27 @@
     </div>
   </header>
   <main>
-    <div id="portalLockNotice" class="portal-lock-notice">
-      <div class="lock-icon-pill">
-        <i data-lucide="lock" style="width: 20px; height: 20px;"></i>
+    <div id="courseGateNotice" class="course-gate-notice">
+      <div class="gate-icon-pill">
+        <i data-lucide="graduation-cap" style="width: 20px; height: 20px;"></i>
       </div>
-      <h2 id="uiLockNoticeH2">Матеріали лекцій закрито</h2>
+      <h2 id="uiLockNoticeH2">Доступ до відеолекцій та конспектів курсу</h2>
       <p id="uiLockNoticeP">
-        Відеолекції та навчальні матеріали FAO & КНУ захищені наскрізним шифруванням. Введіть логін та пароль або надішліть запит на доступ у формі праворуч угорі.
+        Усіх слухачів курсу FAO & КНУ імені Тараса Шевченка реєструє координатор програми вручну. Для перегляду відеолекцій, робочих програм модулів та навчальних матеріалів введіть надані вам логін та код доступу (пароль) у панелі праворуч угорі.
       </p>
-      <div class="lock-tip-box">
-        <i data-lucide="arrow-up-right" style="width: 13px; height: 13px;"></i>
-        <span id="uiLockNoticeTip">Форма входу та реєстрації розташована вгорі праворуч</span>
+      <div class="gate-tip-box">
+        <i data-lucide="mail" style="width: 13px; height: 13px;"></i>
+        <span id="uiLockNoticeTip">Для отримання облікових даних звертайтеся на grant.ndch@knu.ua</span>
       </div>
     </div>
+    <!-- Відкритий огляд навчальних модулів (відображається до входу як прозорий опис курсу) -->
+    <section id="publicOverviewSection" class="public-overview-section">
+      <div class="public-overview-head">
+        <h3 id="publicOverviewTitle">Програма навчальних модулів (Відкритий огляд)</h3>
+        <p id="publicOverviewSubtitle">Нижче наведено перелік освітніх модулів спільного проєкту FAO та КНУ імені Тараса Шевченка з дослідження, моніторингу та відновлення ґрунтів.</p>
+      </div>
+      <div id="publicOverviewGrid" class="public-overview-grid"></div>
+    </section>
     <div class="controls-card" id="controlsCard" style="display: none;">
       <div class="controls-left-group">
         <div class="control-item-wrapper">
@@ -801,6 +1029,15 @@
           <div class="custom-select-wrapper">
             <select id="monthSelect" class="custom-select">
               <option value="all" selected>Усі місяці</option>
+            </select>
+            <i data-lucide="chevron-down" class="sort-icon"></i>
+          </div>
+        </div>
+        <div class="control-item-wrapper" id="categoryFilterWrapper" style="display: none;">
+          <span class="control-label" id="uiCategoryLabel">Підрозділ:</span>
+          <div class="custom-select-wrapper">
+            <select id="categorySelect" class="custom-select">
+              <option value="all" selected>Усі підрозділи</option>
             </select>
             <i data-lucide="chevron-down" class="sort-icon"></i>
           </div>
@@ -861,8 +1098,7 @@
   </footer>
   <script>
     /* ==========================================================================
-       КОНФІГУРАЦІЯ ТА ЗМІННІ ТЕКСТІВ ДЛЯ ДВОХ МОВ (UA / EN)
-       Редагуйте будь-які тексти сайту тут прямо по рядках.
+       КОНФІГУРАЦІЯ ТА ТЕКСТИ ДЛЯ ДВОХ МОВ (UA / EN)
        ========================================================================== */
     const TRANSLATIONS = {
       uk: {
@@ -870,31 +1106,26 @@
         headerTitle: "FAO & КНУ імені Тараса Шевченка",
         headerSubtitle: "Цикл відкритих лекцій, спільні дослідження та відеоматеріали партнерства",
         projectDesc: "Співпраця Продовольчої та сільськогосподарської організації ООН (FAO) та Київського національного університету імені Тараса Шевченка присвячена проведенню циклу відкритих навчальних лекцій, практичних відеокурсів та експертних зустрічей. Тематика охоплює продовольчу безпеку, сталий розвиток агросектору, кліматичну стійкість та відновлення України.",
-        tabLogin: "Вхід",
-        tabRegister: "Запит",
-        badgeLogin: "Вхід до системи",
-        badgeRegister: "Запит на доступ",
-        loginPlaceholder: "Логін",
-        loginRegisterPlaceholder: "Бажаний логін",
-        passPlaceholder: "Пароль",
-        passRegisterPlaceholder: "Створіть пароль",
-        commentPlaceholder: "Коментар (необов'язково)",
-        secureBadge: "Клієнтське шифрування SHA-256",
-        btnLogin: "Увійти",
-        btnRegister: "Надіслати запит",
+        badgePortal: "Портал слухачів",
+        manualRegPill: "За реєстрацією",
+        loginPlaceholder: "Логін (ідентифікатор)",
+        codePlaceholder: "Пароль (код доступу)",
+        toggleCodeTitle: "Показати / приховати код",
+        secureBadge: "Перевірка хеш-ключа SHA-256",
+        btnOpenMaterials: "Відкрити матеріали",
         btnVerifying: "Перевірка...",
-        btnEncrypting: "Шифрування...",
-        msgFillAll: "Заповніть усі поля!",
-        msgRegisterSuccess: "Запит надіслано! Очікуйте на рішення адміністратора.",
-        msgLoginError: "Доступ обмежено або невірні дані!",
-        msgFetchError: "Не вдалося завантажити лекції. Перевірте з'єднання з мережею.",
-        searchPlaceholder: "Шукати лекцію або тему виступу...",
-        floatingSearchPlaceholder: "Пошук лекції...",
+        msgFillAll: "Введіть логін та код доступу!",
+        msgLoginError: "Облікові дані не знайдено в базі курсу або доступ не активовано!",
+        msgFetchError: "Не вдалося завантажити матеріали. Перевірте з'єднання з мережею.",
+        searchPlaceholder: "Шукати лекцію, модуль, лектора або тему...",
+        floatingSearchPlaceholder: "Пошук модуля/лекції...",
         sessionAuthorized: "Авторизовано",
         btnLogout: "Вийти",
-        lockH2: "Матеріали лекцій закрито",
-        lockP: "Відеолекції та навчальні матеріали FAO & КНУ імені Тараса Шевченка захищені наскрізним шифруванням. Введіть логін та пароль або надішліть запит на доступ у формі праворуч угорі.",
-        lockTip: "Форма входу та реєстрації розташована вгорі праворуч",
+        lockH2: "Доступ до відеолекцій та конспектів курсу",
+        lockP: "Усіх слухачів курсу FAO & КНУ імені Тараса Шевченка реєструє координатор програми вручну. Для перегляду відеолекцій, робочих програм модулів та навчальних матеріалів введіть надані вам логін та код доступу (пароль) у панелі праворуч угорі.",
+        lockTip: "Для отримання облікових даних звертайтеся на grant.ndch@knu.ua",
+        publicOverviewTitle: "Програма навчальних модулів (Відкритий огляд)",
+        publicOverviewSubtitle: "Нижче наведено перелік освітніх модулів спільного проєкту FAO та КНУ імені Тараса Шевченка з дослідження, моніторингу та відновлення ґрунтів.",
         sortLabel: "Сортувати:",
         sortNewest: "Найновіші",
         sortOldest: "Найстаріші",
@@ -902,17 +1133,46 @@
         sortNumAsc: "За номером (№ ↑)",
         monthLabel: "Місяць:",
         allMonths: "Усі місяці",
+        categoryLabel: "Підрозділ:",
+        allCategories: "Усі підрозділи",
         loadingText: "Отримання захищених відеолекцій та матеріалів...",
         errorTitle: "Збій отримання даних",
         errorText: "Не вдалося завантажити лекції через Apps Script. Перевірте з'єднання або оновіть сторінку.",
-        noResultsTitle: "Лекцій не знайдено",
-        noResultsText: "Спробуйте обрати інший місяць або змінити пошуковий запит лекції.",
-        lectureNumberPrefix: "Лекція №",
+        noResultsTitle: "Матеріалів не знайдено",
+        noResultsText: "Спробуйте обрати інший фільтр або змінити пошуковий запит.",
+        lectureNumberPrefix: "Матеріал №",
+        modulePrefix: "Модуль",
         watchLectureBtn: "Дивитися лекцію",
+        viewDetailsBtn: "Відкрити програму модуля",
         backToTopTitle: "Вгору",
         footerTitle: "FAO & КНУ імені Тараса Шевченка",
         footerFunding: `Партнерська ініціатива <a href="https://www.fao.org/home/en/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">FAO</a> та <a href="https://knu.ua/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">КНУ імені Тараса Шевченка</a> для координації відкритих науково-освітніх проєктів.`,
         footerCopy: "© 2026 FAO & КНУ імені Тараса Шевченка",
+        yesLabel: "Так",
+        noLabel: "Ні",
+        labels: {
+          moduleNumber: "Модуль",
+          institution: "Заклад та підрозділ",
+          lecturer: "Лектор(и)",
+          instructors: "Викладачі практичних занять",
+          workload: "Академічне навантаження",
+          ects: "Кредити ECTS",
+          language: "Мова викладання",
+          targetAudience: "Цільова аудиторія / вимоги",
+          assessmentFormat: "Форма контролю",
+          category: "Напрям / категорія",
+          tags: "Ключові слова",
+          learningObjective: "Мета та завдання навчання",
+          learningOutcomes: "Результати навчання",
+          lectureContent: "Зміст лекційного заняття",
+          labWork: "Практична / лабораторна робота",
+          independentStudy: "Самостійна робота / домашні завдання",
+          fullText: "Детальний конспект та матеріали",
+          gradingScale: "Шкала та критерії оцінювання",
+          resources: "Інформаційні ресурси та література",
+          externalLinks: "Додаткові посилання та файли",
+          additionalFields: "Додаткові відомості таблиці"
+        },
         monthsGenitive: [
           "січня", "лютого", "березня", "квітня", "травня", "червня",
           "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"
@@ -927,31 +1187,26 @@
         headerTitle: "FAO & Taras Shevchenko National University of Kyiv",
         headerSubtitle: "Open lecture series, joint research, and partnership video materials",
         projectDesc: "The partnership between the Food and Agriculture Organization of the United Nations (FAO) and Taras Shevchenko National University of Kyiv is dedicated to conducting open educational lectures, practical video courses, and expert meetings. Topics include food security, sustainable agricultural development, climate resilience, and Ukraine's recovery.",
-        tabLogin: "Sign In",
-        tabRegister: "Request",
-        badgeLogin: "System Login",
-        badgeRegister: "Access Request",
-        loginPlaceholder: "Login",
-        loginRegisterPlaceholder: "Desired login",
-        passPlaceholder: "Password",
-        passRegisterPlaceholder: "Create password",
-        commentPlaceholder: "Comment (optional)",
-        secureBadge: "Client-side SHA-256 encryption",
-        btnLogin: "Sign In",
-        btnRegister: "Submit Request",
+        badgePortal: "Participant Portal",
+        manualRegPill: "Pre-registered",
+        loginPlaceholder: "Participant Login (ID)",
+        codePlaceholder: "Access Code (Password)",
+        toggleCodeTitle: "Show / hide access code",
+        secureBadge: "SHA-256 Access Key Verification",
+        btnOpenMaterials: "Open Materials",
         btnVerifying: "Verifying...",
-        btnEncrypting: "Encrypting...",
-        msgFillAll: "Please fill in all fields!",
-        msgRegisterSuccess: "Request submitted! Awaiting administrator approval.",
-        msgLoginError: "Access restricted or invalid credentials!",
-        msgFetchError: "Failed to retrieve lectures. Please check connection.",
-        searchPlaceholder: "Search lecture or presentation topic...",
-        floatingSearchPlaceholder: "Search lecture...",
+        msgFillAll: "Please enter both your login and access code!",
+        msgLoginError: "Credentials not found in the course database or access is inactive!",
+        msgFetchError: "Failed to retrieve materials. Please check your internet connection.",
+        searchPlaceholder: "Search lecture, module, lecturer, or topic...",
+        floatingSearchPlaceholder: "Search module/lecture...",
         sessionAuthorized: "Authorized",
         btnLogout: "Log Out",
-        lockH2: "Lecture Materials Locked",
-        lockP: "FAO & KNU video lectures and learning materials are end-to-end encrypted. Enter your login and password or submit an access request in the form at the top right.",
-        lockTip: "The login and registration form is located at the top right",
+        lockH2: "Access to Video Lectures & Course Materials",
+        lockP: "All participants of the FAO & Taras Shevchenko National University of Kyiv program are registered manually by the coordinator. To access video lectures, module syllabi, and learning materials, enter your assigned login and access code (password) in the top-right panel.",
+        lockTip: "For participant registration inquiries, contact grant.ndch@knu.ua",
+        publicOverviewTitle: "Course Curriculum Overview (Public Summary)",
+        publicOverviewSubtitle: "Below is the summary of educational modules from the joint FAO & Taras Shevchenko National University of Kyiv program on soil research, monitoring, and recovery.",
         sortLabel: "Sort by:",
         sortNewest: "Newest",
         sortOldest: "Oldest",
@@ -959,17 +1214,46 @@
         sortNumAsc: "By number (№ ↑)",
         monthLabel: "Month:",
         allMonths: "All months",
+        categoryLabel: "Department:",
+        allCategories: "All departments",
         loadingText: "Retrieving secured video lectures and materials...",
         errorTitle: "Data Retrieval Error",
         errorText: "Failed to load lectures via Apps Script. Please check your connection or refresh the page.",
-        noResultsTitle: "No lectures found",
-        noResultsText: "Try choosing another month or modifying your search query.",
-        lectureNumberPrefix: "Lecture №",
+        noResultsTitle: "No materials found",
+        noResultsText: "Try choosing another filter or modifying your search query.",
+        lectureNumberPrefix: "Entry №",
+        modulePrefix: "Module",
         watchLectureBtn: "Watch Lecture",
+        viewDetailsBtn: "Open Module Syllabus",
         backToTopTitle: "Top",
         footerTitle: "FAO & Taras Shevchenko National University of Kyiv",
         footerFunding: `Joint initiative of <a href="https://www.fao.org/home/en/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">FAO</a> and <a href="https://knu.ua/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">Taras Shevchenko National University of Kyiv</a> to coordinate open scientific and educational projects.`,
         footerCopy: "© 2026 FAO & Taras Shevchenko National University of Kyiv",
+        yesLabel: "Yes",
+        noLabel: "No",
+        labels: {
+          moduleNumber: "Module",
+          institution: "Institution & Faculty",
+          lecturer: "Lecturer(s)",
+          instructors: "Lab / Practical Instructors",
+          workload: "Academic Workload",
+          ects: "ECTS Credits",
+          language: "Language of Instruction",
+          targetAudience: "Target Audience / Prerequisites",
+          assessmentFormat: "Assessment Format",
+          category: "Discipline / Category",
+          tags: "Keywords",
+          learningObjective: "Learning Objectives",
+          learningOutcomes: "Learning Outcomes",
+          lectureContent: "Lecture Content & Topics",
+          labWork: "Practical / Laboratory Work",
+          independentStudy: "Independent Study / Homework",
+          fullText: "Detailed Notes & Materials",
+          gradingScale: "Grading & Assessment Criteria",
+          resources: "Information Resources & References",
+          externalLinks: "Additional Links & Files",
+          additionalFields: "Additional Table Fields"
+        },
         monthsGenitive: [
           "January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"
@@ -980,7 +1264,110 @@
         ]
       }
     };
-    const CUSTOM_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrfebxFDqUfphRYHyKVeB7PfoL3UE2rkDR0BtWlmALA8usPs-VmGjMI1iu4qLD0GEX/exec"; 
+    /* Відкритий довідковий перелік модулів з програми курсу (видимий до входу) */
+    const PUBLIC_MODULES_PREVIEW = {
+      uk: [
+        {
+          mod: "Модулі № 2, 4, 6",
+          ects: "0.5 ECTS • 15 год",
+          title: "Інтеграція магнітних та ґрунтознавчих методів оцінки властивостей ґрунтів",
+          meta: "ННІ «Інститут геології» • д.геол.н. Олександр Меньшов"
+        },
+        {
+          mod: "Модулі № 2, 4, 6",
+          ects: "0.5 ECTS • 15 год",
+          title: "Геофізичні радіометричні та електрометричні методи дослідження ґрунтів",
+          meta: "ННІ «Інститут геології» • к.геол.н. Віктор Онищук"
+        },
+        {
+          mod: "Модуль № 2",
+          ects: "0.5 ECTS • 15 год",
+          title: "Польові ґрунтові дослідження досліджуваних ділянок",
+          meta: "Географічний факультет • д.геогр.н. Вікторія Удовиченко"
+        },
+        {
+          mod: "Модуль № 3",
+          ects: "0.5 ECTS • 15 год",
+          title: "Основні типи забруднювачів довкілля та шляхи їхнього впливу",
+          meta: "Хімічний факультет • д.хім.н. Оксана Тананайко, к.хім.н. Марина Зуй"
+        },
+        {
+          mod: "Модуль № 4",
+          ects: "0.5 ECTS • 15 год",
+          title: "Польовий скринінг забруднювачів за допомогою портативних приладів",
+          meta: "Хімічний факультет • к.хім.н. Сергій Лелюшок"
+        },
+        {
+          mod: "Модуль № 5",
+          ects: "0.5 ECTS • 15 год",
+          title: "Методологія пробопідготовки, лабораторних вимірювань та аналіз результатів",
+          meta: "Географічний факультет • к.геогр.н. Дмитро Іванок, д.геогр.н. Сергій Запотоцький, к.геогр.н. Людмила Білоус"
+        },
+        {
+          mod: "Модуль № 6",
+          ects: "0.5 ECTS • 15 год",
+          title: "Лабораторний аналіз та агрономічна інтерпретація результатів",
+          meta: "Хімічний факультет • к.хім.н. Микола Іщенко, к.хім.н. Марина Зуй"
+        },
+        {
+          mod: "Модулі № 7–8",
+          ects: "1.0 ECTS • 30 год",
+          title: "Екотоксикологія та екологічна біоремедіація забруднених ґрунтів",
+          meta: "ННЦ «Інститут біології та медицини» • к.б.н. Марія Коваленко, к.б.н. Олександр Смірнов"
+        }
+      ],
+      en: [
+        {
+          mod: "Modules No. 2, 4, 6",
+          ects: "0.5 ECTS • 15 h",
+          title: "Integrating Magnetic and Soil Science Methods for the Assessment of Soil Properties",
+          meta: "Institute of Geology • Oleksandr Menshov, DSc (Geology)"
+        },
+        {
+          mod: "Modules No. 2, 4, 6",
+          ects: "0.5 ECTS • 15 h",
+          title: "Geophysical Radiometric and Electrometric Methods for Soil Studies",
+          meta: "Institute of Geology • Viktor Onyshchuk, PhD (Geology)"
+        },
+        {
+          mod: "Module No. 2",
+          ects: "0.5 ECTS • 15 h",
+          title: "Field Soil Investigation of Study Areas",
+          meta: "Faculty of Geography • Viktoriia Udovychenko, DSc (Geography)"
+        },
+        {
+          mod: "Module No. 3",
+          ects: "0.5 ECTS • 15 h",
+          title: "Main Types of Environmental Pollutants and Pathways of Their Impact",
+          meta: "Faculty of Chemistry • Oksana Tananaiko, DSc; Maryna Zui, PhD"
+        },
+        {
+          mod: "Module No. 4",
+          ects: "0.5 ECTS • 15 h",
+          title: "Field Screening of the Pollutants Using Portable Devices",
+          meta: "Faculty of Chemistry • Serhii Lelyushok, PhD"
+        },
+        {
+          mod: "Module No. 5",
+          ects: "0.5 ECTS • 15 h",
+          title: "Methodology of Sample Preparation, Laboratory Measurements and Analysis",
+          meta: "Faculty of Geography • Dmytro Ivanok, PhD; Sergii Zapototskyi, DSc; Liudmyla Bilous, PhD"
+        },
+        {
+          mod: "Module No. 6",
+          ects: "0.5 ECTS • 15 h",
+          title: "Laboratory Analysis and Agricultural Interpretation",
+          meta: "Faculty of Chemistry • Mykola Ischenko, PhD; Maryna Zui, PhD"
+        },
+        {
+          mod: "Modules No. 7–8",
+          ects: "1.0 ECTS • 30 h",
+          title: "Ecotoxicology and Environmental Bioremediation",
+          meta: "Institute of Biology and Medicine • Mariia Kovalenko, PhD; Oleksandr Smirnov, PhD"
+        }
+      ]
+    };
+    const CUSTOM_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrfebxFDqUfphRYHyKVeB7PfoL3UE2rkDR0BtWlmALA8usPs-VmGjMI1iu4qLD0GEX/exec";
     const SALT_KEY = "Hope_Hack_Helps";
     const SCRIPT_URL = CUSTOM_SCRIPT_URL.trim();
     let currentLang = 'uk';
@@ -988,14 +1375,21 @@
     let searchTerm = '';
     let sortKey = 'date-desc';
     let selectedMonth = 'all';
-    let currentAuthMode = 'login';
+    let selectedCategory = 'all';
     let activeYtPlayer = null;
     let ytTrackerTimer = null;
     let adWatchdogTimer = null;
     let currentActiveVideoId = null;
+    let currentModalUid = null;
     let isUserSeeking = false;
+    let isCodeVisible = false;
     function t() {
       return TRANSLATIONS[currentLang] || TRANSLATIONS.uk;
+    }
+    function refreshIcons() {
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
     }
     // Чисте обчислення SHA-256
     function sha256Hex(ascii) {
@@ -1028,17 +1422,17 @@
       words.push(bitLen | 0);
       const W = new Int32Array(64);
       for (let i = 0; i < words.length; i += 16) {
-        for (let t = 0; t < 16; t++) W[t] = words[i + t] | 0;
-        for (let t = 16; t < 64; t++) {
-          const s0 = rotr(7, W[t - 15]) ^ rotr(18, W[t - 15]) ^ (W[t - 15] >>> 3);
-          const s1 = rotr(17, W[t - 2]) ^ rotr(19, W[t - 2]) ^ (W[t - 2] >>> 10);
-          W[t] = (W[t - 16] + s0 + W[t - 7] + s1) | 0;
+        for (let step = 0; step < 16; step++) W[step] = words[i + step] | 0;
+        for (let step = 16; step < 64; step++) {
+          const s0 = rotr(7, W[step - 15]) ^ rotr(18, W[step - 15]) ^ (W[step - 15] >>> 3);
+          const s1 = rotr(17, W[step - 2]) ^ rotr(19, W[step - 2]) ^ (W[step - 2] >>> 10);
+          W[step] = (W[step - 16] + s0 + W[step - 7] + s1) | 0;
         }
         let a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7];
-        for (let t = 0; t < 64; t++) {
+        for (let step = 0; step < 64; step++) {
           const S1 = rotr(6, e) ^ rotr(11, e) ^ rotr(25, e);
           const ch = (e & f) ^ ((~e) & g);
-          const temp1 = (h + S1 + ch + K[t] + W[t]) | 0;
+          const temp1 = (h + S1 + ch + K[step] + W[step]) | 0;
           const S0 = rotr(2, a) ^ rotr(13, a) ^ rotr(22, a);
           const maj = (a & b) ^ (a & c) ^ (b & c);
           const temp2 = (S0 + maj) | 0;
@@ -1062,6 +1456,25 @@
     function clientSaltedHash(str) {
       return sha256Hex(SALT_KEY + String(str));
     }
+    /* Універсальне вилучення 11-символьного YouTube ID з будь-якого посилання або сирого ID */
+    function extractYoutubeId(val) {
+      if (val === null || val === undefined) return '';
+      const raw = String(val).trim();
+      if (!raw || raw === '-' || raw === '—' || raw.toLowerCase() === 'n/a') return '';
+      if (/^[a-zA-Z0-9_-]{11}$/.test(raw)) return raw;
+      const patterns = [
+        /[?&]v=([a-zA-Z0-9_-]{11})/,
+        /youtu\.be\/([a-zA-Z0-9_-]{11})/,
+        /youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/,
+        /youtube\.com\/live\/([a-zA-Z0-9_-]{11})/,
+        /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/
+      ];
+      for (const re of patterns) {
+        const m = raw.match(re);
+        if (m && m[1]) return m[1];
+      }
+      return '';
+    }
     function _getThumb(vid) {
       if (!vid) return '';
       return `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
@@ -1071,28 +1484,28 @@
       return `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
     }
     // DOM посилання
-    const authGateTop = document.getElementById('authGateTop');
-    const authLogin = document.getElementById('authLogin');
-    const authPass = document.getElementById('authPass');
-    const authComment = document.getElementById('authComment');
-    const authCommentSlot = document.getElementById('authCommentSlot');
-    const authSecureSlot = document.getElementById('authSecureSlot');
-    const authSubmitBtn = document.getElementById('authSubmitBtn');
-    const authStatusBanner = document.getElementById('authStatusBanner');
-    const tabBtnLogin = document.getElementById('tabBtnLogin');
-    const tabBtnRegister = document.getElementById('tabBtnRegister');
-    const authBadgeTitle = document.getElementById('authBadgeTitle');
-    const authBadgeIcon = document.getElementById('authBadgeIcon');
-    const authSubmitText = document.getElementById('authSubmitText');
+    const accessGateTop = document.getElementById('accessGateTop');
+    const participantIdInput = document.getElementById('participantIdInput');
+    const participantCodeInput = document.getElementById('participantCodeInput');
+    const toggleCodeVisBtn = document.getElementById('toggleCodeVisBtn');
+    const toggleCodeVisIcon = document.getElementById('toggleCodeVisIcon');
+    const accessSubmitBtn = document.getElementById('accessSubmitBtn');
+    const accessStatusBanner = document.getElementById('accessStatusBanner');
+    const accessBadgeTitle = document.getElementById('accessBadgeTitle');
+    const accessSubmitText = document.getElementById('accessSubmitText');
     const headerSearchBox = document.getElementById('headerSearchBox');
     const sessionHeaderBadge = document.getElementById('sessionHeaderBadge');
     const sessionUserLabel = document.getElementById('sessionUserLabel');
-    const portalLockNotice = document.getElementById('portalLockNotice');
+    const courseGateNotice = document.getElementById('courseGateNotice');
+    const publicOverviewSection = document.getElementById('publicOverviewSection');
+    const publicOverviewGrid = document.getElementById('publicOverviewGrid');
     const controlsCard = document.getElementById('controlsCard');
     const mainSearchInput = document.getElementById('mainSearchInput');
     const floatingSearchInput = document.getElementById('floatingSearchInput');
     const sortSelect = document.getElementById('sortSelect');
     const monthSelect = document.getElementById('monthSelect');
+    const categoryFilterWrapper = document.getElementById('categoryFilterWrapper');
+    const categorySelect = document.getElementById('categorySelect');
     const loadingState = document.getElementById('loadingState');
     const errorState = document.getElementById('errorState');
     const newsGrid = document.getElementById('newsGrid');
@@ -1107,6 +1520,31 @@
       initUIListeners();
       applyLanguage(currentLang);
     });
+    function toggleCodeVisibility() {
+      isCodeVisible = !isCodeVisible;
+      if (isCodeVisible) {
+        participantCodeInput.classList.remove('code-masked');
+        toggleCodeVisIcon.setAttribute('data-lucide', 'eye-off');
+      } else {
+        participantCodeInput.classList.add('code-masked');
+        toggleCodeVisIcon.setAttribute('data-lucide', 'eye');
+      }
+      refreshIcons();
+    }
+    function renderPublicModulesOverview() {
+      if (!publicOverviewGrid) return;
+      const modules = PUBLIC_MODULES_PREVIEW[currentLang] || PUBLIC_MODULES_PREVIEW.uk;
+      publicOverviewGrid.innerHTML = modules.map(m => `
+        <div class="public-module-card">
+          <div class="public-module-badge">
+            <span>${escapeHtml(m.mod)}</span>
+            <span class="public-module-ects">${escapeHtml(m.ects)}</span>
+          </div>
+          <div class="public-module-title">${escapeHtml(m.title)}</div>
+          <div class="public-module-meta">${escapeHtml(m.meta)}</div>
+        </div>
+      `).join('');
+    }
     /* ПЕРЕМИКАННЯ МОВ */
     function switchLanguage(lang) {
       if (!TRANSLATIONS[lang]) return;
@@ -1127,26 +1565,36 @@
       document.getElementById('uiHeaderTitle').innerText = dict.headerTitle;
       document.getElementById('uiHeaderSubtitle').innerText = dict.headerSubtitle;
       document.getElementById('uiProjectDesc').innerText = dict.projectDesc;
+      accessBadgeTitle.innerText = dict.badgePortal;
+      document.getElementById('uiManualRegPill').innerText = dict.manualRegPill;
+      participantIdInput.placeholder = dict.loginPlaceholder;
+      participantCodeInput.placeholder = dict.codePlaceholder;
+      toggleCodeVisBtn.title = dict.toggleCodeTitle;
       document.getElementById('uiSecureBadge').innerText = dict.secureBadge;
+      accessSubmitText.innerText = dict.btnOpenMaterials;
       document.getElementById('uiLogoutBtnText').innerText = dict.btnLogout;
       document.getElementById('uiLockNoticeH2').innerText = dict.lockH2;
       document.getElementById('uiLockNoticeP').innerText = dict.lockP;
       document.getElementById('uiLockNoticeTip').innerText = dict.lockTip;
+      document.getElementById('publicOverviewTitle').innerText = dict.publicOverviewTitle;
+      document.getElementById('publicOverviewSubtitle').innerText = dict.publicOverviewSubtitle;
+      renderPublicModulesOverview();
       document.getElementById('uiSortLabel').innerText = dict.sortLabel;
       document.getElementById('uiMonthLabel').innerText = dict.monthLabel;
+      document.getElementById('uiCategoryLabel').innerText = dict.categoryLabel;
       sortSelect.options[0].text = dict.sortNewest;
       sortSelect.options[1].text = dict.sortOldest;
       sortSelect.options[2].text = dict.sortNumDesc;
       sortSelect.options[3].text = dict.sortNumAsc;
       mainSearchInput.placeholder = dict.searchPlaceholder;
       floatingSearchInput.placeholder = dict.floatingSearchPlaceholder;
+      backToTopBtn.title = dict.backToTopTitle;
       document.getElementById('uiLoadingStateText').innerText = dict.loadingText;
       document.getElementById('uiErrorStateTitle').innerText = dict.errorTitle;
       document.getElementById('errorStateText').innerText = dict.errorText;
       document.getElementById('uiFooterTitle').innerText = dict.footerTitle;
       document.getElementById('uiFooterFunding').innerHTML = dict.footerFunding;
       document.getElementById('uiFooterCopy').innerText = dict.footerCopy;
-      setAuthMode(currentAuthMode);
       if (allNewsItems.length > 0) {
         allNewsItems.forEach(item => {
           item.date = formatDateToLocale(item.rawDate);
@@ -1157,74 +1605,29 @@
           }
         });
         updateMonthDropdown(allNewsItems);
+        updateCategoryDropdown(allNewsItems);
         updateAppUI();
+        if (currentModalUid && modalOverlay.classList.contains('active')) {
+          openModal(currentModalUid, true);
+        }
       }
-      lucide.createIcons();
+      refreshIcons();
     }
-    function setAuthMode(mode) {
-      currentAuthMode = mode;
-      hideAuthFeedback();
+    /* ПЕРЕВІРКА ДОСТУПУ ЗАРЕЄСТРОВАНОГО КОРИСТУВАЧА В БАЗІ ТА ОТРИМАННЯ МАТЕРІАЛІВ */
+    async function handleAccessCheck() {
+      const rawLogin = participantIdInput.value.trim().replace(/\s+/g, ' ');
+      const rawCode = participantCodeInput.value;
       const dict = t();
-      if (mode === 'register') {
-        tabBtnLogin.classList.remove('active');
-        tabBtnRegister.classList.add('active');
-        authSecureSlot.style.display = 'none';
-        authCommentSlot.style.display = 'flex';
-        authSubmitText.innerText = dict.btnRegister;
-        authBadgeTitle.innerText = dict.badgeRegister;
-        authBadgeIcon.setAttribute('data-lucide', 'user-plus');
-        authLogin.placeholder = dict.loginRegisterPlaceholder;
-        authPass.placeholder = dict.passRegisterPlaceholder;
-        if (authComment) authComment.placeholder = dict.commentPlaceholder;
-      } else {
-        tabBtnRegister.classList.remove('active');
-        tabBtnLogin.classList.add('active');
-        authCommentSlot.style.display = 'none';
-        authSecureSlot.style.display = 'flex';
-        authSubmitText.innerText = dict.btnLogin;
-        authBadgeTitle.innerText = dict.badgeLogin;
-        authBadgeIcon.setAttribute('data-lucide', 'shield-check');
-        authLogin.placeholder = dict.loginPlaceholder;
-        authPass.placeholder = dict.passPlaceholder;
-      }
-      lucide.createIcons();
-    }
-    /* ОБРОБКА АВТОРИЗАЦІЇ ТА ОТРИМАННЯ ЛЕКЦІЙ З ТАБЛИЦІ */
-    async function handleAuthSubmit(event) {
-      event.preventDefault();
-      const rawLogin = authLogin.value.trim().replace(/\s+/g, ' ');
-      const rawPass = authPass.value;
-      const dict = t();
-      if (!rawLogin || !rawPass) {
+      if (!rawLogin || !rawCode) {
         showFeedback(false, dict.msgFillAll);
         return;
       }
-      /* 1. БЕЗПЕЧНА СИМУЛЯЦІЯ РЕЄСТРАЦІЇ:
-         Жодні дані реєстрації не відправляються в мережу, 
-         що гарантує повну відсутність скарг систем безпеки */
-      if (currentAuthMode === 'register') {
-        hideAuthFeedback();
-        authSubmitBtn.disabled = true;
-        authSubmitText.innerText = dict.btnEncrypting;
-        setTimeout(() => {
-          authSubmitBtn.disabled = false;
-          authSubmitText.innerText = dict.btnRegister;
-          authPass.value = '';
-          if (authComment) authComment.value = '';
-          showFeedback(true, dict.msgRegisterSuccess);
-          lucide.createIcons();
-        }, 600);
-        return;
-      }
-      /* 2. АВТОРИЗАЦІЯ ТА ОТРИМАННЯ ЛЕКЦІЙ З ТАБЛИЦІ GOOGLE SHEETS:
-         Передаються лише клієнтські SHA-256 хеші із сіллю, 
-         без відкритого тексту паролів */
-      hideAuthFeedback();
-      authSubmitBtn.disabled = true;
-      authSubmitText.innerText = dict.btnVerifying;
+      hideAccessFeedback();
+      accessSubmitBtn.disabled = true;
+      accessSubmitText.innerText = dict.btnVerifying;
       const clientLoginHash = clientSaltedHash(rawLogin);
       const clientLoginHashLower = clientSaltedHash(rawLogin.toLowerCase());
-      const clientPassHash = clientSaltedHash(rawPass);
+      const clientPassHash = clientSaltedHash(rawCode);
       try {
         const payload = {
           action: "login",
@@ -1241,72 +1644,223 @@
           body: JSON.stringify(payload)
         });
         const data = await response.json();
-        authSubmitBtn.disabled = false;
-        authSubmitText.innerText = dict.btnLogin;
-        lucide.createIcons();
-        // СУВОРА ПЕРЕВІРКА: доступ відкривається ТІЛЬКИ якщо таблиця підтвердила користувача
+        accessSubmitBtn.disabled = false;
+        accessSubmitText.innerText = dict.btnOpenMaterials;
+        refreshIcons();
         if (data && data.success) {
           document.body.classList.add('logged-in');
-          authGateTop.style.display = 'none';
-          portalLockNotice.style.display = 'none';
+          accessGateTop.style.display = 'none';
+          courseGateNotice.style.display = 'none';
+          publicOverviewSection.style.display = 'none';
           headerSearchBox.style.display = 'block';
           sessionHeaderBadge.style.display = 'flex';
           controlsCard.style.display = 'flex';
           newsGrid.style.display = 'flex';
           sessionUserLabel.innerText = rawLogin;
-          // Отримуємо та відображаємо лекції безпосередньо з таблиці Google
-          ingestBackendItems(data.items || []);
+          ingestBackendItems(data.items || [], data.headers || null);
           updateMonthDropdown(allNewsItems);
+          updateCategoryDropdown(allNewsItems);
           updateAppUI();
         } else {
-          // Якщо користувача немає в таблиці або невірний пароль
-          showFeedback(false, (data && data.message) ? data.message : dict.msgLoginError);
+          showFeedback(false, (data && data.message) ? String(data.message) : dict.msgLoginError);
         }
       } catch (err) {
-        console.error("Помилка авторизації:", err);
-        authSubmitBtn.disabled = false;
-        authSubmitText.innerText = dict.btnLogin;
-        lucide.createIcons();
-        showFeedback(false, dict.msgLoginError);
+        console.error("Помилка перевірки доступу:", err);
+        accessSubmitBtn.disabled = false;
+        accessSubmitText.innerText = dict.btnOpenMaterials;
+        refreshIcons();
+        showFeedback(false, dict.msgFetchError);
       }
     }
     function showFeedback(isSuccess, text) {
-      if (!authStatusBanner) return;
-      authStatusBanner.innerText = text;
-      authStatusBanner.className = "auth-status-banner " + (isSuccess ? "success" : "error");
+      if (!accessStatusBanner) return;
+      accessStatusBanner.innerText = text;
+      accessStatusBanner.className = "access-status-banner " + (isSuccess ? "success" : "error");
     }
-    function hideAuthFeedback() {
-      if (!authStatusBanner) return;
-      authStatusBanner.style.display = 'none';
-      authStatusBanner.className = "auth-status-banner";
+    function hideAccessFeedback() {
+      if (!accessStatusBanner) return;
+      accessStatusBanner.style.display = 'none';
+      accessStatusBanner.className = "access-status-banner";
     }
     function handleLogout() {
+      closeModal();
       document.body.classList.remove('logged-in');
       allNewsItems = [];
+      selectedMonth = 'all';
+      selectedCategory = 'all';
+      searchTerm = '';
+      mainSearchInput.value = '';
+      floatingSearchInput.value = '';
       newsGrid.innerHTML = '';
       newsGrid.style.display = 'none';
       controlsCard.style.display = 'none';
+      categoryFilterWrapper.style.display = 'none';
       headerSearchBox.style.display = 'none';
       sessionHeaderBadge.style.display = 'none';
       floatingControls.classList.remove('visible');
-      authPass.value = '';
-      authLogin.value = '';
-      if (authComment) authComment.value = '';
-      hideAuthFeedback();
-      setAuthMode('login');
-      authGateTop.style.display = 'flex';
-      portalLockNotice.style.display = 'flex';
+      participantCodeInput.value = '';
+      participantIdInput.value = '';
+      isCodeVisible = false;
+      participantCodeInput.classList.add('code-masked');
+      toggleCodeVisIcon.setAttribute('data-lucide', 'eye');
+      hideAccessFeedback();
+      accessGateTop.style.display = 'flex';
+      courseGateNotice.style.display = 'flex';
+      publicOverviewSection.style.display = 'block';
       sessionUserLabel.innerText = '';
-      lucide.createIcons();
+      refreshIcons();
     }
-    function ingestBackendItems(items) {
+    /* ==========================================================================
+       УНІВЕРСАЛЬНИЙ ПАРСЕР РІЗНОТИПНИХ КОЛОНОК ТАБЛИЦІ (PDF -> XLSX / SHEETS)
+       ========================================================================== */
+    function normalizeHeaderKey(key) {
+      return String(key || '')
+        .toLowerCase()
+        .replace(/[\s_\-.:;()№"'«»`’]+/g, '');
+    }
+    function formatCellScalar(val) {
+      if (val === null || val === undefined) return '';
+      if (typeof val === 'boolean') {
+        const dict = t();
+        return val ? dict.yesLabel : dict.noLabel;
+      }
+      if (typeof val === 'number') {
+        return Number.isFinite(val) ? String(val) : '';
+      }
+      if (Array.isArray(val)) {
+        return val
+          .map(v => formatCellScalar(v))
+          .filter(s => s !== '')
+          .join('\n');
+      }
+      if (typeof val === 'object') {
+        if (val instanceof Date && !isNaN(val.getTime())) {
+          return val.toISOString().slice(0, 10);
+        }
+        return Object.entries(val)
+          .filter(([, v]) => v !== null && v !== undefined && String(v).trim() !== '')
+          .map(([k, v]) => `${k}: ${formatCellScalar(v)}`)
+          .join('\n');
+      }
+      return String(val).trim();
+    }
+    function extractFieldByAliases(rowObj, aliases, usedKeys) {
+      const normalizedEntries = Object.entries(rowObj).map(([k, v]) => ({
+        rawKey: k,
+        normKey: normalizeHeaderKey(k),
+        val: v
+      }));
+      for (const alias of aliases) {
+        const normAlias = normalizeHeaderKey(alias);
+        const match = normalizedEntries.find(e => e.normKey === normAlias);
+        if (match) {
+          usedKeys.add(match.rawKey);
+          const formatted = formatCellScalar(match.val);
+          if (formatted !== '') return { raw: match.val, text: formatted };
+        }
+      }
+      return { raw: null, text: '' };
+    }
+    function buildWorkloadSummary(rowObj, usedKeys) {
+      const directWorkload = extractFieldByAliases(rowObj, [
+        'workload', 'academicWorkload', 'hours', 'totalWorkload',
+        'навантаження', 'академічненавантаження', 'години'
+      ], usedKeys);
+      const lecH = extractFieldByAliases(rowObj, ['lectureHours', 'lecturesHours', 'лекційнігодини', 'лекціїгод'], usedKeys);
+      const labH = extractFieldByAliases(rowObj, ['labHours', 'practicalHours', 'laboratoryHours', 'практичнігодини', 'лабораторнігодини'], usedKeys);
+      const indH = extractFieldByAliases(rowObj, ['independentHours', 'homeworkHours', 'selfStudyHours', 'самостійнароботагод'], usedKeys);
+      const totH = extractFieldByAliases(rowObj, ['totalHours', 'allHours', 'всьогогодин', 'загальнийобсяггод'], usedKeys);
+      const parts = [];
+      const isUk = currentLang === 'uk';
+      if (lecH.text) parts.push(`${isUk ? 'Лекції' : 'Lectures'}: ${lecH.text}${/^\d+([.,]\d+)?$/.test(lecH.text) ? (isUk ? ' год' : ' h') : ''}`);
+      if (labH.text) parts.push(`${isUk ? 'Практичні/лабораторні' : 'Practical/Lab'}: ${labH.text}${/^\d+([.,]\d+)?$/.test(labH.text) ? (isUk ? ' год' : ' h') : ''}`);
+      if (indH.text) parts.push(`${isUk ? 'Самостійна робота' : 'Independent study'}: ${indH.text}${/^\d+([.,]\d+)?$/.test(indH.text) ? (isUk ? ' год' : ' h') : ''}`);
+      if (totH.text) parts.push(`${isUk ? 'Загалом' : 'Total'}: ${totH.text}${/^\d+([.,]\d+)?$/.test(totH.text) ? (isUk ? ' год' : ' h') : ''}`);
+      let summary = directWorkload.text;
+      if (parts.length > 0) {
+        const joined = parts.join(' • ');
+        summary = summary ? `${summary}\n${joined}` : joined;
+      }
+      return {
+        summary,
+        totalHours: totH.text || (directWorkload.text && /^\d+([.,]\d+)?$/.test(directWorkload.text) ? directWorkload.text : '')
+      };
+    }
+    function extractUrlsFromValue(val) {
+      const text = formatCellScalar(val);
+      if (!text) return [];
+      const matches = text.match(/https?:\/\/[^\s<>"')]+/gi) || [];
+      return Array.from(new Set(matches.map(u => u.replace(/[.,;]+$/, ''))));
+    }
+    function ingestBackendItems(rawItems, headers) {
       allNewsItems = [];
       const dict = t();
-      if (!Array.isArray(items)) return;
-      items.forEach((item, index) => {
-        const rawDate = item.rawDate || item.date || "";
-        const date = formatDateToLocale(rawDate);
-        const dateObj = parseDateString(rawDate || date);
+      if (!Array.isArray(rawItems)) return;
+      // Якщо бекенд повернув 2D-масив рядків з окремим масивом headers — перетворюємо в об'єкти
+      const normalizedRows = rawItems.map((entry, idx) => {
+        if (Array.isArray(entry) && Array.isArray(headers)) {
+          const obj = {};
+          headers.forEach((h, hIdx) => {
+            if (h !== undefined && h !== null && String(h).trim() !== '') {
+              obj[String(h)] = entry[hIdx];
+            }
+          });
+          obj.sheetRow = idx + 2;
+          return obj;
+        }
+        return (entry && typeof entry === 'object') ? entry : { title: String(entry || '') };
+      });
+      const SYSTEM_IGNORED_KEYS = new Set([
+        'sheetrow', 'rowindex', 'password', 'passhash', 'loginhash',
+        'loginhashlower', 'userkey', 'accesskey', 'token'
+      ]);
+      normalizedRows.forEach((rawRow, index) => {
+        const usedKeys = new Set();
+        const fId = extractFieldByAliases(rawRow, ['id', 'no', 'num', 'number', '№', 'номер'], usedKeys);
+        const fModule = extractFieldByAliases(rawRow, ['module', 'moduleno', 'modulenumber', 'модуль', 'номермодуля', 'модулі'], usedKeys);
+        const fDate = extractFieldByAliases(rawRow, ['rawdate', 'date', 'added', 'внесено', 'дата', 'створено'], usedKeys);
+        const fTitle = extractFieldByAliases(rawRow, ['title', 'name', 'заголовок', 'назва', 'тема', 'назвамодуля'], usedKeys);
+        const fLead = extractFieldByAliases(rawRow, ['lead', 'summary', 'description', 'shortdescription', 'короткийопис', 'короткийопислекції', 'опис', 'анотація'], usedKeys);
+        const fFull = extractFieldByAliases(rawRow, ['fulltext', 'content', 'notes', 'transcript', 'повнийтекст', 'повнийтекстконспекту', 'конспект'], usedKeys);
+        const fYoutube = extractFieldByAliases(rawRow, ['youtubeid', 'youtubeurl', 'youtube', 'video', 'videourl', 'посиланняyoutube', 'відео'], usedKeys);
+        const fInstitution = extractFieldByAliases(rawRow, ['institution', 'faculty', 'institutionfaculty', 'department', 'заклад', 'факультет', 'інститут', 'установатафакультет', 'установа'], usedKeys);
+        const fLecturer = extractFieldByAliases(rawRow, ['lecturer', 'lecturers', 'speaker', 'teacher', 'author', 'лектор', 'лектори', 'викладач', 'доповідач'], usedKeys);
+        const fInstructors = extractFieldByAliases(rawRow, ['instructors', 'labinstructors', 'practicalinstructors', 'інструктори', 'викладачіпрактичнихзанять', 'асистенти'], usedKeys);
+        const workloadData = buildWorkloadSummary(rawRow, usedKeys);
+        const fEcts = extractFieldByAliases(rawRow, ['ects', 'credits', 'creditallocation', 'кредити', 'кредитиects', 'обсягкредитів'], usedKeys);
+        const fLanguage = extractFieldByAliases(rawRow, ['language', 'lang', 'мова', 'мовавикладання'], usedKeys);
+        const fAudience = extractFieldByAliases(rawRow, ['targetaudience', 'audience', 'prerequisites', 'entryrequirements', 'цільовааудиторія', 'аудиторія', 'вимоги'], usedKeys);
+        const fAssessmentFormat = extractFieldByAliases(rawRow, ['assessmentformat', 'controlform', 'examformat', 'формаконтролю', 'форматоцінювання'], usedKeys);
+        const fOutcomes = extractFieldByAliases(rawRow, ['learningoutcomes', 'outcomes', 'результатинавчання', 'компетентності'], usedKeys);
+        const fObjective = extractFieldByAliases(rawRow, ['learningobjective', 'learningobjectives', 'objectives', 'mainobjective', 'мета', 'метанавчання', 'цілі'], usedKeys);
+        const fLectureContent = extractFieldByAliases(rawRow, ['lecturecontent', 'lecturetopics', 'lectures', 'topics', 'змістлекції', 'темилекцій', 'лекція'], usedKeys);
+        const fLabWork = extractFieldByAliases(rawRow, ['labwork', 'practicalwork', 'laboratorywork', 'лабораторнаробота', 'практичнаробота', 'лабораторніроботи'], usedKeys);
+        const fIndependent = extractFieldByAliases(rawRow, ['independentstudy', 'homework', 'selfstudy', 'selfdirectedstudy', 'самостійнаробота', 'домашнєзавдання'], usedKeys);
+        const fGrading = extractFieldByAliases(rawRow, ['gradingscale', 'assessmentcriteria', 'evaluation', 'assessmentstructure', 'шкалаоцінювання', 'оцінювання', 'критеріїоцінювання'], usedKeys);
+        const fResources = extractFieldByAliases(rawRow, ['resources', 'references', 'bibliography', 'literature', 'informationresources', 'інформаційніресурси', 'ресурси', 'література', 'джерела'], usedKeys);
+        const fCategory = extractFieldByAliases(rawRow, ['category', 'discipline', 'subject', 'категорія', 'напрям', 'дисципліна'], usedKeys);
+        const fTags = extractFieldByAliases(rawRow, ['tags', 'keywords', 'теги', 'ключовіслова'], usedKeys);
+        const fMaterialsUrl = extractFieldByAliases(rawRow, ['materialsurl', 'slidesurl', 'pdfurl', 'quizurl', 'files', 'links', 'url', 'додатковіматеріали', 'матеріали', 'посилання'], usedKeys);
+        // Збираємо будь-які інші нестандартні колонки таблиці, щоб жоден тип даних не загубився
+        const extraFields = [];
+        Object.entries(rawRow).forEach(([k, v]) => {
+          const normK = normalizeHeaderKey(k);
+          if (usedKeys.has(k) || SYSTEM_IGNORED_KEYS.has(normK)) return;
+          if (normK === 'extra' && v && typeof v === 'object' && !Array.isArray(v)) {
+            Object.entries(v).forEach(([ek, ev]) => {
+              const eText = formatCellScalar(ev);
+              if (eText !== '') extraFields.push({ label: ek, value: eText });
+            });
+            return;
+          }
+          const valText = formatCellScalar(v);
+          if (valText !== '') {
+            extraFields.push({ label: k, value: valText });
+          }
+        });
+        const rawDateVal = fDate.raw !== null ? fDate.raw : fDate.text;
+        const dateFormatted = formatDateToLocale(rawDateVal);
+        const dateObj = parseDateString(rawDateVal || dateFormatted);
         let monthKey = "";
         let monthLabel = "";
         if (dateObj.getTime() > 0) {
@@ -1315,19 +1869,57 @@
           monthKey = `${y}-${String(m + 1).padStart(2, '0')}`;
           monthLabel = `${dict.monthsNominative[m]} ${y}`;
         }
-        allNewsItems.push({
-          id: String(item.id || index + 1),
-          sheetRow: item.sheetRow || index + 1,
-          date: date || "—",
-          rawDate: rawDate,
+        let ectsBadge = fEcts.text;
+        if (ectsBadge && /^\d+([.,]\d+)?$/.test(ectsBadge)) {
+          ectsBadge = `${ectsBadge} ECTS`;
+        }
+        const categoryValue = fCategory.text || fInstitution.text;
+        const externalLinks = extractUrlsFromValue(fMaterialsUrl.raw || fMaterialsUrl.text);
+        const item = {
+          _uid: `item_${index}`,
+          id: fId.text || String(index + 1),
+          sheetRow: Number(rawRow.sheetRow) || index + 1,
+          moduleNumber: fModule.text,
+          date: dateFormatted || "—",
+          rawDate: rawDateVal,
           dateObj: dateObj,
           monthKey: monthKey,
           monthLabel: monthLabel,
-          title: item.title || (currentLang === 'uk' ? "Відеолекція проєкту" : "Project Video Lecture"),
-          lead: item.lead || "",
-          fullText: item.fullText || "",
-          youtubeId: item.youtubeId || ""
-        });
+          title: fTitle.text || (currentLang === 'uk' ? "Навчальний модуль проєкту" : "Project Learning Module"),
+          lead: fLead.text,
+          fullText: fFull.text,
+          youtubeId: extractYoutubeId(fYoutube.text),
+          institution: fInstitution.text,
+          lecturer: fLecturer.text,
+          instructors: fInstructors.text,
+          workload: workloadData.summary,
+          totalHours: workloadData.totalHours,
+          ects: ectsBadge,
+          language: fLanguage.text,
+          targetAudience: fAudience.text,
+          assessmentFormat: fAssessmentFormat.text,
+          learningOutcomes: fOutcomes.text,
+          learningObjective: fObjective.text,
+          lectureContent: fLectureContent.text,
+          labWork: fLabWork.text,
+          independentStudy: fIndependent.text,
+          gradingScale: fGrading.text,
+          resources: fResources.text,
+          category: categoryValue,
+          tags: fTags.text,
+          externalLinks: externalLinks,
+          extraFields: extraFields
+        };
+        // Попередньо формуємо рядок пошуку по всіх полях
+        item._searchBlob = [
+          item.id, item.moduleNumber, item.date, item.title, item.lead, item.fullText,
+          item.institution, item.lecturer, item.instructors, item.workload, item.ects,
+          item.language, item.targetAudience, item.assessmentFormat, item.learningOutcomes,
+          item.learningObjective, item.lectureContent, item.labWork, item.independentStudy,
+          item.gradingScale, item.resources, item.category, item.tags,
+          ...item.extraFields.map(ef => `${ef.label} ${ef.value}`)
+        ].join(' ').toLowerCase();
+        allNewsItems.push(item);
       });
     }
     function convertToLocaleDate(day, month, year) {
@@ -1337,9 +1929,25 @@
       }
       return `${day}.${month}.${year}`;
     }
-    function formatDateToLocale(dateStr) {
-      if (!dateStr || dateStr === "—" || String(dateStr).trim() === "") return "—";
-      let cleanStr = String(dateStr).trim();
+    function excelSerialToDate(serial) {
+      const num = Number(serial);
+      if (!Number.isFinite(num) || num < 20000 || num > 75000) return null;
+      const utcMs = Date.UTC(1899, 11, 30) + Math.round(num * 86400000);
+      const d = new Date(utcMs);
+      return isNaN(d.getTime()) ? null : new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+    }
+    function formatDateToLocale(dateInput) {
+      if (dateInput === null || dateInput === undefined) return "—";
+      if (typeof dateInput === 'number') {
+        const exDate = excelSerialToDate(dateInput);
+        if (exDate) return convertToLocaleDate(exDate.getDate(), exDate.getMonth() + 1, exDate.getFullYear());
+      }
+      let cleanStr = String(dateInput).trim();
+      if (!cleanStr || cleanStr === "—") return "—";
+      if (/^\d{5}(\.\d+)?$/.test(cleanStr)) {
+        const exDate = excelSerialToDate(parseFloat(cleanStr));
+        if (exDate) return convertToLocaleDate(exDate.getDate(), exDate.getMonth() + 1, exDate.getFullYear());
+      }
       const dmyRegex = /^(\d{1,2})[./-](\d{1,2})[./-](\d{4}|\d{2})$/;
       const matchDmy = cleanStr.match(dmyRegex);
       if (matchDmy) {
@@ -1373,10 +1981,10 @@
       if (!isNaN(parsed.getTime()) && parsed.getFullYear() > 1990) {
         return convertToLocaleDate(parsed.getDate(), parsed.getMonth() + 1, parsed.getFullYear());
       }
-      return dateStr;
+      return cleanStr;
     }
     function escapeHtml(text) {
-      if (!text) return '';
+      if (text === null || text === undefined) return '';
       return String(text)
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -1384,9 +1992,22 @@
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
     }
-    function parseDateString(dateStr) {
-      if (!dateStr || dateStr === "—") return new Date(0);
-      let cleanStr = String(dateStr).trim();
+    function parseDateString(dateInput) {
+      if (dateInput === null || dateInput === undefined) return new Date(0);
+      if (typeof dateInput === 'number') {
+        const exDate = excelSerialToDate(dateInput);
+        if (exDate) return exDate;
+      }
+      let cleanStr = String(dateInput).trim();
+      if (!cleanStr || cleanStr === "—") return new Date(0);
+      if (/^\d{5}(\.\d+)?$/.test(cleanStr)) {
+        const exDate = excelSerialToDate(parseFloat(cleanStr));
+        if (exDate) return exDate;
+      }
+      const ymdMatch = cleanStr.match(/^(\d{4})[./-](\d{1,2})[./-](\d{1,2})/);
+      if (ymdMatch) {
+        return new Date(parseInt(ymdMatch[1], 10), parseInt(ymdMatch[2], 10) - 1, parseInt(ymdMatch[3], 10));
+      }
       const ukrMonths = [
         "січня", "лютого", "березня", "квітня", "травня", "червня",
         "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"
@@ -1434,7 +2055,7 @@
       sortedMonthKeys.forEach(key => {
         const label = monthMap.get(key);
         const isSelected = key === selectedMonth ? 'selected' : '';
-        optionsHtml += `<option value="${key}" ${isSelected}>${label}</option>`;
+        optionsHtml += `<option value="${escapeHtml(key)}" ${isSelected}>${escapeHtml(label)}</option>`;
       });
       monthSelect.innerHTML = optionsHtml;
       if (selectedMonth && (sortedMonthKeys.includes(selectedMonth) || selectedMonth === 'all')) {
@@ -1444,10 +2065,33 @@
         selectedMonth = 'all';
       }
     }
+    function updateCategoryDropdown(items) {
+      if (!categorySelect || !categoryFilterWrapper) return;
+      const dict = t();
+      const cats = Array.from(new Set(
+        items.map(i => i.category).filter(c => c && c.trim() !== '')
+      )).sort();
+      if (cats.length < 2) {
+        categoryFilterWrapper.style.display = 'none';
+        selectedCategory = 'all';
+        return;
+      }
+      categoryFilterWrapper.style.display = 'flex';
+      let optionsHtml = `<option value="all">${dict.allCategories}</option>`;
+      cats.forEach(c => {
+        const isSel = c === selectedCategory ? 'selected' : '';
+        optionsHtml += `<option value="${escapeHtml(c)}" ${isSel}>${escapeHtml(c)}</option>`;
+      });
+      categorySelect.innerHTML = optionsHtml;
+      if (selectedCategory !== 'all' && !cats.includes(selectedCategory)) {
+        selectedCategory = 'all';
+        categorySelect.value = 'all';
+      }
+    }
     function processInlineFormatting(text) {
       if (!text) return '';
       const tokens = [];
-      let tokenized = text.replace(/<\/?(strong|b|em|i|u|a)(\s+[^>]*)?>/gi, (match) => {
+      let tokenized = String(text).replace(/<\/?(strong|b|em|i|u|a)(\s+[^>]*)?>/gi, (match) => {
         let norm = match;
         const lower = match.toLowerCase();
         if (lower.startsWith('<b ') || lower === '<b>') norm = '<strong>';
@@ -1472,7 +2116,7 @@
     }
     function formatFullArticleText(rawText) {
       if (!rawText) return '';
-      let clean = rawText.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+      let clean = String(rawText).replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
       clean = clean.replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>');
       clean = clean.replace(/\*\*\_([^_]+)\_\*\*/g, '<strong><em>$1</em></strong>');
       clean = clean.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
@@ -1482,9 +2126,11 @@
       lines.forEach(line => {
         let trimmed = line.trim();
         if (!trimmed) return;
-        const isBullet = /^[🔹🔷•\-\*▪️]\s*(.+)/.test(trimmed);
-        if (isBullet) {
-          html += `<div class="article-list-item">${processInlineFormatting(trimmed)}</div>`;
+        const isBullet = /^[🔹🔷•\-\*▪️]\s*(.+)/.test(trimmed);
+        const isNumberedSub = /^\d+\.\d+\.?\s+/.test(trimmed);
+        if (isBullet || isNumberedSub) {
+          const normalizedBullet = trimmed.replace(/^\s*/, '• ');
+          html += `<div class="article-list-item">${processInlineFormatting(normalizedBullet)}</div>`;
           return;
         }
         const isAuthorByline = /^підготував|^підготувала|^автор|^лектор|^доповідач|^prepared by|^author/i.test(trimmed) && trimmed.length < 130;
@@ -1510,6 +2156,14 @@
       return html;
     }
     function initUIListeners() {
+      [participantIdInput, participantCodeInput].forEach(inp => {
+        inp.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleAccessCheck();
+          }
+        });
+      });
       mainSearchInput.addEventListener('input', (e) => {
         searchTerm = e.target.value;
         floatingSearchInput.value = searchTerm;
@@ -1528,10 +2182,14 @@
         selectedMonth = e.target.value;
         updateAppUI();
       });
+      categorySelect.addEventListener('change', (e) => {
+        selectedCategory = e.target.value;
+        updateAppUI();
+      });
       window.addEventListener('scroll', () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
+        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
         document.getElementById('progress-bar').style.width = scrolled + '%';
         if (winScroll > 250 && allNewsItems.length > 0) {
           floatingControls.classList.add('visible');
@@ -1554,15 +2212,13 @@
       let data = [...allNewsItems];
       if (searchTerm) {
         const term = searchTerm.toLowerCase();
-        data = data.filter(item => {
-          return item.title.toLowerCase().includes(term) ||
-            item.lead.toLowerCase().includes(term) ||
-            item.fullText.toLowerCase().includes(term) ||
-            item.date.toLowerCase().includes(term);
-        });
+        data = data.filter(item => (item._searchBlob || '').includes(term));
       }
       if (selectedMonth && selectedMonth !== 'all') {
         data = data.filter(item => item.monthKey === selectedMonth);
+      }
+      if (selectedCategory && selectedCategory !== 'all') {
+        data = data.filter(item => item.category === selectedCategory);
       }
       if (sortKey === 'date-desc') {
         data.sort((a, b) => {
@@ -1607,16 +2263,16 @@
       if (activeData.length === 0) {
         newsGrid.innerHTML = `
           <div class="no-results" style="width: 100%;">
-            <i data-lucide="search-slash" style="width: 44px; height: 44px; opacity: 0.5; margin-bottom: 12px; color: #E2E8F0;"></i>
+            <i data-lucide="search-slash" style="width: 44px; height: 44px; opacity: 0.5; margin-bottom: 12px; color: #64748B;"></i>
             <h3 style="color: #0B1F3A;">${dict.noResultsTitle}</h3>
             <p style="color: #44546A;">${dict.noResultsText}</p>
           </div>
         `;
-        lucide.createIcons();
+        refreshIcons();
         return;
       }
       renderNewsFeed(activeData);
-      lucide.createIcons();
+      refreshIcons();
     }
     function renderNewsFeed(items) {
       newsGrid.innerHTML = '';
@@ -1646,22 +2302,40 @@
             </div>
           `;
         }
-        const cleanLead = item.lead ? escapeHtml(item.lead.trim()) : '';
+        const metaChips = [];
+        if (item.moduleNumber) {
+          metaChips.push(`<span class="meta-chip accent">${escapeHtml(item.moduleNumber)}</span>`);
+        }
+        if (item.ects) {
+          metaChips.push(`<span class="meta-chip">${escapeHtml(item.ects)}</span>`);
+        }
+        if (item.language) {
+          metaChips.push(`<span class="meta-chip">${escapeHtml(item.language)}</span>`);
+        }
+        const attributionParts = [item.lecturer, item.institution].filter(Boolean);
+        const attributionHtml = attributionParts.length > 0
+          ? `<div class="news-card-attribution">${escapeHtml(attributionParts.join(' • '))}</div>`
+          : '';
+        const excerptSource = item.lead || item.learningObjective || '';
+        const cleanLead = excerptSource ? escapeHtml(excerptSource.trim()) : '';
+        const actionBtnLabel = item.youtubeId ? dict.watchLectureBtn : dict.viewDetailsBtn;
         const cardHtml = `
-          <article class="news-card" onclick="openModal('${item.id}')">
+          <article class="news-card" onclick="openModal('${escapeHtml(item._uid)}')">
             ${mediaLeftHtml}
             <div class="news-card-body-wrap">
               <div>
                 <div class="news-card-meta-top">
-                  <span class="news-card-meta-text">${dict.lectureNumberPrefix} ${item.id} • ${item.date}</span>
+                  <span class="news-card-meta-text">${dict.lectureNumberPrefix} ${escapeHtml(item.id)} • ${escapeHtml(item.date)}</span>
+                  ${metaChips.join('')}
                 </div>
                 <h2 class="news-card-title">${escapeHtml(item.title)}</h2>
                 <div class="news-card-divider"></div>
+                ${attributionHtml}
                 ${cleanLead ? `<p class="news-card-excerpt">${cleanLead}</p>` : ''}
               </div>
               <div class="news-card-footer">
                 <span class="read-more-btn">
-                  <span>${dict.watchLectureBtn}</span>
+                  <span>${actionBtnLabel}</span>
                   <i data-lucide="arrow-right"></i>
                 </span>
               </div>
@@ -1766,12 +2440,12 @@
       if (state === YT.PlayerState.PLAYING) {
         if (centerBadge) centerBadge.classList.add('hidden');
         if (playIcon) playIcon.setAttribute('data-lucide', 'pause');
-        lucide.createIcons();
+        refreshIcons();
         startPlayerTracker();
       } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
         if (centerBadge) centerBadge.classList.remove('hidden');
         if (playIcon) playIcon.setAttribute('data-lucide', 'play');
-        lucide.createIcons();
+        refreshIcons();
         stopPlayerTracker();
         if (state === YT.PlayerState.ENDED && player) {
           const seekInput = document.getElementById('cpSeekInput');
@@ -1872,7 +2546,7 @@
             if (volInput) volInput.value = 0;
             if (volIcon) volIcon.setAttribute('data-lucide', 'volume-x');
           }
-          lucide.createIcons();
+          refreshIcons();
         };
       }
       if (volInput) {
@@ -1883,7 +2557,7 @@
           const volIcon = document.getElementById('cpVolumeIcon');
           if (volIcon) {
             volIcon.setAttribute('data-lucide', val === 0 ? 'volume-x' : (val < 50 ? 'volume-1' : 'volume-2'));
-            lucide.createIcons();
+            refreshIcons();
           }
         };
       }
@@ -1892,14 +2566,30 @@
         const fsIcon = document.getElementById('cpFullscreenIcon');
         if (fsIcon) {
           fsIcon.setAttribute('data-lucide', document.fullscreenElement ? 'minimize' : 'maximize');
-          lucide.createIcons();
+          refreshIcons();
         }
       };
     }
-    function openModal(itemId) {
-      const item = allNewsItems.find(i => i.id === itemId);
+    function buildSectionBlock(title, rawContent, iconName, highlightRed = false) {
+      if (!rawContent) return '';
+      return `
+        <div class="module-section-box${highlightRed ? ' highlight-red' : ''}">
+          <div class="module-section-title">
+            <i data-lucide="${iconName}" style="width: 16px; height: 16px; color: ${highlightRed ? 'var(--primary-red)' : 'var(--accent-blue)'};"></i>
+            <span>${escapeHtml(title)}</span>
+          </div>
+          <div class="modal-paragraphs-block" style="margin-bottom: 0;">
+            ${formatFullArticleText(rawContent)}
+          </div>
+        </div>
+      `;
+    }
+    function openModal(itemUid, skipVideoRecreate = false) {
+      const item = allNewsItems.find(i => i._uid === itemUid || i.id === String(itemUid));
       if (!item) return;
+      currentModalUid = item._uid;
       const dict = t();
+      const L = dict.labels;
       currentActiveVideoId = item.youtubeId || null;
       let videoSectionHtml = '';
       if (item.youtubeId) {
@@ -1936,24 +2626,100 @@
           </div>
         `;
       }
+      // Паспорт загальної інформації модуля (відображається лише якщо є відповідні колонки)
+      const passportRows = [
+        { label: L.moduleNumber, val: item.moduleNumber },
+        { label: L.institution, val: item.institution },
+        { label: L.lecturer, val: item.lecturer },
+        { label: L.instructors, val: item.instructors },
+        { label: L.workload, val: item.workload },
+        { label: L.ects, val: item.ects },
+        { label: L.language, val: item.language },
+        { label: L.targetAudience, val: item.targetAudience },
+        { label: L.assessmentFormat, val: item.assessmentFormat },
+        { label: L.category, val: item.category !== item.institution ? item.category : '' },
+        { label: L.tags, val: item.tags }
+      ].filter(r => r.val && String(r.val).trim() !== '');
+      const passportHtml = passportRows.length > 0 ? `
+        <div class="module-passport-grid">
+          ${passportRows.map(r => `
+            <div class="passport-item">
+              <span class="passport-label">${escapeHtml(r.label)}</span>
+              <span class="passport-value">${escapeHtml(r.val)}</span>
+            </div>
+          `).join('')}
+        </div>
+      ` : '';
+      const sectionsHtml = [
+        buildSectionBlock(L.learningObjective, item.learningObjective, 'target', true),
+        buildSectionBlock(L.learningOutcomes, item.learningOutcomes, 'award', false),
+        buildSectionBlock(L.lectureContent, item.lectureContent, 'book-open', false),
+        buildSectionBlock(L.labWork, item.labWork, 'flask-conical', false),
+        buildSectionBlock(L.independentStudy, item.independentStudy, 'clipboard-list', false),
+        buildSectionBlock(L.gradingScale, item.gradingScale, 'check-square', false),
+        buildSectionBlock(L.resources, item.resources, 'library', false)
+      ].join('');
       const formattedArticleBody = item.fullText ? formatFullArticleText(item.fullText) : '';
+      const fullTextBlockHtml = formattedArticleBody
+        ? `<div class="modal-paragraphs-block">${formattedArticleBody}</div>`
+        : '';
+      const externalLinksHtml = (item.externalLinks && item.externalLinks.length > 0) ? `
+        <div class="module-section-box">
+          <div class="module-section-title">
+            <i data-lucide="link" style="width: 16px; height: 16px; color: var(--accent-blue);"></i>
+            <span>${escapeHtml(L.externalLinks)}</span>
+          </div>
+          <div class="module-links-row">
+            ${item.externalLinks.map((u, idx) => `
+              <a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="module-link-chip">
+                <i data-lucide="external-link" style="width: 13px; height: 13px;"></i>
+                <span>${escapeHtml(u.length > 55 ? u.slice(0, 52) + '...' : u)}</span>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      ` : '';
+      const extraFieldsHtml = (item.extraFields && item.extraFields.length > 0) ? `
+        <div class="module-section-box">
+          <div class="module-section-title">
+            <i data-lucide="table-properties" style="width: 16px; height: 16px; color: var(--accent-blue);"></i>
+            <span>${escapeHtml(L.additionalFields)}</span>
+          </div>
+          <div class="module-passport-grid" style="margin-bottom: 0;">
+            ${item.extraFields.map(ef => `
+              <div class="passport-item">
+                <span class="passport-label">${escapeHtml(ef.label)}</span>
+                <span class="passport-value">${processInlineFormatting(ef.value)}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : '';
       modalTarget.innerHTML = `
-        ${videoSectionHtml}
-        <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 14px;">
-          <div class="news-card-meta-text"><span>${dict.lectureNumberPrefix} ${item.id} • ${item.date}</span></div>
+        ${!skipVideoRecreate ? videoSectionHtml : ''}
+        <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 14px; gap: 8px; flex-wrap: wrap;">
+          ${item.moduleNumber ? `<span class="meta-chip accent">${escapeHtml(item.moduleNumber)}</span>` : ''}
+          <div class="news-card-meta-text"><span>${dict.lectureNumberPrefix} ${escapeHtml(item.id)} • ${escapeHtml(item.date)}</span></div>
         </div>
         <h1 class="modal-title">${escapeHtml(item.title)}</h1>
         <div class="news-card-divider" style="width: 45px; height: 4px; margin-bottom: 18px;"></div>
-        ${formattedArticleBody ? `<div class="modal-paragraphs-block">${formattedArticleBody}</div>` : ''}
+        ${passportHtml}
+        ${sectionsHtml}
+        ${fullTextBlockHtml}
+        ${externalLinksHtml}
+        ${extraFieldsHtml}
       `;
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
-      lucide.createIcons();
-      if (item.youtubeId) createProtectedPlayer(item.youtubeId);
+      refreshIcons();
+      if (item.youtubeId && !skipVideoRecreate) {
+        createProtectedPlayer(item.youtubeId);
+      }
     }
     function closeModal() {
       modalOverlay.classList.remove('active');
       document.body.style.overflow = '';
+      currentModalUid = null;
       stopPlayerTracker();
       if (adWatchdogTimer) { clearInterval(adWatchdogTimer); adWatchdogTimer = null; }
       if (activeYtPlayer) { try { activeYtPlayer.destroy(); } catch (e) {} activeYtPlayer = null; }
