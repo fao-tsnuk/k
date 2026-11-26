@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="color-scheme" content="light">
   <title id="htmlPageTitle">FAO & КНУ імені Тараса Шевченка — Відкриті лекції та дослідження</title>
-  <!-- Inline SVG Favicon (без зовнішніх редіректів) -->
+  <!-- Inline SVG Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='16' fill='%230057B7'/%3E%3Crect y='16' width='32' height='16' fill='%23FFD700'/%3E%3C/svg%3E">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <!-- Шрифт Montserrat -->
@@ -267,7 +267,7 @@
     .access-top-input {
       width: 100%;
       height: 34px;
-      padding: 4px 32px 4px 30px;
+      padding: 4px 12px 4px 30px;
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 7px;
       font-family: var(--font-family);
@@ -277,52 +277,13 @@
       outline: none;
       transition: all 0.2s ease;
     }
-    .access-top-input.code-masked {
-      -webkit-text-security: disc;
-      letter-spacing: 0.08em;
-    }
     .access-top-input::placeholder {
       color: #64748B;
       font-weight: 500;
-      letter-spacing: normal;
-      -webkit-text-security: none;
     }
     .access-top-input:focus {
       border-color: #FF6B6B;
       box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3);
-    }
-    .toggle-vis-btn {
-      position: absolute;
-      right: 6px;
-      background: transparent;
-      border: none;
-      color: #64748B;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4px;
-      border-radius: 4px;
-      transition: color 0.15s ease;
-    }
-    .toggle-vis-btn:hover {
-      color: #0F172A;
-    }
-    .access-secure-badge {
-      width: 100%;
-      min-height: 28px;
-      padding: 3px 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px dashed rgba(255, 255, 255, 0.2);
-      border-radius: 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      color: #E2E8F0;
-      font-size: 0.67rem;
-      font-weight: 600;
-      text-align: center;
     }
     .access-top-btn {
       background-color: var(--primary-red);
@@ -446,24 +407,28 @@
       display: flex;
       flex-direction: column;
     }
+    body:not(.logged-in) main {
+      justify-content: center;
+    }
     .course-gate-notice {
       background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-left: 5px solid var(--primary-red);
       border-radius: 14px;
-      padding: 16px 22px;
+      padding: 20px 24px;
       text-align: center;
+      max-width: 680px;
       width: 100%;
-      margin: 0 0 18px 0;
+      margin: 12px auto;
       box-shadow: 0 4px 16px rgba(11, 25, 44, 0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
     .gate-icon-pill {
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: rgba(18, 59, 102, 0.08);
       color: var(--daisi-navy);
@@ -471,96 +436,20 @@
       align-items: center;
       justify-content: center;
     }
-    .course-gate-notice h2 { font-size: 1.08rem; color: #0B1F3A; font-weight: 800; margin: 0; }
-    .course-gate-notice p { font-size: 0.82rem; color: #44546A; line-height: 1.55; margin: 0; max-width: 760px; }
+    .course-gate-notice h2 { font-size: 1.12rem; color: #0B1F3A; font-weight: 800; margin: 0; }
+    .course-gate-notice p { font-size: 0.83rem; color: #44546A; line-height: 1.55; margin: 0; }
     .gate-tip-box {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       font-weight: 600;
       color: var(--accent-blue);
       background: var(--bg-light);
-      padding: 5px 12px;
+      padding: 5px 14px;
       border-radius: 16px;
       border: 1px solid var(--border-color);
       margin-top: 2px;
-    }
-    /* ПУБЛІЧНИЙ ОГЛЯД ПРОГРАМИ МОДУЛІВ (ДО ВХОДУ) */
-    .public-overview-section {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 20px 22px;
-      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.04);
-      width: 100%;
-      margin-bottom: 12px;
-    }
-    .public-overview-head {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 12px;
-    }
-    .public-overview-head h3 {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text-title);
-      margin: 0;
-    }
-    .public-overview-head p {
-      font-size: 0.8rem;
-      color: var(--text-body);
-      margin: 0;
-    }
-    .public-overview-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-      gap: 14px;
-    }
-    .public-module-card {
-      background: var(--bg-light);
-      border: 1px solid var(--border-color);
-      border-top: 3px solid var(--daisi-navy);
-      border-radius: 12px;
-      padding: 13px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .public-module-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--primary-red);
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-    .public-module-ects {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      color: var(--accent-blue);
-      padding: 1px 7px;
-      border-radius: 10px;
-      font-size: 0.68rem;
-      text-transform: none;
-    }
-    .public-module-title {
-      font-size: 0.84rem;
-      font-weight: 700;
-      color: var(--text-title);
-      line-height: 1.35;
-    }
-    .public-module-meta {
-      font-size: 0.74rem;
-      color: var(--text-body);
-      line-height: 1.45;
-      margin-top: auto;
     }
     .controls-card {
       background: #FFFFFF !important;
@@ -877,21 +766,21 @@
       <div class="header-branding">
         <div class="branding-header-row">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/FAO_logo.svg/512px-FAO_logo.svg.png"
+            src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/FAO_logo.svg/3840px-FAO_logo.svg.png?utm_source=uk.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
             alt="FAO Logo"
             class="daisi-header-logo"
             referrerpolicy="no-referrer"
             decoding="async"
             style="object-fit: contain; padding: 3px;"
-            onerror="this.style.display='none'"
+            onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://upload.wikimedia.org/wikipedia/commons/d/db/FAO_logo.svg';}"
           >
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/9/9f/%D0%9A%D0%B8%D1%97%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BD%D0%B0%D1%86%D1%96%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%83%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82_%D1%96%D0%BC%D0%B5%D0%BD%D1%96_%D0%A2%D0%B0%D1%80%D0%B0%D1%81%D0%B0_%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%B0.png"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgjEQQ3vzGutwq4JX7hgVMt81j0-gDeM_tH_hG3xxvYP3zXAxQIjr88GQ&s=10"
             alt="КНУ Logo"
             class="daisi-header-logo logo-tsnuk-crop"
             referrerpolicy="no-referrer"
             decoding="async"
-            onerror="this.style.display='none'"
+            onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://upload.wikimedia.org/wikipedia/commons/9/9f/%D0%9A%D0%B8%D1%97%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BD%D0%B0%D1%86%D1%96%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%83%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82_%D1%96%D0%BC%D0%B5%D0%BD%D1%96_%D0%A2%D0%B0%D1%80%D0%B0%D1%81%D0%B0_%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%B0.png';}"
           >
           <div class="branding-titles">
             <h1 id="uiHeaderTitle">FAO & КНУ імені Тараса Шевченка</h1>
@@ -911,12 +800,12 @@
             <button type="button" id="langBtnEn" class="lang-btn" onclick="switchLanguage('en')">EN</button>
           </div>
         </div>
-        <!-- Панель перевірки доступу слухачів (без form і type="password") -->
+        <!-- Панель перевірки учасників (без form, type="password" і css text-security) -->
         <div id="accessGateTop" class="access-top-card">
           <div class="access-top-header">
             <span class="access-top-badge">
               <i data-lucide="book-open-check" id="accessBadgeIcon"></i>
-              <span id="accessBadgeTitle">Портал слухачів</span>
+              <span id="accessBadgeTitle">Доступ слухача</span>
             </span>
             <span class="access-manual-pill" id="uiManualRegPill">За реєстрацією</span>
           </div>
@@ -927,7 +816,7 @@
                 type="text"
                 id="participantIdInput"
                 class="access-top-input"
-                placeholder="Логін (ідентифікатор)"
+                placeholder="Ідентифікатор слухача"
                 autocomplete="off"
                 autocorrect="off"
                 autocapitalize="none"
@@ -943,8 +832,8 @@
               <input
                 type="text"
                 id="participantCodeInput"
-                class="access-top-input code-masked"
-                placeholder="Пароль (код доступу)"
+                class="access-top-input"
+                placeholder="Персональний код доступу"
                 autocomplete="off"
                 autocorrect="off"
                 autocapitalize="none"
@@ -954,16 +843,9 @@
                 data-bwignore="true"
                 data-form-type="other"
               >
-              <button type="button" id="toggleCodeVisBtn" class="toggle-vis-btn" onclick="toggleCodeVisibility()" title="Показати / приховати код">
-                <i data-lucide="eye" id="toggleCodeVisIcon" style="width: 14px; height: 14px;"></i>
-              </button>
-            </div>
-            <div class="access-secure-badge" id="accessSecureSlot">
-              <i data-lucide="shield-check" style="width: 12px; height: 12px; color: #4ADE80; flex-shrink: 0;"></i>
-              <span id="uiSecureBadge">Перевірка хеш-ключа SHA-256</span>
             </div>
             <button type="button" id="accessSubmitBtn" class="access-top-btn" onclick="handleAccessCheck()">
-              <span id="accessSubmitText">Відкрити матеріали</span>
+              <span id="accessSubmitText">Завантажити матеріали</span>
               <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i>
             </button>
             <div id="accessStatusBanner" class="access-status-banner"></div>
@@ -972,13 +854,13 @@
         <div id="headerSearchBox" class="header-search" style="display: none;">
           <div class="search-container">
             <i data-lucide="search" class="search-icon"></i>
-            <input type="text" id="mainSearchInput" class="search-input" placeholder="Шукати лекцію або тему виступу...">
+            <input type="text" id="mainSearchInput" class="search-input" placeholder="Шукати лекцію, модуль, лектора або тему...">
           </div>
         </div>
         <div id="sessionHeaderBadge" class="session-header-badge" style="display: none;">
           <span class="session-user-text">
             <i data-lucide="check-circle" style="width: 14px; height: 14px; color: #4ADE80;"></i>
-            <span id="sessionUserLabel">Авторизовано</span>
+            <span id="sessionUserLabel">Слухач</span>
           </span>
           <button type="button" class="logout-header-btn" onclick="handleLogout()" title="Завершити сеанс">
             <i data-lucide="log-out" style="width: 12px; height: 12px;"></i>
@@ -993,23 +875,15 @@
       <div class="gate-icon-pill">
         <i data-lucide="graduation-cap" style="width: 20px; height: 20px;"></i>
       </div>
-      <h2 id="uiLockNoticeH2">Доступ до відеолекцій та конспектів курсу</h2>
+      <h2 id="uiLockNoticeH2">Освітній портал курсу FAO & КНУ</h2>
       <p id="uiLockNoticeP">
-        Усіх слухачів курсу FAO & КНУ імені Тараса Шевченка реєструє координатор програми вручну. Для перегляду відеолекцій, робочих програм модулів та навчальних матеріалів введіть надані вам логін та код доступу (пароль) у панелі праворуч угорі.
+        Усіх учасників програми реєструє координатор курсу вручну. Щоб завантажити відеолекції, модулі та навчальні матеріали з бази курсу, введіть надані вам ідентифікатор слухача та персональний код доступу у панелі праворуч угорі.
       </p>
       <div class="gate-tip-box">
         <i data-lucide="mail" style="width: 13px; height: 13px;"></i>
-        <span id="uiLockNoticeTip">Для отримання облікових даних звертайтеся на grant.ndch@knu.ua</span>
+        <span id="uiLockNoticeTip">Питання щодо реєстрації учасників: grant.ndch@knu.ua</span>
       </div>
     </div>
-    <!-- Відкритий огляд навчальних модулів (відображається до входу як прозорий опис курсу) -->
-    <section id="publicOverviewSection" class="public-overview-section">
-      <div class="public-overview-head">
-        <h3 id="publicOverviewTitle">Програма навчальних модулів (Відкритий огляд)</h3>
-        <p id="publicOverviewSubtitle">Нижче наведено перелік освітніх модулів спільного проєкту FAO та КНУ імені Тараса Шевченка з дослідження, моніторингу та відновлення ґрунтів.</p>
-      </div>
-      <div id="publicOverviewGrid" class="public-overview-grid"></div>
-    </section>
     <div class="controls-card" id="controlsCard" style="display: none;">
       <div class="controls-left-group">
         <div class="control-item-wrapper">
@@ -1046,7 +920,7 @@
     </div>
     <div id="loadingState" class="loading-state" style="display: none;">
       <div class="spinner"></div>
-      <p id="uiLoadingStateText">Отримання захищених відеолекцій та матеріалів...</p>
+      <p id="uiLoadingStateText">Отримання навчальних матеріалів із бази даних...</p>
     </div>
     <div id="errorState" class="error-state" style="display: none;">
       <i data-lucide="alert-triangle" class="error-icon" style="width: 44px; height: 44px; color: var(--primary-red);"></i>
@@ -1106,26 +980,21 @@
         headerTitle: "FAO & КНУ імені Тараса Шевченка",
         headerSubtitle: "Цикл відкритих лекцій, спільні дослідження та відеоматеріали партнерства",
         projectDesc: "Співпраця Продовольчої та сільськогосподарської організації ООН (FAO) та Київського національного університету імені Тараса Шевченка присвячена проведенню циклу відкритих навчальних лекцій, практичних відеокурсів та експертних зустрічей. Тематика охоплює продовольчу безпеку, сталий розвиток агросектору, кліматичну стійкість та відновлення України.",
-        badgePortal: "Портал слухачів",
+        badgePortal: "Доступ слухача",
         manualRegPill: "За реєстрацією",
-        loginPlaceholder: "Логін (ідентифікатор)",
-        codePlaceholder: "Пароль (код доступу)",
-        toggleCodeTitle: "Показати / приховати код",
-        secureBadge: "Перевірка хеш-ключа SHA-256",
-        btnOpenMaterials: "Відкрити матеріали",
-        btnVerifying: "Перевірка...",
-        msgFillAll: "Введіть логін та код доступу!",
-        msgLoginError: "Облікові дані не знайдено в базі курсу або доступ не активовано!",
+        loginPlaceholder: "Ідентифікатор слухача",
+        codePlaceholder: "Персональний код доступу",
+        btnOpenMaterials: "Завантажити матеріали",
+        btnVerifying: "Завантаження...",
+        msgFillAll: "Введіть ідентифікатор слухача та персональний код доступу!",
+        msgLoginError: "Запис учасника не знайдено в базі курсу або код доступу не збігається!",
         msgFetchError: "Не вдалося завантажити матеріали. Перевірте з'єднання з мережею.",
         searchPlaceholder: "Шукати лекцію, модуль, лектора або тему...",
         floatingSearchPlaceholder: "Пошук модуля/лекції...",
-        sessionAuthorized: "Авторизовано",
         btnLogout: "Вийти",
-        lockH2: "Доступ до відеолекцій та конспектів курсу",
-        lockP: "Усіх слухачів курсу FAO & КНУ імені Тараса Шевченка реєструє координатор програми вручну. Для перегляду відеолекцій, робочих програм модулів та навчальних матеріалів введіть надані вам логін та код доступу (пароль) у панелі праворуч угорі.",
-        lockTip: "Для отримання облікових даних звертайтеся на grant.ndch@knu.ua",
-        publicOverviewTitle: "Програма навчальних модулів (Відкритий огляд)",
-        publicOverviewSubtitle: "Нижче наведено перелік освітніх модулів спільного проєкту FAO та КНУ імені Тараса Шевченка з дослідження, моніторингу та відновлення ґрунтів.",
+        lockH2: "Освітній портал курсу FAO & КНУ",
+        lockP: "Усіх учасників програми реєструє координатор курсу вручну. Щоб завантажити відеолекції, модулі та навчальні матеріали з бази курсу, введіть надані вам ідентифікатор слухача та персональний код доступу у панелі праворуч угорі.",
+        lockTip: "Питання щодо реєстрації учасників: grant.ndch@knu.ua",
         sortLabel: "Сортувати:",
         sortNewest: "Найновіші",
         sortOldest: "Найстаріші",
@@ -1135,13 +1004,12 @@
         allMonths: "Усі місяці",
         categoryLabel: "Підрозділ:",
         allCategories: "Усі підрозділи",
-        loadingText: "Отримання захищених відеолекцій та матеріалів...",
+        loadingText: "Отримання навчальних матеріалів із бази даних...",
         errorTitle: "Збій отримання даних",
         errorText: "Не вдалося завантажити лекції через Apps Script. Перевірте з'єднання або оновіть сторінку.",
         noResultsTitle: "Матеріалів не знайдено",
         noResultsText: "Спробуйте обрати інший фільтр або змінити пошуковий запит.",
         lectureNumberPrefix: "Матеріал №",
-        modulePrefix: "Модуль",
         watchLectureBtn: "Дивитися лекцію",
         viewDetailsBtn: "Відкрити програму модуля",
         backToTopTitle: "Вгору",
@@ -1187,26 +1055,21 @@
         headerTitle: "FAO & Taras Shevchenko National University of Kyiv",
         headerSubtitle: "Open lecture series, joint research, and partnership video materials",
         projectDesc: "The partnership between the Food and Agriculture Organization of the United Nations (FAO) and Taras Shevchenko National University of Kyiv is dedicated to conducting open educational lectures, practical video courses, and expert meetings. Topics include food security, sustainable agricultural development, climate resilience, and Ukraine's recovery.",
-        badgePortal: "Participant Portal",
+        badgePortal: "Participant Access",
         manualRegPill: "Pre-registered",
-        loginPlaceholder: "Participant Login (ID)",
-        codePlaceholder: "Access Code (Password)",
-        toggleCodeTitle: "Show / hide access code",
-        secureBadge: "SHA-256 Access Key Verification",
-        btnOpenMaterials: "Open Materials",
-        btnVerifying: "Verifying...",
-        msgFillAll: "Please enter both your login and access code!",
-        msgLoginError: "Credentials not found in the course database or access is inactive!",
+        loginPlaceholder: "Participant ID",
+        codePlaceholder: "Personal Access Key",
+        btnOpenMaterials: "Load Materials",
+        btnVerifying: "Loading...",
+        msgFillAll: "Please enter both your Participant ID and Personal Access Key!",
+        msgLoginError: "Participant record was not found in the course table or access key does not match!",
         msgFetchError: "Failed to retrieve materials. Please check your internet connection.",
         searchPlaceholder: "Search lecture, module, lecturer, or topic...",
         floatingSearchPlaceholder: "Search module/lecture...",
-        sessionAuthorized: "Authorized",
         btnLogout: "Log Out",
-        lockH2: "Access to Video Lectures & Course Materials",
-        lockP: "All participants of the FAO & Taras Shevchenko National University of Kyiv program are registered manually by the coordinator. To access video lectures, module syllabi, and learning materials, enter your assigned login and access code (password) in the top-right panel.",
-        lockTip: "For participant registration inquiries, contact grant.ndch@knu.ua",
-        publicOverviewTitle: "Course Curriculum Overview (Public Summary)",
-        publicOverviewSubtitle: "Below is the summary of educational modules from the joint FAO & Taras Shevchenko National University of Kyiv program on soil research, monitoring, and recovery.",
+        lockH2: "FAO & KNU Course Materials Portal",
+        lockP: "All course participants are registered manually by the coordinator. To load video lectures, module syllabi, and learning materials from the course database, enter your assigned Participant ID and Personal Access Key in the top-right panel.",
+        lockTip: "Participant registration inquiries: grant.ndch@knu.ua",
         sortLabel: "Sort by:",
         sortNewest: "Newest",
         sortOldest: "Oldest",
@@ -1216,13 +1079,12 @@
         allMonths: "All months",
         categoryLabel: "Department:",
         allCategories: "All departments",
-        loadingText: "Retrieving secured video lectures and materials...",
+        loadingText: "Retrieving course materials from database...",
         errorTitle: "Data Retrieval Error",
         errorText: "Failed to load lectures via Apps Script. Please check your connection or refresh the page.",
         noResultsTitle: "No materials found",
         noResultsText: "Try choosing another filter or modifying your search query.",
         lectureNumberPrefix: "Entry №",
-        modulePrefix: "Module",
         watchLectureBtn: "Watch Lecture",
         viewDetailsBtn: "Open Module Syllabus",
         backToTopTitle: "Top",
@@ -1264,111 +1126,8 @@
         ]
       }
     };
-    /* Відкритий довідковий перелік модулів з програми курсу (видимий до входу) */
-    const PUBLIC_MODULES_PREVIEW = {
-      uk: [
-        {
-          mod: "Модулі № 2, 4, 6",
-          ects: "0.5 ECTS • 15 год",
-          title: "Інтеграція магнітних та ґрунтознавчих методів оцінки властивостей ґрунтів",
-          meta: "ННІ «Інститут геології» • д.геол.н. Олександр Меньшов"
-        },
-        {
-          mod: "Модулі № 2, 4, 6",
-          ects: "0.5 ECTS • 15 год",
-          title: "Геофізичні радіометричні та електрометричні методи дослідження ґрунтів",
-          meta: "ННІ «Інститут геології» • к.геол.н. Віктор Онищук"
-        },
-        {
-          mod: "Модуль № 2",
-          ects: "0.5 ECTS • 15 год",
-          title: "Польові ґрунтові дослідження досліджуваних ділянок",
-          meta: "Географічний факультет • д.геогр.н. Вікторія Удовиченко"
-        },
-        {
-          mod: "Модуль № 3",
-          ects: "0.5 ECTS • 15 год",
-          title: "Основні типи забруднювачів довкілля та шляхи їхнього впливу",
-          meta: "Хімічний факультет • д.хім.н. Оксана Тананайко, к.хім.н. Марина Зуй"
-        },
-        {
-          mod: "Модуль № 4",
-          ects: "0.5 ECTS • 15 год",
-          title: "Польовий скринінг забруднювачів за допомогою портативних приладів",
-          meta: "Хімічний факультет • к.хім.н. Сергій Лелюшок"
-        },
-        {
-          mod: "Модуль № 5",
-          ects: "0.5 ECTS • 15 год",
-          title: "Методологія пробопідготовки, лабораторних вимірювань та аналіз результатів",
-          meta: "Географічний факультет • к.геогр.н. Дмитро Іванок, д.геогр.н. Сергій Запотоцький, к.геогр.н. Людмила Білоус"
-        },
-        {
-          mod: "Модуль № 6",
-          ects: "0.5 ECTS • 15 год",
-          title: "Лабораторний аналіз та агрономічна інтерпретація результатів",
-          meta: "Хімічний факультет • к.хім.н. Микола Іщенко, к.хім.н. Марина Зуй"
-        },
-        {
-          mod: "Модулі № 7–8",
-          ects: "1.0 ECTS • 30 год",
-          title: "Екотоксикологія та екологічна біоремедіація забруднених ґрунтів",
-          meta: "ННЦ «Інститут біології та медицини» • к.б.н. Марія Коваленко, к.б.н. Олександр Смірнов"
-        }
-      ],
-      en: [
-        {
-          mod: "Modules No. 2, 4, 6",
-          ects: "0.5 ECTS • 15 h",
-          title: "Integrating Magnetic and Soil Science Methods for the Assessment of Soil Properties",
-          meta: "Institute of Geology • Oleksandr Menshov, DSc (Geology)"
-        },
-        {
-          mod: "Modules No. 2, 4, 6",
-          ects: "0.5 ECTS • 15 h",
-          title: "Geophysical Radiometric and Electrometric Methods for Soil Studies",
-          meta: "Institute of Geology • Viktor Onyshchuk, PhD (Geology)"
-        },
-        {
-          mod: "Module No. 2",
-          ects: "0.5 ECTS • 15 h",
-          title: "Field Soil Investigation of Study Areas",
-          meta: "Faculty of Geography • Viktoriia Udovychenko, DSc (Geography)"
-        },
-        {
-          mod: "Module No. 3",
-          ects: "0.5 ECTS • 15 h",
-          title: "Main Types of Environmental Pollutants and Pathways of Their Impact",
-          meta: "Faculty of Chemistry • Oksana Tananaiko, DSc; Maryna Zui, PhD"
-        },
-        {
-          mod: "Module No. 4",
-          ects: "0.5 ECTS • 15 h",
-          title: "Field Screening of the Pollutants Using Portable Devices",
-          meta: "Faculty of Chemistry • Serhii Lelyushok, PhD"
-        },
-        {
-          mod: "Module No. 5",
-          ects: "0.5 ECTS • 15 h",
-          title: "Methodology of Sample Preparation, Laboratory Measurements and Analysis",
-          meta: "Faculty of Geography • Dmytro Ivanok, PhD; Sergii Zapototskyi, DSc; Liudmyla Bilous, PhD"
-        },
-        {
-          mod: "Module No. 6",
-          ects: "0.5 ECTS • 15 h",
-          title: "Laboratory Analysis and Agricultural Interpretation",
-          meta: "Faculty of Chemistry • Mykola Ischenko, PhD; Maryna Zui, PhD"
-        },
-        {
-          mod: "Modules No. 7–8",
-          ects: "1.0 ECTS • 30 h",
-          title: "Ecotoxicology and Environmental Bioremediation",
-          meta: "Institute of Biology and Medicine • Mariia Kovalenko, PhD; Oleksandr Smirnov, PhD"
-        }
-      ]
-    };
     const CUSTOM_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrfebxFDqUfphRYHyKVeB7PfoL3UE2rkDR0BtWlmALA8usPs-VmGjMI1iu4qLD0GEX/exec";
-    const SALT_KEY = "Hope_Hack_Helps";
+    const KEY_NAMESPACE = "Hope_Hack_Helps";
     const SCRIPT_URL = CUSTOM_SCRIPT_URL.trim();
     let currentLang = 'uk';
     let allNewsItems = [];
@@ -1382,7 +1141,6 @@
     let currentActiveVideoId = null;
     let currentModalUid = null;
     let isUserSeeking = false;
-    let isCodeVisible = false;
     function t() {
       return TRANSLATIONS[currentLang] || TRANSLATIONS.uk;
     }
@@ -1454,7 +1212,7 @@
       return hex;
     }
     function clientSaltedHash(str) {
-      return sha256Hex(SALT_KEY + String(str));
+      return sha256Hex(KEY_NAMESPACE + String(str));
     }
     /* Універсальне вилучення 11-символьного YouTube ID з будь-якого посилання або сирого ID */
     function extractYoutubeId(val) {
@@ -1487,8 +1245,6 @@
     const accessGateTop = document.getElementById('accessGateTop');
     const participantIdInput = document.getElementById('participantIdInput');
     const participantCodeInput = document.getElementById('participantCodeInput');
-    const toggleCodeVisBtn = document.getElementById('toggleCodeVisBtn');
-    const toggleCodeVisIcon = document.getElementById('toggleCodeVisIcon');
     const accessSubmitBtn = document.getElementById('accessSubmitBtn');
     const accessStatusBanner = document.getElementById('accessStatusBanner');
     const accessBadgeTitle = document.getElementById('accessBadgeTitle');
@@ -1497,8 +1253,6 @@
     const sessionHeaderBadge = document.getElementById('sessionHeaderBadge');
     const sessionUserLabel = document.getElementById('sessionUserLabel');
     const courseGateNotice = document.getElementById('courseGateNotice');
-    const publicOverviewSection = document.getElementById('publicOverviewSection');
-    const publicOverviewGrid = document.getElementById('publicOverviewGrid');
     const controlsCard = document.getElementById('controlsCard');
     const mainSearchInput = document.getElementById('mainSearchInput');
     const floatingSearchInput = document.getElementById('floatingSearchInput');
@@ -1520,31 +1274,6 @@
       initUIListeners();
       applyLanguage(currentLang);
     });
-    function toggleCodeVisibility() {
-      isCodeVisible = !isCodeVisible;
-      if (isCodeVisible) {
-        participantCodeInput.classList.remove('code-masked');
-        toggleCodeVisIcon.setAttribute('data-lucide', 'eye-off');
-      } else {
-        participantCodeInput.classList.add('code-masked');
-        toggleCodeVisIcon.setAttribute('data-lucide', 'eye');
-      }
-      refreshIcons();
-    }
-    function renderPublicModulesOverview() {
-      if (!publicOverviewGrid) return;
-      const modules = PUBLIC_MODULES_PREVIEW[currentLang] || PUBLIC_MODULES_PREVIEW.uk;
-      publicOverviewGrid.innerHTML = modules.map(m => `
-        <div class="public-module-card">
-          <div class="public-module-badge">
-            <span>${escapeHtml(m.mod)}</span>
-            <span class="public-module-ects">${escapeHtml(m.ects)}</span>
-          </div>
-          <div class="public-module-title">${escapeHtml(m.title)}</div>
-          <div class="public-module-meta">${escapeHtml(m.meta)}</div>
-        </div>
-      `).join('');
-    }
     /* ПЕРЕМИКАННЯ МОВ */
     function switchLanguage(lang) {
       if (!TRANSLATIONS[lang]) return;
@@ -1569,16 +1298,11 @@
       document.getElementById('uiManualRegPill').innerText = dict.manualRegPill;
       participantIdInput.placeholder = dict.loginPlaceholder;
       participantCodeInput.placeholder = dict.codePlaceholder;
-      toggleCodeVisBtn.title = dict.toggleCodeTitle;
-      document.getElementById('uiSecureBadge').innerText = dict.secureBadge;
       accessSubmitText.innerText = dict.btnOpenMaterials;
       document.getElementById('uiLogoutBtnText').innerText = dict.btnLogout;
       document.getElementById('uiLockNoticeH2').innerText = dict.lockH2;
       document.getElementById('uiLockNoticeP').innerText = dict.lockP;
       document.getElementById('uiLockNoticeTip').innerText = dict.lockTip;
-      document.getElementById('publicOverviewTitle').innerText = dict.publicOverviewTitle;
-      document.getElementById('publicOverviewSubtitle').innerText = dict.publicOverviewSubtitle;
-      renderPublicModulesOverview();
       document.getElementById('uiSortLabel').innerText = dict.sortLabel;
       document.getElementById('uiMonthLabel').innerText = dict.monthLabel;
       document.getElementById('uiCategoryLabel').innerText = dict.categoryLabel;
@@ -1651,7 +1375,6 @@
           document.body.classList.add('logged-in');
           accessGateTop.style.display = 'none';
           courseGateNotice.style.display = 'none';
-          publicOverviewSection.style.display = 'none';
           headerSearchBox.style.display = 'block';
           sessionHeaderBadge.style.display = 'flex';
           controlsCard.style.display = 'flex';
@@ -1700,13 +1423,9 @@
       floatingControls.classList.remove('visible');
       participantCodeInput.value = '';
       participantIdInput.value = '';
-      isCodeVisible = false;
-      participantCodeInput.classList.add('code-masked');
-      toggleCodeVisIcon.setAttribute('data-lucide', 'eye');
       hideAccessFeedback();
       accessGateTop.style.display = 'flex';
       courseGateNotice.style.display = 'flex';
-      publicOverviewSection.style.display = 'block';
       sessionUserLabel.innerText = '';
       refreshIcons();
     }
@@ -1796,7 +1515,6 @@
       allNewsItems = [];
       const dict = t();
       if (!Array.isArray(rawItems)) return;
-      // Якщо бекенд повернув 2D-масив рядків з окремим масивом headers — перетворюємо в об'єкти
       const normalizedRows = rawItems.map((entry, idx) => {
         if (Array.isArray(entry) && Array.isArray(headers)) {
           const obj = {};
@@ -1841,7 +1559,6 @@
         const fCategory = extractFieldByAliases(rawRow, ['category', 'discipline', 'subject', 'категорія', 'напрям', 'дисципліна'], usedKeys);
         const fTags = extractFieldByAliases(rawRow, ['tags', 'keywords', 'теги', 'ключовіслова'], usedKeys);
         const fMaterialsUrl = extractFieldByAliases(rawRow, ['materialsurl', 'slidesurl', 'pdfurl', 'quizurl', 'files', 'links', 'url', 'додатковіматеріали', 'матеріали', 'посилання'], usedKeys);
-        // Збираємо будь-які інші нестандартні колонки таблиці, щоб жоден тип даних не загубився
         const extraFields = [];
         Object.entries(rawRow).forEach(([k, v]) => {
           const normK = normalizeHeaderKey(k);
@@ -1873,6 +1590,10 @@
         if (ectsBadge && /^\d+([.,]\d+)?$/.test(ectsBadge)) {
           ectsBadge = `${ectsBadge} ECTS`;
         }
+        let totalHoursBadge = workloadData.totalHours;
+        if (totalHoursBadge && /^\d+([.,]\d+)?$/.test(totalHoursBadge)) {
+          totalHoursBadge = `${totalHoursBadge} ${currentLang === 'uk' ? 'год' : 'h'}`;
+        }
         const categoryValue = fCategory.text || fInstitution.text;
         const externalLinks = extractUrlsFromValue(fMaterialsUrl.raw || fMaterialsUrl.text);
         const item = {
@@ -1893,7 +1614,7 @@
           lecturer: fLecturer.text,
           instructors: fInstructors.text,
           workload: workloadData.summary,
-          totalHours: workloadData.totalHours,
+          totalHoursBadge: totalHoursBadge,
           ects: ectsBadge,
           language: fLanguage.text,
           targetAudience: fAudience.text,
@@ -1910,7 +1631,6 @@
           externalLinks: externalLinks,
           extraFields: extraFields
         };
-        // Попередньо формуємо рядок пошуку по всіх полях
         item._searchBlob = [
           item.id, item.moduleNumber, item.date, item.title, item.lead, item.fullText,
           item.institution, item.lecturer, item.instructors, item.workload, item.ects,
@@ -2309,6 +2029,9 @@
         if (item.ects) {
           metaChips.push(`<span class="meta-chip">${escapeHtml(item.ects)}</span>`);
         }
+        if (item.totalHoursBadge) {
+          metaChips.push(`<span class="meta-chip">${escapeHtml(item.totalHoursBadge)}</span>`);
+        }
         if (item.language) {
           metaChips.push(`<span class="meta-chip">${escapeHtml(item.language)}</span>`);
         }
@@ -2626,7 +2349,6 @@
           </div>
         `;
       }
-      // Паспорт загальної інформації модуля (відображається лише якщо є відповідні колонки)
       const passportRows = [
         { label: L.moduleNumber, val: item.moduleNumber },
         { label: L.institution, val: item.institution },
@@ -2670,7 +2392,7 @@
             <span>${escapeHtml(L.externalLinks)}</span>
           </div>
           <div class="module-links-row">
-            ${item.externalLinks.map((u, idx) => `
+            ${item.externalLinks.map(u => `
               <a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="module-link-chip">
                 <i data-lucide="external-link" style="width: 13px; height: 13px;"></i>
                 <span>${escapeHtml(u.length > 55 ? u.slice(0, 52) + '...' : u)}</span>
