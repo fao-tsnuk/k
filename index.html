@@ -514,7 +514,7 @@
     .controls-left-group {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px 20px;
       flex-wrap: wrap;
       width: 100%;
     }
@@ -655,6 +655,20 @@
       font-family: var(--font-family); font-size: 0.84rem; font-weight: 700; cursor: pointer; transition: gap 0.2s ease, color 0.2s ease; padding: 8px 0; min-height: 44px;
     }
     .news-card:hover .read-more-btn { gap: 9px; color: var(--primary-red-hover) !important; }
+    .reset-filters-btn {
+      margin-top: 10px;
+      background: var(--primary-red);
+      color: #FFFFFF;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 24px;
+      font-family: var(--font-family);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .reset-filters-btn:hover { background: var(--primary-red-hover); }
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18, 59, 102, 0.75); backdrop-filter: blur(6px);
       z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; padding: 10px;
@@ -672,7 +686,7 @@
     }
     .modal-close-btn:hover { background: var(--primary-red); color: white; border-color: var(--primary-red); }
     .modal-scrollable-content { padding: 32px 38px; overflow-y: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-    .modal-video-wrap { width: 100%; border-radius: 14px; overflow: hidden; margin-bottom: 24px; background-color: #070D18; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); position: relative; user-select: none; display: flex; flex-direction: column; }
+    .modal-video-wrap { width: 100%; border-radius: 14px; overflow: hidden; margin-bottom: 16px; background-color: #070D18; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); position: relative; user-select: none; display: flex; flex-direction: column; }
     .video-viewport { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #000000; overflow: hidden; }
     .video-viewport iframe, .video-viewport #ytPlayerHost { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; pointer-events: auto; }
     .video-shield-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: clip-path 0.15s ease; }
@@ -689,6 +703,47 @@
     .cp-seek-input { position: absolute; top: -8px; left: 0; width: 100%; height: 22px; opacity: 0; cursor: pointer; margin: 0; z-index: 5; }
     .cp-volume-box { display: flex; align-items: center; gap: 6px; }
     .cp-volume-input { width: 70px; height: 4px; accent-color: var(--primary-red); cursor: pointer; }
+    .module-video-switcher {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding: 10px 14px;
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+    }
+    .module-video-switcher-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-title);
+      margin-right: 4px;
+    }
+    .module-video-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      color: var(--text-title);
+      font-family: var(--font-family);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .module-video-tab:hover {
+      border-color: var(--primary-red);
+      color: var(--primary-red);
+    }
+    .module-video-tab.active {
+      background: var(--primary-red);
+      border-color: var(--primary-red);
+      color: #FFFFFF;
+    }
     .modal-title { font-size: clamp(1.25rem, 3.8vw, 1.6rem); font-weight: 800; color: #0B1F3A !important; line-height: 1.35; margin-bottom: 14px; padding-right: 30px; }
     .module-passport-grid {
       display: grid;
@@ -719,6 +774,31 @@
       line-height: 1.45;
       white-space: pre-line;
     }
+    .module-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 3px;
+    }
+    .module-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 9px;
+      border-radius: 14px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      color: var(--accent-blue);
+      font-family: var(--font-family);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+    }
+    .module-tag-pill:hover {
+      border-color: var(--primary-red);
+      color: var(--primary-red);
+      background: rgba(184, 0, 0, 0.05);
+    }
     .module-section-box {
       border: 1px solid var(--border-color);
       border-left: 4px solid var(--accent-blue);
@@ -742,8 +822,12 @@
     .modal-paragraphs-block { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
     .modal-paragraph { font-size: clamp(0.9rem, 2.4vw, 0.96rem); line-height: 1.75; color: #1E293B !important; white-space: pre-line; margin: 0 0 8px 0; }
     .modal-paragraph strong, .modal-question-para strong, .article-subheading strong, .article-list-item strong { font-weight: 700 !important; color: #0B1F3A !important; }
+    .article-subheading { font-size: 0.96rem; font-weight: 800; color: var(--text-title); margin-top: 8px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid var(--border-color); }
     .article-byline-para { margin-top: 20px; padding-top: 12px; border-top: 1px dashed var(--border-color); font-size: 0.92rem; }
     .article-list-item { font-size: 0.93rem; line-height: 1.65; color: #1E293B !important; margin-bottom: 5px; padding-left: 4px; }
+    .article-list-item.level-1 { padding-left: 4px; font-weight: 500; }
+    .article-list-item.level-2 { padding-left: 22px; }
+    .article-list-item.level-3 { padding-left: 34px; color: #334155 !important; }
     .news-inline-link { color: var(--accent-blue); text-decoration: underline; font-weight: 600; word-break: break-all; }
     .module-links-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .module-link-chip {
@@ -812,7 +896,7 @@
       <div class="header-branding">
         <div class="branding-header-row">
           <img src="./fao.svg" alt="FAO" class="daisi-header-logo" style="object-fit: contain; padding: 4px;">
-<img src="./tsnuk.png" alt="KNU" class="daisi-header-logo logo-tsnuk-crop">
+          <img src="./tsnuk.png" alt="KNU" class="daisi-header-logo logo-tsnuk-crop">
           <div class="branding-titles">
             <h1 id="uiHeaderTitle">FAO & КНУ імені Тараса Шевченка</h1>
             <p class="subtitle" id="uiHeaderSubtitle">Цикл відкритих лекцій, спільні дослідження та відеоматеріали партнерства</p>
@@ -934,8 +1018,8 @@
       </div>
     </section>
     <section id="publicSchedulePreview" class="about-program-card" style="margin-bottom: 16px;">
-      <h2 style="font-size: 1rem;">Тематичні напрями відкритих лекцій</h2>
-      <p>
+      <h2 id="uiPublicPreviewTitle" style="font-size: 1rem;">Тематичні напрями відкритих лекцій</h2>
+      <p id="uiPublicPreviewDesc">
         Програма об’єднує модулі з оцінки стану ґрунтів, польового відбору зразків, лабораторних методів аналізу,
         геоінформаційного моніторингу та сталого відновлення аграрних екосистем України. Після введення номера слухача
         та коду курсу відкривається повний перелік відеолекцій, силабусів, методичних вказівок та наукових джерел.
@@ -951,15 +1035,26 @@
               <option value="date-asc">Найстаріші</option>
               <option value="id-desc">За номером (№ ↓)</option>
               <option value="id-asc">За номером (№ ↑)</option>
+              <option value="module-asc" hidden>За модулем (↑)</option>
+              <option value="module-desc" hidden>За модулем (↓)</option>
             </select>
             <i data-lucide="chevron-down" class="sort-icon"></i>
           </div>
         </div>
-        <div class="control-item-wrapper">
+        <div class="control-item-wrapper" id="monthFilterWrapper">
           <span class="control-label" id="uiMonthLabel">Місяць:</span>
           <div class="custom-select-wrapper">
             <select id="monthSelect" class="custom-select">
               <option value="all" selected>Усі місяці</option>
+            </select>
+            <i data-lucide="chevron-down" class="sort-icon"></i>
+          </div>
+        </div>
+        <div class="control-item-wrapper" id="moduleFilterWrapper" style="display: none;">
+          <span class="control-label" id="uiModuleLabel">Модуль:</span>
+          <div class="custom-select-wrapper">
+            <select id="moduleSelect" class="custom-select">
+              <option value="all" selected>Усі модулі</option>
             </select>
             <i data-lucide="chevron-down" class="sort-icon"></i>
           </div>
@@ -969,6 +1064,27 @@
           <div class="custom-select-wrapper">
             <select id="categorySelect" class="custom-select">
               <option value="all" selected>Усі підрозділи</option>
+            </select>
+            <i data-lucide="chevron-down" class="sort-icon"></i>
+          </div>
+        </div>
+        <div class="control-item-wrapper" id="lecturerFilterWrapper" style="display: none;">
+          <span class="control-label" id="uiLecturerLabel">Лектор:</span>
+          <div class="custom-select-wrapper">
+            <select id="lecturerSelect" class="custom-select">
+              <option value="all" selected>Усі лектори</option>
+            </select>
+            <i data-lucide="chevron-down" class="sort-icon"></i>
+          </div>
+        </div>
+        <div class="control-item-wrapper" id="formatFilterWrapper" style="display: none;">
+          <span class="control-label" id="uiFormatLabel">Матеріал:</span>
+          <div class="custom-select-wrapper">
+            <select id="formatSelect" class="custom-select">
+              <option value="all" selected>Усі формати</option>
+              <option value="video">З відеолекцією</option>
+              <option value="lab">З практичною / лаб.</option>
+              <option value="notes">Із конспектом</option>
             </select>
             <i data-lucide="chevron-down" class="sort-icon"></i>
           </div>
@@ -1045,6 +1161,8 @@
         highlight3: "Відеозаписи лекцій та практичних занять",
         highlight4: "Завдання для самостійної роботи та наукові джерела",
         aboutTip: "Координація слухачів та отримання реєстраційних кодів курсу:",
+        publicPreviewTitle: "Тематичні напрями відкритих лекцій",
+        publicPreviewDesc: "Програма об’єднує модулі з оцінки стану ґрунтів, польового відбору зразків, лабораторних методів аналізу, геоінформаційного моніторингу та сталого відновлення аграрних екосистем України. Після введення номера слухача та коду курсу відкривається повний перелік відеолекцій, силабусів, методичних вказівок та наукових джерел.",
         badgePortal: "Доступ до матеріалів",
         manualRegPill: "За реєстрацією",
         accessHelperDesc: "Введіть ідентифікатор учасника та персональний код доступу, видані координатором програми, щоб завантажити таблицю лекцій та навчальних модулів.",
@@ -1065,10 +1183,22 @@
         sortOldest: "Найстаріші",
         sortNumDesc: "За номером (№ ↓)",
         sortNumAsc: "За номером (№ ↑)",
+        sortModuleAsc: "За модулем (↑)",
+        sortModuleDesc: "За модулем (↓)",
         monthLabel: "Місяць:",
         allMonths: "Усі місяці",
+        moduleLabel: "Модуль:",
+        allModules: "Усі модулі",
         categoryLabel: "Підрозділ:",
         allCategories: "Усі підрозділи",
+        lecturerLabel: "Лектор:",
+        allLecturers: "Усі лектори",
+        formatLabel: "Матеріал:",
+        allFormats: "Усі формати",
+        formatVideo: "З відеолекцією",
+        formatLab: "З практичною / лаб.",
+        formatNotes: "Із конспектом",
+        resetFiltersBtn: "Скинути фільтри",
         loadingText: "Отримання навчальних матеріалів із бази даних...",
         errorTitle: "Збій отримання даних",
         errorText: "Не вдалося завантажити лекції через Apps Script. Перевірте з'єднання або оновіть сторінку.",
@@ -1077,6 +1207,11 @@
         lectureNumberPrefix: "Матеріал №",
         watchLectureBtn: "Дивитися лекцію",
         viewDetailsBtn: "Відкрити програму модуля",
+        videoPlaylistTitle: "Відеозаписи модуля",
+        videoPartPrefix: "Відео",
+        videosCountBadge: "відео",
+        labBadge: "Практикум",
+        materialsBadge: "Матеріали",
         backToTopTitle: "Вгору",
         footerTitle: "FAO & КНУ імені Тараса Шевченка",
         footerFunding: `Партнерська ініціатива <a href="https://www.fao.org/home/en/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">FAO</a> та <a href="https://knu.ua/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">КНУ імені Тараса Шевченка</a> для координації відкритих науково-освітніх проєктів.`,
@@ -1128,6 +1263,8 @@
         highlight3: "Video recordings of lectures and practical training",
         highlight4: "Independent study tasks and scientific references",
         aboutTip: "Participant registration & access inquiries:",
+        publicPreviewTitle: "Thematic Areas of Open Lectures",
+        publicPreviewDesc: "The program combines modules on soil condition assessment, field sampling, laboratory analysis methods, geospatial monitoring, and sustainable recovery of agricultural ecosystems in Ukraine. Enter your participant number and course code to access the full list of video lectures, syllabi, practical guidelines, and scientific references.",
         badgePortal: "Course Materials Access",
         manualRegPill: "Pre-registered",
         accessHelperDesc: "Enter the participant ID and personal access code issued by the program coordinator to load the lectures and module table.",
@@ -1148,10 +1285,22 @@
         sortOldest: "Oldest",
         sortNumDesc: "By number (№ ↓)",
         sortNumAsc: "By number (№ ↑)",
+        sortModuleAsc: "By module (↑)",
+        sortModuleDesc: "By module (↓)",
         monthLabel: "Month:",
         allMonths: "All months",
+        moduleLabel: "Module:",
+        allModules: "All modules",
         categoryLabel: "Department:",
         allCategories: "All departments",
+        lecturerLabel: "Lecturer:",
+        allLecturers: "All lecturers",
+        formatLabel: "Format:",
+        allFormats: "All formats",
+        formatVideo: "With video lecture",
+        formatLab: "With lab / practical",
+        formatNotes: "With full notes",
+        resetFiltersBtn: "Reset filters",
         loadingText: "Retrieving course materials from database...",
         errorTitle: "Data Retrieval Error",
         errorText: "Failed to load lectures via Apps Script. Please check your connection or refresh the page.",
@@ -1160,6 +1309,11 @@
         lectureNumberPrefix: "Entry №",
         watchLectureBtn: "Watch Lecture",
         viewDetailsBtn: "Open Module Syllabus",
+        videoPlaylistTitle: "Module Video Recordings",
+        videoPartPrefix: "Video",
+        videosCountBadge: "videos",
+        labBadge: "Lab work",
+        materialsBadge: "Materials",
         backToTopTitle: "Top",
         footerTitle: "FAO & Taras Shevchenko National University of Kyiv",
         footerFunding: `Joint initiative of <a href="https://www.fao.org/home/en/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">FAO</a> and <a href="https://knu.ua/" target="_blank" rel="noopener noreferrer" class="contact-inline-link">Taras Shevchenko National University of Kyiv</a> to coordinate open scientific and educational projects.`,
@@ -1207,11 +1361,15 @@
     let searchTerm = '';
     let sortKey = 'date-desc';
     let selectedMonth = 'all';
+    let selectedModule = 'all';
     let selectedCategory = 'all';
+    let selectedLecturer = 'all';
+    let selectedFormat = 'all';
     let activeYtPlayer = null;
     let ytTrackerTimer = null;
     let adWatchdogTimer = null;
     let currentActiveVideoId = null;
+    let currentActivePlaylistId = null;
     let currentModalUid = null;
     let isUserSeeking = false;
     function t() {
@@ -1304,6 +1462,42 @@
       }
       return '';
     }
+    function extractYoutubeMedia(val) {
+      const text = formatCellScalar(val);
+      const videos = [];
+      let playlistId = '';
+      if (!text || text === '-' || text === '—' || text.toLowerCase() === 'n/a') {
+        return { videos, playlistId };
+      }
+      const seenIds = new Set();
+      const lines = text.split(/[\n;]+/);
+      lines.forEach(line => {
+        const cleanLine = line.trim();
+        if (!cleanLine) return;
+        const plMatch = cleanLine.match(/[?&]list=([a-zA-Z0-9_-]+)/i);
+        if (plMatch && plMatch[1] && !playlistId) {
+          playlistId = plMatch[1];
+        }
+        const urlTokens = cleanLine.match(/https?:\/\/[^\s,"'<>]+|[a-zA-Z0-9_-]{11}/g) || [];
+        const labelCandidate = cleanLine
+          .replace(/https?:\/\/[^\s,"'<>]+/gi, '')
+          .replace(/^[\s\-–—:|•]+|[\s\-–—:|•,]+$/g, '')
+          .trim();
+        let foundInLine = 0;
+        urlTokens.forEach(tok => {
+          const vid = extractYoutubeId(tok);
+          if (vid && !seenIds.has(vid)) {
+            seenIds.add(vid);
+            foundInLine++;
+            videos.push({
+              id: vid,
+              label: labelCandidate && foundInLine === 1 ? labelCandidate : ''
+            });
+          }
+        });
+      });
+      return { videos, playlistId };
+    }
     function _getThumb(vid) {
       if (!vid) return '';
       return `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
@@ -1327,9 +1521,16 @@
     const mainSearchInput = document.getElementById('mainSearchInput');
     const floatingSearchInput = document.getElementById('floatingSearchInput');
     const sortSelect = document.getElementById('sortSelect');
+    const monthFilterWrapper = document.getElementById('monthFilterWrapper');
     const monthSelect = document.getElementById('monthSelect');
+    const moduleFilterWrapper = document.getElementById('moduleFilterWrapper');
+    const moduleSelect = document.getElementById('moduleSelect');
     const categoryFilterWrapper = document.getElementById('categoryFilterWrapper');
     const categorySelect = document.getElementById('categorySelect');
+    const lecturerFilterWrapper = document.getElementById('lecturerFilterWrapper');
+    const lecturerSelect = document.getElementById('lecturerSelect');
+    const formatFilterWrapper = document.getElementById('formatFilterWrapper');
+    const formatSelect = document.getElementById('formatSelect');
     const loadingState = document.getElementById('loadingState');
     const errorState = document.getElementById('errorState');
     const newsGrid = document.getElementById('newsGrid');
@@ -1371,6 +1572,8 @@
       document.getElementById('uiHighlight3').innerText = dict.highlight3;
       document.getElementById('uiHighlight4').innerText = dict.highlight4;
       document.getElementById('uiAboutTip').innerText = dict.aboutTip;
+      document.getElementById('uiPublicPreviewTitle').innerText = dict.publicPreviewTitle;
+      document.getElementById('uiPublicPreviewDesc').innerText = dict.publicPreviewDesc;
       accessBadgeTitle.innerText = dict.badgePortal;
       document.getElementById('uiManualRegPill').innerText = dict.manualRegPill;
       document.getElementById('uiAccessHelperDesc').innerText = dict.accessHelperDesc;
@@ -1382,11 +1585,30 @@
       document.getElementById('uiLogoutBtnText').innerText = dict.btnLogout;
       document.getElementById('uiSortLabel').innerText = dict.sortLabel;
       document.getElementById('uiMonthLabel').innerText = dict.monthLabel;
+      document.getElementById('uiModuleLabel').innerText = dict.moduleLabel;
       document.getElementById('uiCategoryLabel').innerText = dict.categoryLabel;
-      sortSelect.options[0].text = dict.sortNewest;
-      sortSelect.options[1].text = dict.sortOldest;
-      sortSelect.options[2].text = dict.sortNumDesc;
-      sortSelect.options[3].text = dict.sortNumAsc;
+      document.getElementById('uiLecturerLabel').innerText = dict.lecturerLabel;
+      document.getElementById('uiFormatLabel').innerText = dict.formatLabel;
+      const sortTextMap = {
+        'date-desc': dict.sortNewest,
+        'date-asc': dict.sortOldest,
+        'id-desc': dict.sortNumDesc,
+        'id-asc': dict.sortNumAsc,
+        'module-asc': dict.sortModuleAsc,
+        'module-desc': dict.sortModuleDesc
+      };
+      Array.from(sortSelect.options).forEach(opt => {
+        if (sortTextMap[opt.value]) opt.text = sortTextMap[opt.value];
+      });
+      const formatTextMap = {
+        'all': dict.allFormats,
+        'video': dict.formatVideo,
+        'lab': dict.formatLab,
+        'notes': dict.formatNotes
+      };
+      Array.from(formatSelect.options).forEach(opt => {
+        if (formatTextMap[opt.value]) opt.text = formatTextMap[opt.value];
+      });
       mainSearchInput.placeholder = dict.searchPlaceholder;
       floatingSearchInput.placeholder = dict.floatingSearchPlaceholder;
       backToTopBtn.title = dict.backToTopTitle;
@@ -1404,9 +1626,14 @@
             const y = item.dateObj.getFullYear();
             item.monthLabel = `${dict.monthsNominative[m]} ${y}`;
           }
+          if (item._workloadParts) {
+            item.workload = formatWorkloadParts(item._workloadParts);
+            item.totalHoursBadge = item._workloadParts.totalHours
+              ? `${item._workloadParts.totalHours} ${currentLang === 'uk' ? 'год' : 'h'}`
+              : '';
+          }
         });
-        updateMonthDropdown(allNewsItems);
-        updateCategoryDropdown(allNewsItems);
+        updateAllFilterDropdowns(allNewsItems);
         updateAppUI();
         if (currentModalUid && modalOverlay.classList.contains('active')) {
           openModal(currentModalUid, false);
@@ -1456,8 +1683,7 @@
           newsGrid.style.display = 'flex';
           sessionUserLabel.innerText = rawGroupNum;
           ingestBackendItems(data.items || [], data.headers || null);
-          updateMonthDropdown(allNewsItems);
-          updateCategoryDropdown(allNewsItems);
+          updateAllFilterDropdowns(allNewsItems);
           updateAppUI();
         } else {
           showFeedback(false, (data && data.message) ? String(data.message) : dict.msgLoginError);
@@ -1484,15 +1710,24 @@
       closeModal();
       document.body.classList.remove('logged-in');
       allNewsItems = [];
+      sortKey = 'date-desc';
+      sortSelect.value = 'date-desc';
       selectedMonth = 'all';
+      selectedModule = 'all';
       selectedCategory = 'all';
+      selectedLecturer = 'all';
+      selectedFormat = 'all';
       searchTerm = '';
       mainSearchInput.value = '';
       floatingSearchInput.value = '';
       newsGrid.innerHTML = '';
       newsGrid.style.display = 'none';
       controlsCard.style.display = 'none';
+      monthFilterWrapper.style.display = 'flex';
+      moduleFilterWrapper.style.display = 'none';
       categoryFilterWrapper.style.display = 'none';
+      lecturerFilterWrapper.style.display = 'none';
+      formatFilterWrapper.style.display = 'none';
       headerSearchBox.style.display = 'none';
       sessionHeaderBadge.style.display = 'none';
       floatingControls.classList.remove('visible');
@@ -1511,7 +1746,7 @@
     function normalizeHeaderKey(key) {
       return String(key || '')
         .toLowerCase()
-        .replace(/[\s_\-.:;()№"'«»`’]+/g, '');
+        .replace(/[\s_\-.:;/\\()№"'«»`’]+/g, '');
     }
     function formatCellScalar(val) {
       if (val === null || val === undefined) return '';
@@ -1530,14 +1765,47 @@
       }
       if (typeof val === 'object') {
         if (val instanceof Date && !isNaN(val.getTime())) {
-          return val.toISOString().slice(0, 10);
+          return formatDateToLocale(val);
         }
         return Object.entries(val)
           .filter(([, v]) => v !== null && v !== undefined && String(v).trim() !== '')
           .map(([k, v]) => `${k}: ${formatCellScalar(v)}`)
           .join('\n');
       }
-      return String(val).trim();
+      const str = String(val).trim();
+      if (!str) return '';
+      if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:?\d{2})$/i.test(str)) {
+        return formatDateToLocale(str);
+      }
+      if ((str.startsWith('[') && str.endsWith(']')) || (str.startsWith('{') && str.endsWith('}'))) {
+        try {
+          const parsedJson = JSON.parse(str);
+          if (typeof parsedJson === 'object' && parsedJson !== null) {
+            return formatCellScalar(parsedJson);
+          }
+        } catch (err) {}
+      }
+      return str;
+    }
+    function parseNumberSafe(val) {
+      if (val === null || val === undefined || val === '') return NaN;
+      if (typeof val === 'number') return Number.isFinite(val) ? val : NaN;
+      const cleaned = String(val)
+        .trim()
+        .replace(/,/g, '.')
+        .replace(/[^\d.\-]/g, ' ')
+        .trim()
+        .split(/\s+/)[0];
+      if (!cleaned) return NaN;
+      const num = Number(cleaned);
+      return Number.isFinite(num) ? num : NaN;
+    }
+    function isFalsyVisibilityFlag(val) {
+      if (val === null || val === undefined) return false;
+      if (typeof val === 'boolean') return val === false;
+      const s = String(val).trim().toLowerCase();
+      if (!s) return false;
+      return ['false', '0', 'no', 'ні', 'draft', 'чернетка', 'hidden', 'приховано', 'archived', 'архів', 'inactive', 'неактивно'].includes(s);
     }
     function extractFieldByAliases(rowObj, aliases, usedKeys) {
       const normalizedEntries = Object.entries(rowObj).map(([k, v]) => ({
@@ -1556,36 +1824,145 @@
       }
       return { raw: null, text: '' };
     }
-    function buildWorkloadSummary(rowObj, usedKeys) {
-      const directWorkload = extractFieldByAliases(rowObj, [
-        'workload', 'academicWorkload', 'hours', 'totalWorkload',
-        'навантаження', 'академічненавантаження', 'години'
-      ], usedKeys);
-      const lecH = extractFieldByAliases(rowObj, ['lectureHours', 'lecturesHours', 'лекційнігодини', 'лекціїгод'], usedKeys);
-      const labH = extractFieldByAliases(rowObj, ['labHours', 'practicalHours', 'laboratoryHours', 'практичнігодини', 'лабораторнігодини'], usedKeys);
-      const indH = extractFieldByAliases(rowObj, ['independentHours', 'homeworkHours', 'selfStudyHours', 'самостійнароботагод'], usedKeys);
-      const totH = extractFieldByAliases(rowObj, ['totalHours', 'allHours', 'всьогогодин', 'загальнийобсяггод'], usedKeys);
-      const parts = [];
+    function formatWorkloadParts(partsObj) {
       const isUk = currentLang === 'uk';
-      if (lecH.text) parts.push(`${isUk ? 'Лекції' : 'Lectures'}: ${lecH.text}${/^\d+([.,]\d+)?$/.test(lecH.text) ? (isUk ? ' год' : ' h') : ''}`);
-      if (labH.text) parts.push(`${isUk ? 'Практичні/лабораторні' : 'Practical/Lab'}: ${labH.text}${/^\d+([.,]\d+)?$/.test(labH.text) ? (isUk ? ' год' : ' h') : ''}`);
-      if (indH.text) parts.push(`${isUk ? 'Самостійна робота' : 'Independent study'}: ${indH.text}${/^\d+([.,]\d+)?$/.test(indH.text) ? (isUk ? ' год' : ' h') : ''}`);
-      if (totH.text) parts.push(`${isUk ? 'Загалом' : 'Total'}: ${totH.text}${/^\d+([.,]\d+)?$/.test(totH.text) ? (isUk ? ' год' : ' h') : ''}`);
-      let summary = directWorkload.text;
-      if (parts.length > 0) {
-        const joined = parts.join(' • ');
+      const chunks = [];
+      if (partsObj.lec > 0) chunks.push(`${isUk ? 'Лекції' : 'Lectures'}: ${partsObj.lec}${isUk ? ' год' : ' h'}`);
+      if (partsObj.lab > 0) chunks.push(`${isUk ? 'Практичні/лабораторні' : 'Practical/Lab'}: ${partsObj.lab}${isUk ? ' год' : ' h'}`);
+      if (partsObj.ind > 0) chunks.push(`${isUk ? 'Самостійна робота' : 'Independent study'}: ${partsObj.ind}${isUk ? ' год' : ' h'}`);
+      if (partsObj.tot > 0) chunks.push(`${isUk ? 'Загалом' : 'Total'}: ${partsObj.tot}${isUk ? ' год' : ' h'}`);
+      let summary = partsObj.directText || '';
+      if (chunks.length > 0) {
+        const joined = chunks.join(' • ');
         summary = summary ? `${summary}\n${joined}` : joined;
       }
+      return summary;
+    }
+    function buildWorkloadSummary(rowObj, usedKeys) {
+      const directWorkload = extractFieldByAliases(rowObj, [
+        'workload', 'academicWorkload', 'academicWorkloadHours', 'hours', 'totalWorkload',
+        'навантаження', 'академічненавантаження', 'академічненавантаженнягод', 'обсяггодин', 'години'
+      ], usedKeys);
+      const lecH = extractFieldByAliases(rowObj, ['lectureHours', 'lecturesHours', 'лекційнігодини', 'лекціїгод', 'годинилекцій'], usedKeys);
+      const labH = extractFieldByAliases(rowObj, ['labHours', 'practicalHours', 'laboratoryHours', 'практичнігодини', 'лабораторнігодини', 'практичнігод', 'лабораторнігод', 'практичнілабгод'], usedKeys);
+      const indH = extractFieldByAliases(rowObj, ['independentHours', 'homeworkHours', 'selfStudyHours', 'самостійнароботагод', 'самостійнагод', 'домашняроботагод'], usedKeys);
+      const totH = extractFieldByAliases(rowObj, ['totalHours', 'allHours', 'moduleHours', 'всьогогодин', 'загальнийобсяггод', 'всьогогод', 'годинивсього'], usedKeys);
+      const lecNum = parseNumberSafe(lecH.raw !== null ? lecH.raw : lecH.text);
+      const labNum = parseNumberSafe(labH.raw !== null ? labH.raw : labH.text);
+      const indNum = parseNumberSafe(indH.raw !== null ? indH.raw : indH.text);
+      let totNum = parseNumberSafe(totH.raw !== null ? totH.raw : totH.text);
+      const hasComponents = (!isNaN(lecNum) && lecNum > 0) || (!isNaN(labNum) && labNum > 0) || (!isNaN(indNum) && indNum > 0);
+      if ((isNaN(totNum) || totNum <= 0) && hasComponents) {
+        totNum = (isNaN(lecNum) ? 0 : Math.max(0, lecNum))
+          + (isNaN(labNum) ? 0 : Math.max(0, labNum))
+          + (isNaN(indNum) ? 0 : Math.max(0, indNum));
+      }
+      let totalHoursVal = '';
+      if (!isNaN(totNum) && totNum > 0) {
+        totalHoursVal = String(totNum);
+      } else if (directWorkload.text) {
+        const directNum = parseNumberSafe(directWorkload.text);
+        if (!isNaN(directNum) && directNum > 0 && /^\d+([.,]\d+)?(\s*(год|h|hours))?$/i.test(directWorkload.text)) {
+          totalHoursVal = String(directNum);
+        } else {
+          const totalMatch = directWorkload.text.match(/(?:total|загалом|всього)[^0-9]*(\d+(?:[.,]\d+)?)/i);
+          if (totalMatch && totalMatch[1]) {
+            totalHoursVal = totalMatch[1].replace(',', '.');
+          }
+        }
+      }
+      const partsObj = {
+        directText: directWorkload.text,
+        lec: !isNaN(lecNum) && lecNum > 0 ? lecNum : 0,
+        lab: !isNaN(labNum) && labNum > 0 ? labNum : 0,
+        ind: !isNaN(indNum) && indNum > 0 ? indNum : 0,
+        tot: !isNaN(totNum) && totNum > 0 ? totNum : 0,
+        totalHours: totalHoursVal
+      };
       return {
-        summary,
-        totalHours: totH.text || (directWorkload.text && /^\d+([.,]\d+)?$/.test(directWorkload.text) ? directWorkload.text : '')
+        summary: formatWorkloadParts(partsObj),
+        totalHours: totalHoursVal,
+        partsObj: partsObj
       };
     }
-    function extractUrlsFromValue(val) {
+    function extractExternalLinks(val) {
       const text = formatCellScalar(val);
       if (!text) return [];
-      const matches = text.match(/https?:\/\/[^\s<>"')]+/gi) || [];
-      return Array.from(new Set(matches.map(u => u.replace(/[.,;]+$/, ''))));
+      const links = [];
+      const seenUrls = new Set();
+      const lines = text.split(/[\n;]+/);
+      lines.forEach(line => {
+        const trimmed = line.trim();
+        if (!trimmed) return;
+        const mdRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/gi;
+        let mdMatch;
+        let remaining = trimmed;
+        while ((mdMatch = mdRegex.exec(trimmed)) !== null) {
+          const url = mdMatch[2].replace(/[.,;]+$/, '');
+          if (!seenUrls.has(url)) {
+            seenUrls.add(url);
+            links.push({ label: mdMatch[1].trim(), url });
+          }
+          remaining = remaining.replace(mdMatch[0], '').trim();
+        }
+        const urlMatches = remaining.match(/https?:\/\/[^\s<>"')]+/gi) || [];
+        urlMatches.forEach((rawUrl, idx) => {
+          const cleanUrl = rawUrl.replace(/[.,;]+$/, '');
+          if (!/^https?:\/\//i.test(cleanUrl) || seenUrls.has(cleanUrl)) return;
+          seenUrls.add(cleanUrl);
+          let label = '';
+          if (idx === 0) {
+            const before = remaining.slice(0, remaining.indexOf(rawUrl))
+              .replace(/^[\s\-–—:|•]+|[\s\-–—:|•,]+$/g, '')
+              .trim();
+            if (before && before.length <= 70 && !/^https?:/i.test(before)) {
+              label = before;
+            }
+          }
+          links.push({ label, url: cleanUrl });
+        });
+      });
+      return links;
+    }
+    function splitLecturerNames(rawLecturer) {
+      const text = formatCellScalar(rawLecturer);
+      if (!text) return [];
+      return text
+        .split(/[\n;]+/)
+        .map(part => part.trim())
+        .filter(Boolean)
+        .map(person => {
+          const cleanPerson = person.replace(/^(лектор|викладач|lecturer|instructor)s?\s*:\s*/i, '').trim();
+          const commaIdx = cleanPerson.indexOf(',');
+          const shortName = commaIdx > 0 ? cleanPerson.slice(0, commaIdx).trim() : cleanPerson;
+          return shortName.replace(/\s+/g, ' ');
+        })
+        .filter(Boolean);
+    }
+    function splitTagsList(rawTags) {
+      const text = formatCellScalar(rawTags);
+      if (!text) return [];
+      return Array.from(new Set(
+        text
+          .split(/[,;\n]+/)
+          .map(s => s.trim())
+          .filter(Boolean)
+      ));
+    }
+    function shortenInstitutionLabel(inst) {
+      const text = String(inst || '').trim();
+      if (!text) return '';
+      return text
+        .replace(/^Taras Shevchenko National University of Kyiv,\s*/i, '')
+        .replace(/^Київський національний університет імені Тараса Шевченка,\s*/i, '')
+        .replace(/^КНУ імені Тараса Шевченка,\s*/i, '')
+        .replace(/^Educational and Scientific (Institute|Center)\s*/i, '')
+        .replace(/^Навчально-науковий (інститут|центр)\s*/i, '')
+        .replace(/^[«"]([^»"]+)[»"]$/, '$1')
+        .trim();
+    }
+    function compareModuleCodes(a, b) {
+      return String(a || '').localeCompare(String(b || ''), undefined, { numeric: true, sensitivity: 'base' });
     }
     function ingestBackendItems(rawItems, headers) {
       allNewsItems = [];
@@ -1610,31 +1987,38 @@
       ]);
       normalizedRows.forEach((rawRow, index) => {
         const usedKeys = new Set();
-        const fId = extractFieldByAliases(rawRow, ['id', 'no', 'num', 'number', '№', 'номер'], usedKeys);
-        const fModule = extractFieldByAliases(rawRow, ['module', 'moduleno', 'modulenumber', 'модуль', 'номермодуля', 'модулі'], usedKeys);
-        const fDate = extractFieldByAliases(rawRow, ['rawdate', 'date', 'added', 'внесено', 'дата', 'створено'], usedKeys);
-        const fTitle = extractFieldByAliases(rawRow, ['title', 'name', 'заголовок', 'назва', 'тема', 'назвамодуля'], usedKeys);
-        const fLead = extractFieldByAliases(rawRow, ['lead', 'summary', 'description', 'shortdescription', 'короткийопис', 'короткийопислекції', 'опис', 'анотація'], usedKeys);
-        const fFull = extractFieldByAliases(rawRow, ['fulltext', 'content', 'notes', 'transcript', 'повнийтекст', 'повнийтекстконспекту', 'конспект'], usedKeys);
-        const fYoutube = extractFieldByAliases(rawRow, ['youtubeid', 'youtubeurl', 'youtube', 'video', 'videourl', 'посиланняyoutube', 'відео'], usedKeys);
-        const fInstitution = extractFieldByAliases(rawRow, ['institution', 'faculty', 'institutionfaculty', 'department', 'заклад', 'факультет', 'інститут', 'установатафакультет', 'установа'], usedKeys);
-        const fLecturer = extractFieldByAliases(rawRow, ['lecturer', 'lecturers', 'speaker', 'teacher', 'author', 'лектор', 'лектори', 'викладач', 'доповідач'], usedKeys);
-        const fInstructors = extractFieldByAliases(rawRow, ['instructors', 'labinstructors', 'practicalinstructors', 'інструктори', 'викладачіпрактичнихзанять', 'асистенти'], usedKeys);
+        const fVisibility = extractFieldByAliases(rawRow, [
+          'published', 'active', 'visible', 'visibility', 'status',
+          'опубліковано', 'активно', 'статус', 'показувати', 'видимість'
+        ], usedKeys);
+        if (fVisibility.raw !== null && isFalsyVisibilityFlag(fVisibility.raw)) {
+          return;
+        }
+        const fId = extractFieldByAliases(rawRow, ['id', 'no', 'num', 'number', '№', 'номер', 'idзапису'], usedKeys);
+        const fModule = extractFieldByAliases(rawRow, ['module', 'moduleno', 'modulenumber', 'modules', 'модуль', 'номермодуля', 'модулі', 'кодмодуля'], usedKeys);
+        const fDate = extractFieldByAliases(rawRow, ['rawdate', 'date', 'added', 'created', 'updated', 'внесено', 'дата', 'створено', 'оновлено', 'датадодавання'], usedKeys);
+        const fTitle = extractFieldByAliases(rawRow, ['title', 'name', 'topic', 'modulename', 'заголовок', 'назва', 'тема', 'назвамодуля', 'назвалекції', 'темамодуля'], usedKeys);
+        const fLead = extractFieldByAliases(rawRow, ['lead', 'summary', 'description', 'shortdescription', 'annotation', 'короткийопис', 'короткийопислекції', 'опис', 'анотація', 'описмодуля', 'лід'], usedKeys);
+        const fFull = extractFieldByAliases(rawRow, ['fulltext', 'content', 'notes', 'transcript', 'повнийтекст', 'повнийтекстконспекту', 'конспект', 'текстлекції'], usedKeys);
+        const fYoutube = extractFieldByAliases(rawRow, ['youtubeid', 'youtubeurl', 'youtube', 'video', 'videourl', 'videos', 'посиланняyoutube', 'посиланнянаyoutube', 'відео', 'відеолекція', 'youtubeпосилання'], usedKeys);
+        const fInstitution = extractFieldByAliases(rawRow, ['institution', 'faculty', 'institutionfaculty', 'department', 'institute', 'заклад', 'факультет', 'інститут', 'підрозділ', 'установатафакультет', 'закладтапідрозділ', 'закладіпідрозділ', 'установа'], usedKeys);
+        const fLecturer = extractFieldByAliases(rawRow, ['lecturer', 'lecturers', 'speaker', 'speakers', 'teacher', 'author', 'лектор', 'лектори', 'викладач', 'доповідач', 'піплектора'], usedKeys);
+        const fInstructors = extractFieldByAliases(rawRow, ['instructors', 'labinstructors', 'practicalinstructors', 'assistants', 'інструктори', 'викладачіпрактичнихзанять', 'викладачілабораторних', 'асистенти'], usedKeys);
         const workloadData = buildWorkloadSummary(rawRow, usedKeys);
-        const fEcts = extractFieldByAliases(rawRow, ['ects', 'credits', 'creditallocation', 'кредити', 'кредитиects', 'обсягкредитів'], usedKeys);
-        const fLanguage = extractFieldByAliases(rawRow, ['language', 'lang', 'мова', 'мовавикладання'], usedKeys);
-        const fAudience = extractFieldByAliases(rawRow, ['targetaudience', 'audience', 'prerequisites', 'entryrequirements', 'цільовааудиторія', 'аудиторія', 'вимоги'], usedKeys);
-        const fAssessmentFormat = extractFieldByAliases(rawRow, ['assessmentformat', 'controlform', 'examformat', 'формаконтролю', 'форматоцінювання'], usedKeys);
-        const fOutcomes = extractFieldByAliases(rawRow, ['learningoutcomes', 'outcomes', 'результатинавчання', 'компетентності'], usedKeys);
-        const fObjective = extractFieldByAliases(rawRow, ['learningobjective', 'learningobjectives', 'objectives', 'mainobjective', 'мета', 'метанавчання', 'цілі'], usedKeys);
-        const fLectureContent = extractFieldByAliases(rawRow, ['lecturecontent', 'lecturetopics', 'lectures', 'topics', 'змістлекції', 'темилекцій', 'лекція'], usedKeys);
-        const fLabWork = extractFieldByAliases(rawRow, ['labwork', 'practicalwork', 'laboratorywork', 'лабораторнаробота', 'практичнаробота', 'лабораторніроботи'], usedKeys);
-        const fIndependent = extractFieldByAliases(rawRow, ['independentstudy', 'homework', 'selfstudy', 'selfdirectedstudy', 'самостійнаробота', 'домашнєзавдання'], usedKeys);
-        const fGrading = extractFieldByAliases(rawRow, ['gradingscale', 'assessmentcriteria', 'evaluation', 'assessmentstructure', 'шкалаоцінювання', 'оцінювання', 'критеріїоцінювання'], usedKeys);
-        const fResources = extractFieldByAliases(rawRow, ['resources', 'references', 'bibliography', 'literature', 'informationresources', 'інформаційніресурси', 'ресурси', 'література', 'джерела'], usedKeys);
-        const fCategory = extractFieldByAliases(rawRow, ['category', 'discipline', 'subject', 'категорія', 'напрям', 'дисципліна'], usedKeys);
+        const fEcts = extractFieldByAliases(rawRow, ['ects', 'credits', 'creditallocation', 'кредити', 'кредитиects', 'обсягкредитів', 'ectsкредити'], usedKeys);
+        const fLanguage = extractFieldByAliases(rawRow, ['language', 'lang', 'teachinglanguage', 'мова', 'мовавикладання', 'мовакурсу'], usedKeys);
+        const fAudience = extractFieldByAliases(rawRow, ['targetaudience', 'audience', 'targetgroup', 'prerequisites', 'entryrequirements', 'цільовааудиторія', 'аудиторія', 'вимоги', 'цільовааудиторіявимоги', 'цільовагрупатавимоги'], usedKeys);
+        const fAssessmentFormat = extractFieldByAliases(rawRow, ['assessmentformat', 'controlform', 'examformat', 'assessmentmethod', 'формаконтролю', 'формаоцінювання', 'методоцінювання', 'контроль'], usedKeys);
+        const fOutcomes = extractFieldByAliases(rawRow, ['learningoutcomes', 'outcomes', 'competencies', 'результатинавчання', 'очікуванірезультати', 'компетентності'], usedKeys);
+        const fObjective = extractFieldByAliases(rawRow, ['learningobjective', 'learningobjectives', 'objectives', 'mainobjective', 'objective', 'goal', 'aim', 'мета', 'метанавчання', 'метатазавдання', 'метаізавдання', 'цілі'], usedKeys);
+        const fLectureContent = extractFieldByAliases(rawRow, ['lecturecontent', 'lecturetopics', 'lecturescontent', 'topics', 'змістлекції', 'змістлекційногозаняття', 'темилекцій', 'програмалекції', 'темалекції'], usedKeys);
+        const fLabWork = extractFieldByAliases(rawRow, ['labwork', 'practicalwork', 'laboratorywork', 'practicals', 'лабораторнаробота', 'практичнаробота', 'практичналабораторнаробота', 'лабораторніроботи', 'практичнізаняття', 'змістпрактичних'], usedKeys);
+        const fIndependent = extractFieldByAliases(rawRow, ['independentstudy', 'homework', 'selfstudy', 'selfdirectedstudy', 'independentwork', 'самостійнаробота', 'самостійнароботадомашнєзавдання', 'домашнєзавдання', 'завданнясамостійної', 'темисамостійної'], usedKeys);
+        const fGrading = extractFieldByAliases(rawRow, ['gradingscale', 'assessmentcriteria', 'evaluation', 'assessmentstructure', 'шкалаоцінювання', 'оцінювання', 'критеріїоцінювання', 'системаоцінювання', 'шкалатакритеріїоцінювання'], usedKeys);
+        const fResources = extractFieldByAliases(rawRow, ['resources', 'references', 'bibliography', 'literature', 'informationresources', 'інформаційніресурси', 'ресурси', 'література', 'джерела', 'списоклітератури'], usedKeys);
+        const fCategory = extractFieldByAliases(rawRow, ['category', 'discipline', 'subject', 'section', 'stream', 'категорія', 'напрям', 'дисципліна', 'розділ', 'тематичнийнапрям'], usedKeys);
         const fTags = extractFieldByAliases(rawRow, ['tags', 'keywords', 'теги', 'ключовіслова'], usedKeys);
-        const fMaterialsUrl = extractFieldByAliases(rawRow, ['materialsurl', 'slidesurl', 'pdfurl', 'quizurl', 'files', 'links', 'url', 'додатковіматеріали', 'матеріали', 'посилання'], usedKeys);
+        const fMaterialsUrl = extractFieldByAliases(rawRow, ['materialsurl', 'slidesurl', 'pdfurl', 'quizurl', 'files', 'links', 'url', 'attachments', 'додатковіматеріали', 'матеріали', 'посилання', 'презентація', 'тестування', 'файли'], usedKeys);
         const extraFields = [];
         Object.entries(rawRow).forEach(([k, v]) => {
           const normK = normalizeHeaderKey(k);
@@ -1663,15 +2047,26 @@
           monthLabel = `${dict.monthsNominative[m]} ${y}`;
         }
         let ectsBadge = fEcts.text;
-        if (ectsBadge && /^\d+([.,]\d+)?$/.test(ectsBadge)) {
-          ectsBadge = `${ectsBadge} ECTS`;
+        if (ectsBadge) {
+          const ectsNum = parseNumberSafe(ectsBadge);
+          if (/^\d+([.,]\d+)?$/.test(ectsBadge)) {
+            ectsBadge = `${String(ectsNum).replace(',', '.')} ECTS`;
+          } else if (!/ects/i.test(ectsBadge) && !isNaN(ectsNum)) {
+            ectsBadge = `${ectsNum} ECTS`;
+          } else {
+            ectsBadge = ectsBadge.replace(/(\d),(\d)/g, '$1.$2');
+          }
         }
         let totalHoursBadge = workloadData.totalHours;
         if (totalHoursBadge && /^\d+([.,]\d+)?$/.test(totalHoursBadge)) {
           totalHoursBadge = `${totalHoursBadge} ${currentLang === 'uk' ? 'год' : 'h'}`;
         }
-        const categoryValue = fCategory.text || fInstitution.text;
-        const externalLinks = extractUrlsFromValue(fMaterialsUrl.raw || fMaterialsUrl.text);
+        const categoryValue = fCategory.text || shortenInstitutionLabel(fInstitution.text);
+        const externalLinks = extractExternalLinks(fMaterialsUrl.raw !== null ? fMaterialsUrl.raw : fMaterialsUrl.text);
+        const ytMedia = extractYoutubeMedia(fYoutube.raw !== null ? fYoutube.raw : fYoutube.text);
+        const primaryYoutubeId = ytMedia.videos.length > 0 ? ytMedia.videos[0].id : '';
+        const lecturerNames = splitLecturerNames(fLecturer.text);
+        const tagList = splitTagsList(fTags.text);
         const item = {
           _uid: `item_${index}`,
           id: fId.text || String(index + 1),
@@ -1685,11 +2080,16 @@
           title: fTitle.text || (currentLang === 'uk' ? "Навчальний модуль проєкту" : "Project Learning Module"),
           lead: fLead.text,
           fullText: fFull.text,
-          youtubeId: extractYoutubeId(fYoutube.text),
+          youtubeId: primaryYoutubeId,
+          youtubeVideos: ytMedia.videos,
+          youtubePlaylistId: ytMedia.playlistId,
           institution: fInstitution.text,
+          institutionShort: shortenInstitutionLabel(fInstitution.text),
           lecturer: fLecturer.text,
+          lecturerNames: lecturerNames,
           instructors: fInstructors.text,
           workload: workloadData.summary,
+          _workloadParts: workloadData.partsObj,
           totalHoursBadge: totalHoursBadge,
           ects: ectsBadge,
           language: fLanguage.text,
@@ -1704,6 +2104,7 @@
           resources: fResources.text,
           category: categoryValue,
           tags: fTags.text,
+          tagList: tagList,
           externalLinks: externalLinks,
           extraFields: extraFields
         };
@@ -1734,6 +2135,9 @@
     }
     function formatDateToLocale(dateInput) {
       if (dateInput === null || dateInput === undefined) return "—";
+      if (dateInput instanceof Date && !isNaN(dateInput.getTime())) {
+        return convertToLocaleDate(dateInput.getDate(), dateInput.getMonth() + 1, dateInput.getFullYear());
+      }
       if (typeof dateInput === 'number') {
         const exDate = excelSerialToDate(dateInput);
         if (exDate) return convertToLocaleDate(exDate.getDate(), exDate.getMonth() + 1, exDate.getFullYear());
@@ -1743,6 +2147,12 @@
       if (/^\d{5}(\.\d+)?$/.test(cleanStr)) {
         const exDate = excelSerialToDate(parseFloat(cleanStr));
         if (exDate) return convertToLocaleDate(exDate.getDate(), exDate.getMonth() + 1, exDate.getFullYear());
+      }
+      if (/^\d{4}-\d{2}-\d{2}T.*(Z|[+-]\d{2}:?\d{2})$/i.test(cleanStr)) {
+        const isoDate = new Date(cleanStr);
+        if (!isNaN(isoDate.getTime()) && isoDate.getFullYear() > 1990) {
+          return convertToLocaleDate(isoDate.getDate(), isoDate.getMonth() + 1, isoDate.getFullYear());
+        }
       }
       const dmyRegex = /^(\d{1,2})[./-](\d{1,2})[./-](\d{4}|\d{2})$/;
       const matchDmy = cleanStr.match(dmyRegex);
@@ -1790,6 +2200,7 @@
     }
     function parseDateString(dateInput) {
       if (dateInput === null || dateInput === undefined) return new Date(0);
+      if (dateInput instanceof Date && !isNaN(dateInput.getTime())) return dateInput;
       if (typeof dateInput === 'number') {
         const exDate = excelSerialToDate(dateInput);
         if (exDate) return exDate;
@@ -1799,6 +2210,10 @@
       if (/^\d{5}(\.\d+)?$/.test(cleanStr)) {
         const exDate = excelSerialToDate(parseFloat(cleanStr));
         if (exDate) return exDate;
+      }
+      if (/^\d{4}-\d{2}-\d{2}T.*(Z|[+-]\d{2}:?\d{2})$/i.test(cleanStr)) {
+        const isoDate = new Date(cleanStr);
+        if (!isNaN(isoDate.getTime())) return isoDate;
       }
       const ymdMatch = cleanStr.match(/^(\d{4})[./-](\d{1,2})[./-](\d{1,2})/);
       if (ymdMatch) {
@@ -1837,8 +2252,30 @@
       const parsed = new Date(sanitized);
       return isNaN(parsed.getTime()) ? new Date(0) : parsed;
     }
+    function updateAllFilterDropdowns(items) {
+      updateMonthDropdown(items);
+      updateModuleDropdown(items);
+      updateCategoryDropdown(items);
+      updateLecturerDropdown(items);
+      updateFormatDropdown(items);
+      updateSortModuleOptions(items);
+    }
+    function updateSortModuleOptions(items) {
+      if (!sortSelect) return;
+      const hasModules = items.some(i => i.moduleNumber && i.moduleNumber.trim() !== '');
+      Array.from(sortSelect.options).forEach(opt => {
+        if (opt.value === 'module-asc' || opt.value === 'module-desc') {
+          opt.hidden = !hasModules;
+          opt.disabled = !hasModules;
+        }
+      });
+      if (!hasModules && (sortKey === 'module-asc' || sortKey === 'module-desc')) {
+        sortKey = 'date-desc';
+        sortSelect.value = 'date-desc';
+      }
+    }
     function updateMonthDropdown(items) {
-      if (!monthSelect) return;
+      if (!monthSelect || !monthFilterWrapper) return;
       const dict = t();
       const monthMap = new Map();
       items.forEach(item => {
@@ -1847,6 +2284,12 @@
         }
       });
       const sortedMonthKeys = Array.from(monthMap.keys()).sort().reverse();
+      if (sortedMonthKeys.length === 0) {
+        monthFilterWrapper.style.display = 'none';
+        selectedMonth = 'all';
+        return;
+      }
+      monthFilterWrapper.style.display = 'flex';
       let optionsHtml = `<option value="all">${dict.allMonths}</option>`;
       sortedMonthKeys.forEach(key => {
         const label = monthMap.get(key);
@@ -1859,6 +2302,29 @@
       } else {
         monthSelect.value = 'all';
         selectedMonth = 'all';
+      }
+    }
+    function updateModuleDropdown(items) {
+      if (!moduleSelect || !moduleFilterWrapper) return;
+      const dict = t();
+      const modules = Array.from(new Set(
+        items.map(i => i.moduleNumber).filter(m => m && m.trim() !== '')
+      )).sort(compareModuleCodes);
+      if (modules.length < 2) {
+        moduleFilterWrapper.style.display = 'none';
+        selectedModule = 'all';
+        return;
+      }
+      moduleFilterWrapper.style.display = 'flex';
+      let optionsHtml = `<option value="all">${dict.allModules}</option>`;
+      modules.forEach(m => {
+        const isSel = m === selectedModule ? 'selected' : '';
+        optionsHtml += `<option value="${escapeHtml(m)}" ${isSel}>${escapeHtml(m)}</option>`;
+      });
+      moduleSelect.innerHTML = optionsHtml;
+      if (selectedModule !== 'all' && !modules.includes(selectedModule)) {
+        selectedModule = 'all';
+        moduleSelect.value = 'all';
       }
     }
     function updateCategoryDropdown(items) {
@@ -1884,15 +2350,101 @@
         categorySelect.value = 'all';
       }
     }
+    function updateLecturerDropdown(items) {
+      if (!lecturerSelect || !lecturerFilterWrapper) return;
+      const dict = t();
+      const lecturers = Array.from(new Set(
+        items.flatMap(i => i.lecturerNames || [])
+      )).sort((a, b) => a.localeCompare(b));
+      if (lecturers.length < 2) {
+        lecturerFilterWrapper.style.display = 'none';
+        selectedLecturer = 'all';
+        return;
+      }
+      lecturerFilterWrapper.style.display = 'flex';
+      let optionsHtml = `<option value="all">${dict.allLecturers}</option>`;
+      lecturers.forEach(l => {
+        const isSel = l === selectedLecturer ? 'selected' : '';
+        optionsHtml += `<option value="${escapeHtml(l)}" ${isSel}>${escapeHtml(l)}</option>`;
+      });
+      lecturerSelect.innerHTML = optionsHtml;
+      if (selectedLecturer !== 'all' && !lecturers.includes(selectedLecturer)) {
+        selectedLecturer = 'all';
+        lecturerSelect.value = 'all';
+      }
+    }
+    function updateFormatDropdown(items) {
+      if (!formatSelect || !formatFilterWrapper) return;
+      const hasVideo = items.some(i => Boolean(i.youtubeId || i.youtubePlaylistId));
+      const noVideo = items.some(i => !i.youtubeId && !i.youtubePlaylistId);
+      const hasLab = items.some(i => Boolean(i.labWork));
+      const noLab = items.some(i => !i.labWork);
+      const hasNotes = items.some(i => Boolean(i.fullText));
+      const noNotes = items.some(i => !i.fullText);
+      const isMixed = (hasVideo && noVideo) || (hasLab && noLab) || (hasNotes && noNotes);
+      if (!isMixed) {
+        formatFilterWrapper.style.display = 'none';
+        selectedFormat = 'all';
+        return;
+      }
+      formatFilterWrapper.style.display = 'flex';
+      Array.from(formatSelect.options).forEach(opt => {
+        if (opt.value === 'video') opt.hidden = !hasVideo;
+        if (opt.value === 'lab') opt.hidden = !hasLab;
+        if (opt.value === 'notes') opt.hidden = !hasNotes;
+      });
+      if (selectedFormat !== 'all') {
+        const activeOpt = Array.from(formatSelect.options).find(o => o.value === selectedFormat);
+        if (!activeOpt || activeOpt.hidden) {
+          selectedFormat = 'all';
+          formatSelect.value = 'all';
+        }
+      }
+    }
+    function resetAllFilters() {
+      searchTerm = '';
+      selectedMonth = 'all';
+      selectedModule = 'all';
+      selectedCategory = 'all';
+      selectedLecturer = 'all';
+      selectedFormat = 'all';
+      mainSearchInput.value = '';
+      floatingSearchInput.value = '';
+      if (monthSelect) monthSelect.value = 'all';
+      if (moduleSelect) moduleSelect.value = 'all';
+      if (categorySelect) categorySelect.value = 'all';
+      if (lecturerSelect) lecturerSelect.value = 'all';
+      if (formatSelect) formatSelect.value = 'all';
+      updateAppUI();
+    }
+    function filterByTag(tagText) {
+      closeModal();
+      searchTerm = tagText;
+      mainSearchInput.value = tagText;
+      floatingSearchInput.value = tagText;
+      updateAppUI();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     function processInlineFormatting(text) {
       if (!text) return '';
       const tokens = [];
-      let tokenized = String(text).replace(/<\/?(strong|b|em|i|u|a)(\s+[^>]*)?>/gi, (match) => {
+      let tokenized = String(text).replace(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, inner) => {
+        const hrefMatch = attrs.match(/href\s*=\s*["']([^"']+)["']/i);
+        const hrefVal = hrefMatch ? hrefMatch[1].trim() : '';
+        if (/^(https?:\/\/|mailto:)/i.test(hrefVal)) {
+          const safeInner = escapeHtml(inner.replace(/<[^>]+>/g, ''));
+          const key = `___TOKEN_${tokens.length}___`;
+          tokens.push(`<a href="${escapeHtml(hrefVal)}" target="_blank" rel="noopener noreferrer" class="news-inline-link">${safeInner || escapeHtml(hrefVal)}</a>`);
+          return key;
+        }
+        return inner;
+      });
+      tokenized = tokenized.replace(/<\/?(strong|b|em|i|u)(\s+[^>]*)?>/gi, (match) => {
         let norm = match;
         const lower = match.toLowerCase();
-        if (lower.startsWith('<b ') || lower === '<b>') norm = '<strong>';
+        if (lower.startsWith('<b') && !lower.startsWith('<br')) norm = '<strong>';
         else if (lower === '</b>') norm = '</strong>';
-        else if (lower.startsWith('<i ') || lower === '<i>') norm = '<em>';
+        else if (lower.startsWith('<i')) norm = '<em>';
         else if (lower === '</i>') norm = '</em>';
         const key = `___TOKEN_${tokens.length}___`;
         tokens.push(norm);
@@ -1902,8 +2454,27 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
-      tokenized = tokenized.replace(/(https?:\/\/[^\s<]+[^\s<.,!?:;)"'])/g, (url) => {
-        return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="news-inline-link">${url}</a>`;
+      tokenized = tokenized.replace(/(https?:\/\/[^\s<>"']+)/gi, (rawUrl) => {
+        let cleanUrl = rawUrl;
+        let trailing = '';
+        while (/[.,!?:;"'\]>]$/.test(cleanUrl)) {
+          trailing = cleanUrl.slice(-1) + trailing;
+          cleanUrl = cleanUrl.slice(0, -1);
+        }
+        if (cleanUrl.endsWith(')') && (cleanUrl.match(/\(/g) || []).length < (cleanUrl.match(/\)/g) || []).length) {
+          trailing = ')' + trailing;
+          cleanUrl = cleanUrl.slice(0, -1);
+        }
+        const key = `___TOKEN_${tokens.length}___`;
+        tokens.push(`<a href="${cleanUrl}" target="_blank" rel="noopener noreferrer" class="news-inline-link">${cleanUrl}</a>`);
+        return key + trailing;
+      });
+      tokenized = tokenized.replace(/\bdoi:\s*(10\.\d{4,9}\/[^\s<>"';,]+)/gi, (match, doiCode) => {
+        let cleanDoi = doiCode.replace(/[.)\]]+$/, '');
+        const trailing = doiCode.slice(cleanDoi.length);
+        const key = `___TOKEN_${tokens.length}___`;
+        tokens.push(`<a href="https://doi.org/${cleanDoi}" target="_blank" rel="noopener noreferrer" class="news-inline-link">doi:${cleanDoi}</a>`);
+        return key + trailing;
       });
       tokens.forEach((tag, idx) => {
         tokenized = tokenized.replace(`___TOKEN_${idx}___`, tag);
@@ -1922,11 +2493,25 @@
       lines.forEach(line => {
         let trimmed = line.trim();
         if (!trimmed) return;
-        const isBullet = /^[🔹🔷•\-\*▪️]\s*(.+)/.test(trimmed);
-        const isNumberedSub = /^\d+\.\d+\.?\s+/.test(trimmed);
-        if (isBullet || isNumberedSub) {
-          const normalizedBullet = trimmed.replace(/^\s*/, '• ');
-          html += `<div class="article-list-item">${processInlineFormatting(normalizedBullet)}</div>`;
+        const isLectureSubheading = /^(lecture|лекція|part|частина|модуль|module)\s*\d*[\.:]/i.test(trimmed) && trimmed.length < 140 && !trimmed.endsWith('?');
+        if (isLectureSubheading) {
+          html += `<h4 class="article-subheading">${processInlineFormatting(trimmed)}</h4>`;
+          return;
+        }
+        const isSubBullet = /^[🔹🔷•\*\u25AA\uF02D\u2212]\s*(.+)/.test(trimmed) || /^[–—\-]\s+[^?]+$/.test(trimmed);
+        const isNumberedNested = /^\d+\.\d+\.?\s+/.test(trimmed);
+        const isNumberedTop = /^\d+[.)]\s+/.test(trimmed) && !isNumberedNested;
+        if (isNumberedNested) {
+          html += `<div class="article-list-item level-2">${processInlineFormatting(trimmed)}</div>`;
+          return;
+        }
+        if (isSubBullet) {
+          const normalizedBullet = trimmed.replace(/^\uF02D\s*/, '• ').replace(/^\u2212\s*/, '– ');
+          html += `<div class="article-list-item level-3">${processInlineFormatting(normalizedBullet)}</div>`;
+          return;
+        }
+        if (isNumberedTop) {
+          html += `<div class="article-list-item level-1">${processInlineFormatting(trimmed)}</div>`;
           return;
         }
         const isAuthorByline = /^підготував|^підготувала|^автор|^лектор|^доповідач|^prepared by|^author/i.test(trimmed) && trimmed.length < 130;
@@ -1978,8 +2563,20 @@
         selectedMonth = e.target.value;
         updateAppUI();
       });
+      moduleSelect.addEventListener('change', (e) => {
+        selectedModule = e.target.value;
+        updateAppUI();
+      });
       categorySelect.addEventListener('change', (e) => {
         selectedCategory = e.target.value;
+        updateAppUI();
+      });
+      lecturerSelect.addEventListener('change', (e) => {
+        selectedLecturer = e.target.value;
+        updateAppUI();
+      });
+      formatSelect.addEventListener('change', (e) => {
+        selectedFormat = e.target.value;
         updateAppUI();
       });
       window.addEventListener('scroll', () => {
@@ -2013,8 +2610,23 @@
       if (selectedMonth && selectedMonth !== 'all') {
         data = data.filter(item => item.monthKey === selectedMonth);
       }
+      if (selectedModule && selectedModule !== 'all') {
+        data = data.filter(item => item.moduleNumber === selectedModule);
+      }
       if (selectedCategory && selectedCategory !== 'all') {
         data = data.filter(item => item.category === selectedCategory);
+      }
+      if (selectedLecturer && selectedLecturer !== 'all') {
+        data = data.filter(item => (item.lecturerNames || []).includes(selectedLecturer));
+      }
+      if (selectedFormat && selectedFormat !== 'all') {
+        if (selectedFormat === 'video') {
+          data = data.filter(item => Boolean(item.youtubeId || item.youtubePlaylistId));
+        } else if (selectedFormat === 'lab') {
+          data = data.filter(item => Boolean(item.labWork));
+        } else if (selectedFormat === 'notes') {
+          data = data.filter(item => Boolean(item.fullText));
+        }
       }
       if (sortKey === 'date-desc') {
         data.sort((a, b) => {
@@ -2050,6 +2662,24 @@
           if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
           return a.sheetRow - b.sheetRow;
         });
+      } else if (sortKey === 'module-asc') {
+        data.sort((a, b) => {
+          const cmp = compareModuleCodes(a.moduleNumber, b.moduleNumber);
+          if (cmp !== 0) return cmp;
+          const numA = parseInt(a.id, 10);
+          const numB = parseInt(b.id, 10);
+          if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+          return a.sheetRow - b.sheetRow;
+        });
+      } else if (sortKey === 'module-desc') {
+        data.sort((a, b) => {
+          const cmp = compareModuleCodes(b.moduleNumber, a.moduleNumber);
+          if (cmp !== 0) return cmp;
+          const numA = parseInt(a.id, 10);
+          const numB = parseInt(b.id, 10);
+          if (!isNaN(numA) && !isNaN(numB)) return numB - numA;
+          return b.sheetRow - a.sheetRow;
+        });
       }
       return data;
     }
@@ -2062,6 +2692,7 @@
             <i data-lucide="search-slash" style="width: 44px; height: 44px; opacity: 0.5; margin-bottom: 12px; color: #64748B;"></i>
             <h3 style="color: #0B1F3A;">${dict.noResultsTitle}</h3>
             <p style="color: #44546A;">${dict.noResultsText}</p>
+            <button type="button" class="reset-filters-btn" onclick="resetAllFilters()">${dict.resetFiltersBtn}</button>
           </div>
         `;
         refreshIcons();
@@ -2111,20 +2742,30 @@
         if (item.language) {
           metaChips.push(`<span class="meta-chip">${escapeHtml(item.language)}</span>`);
         }
-        const attributionParts = [item.lecturer, item.institution].filter(Boolean);
+        if (item.youtubeVideos && item.youtubeVideos.length > 1) {
+          metaChips.push(`<span class="meta-chip">${item.youtubeVideos.length} ${dict.videosCountBadge}</span>`);
+        }
+        if (item.labWork) {
+          metaChips.push(`<span class="meta-chip">${dict.labBadge}</span>`);
+        }
+        const dateSuffix = item.date && item.date !== "—" ? ` • ${escapeHtml(item.date)}` : '';
+        const attributionParts = [
+          item.lecturerNames && item.lecturerNames.length > 0 ? item.lecturerNames.join(', ') : item.lecturer,
+          item.institutionShort || item.institution
+        ].filter(Boolean);
         const attributionHtml = attributionParts.length > 0
           ? `<div class="news-card-attribution">${escapeHtml(attributionParts.join(' • '))}</div>`
           : '';
-        const excerptSource = item.lead || item.learningObjective || '';
+        const excerptSource = item.lead || item.learningObjective || item.lectureContent || item.fullText || '';
         const cleanLead = excerptSource ? escapeHtml(excerptSource.trim()) : '';
-        const actionBtnLabel = item.youtubeId ? dict.watchLectureBtn : dict.viewDetailsBtn;
+        const actionBtnLabel = (item.youtubeId || item.youtubePlaylistId) ? dict.watchLectureBtn : dict.viewDetailsBtn;
         const cardHtml = `
           <article class="news-card" onclick="openModal('${escapeHtml(item._uid)}')">
             ${mediaLeftHtml}
             <div class="news-card-body-wrap">
               <div>
                 <div class="news-card-meta-top">
-                  <span class="news-card-meta-text">${dict.lectureNumberPrefix} ${escapeHtml(item.id)} • ${escapeHtml(item.date)}</span>
+                  <span class="news-card-meta-text">${dict.lectureNumberPrefix} ${escapeHtml(item.id)}${dateSuffix}</span>
                   ${metaChips.join('')}
                 </div>
                 <h2 class="news-card-title">${escapeHtml(item.title)}</h2>
@@ -2157,16 +2798,18 @@
           const adState = activeYtPlayer.getAdState();
           if (adState === 1 || adState === true) return true;
         }
-        if (typeof activeYtPlayer.getVideoData === 'function' && currentActiveVideoId) {
-          const vData = activeYtPlayer.getVideoData();
-          if (vData && vData.video_id && vData.video_id.length >= 6) {
-            return vData.video_id !== currentActiveVideoId;
+        if (currentActiveVideoId) {
+          if (typeof activeYtPlayer.getVideoData === 'function') {
+            const vData = activeYtPlayer.getVideoData();
+            if (vData && vData.video_id && vData.video_id.length >= 6) {
+              return vData.video_id !== currentActiveVideoId;
+            }
           }
-        }
-        if (typeof activeYtPlayer.getVideoUrl === 'function' && currentActiveVideoId) {
-          const vUrl = activeYtPlayer.getVideoUrl();
-          if (vUrl && vUrl.includes('v=') && !vUrl.includes(currentActiveVideoId)) {
-            return true;
+          if (typeof activeYtPlayer.getVideoUrl === 'function') {
+            const vUrl = activeYtPlayer.getVideoUrl();
+            if (vUrl && vUrl.includes('v=') && !vUrl.includes(currentActiveVideoId)) {
+              return true;
+            }
           }
         }
       } catch (err) {}
@@ -2182,8 +2825,9 @@
         shield.classList.remove('ad-showing');
       }
     }
-    function createProtectedPlayer(videoId) {
-      currentActiveVideoId = videoId;
+    function createProtectedPlayer(videoId, playlistId = '') {
+      currentActiveVideoId = videoId || null;
+      currentActivePlaylistId = playlistId || null;
       if (activeYtPlayer) {
         try { activeYtPlayer.destroy(); } catch (e) {}
         activeYtPlayer = null;
@@ -2192,30 +2836,58 @@
       if (adWatchdogTimer) { clearInterval(adWatchdogTimer); adWatchdogTimer = null; }
       adWatchdogTimer = setInterval(updateAdShieldState, 120);
       function instantiate() {
-        activeYtPlayer = new YT.Player('ytPlayerHost', {
-          videoId: videoId,
-          playerVars: {
-            autoplay: 1,
-            controls: 0,
-            disablekb: 1,
-            fs: 0,
-            modestbranding: 1,
-            rel: 0,
-            iv_load_policy: 3,
-            playsinline: 1,
-            enablejsapi: 1,
-            origin: window.location.origin || undefined
-          },
+        const playerVars = {
+          autoplay: 1,
+          controls: 0,
+          disablekb: 1,
+          fs: 0,
+          modestbranding: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          playsinline: 1,
+          enablejsapi: 1,
+          origin: window.location.origin || undefined
+        };
+        const config = {
+          playerVars: playerVars,
           events: {
             onReady: onProtectedPlayerReady,
             onStateChange: onProtectedPlayerStateChange
           }
-        });
+        };
+        if (videoId) {
+          config.videoId = videoId;
+        } else if (playlistId) {
+          playerVars.listType = 'playlist';
+          playerVars.list = playlistId;
+        }
+        activeYtPlayer = new YT.Player('ytPlayerHost', config);
       }
       if (window.YT && window.YT.Player) {
         instantiate();
       } else {
         window.onYouTubeIframeAPIReady = instantiate;
+      }
+    }
+    function switchModalVideo(videoId, tabEl) {
+      if (!videoId) return;
+      const switcher = document.getElementById('moduleVideoSwitcher');
+      if (switcher) {
+        switcher.querySelectorAll('.module-video-tab').forEach(btn => btn.classList.remove('active'));
+      }
+      if (tabEl) tabEl.classList.add('active');
+      currentActiveVideoId = videoId;
+      const progressPlayed = document.getElementById('cpProgressPlayed');
+      const progressBuffer = document.getElementById('cpProgressBuffer');
+      const seekInput = document.getElementById('cpSeekInput');
+      if (progressPlayed) progressPlayed.style.width = '0%';
+      if (progressBuffer) progressBuffer.style.width = '0%';
+      if (seekInput) seekInput.value = 0;
+      updatePlayerTimeLabels(0, 0);
+      if (activeYtPlayer && typeof activeYtPlayer.loadVideoById === 'function') {
+        activeYtPlayer.loadVideoById(videoId);
+      } else {
+        createProtectedPlayer(videoId, currentActivePlaylistId || '');
       }
     }
     function onProtectedPlayerReady(e) {
@@ -2239,6 +2911,10 @@
       if (state === YT.PlayerState.PLAYING) {
         if (centerBadge) centerBadge.classList.add('hidden');
         if (playIcon) playIcon.setAttribute('data-lucide', 'pause');
+        if (!currentActiveVideoId && player && typeof player.getVideoData === 'function') {
+          const vData = player.getVideoData();
+          if (vData && vData.video_id) currentActiveVideoId = vData.video_id;
+        }
         refreshIcons();
         startPlayerTracker();
       } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
@@ -2268,6 +2944,7 @@
           const progressPlayed = document.getElementById('cpProgressPlayed');
           const progressBuffer = document.getElementById('cpProgressBuffer');
           if (seekInput && dur > 0) {
+            seekInput.max = dur;
             seekInput.value = cur;
             const pct = (cur / dur) * 100;
             if (progressPlayed) progressPlayed.style.width = `${pct}%`;
@@ -2389,9 +3066,22 @@
       currentModalUid = item._uid;
       const dict = t();
       const L = dict.labels;
+      const hasAnyVideo = Boolean(item.youtubeId || item.youtubePlaylistId);
       currentActiveVideoId = item.youtubeId || null;
+      currentActivePlaylistId = item.youtubePlaylistId || null;
       let videoSectionHtml = '';
-      if (item.youtubeId) {
+      if (hasAnyVideo) {
+        const switcherHtml = (item.youtubeVideos && item.youtubeVideos.length > 1) ? `
+          <div class="module-video-switcher" id="moduleVideoSwitcher">
+            <span class="module-video-switcher-label">${escapeHtml(dict.videoPlaylistTitle)}:</span>
+            ${item.youtubeVideos.map((v, idx) => `
+              <button type="button" class="module-video-tab${idx === 0 ? ' active' : ''}" data-vid="${escapeHtml(v.id)}" onclick="switchModalVideo(this.getAttribute('data-vid'), this)">
+                <i data-lucide="play-circle" style="width: 14px; height: 14px;"></i>
+                <span>${escapeHtml(v.label || `${dict.videoPartPrefix} ${idx + 1}`)}</span>
+              </button>
+            `).join('')}
+          </div>
+        ` : '';
         videoSectionHtml = `
           <div class="modal-video-wrap" id="modalVideoWrap" oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
             <div class="video-viewport">
@@ -2423,29 +3113,44 @@
               </button>
             </div>
           </div>
+          ${switcherHtml}
         `;
       }
       const passportRows = [
-        { label: L.moduleNumber, val: item.moduleNumber },
-        { label: L.institution, val: item.institution },
-        { label: L.lecturer, val: item.lecturer },
-        { label: L.instructors, val: item.instructors },
-        { label: L.workload, val: item.workload },
-        { label: L.ects, val: item.ects },
-        { label: L.language, val: item.language },
-        { label: L.targetAudience, val: item.targetAudience },
-        { label: L.assessmentFormat, val: item.assessmentFormat },
-        { label: L.category, val: item.category !== item.institution ? item.category : '' },
-        { label: L.tags, val: item.tags }
+        { label: L.moduleNumber, val: item.moduleNumber, isTags: false },
+        { label: L.institution, val: item.institution, isTags: false },
+        { label: L.lecturer, val: item.lecturer, isTags: false },
+        { label: L.instructors, val: item.instructors, isTags: false },
+        { label: L.workload, val: item.workload, isTags: false },
+        { label: L.ects, val: item.ects, isTags: false },
+        { label: L.language, val: item.language, isTags: false },
+        { label: L.targetAudience, val: item.targetAudience, isTags: false },
+        { label: L.assessmentFormat, val: item.assessmentFormat, isTags: false },
+        { label: L.category, val: (item.category && item.category !== item.institutionShort && item.category !== item.institution) ? item.category : '', isTags: false },
+        { label: L.tags, val: item.tags, isTags: true }
       ].filter(r => r.val && String(r.val).trim() !== '');
       const passportHtml = passportRows.length > 0 ? `
         <div class="module-passport-grid">
-          ${passportRows.map(r => `
-            <div class="passport-item">
-              <span class="passport-label">${escapeHtml(r.label)}</span>
-              <span class="passport-value">${escapeHtml(r.val)}</span>
-            </div>
-          `).join('')}
+          ${passportRows.map(r => {
+            if (r.isTags && item.tagList && item.tagList.length > 0) {
+              return `
+                <div class="passport-item">
+                  <span class="passport-label">${escapeHtml(r.label)}</span>
+                  <div class="module-tags-row">
+                    ${item.tagList.map(tg => `
+                      <button type="button" class="module-tag-pill" data-tag="${escapeHtml(tg)}" onclick="filterByTag(this.getAttribute('data-tag'))">${escapeHtml(tg)}</button>
+                    `).join('')}
+                  </div>
+                </div>
+              `;
+            }
+            return `
+              <div class="passport-item">
+                <span class="passport-label">${escapeHtml(r.label)}</span>
+                <span class="passport-value">${escapeHtml(r.val)}</span>
+              </div>
+            `;
+          }).join('')}
         </div>
       ` : '';
       const sectionsHtml = [
@@ -2457,9 +3162,12 @@
         buildSectionBlock(L.gradingScale, item.gradingScale, 'check-square', false),
         buildSectionBlock(L.resources, item.resources, 'library', false)
       ].join('');
+      const hasStructuredSections = Boolean(sectionsHtml.trim());
       const formattedArticleBody = item.fullText ? formatFullArticleText(item.fullText) : '';
       const fullTextBlockHtml = formattedArticleBody
-        ? `<div class="modal-paragraphs-block">${formattedArticleBody}</div>`
+        ? (hasStructuredSections
+            ? buildSectionBlock(L.fullText, item.fullText, 'file-text', false)
+            : `<div class="modal-paragraphs-block">${formattedArticleBody}</div>`)
         : '';
       const externalLinksHtml = (item.externalLinks && item.externalLinks.length > 0) ? `
         <div class="module-section-box">
@@ -2468,12 +3176,15 @@
             <span>${escapeHtml(L.externalLinks)}</span>
           </div>
           <div class="module-links-row">
-            ${item.externalLinks.map(u => `
-              <a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="module-link-chip">
-                <i data-lucide="external-link" style="width: 13px; height: 13px;"></i>
-                <span>${escapeHtml(u.length > 55 ? u.slice(0, 52) + '...' : u)}</span>
-              </a>
-            `).join('')}
+            ${item.externalLinks.map(link => {
+              const linkText = link.label || (link.url.length > 55 ? link.url.slice(0, 52) + '...' : link.url);
+              return `
+                <a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" class="module-link-chip">
+                  <i data-lucide="external-link" style="width: 13px; height: 13px;"></i>
+                  <span>${escapeHtml(linkText)}</span>
+                </a>
+              `;
+            }).join('')}
           </div>
         </div>
       ` : '';
@@ -2493,11 +3204,12 @@
           </div>
         </div>
       ` : '';
+      const modalDateSuffix = item.date && item.date !== "—" ? ` • ${escapeHtml(item.date)}` : '';
       modalTarget.innerHTML = `
         ${!skipVideoRecreate ? videoSectionHtml : ''}
         <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 14px; gap: 8px; flex-wrap: wrap;">
           ${item.moduleNumber ? `<span class="meta-chip accent">${escapeHtml(item.moduleNumber)}</span>` : ''}
-          <div class="news-card-meta-text"><span>${dict.lectureNumberPrefix} ${escapeHtml(item.id)} • ${escapeHtml(item.date)}</span></div>
+          <div class="news-card-meta-text"><span>${dict.lectureNumberPrefix} ${escapeHtml(item.id)}${modalDateSuffix}</span></div>
         </div>
         <h1 class="modal-title">${escapeHtml(item.title)}</h1>
         <div class="news-card-divider" style="width: 45px; height: 4px; margin-bottom: 18px;"></div>
@@ -2510,8 +3222,8 @@
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
       refreshIcons();
-      if (item.youtubeId && !skipVideoRecreate) {
-        createProtectedPlayer(item.youtubeId);
+      if (hasAnyVideo && !skipVideoRecreate) {
+        createProtectedPlayer(item.youtubeId, item.youtubePlaylistId);
       }
     }
     function closeModal() {
@@ -2522,6 +3234,7 @@
       if (adWatchdogTimer) { clearInterval(adWatchdogTimer); adWatchdogTimer = null; }
       if (activeYtPlayer) { try { activeYtPlayer.destroy(); } catch (e) {} activeYtPlayer = null; }
       currentActiveVideoId = null;
+      currentActivePlaylistId = null;
       modalTarget.innerHTML = '';
     }
   </script>
