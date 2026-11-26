@@ -205,13 +205,13 @@
     .search-input {
       width: 100%;
       min-height: 40px;
-      padding: 7px 16px 7px 38px;
+      padding: 7px 34px 7px 36px;
       background-color: #FFFFFF !important;
       border: 1px solid var(--border-color);
       border-radius: 30px;
       color: #0B1F3A !important;
       font-family: var(--font-family);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       transition: all 0.25s ease;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
@@ -229,6 +229,30 @@
       pointer-events: none;
       width: 15px;
       height: 15px;
+    }
+    .search-clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: none;
+      background: #E2E8F0;
+      color: #334155;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .search-clear-btn.visible {
+      display: flex;
+    }
+    .search-clear-btn:hover {
+      background: var(--primary-red);
+      color: #FFFFFF;
     }
     .session-header-badge {
       display: flex;
@@ -500,12 +524,12 @@
       background: #FFFFFF !important;
       border: 1px solid var(--border-color) !important;
       border-radius: 14px;
-      padding: 10px 16px;
-      margin-bottom: 22px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
       box-shadow: 0 4px 15px rgba(11, 25, 44, 0.02);
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      gap: 10px;
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
@@ -514,22 +538,22 @@
     .controls-left-group {
       display: flex;
       align-items: center;
-      gap: 16px 20px;
+      gap: 10px 16px;
       flex-wrap: wrap;
       width: 100%;
     }
-    .control-item-wrapper { display: flex; align-items: center; gap: 8px; }
-    .control-label { font-size: 0.78rem; font-weight: 700; color: #44546A !important; letter-spacing: 0.5px; white-space: nowrap; }
+    .control-item-wrapper { display: flex; align-items: center; gap: 7px; }
+    .control-label { font-size: 0.76rem; font-weight: 700; color: #44546A !important; letter-spacing: 0.3px; white-space: nowrap; }
     .custom-select-wrapper { position: relative; display: flex; align-items: center; }
     .custom-select {
       appearance: none;
-      background-color: #FFFFFF !important;
+      background-color: #F8FAFC !important;
       border: 1px solid var(--border-color) !important;
       border-radius: 30px;
-      padding: 8px 34px 8px 16px;
-      min-height: 42px;
+      padding: 7px 32px 7px 14px;
+      min-height: 38px;
       font-family: var(--font-family);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #0B1F3A !important;
       font-weight: 700;
       cursor: pointer;
@@ -537,11 +561,54 @@
       transition: all 0.2s ease;
       touch-action: manipulation;
       white-space: nowrap;
-      max-width: 260px;
+      max-width: 245px;
       text-overflow: ellipsis;
     }
-    .custom-select:focus { border-color: var(--primary-red) !important; }
-    .sort-icon { position: absolute; right: 12px; color: var(--text-muted); width: 14px; height: 14px; pointer-events: none; }
+    .custom-select:hover {
+      background-color: #FFFFFF !important;
+      border-color: #CBD5E1 !important;
+    }
+    .custom-select:focus {
+      background-color: #FFFFFF !important;
+      border-color: var(--primary-red) !important;
+    }
+    .custom-select.filter-active {
+      border-color: var(--primary-red) !important;
+      background-color: rgba(184, 0, 0, 0.04) !important;
+      color: var(--primary-red) !important;
+    }
+    .sort-icon { position: absolute; right: 11px; color: var(--text-muted); width: 14px; height: 14px; pointer-events: none; }
+    .controls-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border-color);
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .inline-reset-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(184, 0, 0, 0.08);
+      color: var(--primary-red);
+      border: 1px solid rgba(184, 0, 0, 0.2);
+      border-radius: 16px;
+      padding: 3px 10px;
+      font-family: var(--font-family);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .inline-reset-btn:hover {
+      background: var(--primary-red);
+      color: #FFFFFF;
+    }
     .news-feed { display: flex; flex-direction: column; gap: 20px; width: 100%; }
     .news-card {
       background: #FFFFFF !important;
@@ -553,7 +620,7 @@
       flex-direction: row;
       align-items: stretch;
       width: 100%;
-      min-height: 220px;
+      min-height: 210px;
       border-left: 5px solid var(--primary-red) !important;
       box-shadow: 0 4px 15px rgba(11, 25, 44, 0.04);
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -631,28 +698,28 @@
       border-color: rgba(184, 0, 0, 0.18);
     }
     .news-card-title, .news-card h2 {
-      font-size: clamp(1.12rem, 3.2vw, 1.25rem); font-weight: 800; color: #0B1F3A !important;
+      font-size: clamp(1.1rem, 3.2vw, 1.24rem); font-weight: 800; color: #0B1F3A !important;
       line-height: 1.35; margin-bottom: 8px; transition: color 0.2s ease;
     }
     .news-card:hover .news-card-title, .news-card:hover h2 { color: var(--primary-red) !important; }
     .news-card-divider { width: 35px; height: 3px; background-color: var(--primary-red) !important; border-radius: 2px; margin-bottom: 10px; }
     .news-card-attribution {
-      font-size: 0.78rem;
+      font-size: 0.79rem;
       color: var(--accent-blue);
       font-weight: 600;
       margin-bottom: 8px;
       line-height: 1.45;
     }
     .news-card-excerpt, .news-card p.news-card-excerpt {
-      font-size: clamp(0.85rem, 2.2vw, 0.9rem); line-height: 1.65; color: #44546A !important; margin-bottom: 16px;
-      display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; white-space: pre-line;
+      font-size: clamp(0.85rem, 2.2vw, 0.9rem); line-height: 1.65; color: #44546A !important; margin-bottom: 14px;
+      display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; white-space: pre-line;
     }
     .news-card-footer {
-      display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 12px; margin-top: auto;
+      display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 10px; margin-top: auto;
     }
     .read-more-btn {
       display: inline-flex; align-items: center; gap: 6px; background-color: transparent; border: none; color: var(--primary-red) !important;
-      font-family: var(--font-family); font-size: 0.84rem; font-weight: 700; cursor: pointer; transition: gap 0.2s ease, color 0.2s ease; padding: 8px 0; min-height: 44px;
+      font-family: var(--font-family); font-size: 0.84rem; font-weight: 700; cursor: pointer; transition: gap 0.2s ease, color 0.2s ease; padding: 6px 0; min-height: 40px;
     }
     .news-card:hover .read-more-btn { gap: 9px; color: var(--primary-red-hover) !important; }
     .reset-filters-btn {
@@ -848,7 +915,7 @@
     .floating-controls-panel { position: fixed; bottom: 25px; right: 25px; display: flex; align-items: center; gap: 10px; z-index: 1000; background: var(--bg-card); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); opacity: 0; visibility: hidden; }
     .floating-controls-panel.visible { opacity: 1; visibility: visible; }
     .floating-search-box { position: relative; display: flex; align-items: center; }
-    .floating-search-input { border: 1px solid var(--border-color); background: var(--bg-light); padding: 6px 14px 6px 36px; border-radius: 30px; font-family: var(--font-family); font-size: 0.8rem; color: #0B1F3A; width: 180px; min-height: 40px; }
+    .floating-search-input { border: 1px solid var(--border-color); background: var(--bg-light); padding: 6px 28px 6px 36px; border-radius: 30px; font-family: var(--font-family); font-size: 0.8rem; color: #0B1F3A; width: 195px; min-height: 40px; }
     .back-to-top { background-color: var(--primary-red); color: white; width: 44px; height: 44px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(184, 0, 0, 0.2); }
     .loading-state, .error-state, .no-results {
       background: #FFFFFF;
@@ -906,7 +973,7 @@
           Співпраця Продовольчої та сільськогосподарської організації ООН (FAO) та Київського національного університету імені Тараса Шевченка присвячена проведенню циклу відкритих навчальних лекцій, практичних відеокурсів та експертних зустрічей. Тематика охоплює продовольчу безпеку, сталий розвиток агросектору, кліматичну стійкість та відновлення України.
         </p>
       </div>
-      <!-- ПРАВА ВЕРХНЯ ЗОНА (до входу: тільки перемикач мови) -->
+      <!-- ПРАВА ВЕРХНІЙ ЗОНА (до входу: тільки перемикач мови) -->
       <div class="header-right-zone">
         <div class="lang-switcher-row">
           <div class="lang-switcher">
@@ -917,7 +984,10 @@
         <div id="headerSearchBox" class="header-search" style="display: none;">
           <div class="search-container">
             <i data-lucide="search" class="search-icon"></i>
-            <input type="text" id="mainSearchInput" class="search-input" placeholder="Шукати лекцію, модуль, лектора або тему...">
+            <input type="text" id="mainSearchInput" class="search-input" placeholder="Пошук модулів, тем, лекторів...">
+            <button type="button" id="mainSearchClearBtn" class="search-clear-btn" onclick="clearSearchQuery()" title="Очистити">
+              <i data-lucide="x" style="width: 12px; height: 12px;"></i>
+            </button>
           </div>
         </div>
         <div id="sessionHeaderBadge" class="session-header-badge" style="display: none;">
@@ -1031,17 +1101,17 @@
           <span class="control-label" id="uiSortLabel">Сортувати:</span>
           <div class="custom-select-wrapper">
             <select id="sortSelect" class="custom-select">
-              <option value="date-desc" selected>Найновіші</option>
-              <option value="date-asc">Найстаріші</option>
+              <option value="id-asc" selected>За порядком (№ ↑)</option>
               <option value="id-desc">За номером (№ ↓)</option>
-              <option value="id-asc">За номером (№ ↑)</option>
+              <option value="date-desc">Найновіші</option>
+              <option value="date-asc">Найстаріші</option>
               <option value="module-asc" hidden>За модулем (↑)</option>
               <option value="module-desc" hidden>За модулем (↓)</option>
             </select>
             <i data-lucide="chevron-down" class="sort-icon"></i>
           </div>
         </div>
-        <div class="control-item-wrapper" id="monthFilterWrapper">
+        <div class="control-item-wrapper" id="monthFilterWrapper" style="display: none;">
           <span class="control-label" id="uiMonthLabel">Місяць:</span>
           <div class="custom-select-wrapper">
             <select id="monthSelect" class="custom-select">
@@ -1078,17 +1148,25 @@
           </div>
         </div>
         <div class="control-item-wrapper" id="formatFilterWrapper" style="display: none;">
-          <span class="control-label" id="uiFormatLabel">Матеріал:</span>
+          <span class="control-label" id="uiFormatLabel">Формат:</span>
           <div class="custom-select-wrapper">
             <select id="formatSelect" class="custom-select">
               <option value="all" selected>Усі формати</option>
               <option value="video">З відеолекцією</option>
               <option value="lab">З практичною / лаб.</option>
+              <option value="theory">Без практичної (теорія / СРС)</option>
               <option value="notes">Із конспектом</option>
             </select>
             <i data-lucide="chevron-down" class="sort-icon"></i>
           </div>
         </div>
+      </div>
+      <div class="controls-status-bar" id="controlsStatusBar" style="display: none;">
+        <span id="resultsCountLabel"></span>
+        <button type="button" id="inlineResetBtn" class="inline-reset-btn" style="display: none;" onclick="resetAllFilters()">
+          <i data-lucide="rotate-ccw" style="width: 12px; height: 12px;"></i>
+          <span id="uiInlineResetText">Скинути фільтри</span>
+        </button>
       </div>
     </div>
     <div id="loadingState" class="loading-state" style="display: none;">
@@ -1099,6 +1177,7 @@
       <i data-lucide="alert-triangle" class="error-icon" style="width: 44px; height: 44px; color: var(--primary-red);"></i>
       <h3 id="uiErrorStateTitle">Збій отримання даних</h3>
       <p id="errorStateText">Не вдалося завантажити лекції через Apps Script. Перевірте з'єднання або оновіть сторінку.</p>
+      <button type="button" class="reset-filters-btn" onclick="handleAccessCheck()" id="uiRetryBtn">Спробувати ще раз</button>
     </div>
     <div class="news-feed" id="newsGrid" style="display: none;"></div>
   </main>
@@ -1106,6 +1185,9 @@
     <div class="floating-search-box">
       <i data-lucide="search" class="floating-search-icon" style="position: absolute; left: 14px; color: var(--text-muted); width: 14px; height: 14px;"></i>
       <input type="text" id="floatingSearchInput" class="floating-search-input" placeholder="Пошук лекції...">
+      <button type="button" id="floatingSearchClearBtn" class="search-clear-btn" style="right: 6px; width: 19px; height: 19px;" onclick="clearSearchQuery()" title="Очистити">
+        <i data-lucide="x" style="width: 11px; height: 11px;"></i>
+      </button>
     </div>
     <button class="back-to-top" id="backToTopBtn" title="Вгору">
       <i data-lucide="arrow-up" style="width: 16px; height: 16px;"></i>
@@ -1171,18 +1253,19 @@
         loginPlaceholder: "Введіть номер слухача",
         codePlaceholder: "Введіть код курсу",
         btnOpenMaterials: "Показати розклад і модулі",
-        btnVerifying: "Пошук у базі курсу...",
+        btnVerifying: "Завантаження бази курсу...",
         msgFillAll: "Введіть номер слухача та код навчальної групи!",
         msgLoginError: "Запис не знайдено в базі курсу. Перевірте введені значення.",
         msgFetchError: "Не вдалося завантажити матеріали. Перевірте з'єднання з мережею.",
-        searchPlaceholder: "Шукати лекцію, модуль, лектора або тему...",
+        msgTimeoutError: "Час очікування відповіді сервера вичерпано. Спробуйте ще раз.",
+        searchPlaceholder: "Пошук модулів, тем, лекторів...",
         floatingSearchPlaceholder: "Пошук модуля/лекції...",
         btnLogout: "Вийти",
         sortLabel: "Сортувати:",
         sortNewest: "Найновіші",
         sortOldest: "Найстаріші",
         sortNumDesc: "За номером (№ ↓)",
-        sortNumAsc: "За номером (№ ↑)",
+        sortNumAsc: "За порядком (№ ↑)",
         sortModuleAsc: "За модулем (↑)",
         sortModuleDesc: "За модулем (↓)",
         monthLabel: "Місяць:",
@@ -1193,15 +1276,18 @@
         allCategories: "Усі підрозділи",
         lecturerLabel: "Лектор:",
         allLecturers: "Усі лектори",
-        formatLabel: "Матеріал:",
+        formatLabel: "Формат:",
         allFormats: "Усі формати",
         formatVideo: "З відеолекцією",
         formatLab: "З практичною / лаб.",
+        formatTheory: "Теорія та СРС (без лаб.)",
         formatNotes: "Із конспектом",
+        showingCount: "Показано {shown} із {total} матеріалів",
         resetFiltersBtn: "Скинути фільтри",
+        retryBtn: "Спробувати ще раз",
         loadingText: "Отримання навчальних матеріалів із бази даних...",
         errorTitle: "Збій отримання даних",
-        errorText: "Не вдалося завантажити лекції через Apps Script. Перевірте з'єднання або оновіть сторінку.",
+        errorText: "Не вдалося завантажити лекції через Apps Script. Перевірте з'єднання або спробуйте ще раз.",
         noResultsTitle: "Матеріалів не знайдено",
         noResultsText: "Спробуйте обрати інший фільтр або змінити пошуковий запит.",
         lectureNumberPrefix: "Матеріал №",
@@ -1273,18 +1359,19 @@
         loginPlaceholder: "Enter Participant Number",
         codePlaceholder: "Enter Course Code",
         btnOpenMaterials: "Show Schedule & Modules",
-        btnVerifying: "Searching course database...",
+        btnVerifying: "Loading course database...",
         msgFillAll: "Please enter both the participant number and course code!",
         msgLoginError: "Record not found in the course database. Please check both fields.",
         msgFetchError: "Failed to retrieve materials. Please check your internet connection.",
-        searchPlaceholder: "Search lecture, module, lecturer, or topic...",
+        msgTimeoutError: "Server response timed out. Please try again.",
+        searchPlaceholder: "Search modules, topics, lecturers...",
         floatingSearchPlaceholder: "Search module/lecture...",
         btnLogout: "Log Out",
         sortLabel: "Sort by:",
         sortNewest: "Newest",
         sortOldest: "Oldest",
         sortNumDesc: "By number (№ ↓)",
-        sortNumAsc: "By number (№ ↑)",
+        sortNumAsc: "In order (№ ↑)",
         sortModuleAsc: "By module (↑)",
         sortModuleDesc: "By module (↓)",
         monthLabel: "Month:",
@@ -1299,11 +1386,14 @@
         allFormats: "All formats",
         formatVideo: "With video lecture",
         formatLab: "With lab / practical",
+        formatTheory: "Theory & self-study (no lab)",
         formatNotes: "With full notes",
+        showingCount: "Showing {shown} of {total} items",
         resetFiltersBtn: "Reset filters",
+        retryBtn: "Try again",
         loadingText: "Retrieving course materials from database...",
         errorTitle: "Data Retrieval Error",
-        errorText: "Failed to load lectures via Apps Script. Please check your connection or refresh the page.",
+        errorText: "Failed to load lectures via Apps Script. Please check your connection or try again.",
         noResultsTitle: "No materials found",
         noResultsText: "Try choosing another filter or modifying your search query.",
         lectureNumberPrefix: "Entry №",
@@ -1359,7 +1449,7 @@
     let currentLang = 'uk';
     let allNewsItems = [];
     let searchTerm = '';
-    let sortKey = 'date-desc';
+    let sortKey = 'id-asc';
     let selectedMonth = 'all';
     let selectedModule = 'all';
     let selectedCategory = 'all';
@@ -1520,6 +1610,8 @@
     const controlsCard = document.getElementById('controlsCard');
     const mainSearchInput = document.getElementById('mainSearchInput');
     const floatingSearchInput = document.getElementById('floatingSearchInput');
+    const mainSearchClearBtn = document.getElementById('mainSearchClearBtn');
+    const floatingSearchClearBtn = document.getElementById('floatingSearchClearBtn');
     const sortSelect = document.getElementById('sortSelect');
     const monthFilterWrapper = document.getElementById('monthFilterWrapper');
     const monthSelect = document.getElementById('monthSelect');
@@ -1531,6 +1623,9 @@
     const lecturerSelect = document.getElementById('lecturerSelect');
     const formatFilterWrapper = document.getElementById('formatFilterWrapper');
     const formatSelect = document.getElementById('formatSelect');
+    const controlsStatusBar = document.getElementById('controlsStatusBar');
+    const resultsCountLabel = document.getElementById('resultsCountLabel');
+    const inlineResetBtn = document.getElementById('inlineResetBtn');
     const loadingState = document.getElementById('loadingState');
     const errorState = document.getElementById('errorState');
     const newsGrid = document.getElementById('newsGrid');
@@ -1589,11 +1684,13 @@
       document.getElementById('uiCategoryLabel').innerText = dict.categoryLabel;
       document.getElementById('uiLecturerLabel').innerText = dict.lecturerLabel;
       document.getElementById('uiFormatLabel').innerText = dict.formatLabel;
+      document.getElementById('uiInlineResetText').innerText = dict.resetFiltersBtn;
+      document.getElementById('uiRetryBtn').innerText = dict.retryBtn;
       const sortTextMap = {
+        'id-asc': dict.sortNumAsc,
+        'id-desc': dict.sortNumDesc,
         'date-desc': dict.sortNewest,
         'date-asc': dict.sortOldest,
-        'id-desc': dict.sortNumDesc,
-        'id-asc': dict.sortNumAsc,
         'module-asc': dict.sortModuleAsc,
         'module-desc': dict.sortModuleDesc
       };
@@ -1604,6 +1701,7 @@
         'all': dict.allFormats,
         'video': dict.formatVideo,
         'lab': dict.formatLab,
+        'theory': dict.formatTheory,
         'notes': dict.formatNotes
       };
       Array.from(formatSelect.options).forEach(opt => {
@@ -1626,10 +1724,19 @@
             const y = item.dateObj.getFullYear();
             item.monthLabel = `${dict.monthsNominative[m]} ${y}`;
           }
+          if (item._moduleMeta) {
+            item.moduleLabel = lang === 'uk' ? item._moduleMeta.uk : item._moduleMeta.en;
+          }
+          if (item._deptMeta) {
+            item.categoryLabel = lang === 'uk' ? item._deptMeta.ukShort : item._deptMeta.enShort;
+          }
+          if (item._langMeta) {
+            item.languageLabel = lang === 'uk' ? item._langMeta.uk : item._langMeta.en;
+          }
           if (item._workloadParts) {
             item.workload = formatWorkloadParts(item._workloadParts);
             item.totalHoursBadge = item._workloadParts.totalHours
-              ? `${item._workloadParts.totalHours} ${currentLang === 'uk' ? 'год' : 'h'}`
+              ? `${item._workloadParts.totalHours} ${lang === 'uk' ? 'год' : 'h'}`
               : '';
           }
         });
@@ -1651,11 +1758,15 @@
         return;
       }
       hideAccessFeedback();
+      errorState.style.display = 'none';
+      loadingState.style.display = 'flex';
       accessSubmitBtn.disabled = true;
       accessSubmitText.innerText = dict.btnVerifying;
       const keyTokenA = clientSaltedHash(rawGroupNum);
       const keyTokenALower = clientSaltedHash(rawGroupNum.toLowerCase());
       const keyTokenB = clientSaltedHash(rawCourseKey);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 25000);
       try {
         const payload = {
           action: "catalog",
@@ -1666,9 +1777,22 @@
         const response = await fetch(SCRIPT_URL, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
+          redirect: "follow",
+          signal: controller.signal
         });
-        const data = await response.json();
+        clearTimeout(timeoutId);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const rawText = await response.text();
+        let data;
+        try {
+          data = JSON.parse(rawText);
+        } catch (parseErr) {
+          throw new Error("Invalid JSON response from Apps Script");
+        }
+        loadingState.style.display = 'none';
         accessSubmitBtn.disabled = false;
         accessSubmitText.innerText = dict.btnOpenMaterials;
         refreshIcons();
@@ -1683,17 +1807,26 @@
           newsGrid.style.display = 'flex';
           sessionUserLabel.innerText = rawGroupNum;
           ingestBackendItems(data.items || [], data.headers || null);
+          chooseSmartInitialSort(allNewsItems);
           updateAllFilterDropdowns(allNewsItems);
           updateAppUI();
         } else {
           showFeedback(false, (data && data.message) ? String(data.message) : dict.msgLoginError);
         }
       } catch (err) {
-        console.error("Помилка перевірки доступу:", err);
+        clearTimeout(timeoutId);
+        console.error("Помилка отримання даних:", err);
+        loadingState.style.display = 'none';
         accessSubmitBtn.disabled = false;
         accessSubmitText.innerText = dict.btnOpenMaterials;
+        const msg = err && err.name === 'AbortError' ? dict.msgTimeoutError : dict.msgFetchError;
+        if (document.body.classList.contains('logged-in')) {
+          document.getElementById('errorStateText').innerText = msg;
+          errorState.style.display = 'flex';
+        } else {
+          showFeedback(false, msg);
+        }
         refreshIcons();
-        showFeedback(false, dict.msgFetchError);
       }
     }
     function showFeedback(isSuccess, text) {
@@ -1710,8 +1843,8 @@
       closeModal();
       document.body.classList.remove('logged-in');
       allNewsItems = [];
-      sortKey = 'date-desc';
-      sortSelect.value = 'date-desc';
+      sortKey = 'id-asc';
+      sortSelect.value = 'id-asc';
       selectedMonth = 'all';
       selectedModule = 'all';
       selectedCategory = 'all';
@@ -1720,10 +1853,14 @@
       searchTerm = '';
       mainSearchInput.value = '';
       floatingSearchInput.value = '';
+      syncSearchClearButtons();
       newsGrid.innerHTML = '';
       newsGrid.style.display = 'none';
+      loadingState.style.display = 'none';
+      errorState.style.display = 'none';
       controlsCard.style.display = 'none';
-      monthFilterWrapper.style.display = 'flex';
+      controlsStatusBar.style.display = 'none';
+      monthFilterWrapper.style.display = 'none';
       moduleFilterWrapper.style.display = 'none';
       categoryFilterWrapper.style.display = 'none';
       lecturerFilterWrapper.style.display = 'none';
@@ -1741,7 +1878,7 @@
       refreshIcons();
     }
     /* ==========================================================================
-       УНІВЕРСАЛЬНИЙ ПАРСЕР РІЗНОТИПНИХ КОЛОНОК ТАБЛИЦІ (PDF -> XLSX / SHEETS)
+       СТАНДАРТИЗАЦІЯ ТА ОЧИЩЕННЯ ДАНИХ ІЗ ТАБЛИЦІ (ДЛЯ КАРТОК І ВИПАДНИХ СПИСКІВ)
        ========================================================================== */
     function normalizeHeaderKey(key) {
       return String(key || '')
@@ -1823,6 +1960,322 @@
         }
       }
       return { raw: null, text: '' };
+    }
+    function sanitizeLatinLookalikes(str) {
+      // Виправлення кириличної 'і' / 'І' всередині латинських слів (напр., Serhiі -> Serhii)
+      return String(str || '')
+        .replace(/([A-Za-z])і([A-Za-z]?)/g, '$1i$2')
+        .replace(/([A-Za-z])І([A-Za-z]?)/g, '$1I$2')
+        .replace(/і([A-Za-z])/g, 'i$1')
+        .replace(/І([A-Za-z])/g, 'I$1');
+    }
+    function smartTitleCase(str) {
+      const text = String(str || '').replace(/\s+/g, ' ').trim();
+      if (!text) return '';
+      const letters = text.replace(/[^a-zA-Zа-яА-ЯіїєґІЇЄҐ]/g, '');
+      const upper = text.replace(/[^A-ZА-ЯІЇЄҐ]/g, '');
+      const isMostlyAllCaps = letters.length >= 6 && (upper.length / letters.length) > 0.65;
+      if (!isMostlyAllCaps) return text;
+      const preserveUpper = new Set([
+        'FAO', 'KNU', 'TSNUK', 'WRB', 'XRF', 'OES', 'AES', 'MS', 'FID', 'PID', 'AAS', 'ICP',
+        'PAHS', 'POPS', 'DNA', 'RNA', 'UAV', 'UAVS', 'ECTS', 'GIS', 'II', 'III', 'IV', 'WWII',
+        'UN', 'EU', 'USA', 'EPA', 'ISO', 'DSTU', 'IAEA', 'SERS', 'RECOVER', 'GSMP-25', 'KLY', 'MS2B'
+      ]);
+      const minorWords = new Set([
+        'and', 'or', 'of', 'for', 'in', 'on', 'to', 'the', 'a', 'an', 'by', 'with', 'from', 'as', 'at', 'into', 'via',
+        'та', 'і', 'й', 'в', 'у', 'на', 'до', 'з', 'із', 'зі', 'за', 'для', 'по', 'під', 'про'
+      ]);
+      const tokens = text.split(' ');
+      return tokens.map((tok, idx) => {
+        const cleanCore = tok.replace(/^[("'«]+|[)"'».,:;!?]+$/g, '');
+        const upperCore = cleanCore.toUpperCase();
+        if (preserveUpper.has(upperCore) || /^[A-Z]{2,}\d*[-.]/.test(upperCore)) {
+          return tok;
+        }
+        const lowerTok = tok.toLowerCase();
+        if (idx > 0 && idx < tokens.length - 1 && minorWords.has(lowerTok)) {
+          return lowerTok;
+        }
+        return lowerTok.replace(/(^|[-\/("«'])([a-zа-яіїєґ])/g, (m, p1, p2) => p1 + p2.toUpperCase());
+      }).join(' ');
+    }
+    function sanitizeModuleTitle(rawTitle) {
+      let s = String(rawTitle || '').replace(/\s+/g, ' ').trim();
+      if (!s) return '';
+      // Видаляємо випадкові URL, [In Ukrainian] та уламки шляху на початку заголовка
+      s = s.replace(/^(?:https?:\/\/\S+\s*)+/gi, '').trim();
+      s = s.replace(/^(?:\[(?:in\s+)?(?:ukrainian|english|укр\.?)\]\.?\s*)+/gi, '').trim();
+      s = s.replace(/^[a-z0-9_-]{6,}\/[a-z0-9_.-]+\s+/i, '').trim();
+      s = s.replace(/^[\s\-–—.:,;]+/, '').trim();
+      s = smartTitleCase(s);
+      return s;
+    }
+    function standardizeModule(rawMod) {
+      const text = String(rawMod || '').replace(/\s+/g, ' ').trim();
+      if (!text) return null;
+      const numsMatch = text.match(/([\d]+(?:\s*[,–\-]\s*\d+)*)/);
+      if (!numsMatch) {
+        return {
+          key: text.toLowerCase(),
+          sortNums: [9999],
+          uk: text,
+          en: text
+        };
+      }
+      const normalizedNums = numsMatch[1]
+        .replace(/\s*,\s*/g, ', ')
+        .replace(/\s*-\s*/g, '–')
+        .replace(/\s+/g, ' ')
+        .trim();
+      const isMultiple = normalizedNums.includes(',') || /modules\b|модулі\b/i.test(text);
+      const sortNums = normalizedNums
+        .split(/[,–]/)
+        .map(n => parseInt(n.trim(), 10))
+        .filter(n => !isNaN(n));
+      return {
+        key: normalizedNums.replace(/\s+/g, ''),
+        sortNums: sortNums.length > 0 ? sortNums : [9999],
+        uk: `${isMultiple ? 'Модулі' : 'Модуль'} № ${normalizedNums}`,
+        en: `${isMultiple ? 'Modules' : 'Module'} No. ${normalizedNums}`
+      };
+    }
+    function compareModulesMeta(aMeta, bMeta) {
+      if (!aMeta && !bMeta) return 0;
+      if (!aMeta) return 1;
+      if (!bMeta) return -1;
+      const len = Math.max(aMeta.sortNums.length, bMeta.sortNums.length);
+      for (let i = 0; i < len; i++) {
+        const va = aMeta.sortNums[i] !== undefined ? aMeta.sortNums[i] : -1;
+        const vb = bMeta.sortNums[i] !== undefined ? bMeta.sortNums[i] : -1;
+        if (va !== vb) return va - vb;
+      }
+      return aMeta.key.localeCompare(bMeta.key);
+    }
+    function canonicalizeDepartment(rawInst) {
+      const s = String(rawInst || '').replace(/\s+/g, ' ').trim();
+      if (!s) return null;
+      const low = s.toLowerCase();
+      if (low.includes('geology') || low.includes('геолог')) {
+        return {
+          key: 'geology',
+          ukShort: 'ННІ «Інститут геології»',
+          enShort: 'Institute of Geology',
+          ukFull: 'КНУ імені Тараса Шевченка, ННІ «Інститут геології»',
+          enFull: 'Taras Shevchenko National University of Kyiv, Educational and Scientific Institute “Institute of Geology”'
+        };
+      }
+      if (low.includes('geography') || low.includes('географ')) {
+        return {
+          key: 'geography',
+          ukShort: 'Географічний факультет',
+          enShort: 'Faculty of Geography',
+          ukFull: 'КНУ імені Тараса Шевченка, Географічний факультет',
+          enFull: 'Taras Shevchenko National University of Kyiv, Faculty of Geography'
+        };
+      }
+      if (low.includes('chemistry') || low.includes('хім')) {
+        return {
+          key: 'chemistry',
+          ukShort: 'Хімічний факультет',
+          enShort: 'Faculty of Chemistry',
+          ukFull: 'КНУ імені Тараса Шевченка, Хімічний факультет',
+          enFull: 'Taras Shevchenko National University of Kyiv, Faculty of Chemistry'
+        };
+      }
+      if (low.includes('biology') || low.includes('medicine') || low.includes('біолог') || low.includes('медиц')) {
+        return {
+          key: 'biology',
+          ukShort: 'ННЦ «Інститут біології та медицини»',
+          enShort: 'Institute of Biology and Medicine',
+          ukFull: 'КНУ імені Тараса Шевченка, ННЦ «Інститут біології та медицини»',
+          enFull: 'Taras Shevchenko National University of Kyiv, Educational and Scientific Center "Institute of Biology and Medicine"'
+        };
+      }
+      const shortClean = s
+        .replace(/^Taras Shevchenko National University of Kyiv,\s*/i, '')
+        .replace(/^Київський національний університет імені Тараса Шевченка,\s*/i, '')
+        .replace(/^КНУ імені Тараса Шевченка,\s*/i, '')
+        .trim();
+      return {
+        key: shortClean.toLowerCase(),
+        ukShort: shortClean,
+        enShort: shortClean,
+        ukFull: s,
+        enFull: s
+      };
+    }
+    function formatPersonNameClean(rawName) {
+      let n = sanitizeLatinLookalikes(String(rawName || '').replace(/\s+/g, ' ').trim());
+      if (!n) return '';
+      return n.split(' ').map(word => {
+        if (!word) return '';
+        const letters = word.replace(/[^a-zA-Zа-яА-ЯіїєґІЇЄҐ'’\-]/g, '');
+        if (!letters) return word;
+        // Якщо прізвище написано ВСІМА ВЕЛИКИМИ (напр. IVANOK, UDOVYCHENKO, SMIRNOV)
+        if (letters.length >= 2 && letters === letters.toUpperCase()) {
+          return word.toLowerCase().replace(/(^|[\-'])([a-zа-яіїєґ])/g, (m, p1, p2) => p1 + p2.toUpperCase());
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      }).join(' ');
+    }
+    function extractPeopleEntries(rawText) {
+      let text = sanitizeLatinLookalikes(String(rawText || '').trim());
+      if (!text) return { formattedFull: '', cleanNames: [] };
+      text = text.replace(/^(?:лектори?|викладачі?|lecturers?|instructors?)\s*:\s*/gi, '').trim();
+      // Розділяємо, якщо дві людини склеїлися в одному рядку без переносу
+      text = text.replace(
+        /(Researcher|Associate Professor|Professor|Faculty of Chemistry|Institute of Geology|Candidate of [A-Za-z]+ Sciences|Ph\.?\s*D\.?|кандидат[^;\n]*|доктор[^;\n]*)\s+([A-ZА-ЯІЇЄҐ][a-zа-яіїєґ'’]+(?:\s+[A-ZА-ЯІЇЄҐ][a-zа-яіїєґ'’]+|\s+[A-ZА-ЯІЇЄҐ]{2,}),\s*(?:Ph\.?\s*D|Doctor|Candidate|Associate|Senior|Professor|доктор|кандидат|доцент|професор))/gi,
+        '$1\n$2'
+      );
+      const lines = text.split(/[\n;]+/).map(s => s.trim()).filter(Boolean);
+      const formattedLines = [];
+      const cleanNames = [];
+      const seenNameKeys = new Set();
+      lines.forEach(line => {
+        const cleanedLine = line.replace(/^(?:лектор|викладач|lecturer|instructor)s?\s*:\s*/i, '').trim();
+        if (!cleanedLine) return;
+        const commaIdx = cleanedLine.indexOf(',');
+        const rawPersonName = commaIdx > 0 ? cleanedLine.slice(0, commaIdx).trim() : cleanedLine;
+        const restCredentials = commaIdx > 0 ? cleanedLine.slice(commaIdx).trim() : '';
+        const cleanPersonName = formatPersonNameClean(rawPersonName);
+        if (cleanPersonName) {
+          const nameKey = cleanPersonName.toLowerCase();
+          if (!seenNameKeys.has(nameKey)) {
+            seenNameKeys.add(nameKey);
+            cleanNames.push(cleanPersonName);
+          }
+          formattedLines.push(restCredentials ? `${cleanPersonName}${restCredentials}` : cleanPersonName);
+        }
+      });
+      return {
+        formattedFull: formattedLines.join('\n'),
+        cleanNames: cleanNames
+      };
+    }
+    function normalizeInstitutionAndLecturers(instRaw, lecRaw) {
+      let inst = String(instRaw || '').replace(/\s+/g, ' ').trim();
+      let lec = String(lecRaw || '').trim();
+      // Якщо лектори випадково склеїлись у поле institution (як у рядках 4 і 7)
+      const gluedFacultyMatch = inst.match(
+        /^(Taras Shevchenko National University of Kyiv,\s*(?:Educational and Scientific (?:Institute|Center)\s*[“"«]?[^”"»]+?[”"»]?|Faculty of [A-Za-z]+)|Faculty of [A-Za-z]+|Institute of [A-Za-z]+)\s+([A-ZА-ЯІЇЄҐ][a-zа-яіїєґ'’]+\s+[A-ZА-ЯІЇЄҐ][a-zа-яіїєґ'’]+,\s*(?:Ph\.?\s*D|Doctor|Candidate|Associate|Senior|Professor).*)$/i
+      );
+      if (gluedFacultyMatch) {
+        inst = gluedFacultyMatch[1].trim();
+        if (!lec) {
+          lec = gluedFacultyMatch[2].trim();
+        }
+      }
+      const deptMeta = canonicalizeDepartment(inst);
+      const people = extractPeopleEntries(lec);
+      return {
+        deptMeta: deptMeta,
+        institutionClean: deptMeta ? deptMeta.enFull : inst,
+        lecturerFull: people.formattedFull,
+        lecturerNames: people.cleanNames
+      };
+    }
+    function cleanLanguageAndAudience(langRaw, audRaw) {
+      let langStr = String(langRaw || '').replace(/\s+/g, ' ').trim();
+      let audStr = String(audRaw || '').replace(/\s+/g, ' ').trim();
+      const leakMatch = langStr.match(/^(.*?)\s*\b(Target\s+(?:group|audience)[^]*|Цільова\s+(?:аудиторія|група)[^]*)$/i);
+      if (leakMatch) {
+        langStr = leakMatch[1].trim();
+        const leakedAud = leakMatch[2]
+          .replace(/^(?:Target\s+(?:group|audience)\s*(?:and\/or\s*(?:conditions\s+for|entry\s+requirements|prerequisites\s+for\s+starting\s+the\s+course))?|Цільова\s+(?:аудиторія|група)(?:\s*\/\s*вимоги)?)\s*:?\s*/i, '')
+          .trim();
+        if (!audStr && leakedAud) audStr = leakedAud;
+      }
+      const lowLang = langStr.toLowerCase();
+      let langMeta = null;
+      if (lowLang.includes('ukrainian') || lowLang.includes('україн')) {
+        if (lowLang.includes('english') || lowLang.includes('англ')) {
+          langMeta = { key: 'uk+en', uk: 'Українська / Англійська', en: 'Ukrainian / English' };
+        } else {
+          langMeta = { key: 'uk', uk: 'Українська', en: 'Ukrainian' };
+        }
+      } else if (lowLang.includes('english') || lowLang.includes('англ')) {
+        langMeta = { key: 'en', uk: 'Англійська', en: 'English' };
+      } else if (langStr) {
+        langMeta = { key: lowLang, uk: langStr, en: langStr };
+      }
+      return { langMeta, audienceClean: audStr };
+    }
+    function cleanSyllabusText(rawText, fieldType) {
+      let text = String(rawText || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+      if (!text) return '';
+      if (fieldType === 'independentStudy') {
+        text = text.replace(/^(?:homework|self-directed study|independent study)\s*\)\s*/i, '').trim();
+      }
+      if (fieldType === 'learningOutcomes') {
+        text = text.replace(/\s*ECOTOXICOLOGY AND ENVIRONMENTAL BIOREMEDIATION\s*\(MODULE No\.\s*7[–-]8\)\s*$/i, '').trim();
+      }
+      if (fieldType === 'resources') {
+        return cleanResourcesLines(text);
+      }
+      return text;
+    }
+    function cleanResourcesLines(rawText) {
+      const lines = String(rawText || '').split('\n');
+      const cleanedLines = [];
+      lines.forEach(line => {
+        let s = line.trim();
+        if (!s) return;
+        // Нормалізуємо пробіли після номера списку: 18)Rouessac -> 18) Rouessac, 304 p.Https -> 304 p. Https
+        s = s.replace(/^(\d{1,3}[.)])(?=\S)/, '$1 ');
+        s = s.replace(/([a-z0-9.])(https?:\/\/)/gi, '$1 $2');
+        // Збираємо повні URL з дужок (https://...)
+        const parenUrls = [];
+        s = s.replace(/\((https?:\/\/[^\s)]+)\)/gi, (m, url) => {
+          parenUrls.push(url);
+          return ' ___PAREN_URL___ ';
+        });
+        // Виправляємо розірвані URL навколо видаленого ___PAREN_URL___
+        // напр.: https://itrcweb.org/wp- ___PAREN_URL___ content/uploads/.../file.pdf
+        s = s.replace(/(https?:\/\/[^\s]+)\s+___PAREN_URL___\s+([^\s]+)/gi, (m, leftFrag, rightFrag) => {
+          const matchedFull = parenUrls.find(u => u.indexOf(leftFrag.replace(/-$/, '')) === 0);
+          if (matchedFull) return matchedFull;
+          return `${leftFrag}${rightFrag}`;
+        });
+        // Залишки ___PAREN_URL___ прибираємо з середини тексту
+        s = s.replace(/\s*___PAREN_URL___\s*/g, ' ').replace(/\s{2,}/g, ' ').trim();
+        // Виправляємо артефакт пробілу перед розширенням/шляхом типу "https://geo.knu.ua/wp- l.f.-samojlenko..."
+        parenUrls.forEach(u => {
+          if (s.toLowerCase().indexOf(u.toLowerCase()) === -1) {
+            // Перевірка, чи в рядку залишився обірваний префікс цього URL
+            const prefixMatch = s.match(/(https?:\/\/[^\s]{12,})(?:\s+[^\s]{5,})?/i);
+            if (prefixMatch && u.toLowerCase().startsWith(prefixMatch[1].replace(/-$/, '').toLowerCase())) {
+              s = s.replace(prefixMatch[0], u);
+            } else {
+              s = `${s} ${u}`;
+            }
+          }
+        });
+        // Прибираємо випадкові повтори того самого URL в одному рядку
+        const seenLineUrls = new Set();
+        s = s.replace(/https?:\/\/[^\s<>"']+/gi, (u) => {
+          const key = u.replace(/[.,;]+$/, '').toLowerCase();
+          if (seenLineUrls.has(key)) return '';
+          seenLineUrls.add(key);
+          return u;
+        }).replace(/\s{2,}/g, ' ').trim();
+        if (s) cleanedLines.push(s);
+      });
+      return cleanedLines.join('\n');
+    }
+    function pickCleanLead(leadText, objectiveText, lectureText, fullText) {
+      const lead = String(leadText || '').trim();
+      const obj = String(objectiveText || '').trim();
+      if (lead) {
+        // Якщо опис обірваний на півслові з '...' і мета навчання містить повне речення
+        if (/\.\.\.\s*$/.test(lead) && obj.length > lead.length) {
+          const probe = lead.slice(0, Math.min(35, lead.length - 3)).toLowerCase();
+          if (obj.toLowerCase().startsWith(probe)) {
+            return obj;
+          }
+        }
+        return lead;
+      }
+      return obj || lectureText || fullText || '';
     }
     function formatWorkloadParts(partsObj) {
       const isUk = currentLang === 'uk';
@@ -1924,21 +2377,6 @@
       });
       return links;
     }
-    function splitLecturerNames(rawLecturer) {
-      const text = formatCellScalar(rawLecturer);
-      if (!text) return [];
-      return text
-        .split(/[\n;]+/)
-        .map(part => part.trim())
-        .filter(Boolean)
-        .map(person => {
-          const cleanPerson = person.replace(/^(лектор|викладач|lecturer|instructor)s?\s*:\s*/i, '').trim();
-          const commaIdx = cleanPerson.indexOf(',');
-          const shortName = commaIdx > 0 ? cleanPerson.slice(0, commaIdx).trim() : cleanPerson;
-          return shortName.replace(/\s+/g, ' ');
-        })
-        .filter(Boolean);
-    }
     function splitTagsList(rawTags) {
       const text = formatCellScalar(rawTags);
       if (!text) return [];
@@ -1948,21 +2386,6 @@
           .map(s => s.trim())
           .filter(Boolean)
       ));
-    }
-    function shortenInstitutionLabel(inst) {
-      const text = String(inst || '').trim();
-      if (!text) return '';
-      return text
-        .replace(/^Taras Shevchenko National University of Kyiv,\s*/i, '')
-        .replace(/^Київський національний університет імені Тараса Шевченка,\s*/i, '')
-        .replace(/^КНУ імені Тараса Шевченка,\s*/i, '')
-        .replace(/^Educational and Scientific (Institute|Center)\s*/i, '')
-        .replace(/^Навчально-науковий (інститут|центр)\s*/i, '')
-        .replace(/^[«"]([^»"]+)[»"]$/, '$1')
-        .trim();
-    }
-    function compareModuleCodes(a, b) {
-      return String(a || '').localeCompare(String(b || ''), undefined, { numeric: true, sensitivity: 'base' });
     }
     function ingestBackendItems(rawItems, headers) {
       allNewsItems = [];
@@ -2035,6 +2458,15 @@
             extraFields.push({ label: k, value: valText });
           }
         });
+        const cleanTitle = sanitizeModuleTitle(fTitle.text);
+        const moduleMeta = standardizeModule(fModule.text);
+        const instAndLec = normalizeInstitutionAndLecturers(fInstitution.text, fLecturer.text);
+        const instructorsPeople = extractPeopleEntries(fInstructors.text);
+        const langAndAud = cleanLanguageAndAudience(fLanguage.text, fAudience.text);
+        const outcomesClean = cleanSyllabusText(fOutcomes.text, 'learningOutcomes');
+        const independentClean = cleanSyllabusText(fIndependent.text, 'independentStudy');
+        const resourcesClean = cleanSyllabusText(fResources.text, 'resources');
+        const cleanLead = pickCleanLead(fLead.text, fObjective.text, fLectureContent.text, fFull.text);
         const rawDateVal = fDate.raw !== null ? fDate.raw : fDate.text;
         const dateFormatted = formatDateToLocale(rawDateVal);
         const dateObj = parseDateString(rawDateVal || dateFormatted);
@@ -2061,63 +2493,80 @@
         if (totalHoursBadge && /^\d+([.,]\d+)?$/.test(totalHoursBadge)) {
           totalHoursBadge = `${totalHoursBadge} ${currentLang === 'uk' ? 'год' : 'h'}`;
         }
-        const categoryValue = fCategory.text || shortenInstitutionLabel(fInstitution.text);
+        const explicitCategoryMeta = fCategory.text ? canonicalizeDepartment(fCategory.text) : null;
+        const deptMeta = explicitCategoryMeta || instAndLec.deptMeta;
         const externalLinks = extractExternalLinks(fMaterialsUrl.raw !== null ? fMaterialsUrl.raw : fMaterialsUrl.text);
         const ytMedia = extractYoutubeMedia(fYoutube.raw !== null ? fYoutube.raw : fYoutube.text);
         const primaryYoutubeId = ytMedia.videos.length > 0 ? ytMedia.videos[0].id : '';
-        const lecturerNames = splitLecturerNames(fLecturer.text);
         const tagList = splitTagsList(fTags.text);
         const item = {
           _uid: `item_${index}`,
           id: fId.text || String(index + 1),
           sheetRow: Number(rawRow.sheetRow) || index + 1,
-          moduleNumber: fModule.text,
+          _moduleMeta: moduleMeta,
+          moduleKey: moduleMeta ? moduleMeta.key : '',
+          moduleLabel: moduleMeta ? (currentLang === 'uk' ? moduleMeta.uk : moduleMeta.en) : '',
           date: dateFormatted || "—",
           rawDate: rawDateVal,
           dateObj: dateObj,
           monthKey: monthKey,
           monthLabel: monthLabel,
-          title: fTitle.text || (currentLang === 'uk' ? "Навчальний модуль проєкту" : "Project Learning Module"),
-          lead: fLead.text,
+          title: cleanTitle || (currentLang === 'uk' ? "Навчальний модуль проєкту" : "Project Learning Module"),
+          lead: cleanLead,
           fullText: fFull.text,
           youtubeId: primaryYoutubeId,
           youtubeVideos: ytMedia.videos,
           youtubePlaylistId: ytMedia.playlistId,
-          institution: fInstitution.text,
-          institutionShort: shortenInstitutionLabel(fInstitution.text),
-          lecturer: fLecturer.text,
-          lecturerNames: lecturerNames,
-          instructors: fInstructors.text,
+          _deptMeta: deptMeta,
+          categoryKey: deptMeta ? deptMeta.key : '',
+          categoryLabel: deptMeta ? (currentLang === 'uk' ? deptMeta.ukShort : deptMeta.enShort) : '',
+          institution: instAndLec.institutionClean,
+          lecturer: instAndLec.lecturerFull,
+          lecturerNames: instAndLec.lecturerNames,
+          instructors: instructorsPeople.formattedFull,
           workload: workloadData.summary,
           _workloadParts: workloadData.partsObj,
           totalHoursBadge: totalHoursBadge,
           ects: ectsBadge,
-          language: fLanguage.text,
-          targetAudience: fAudience.text,
+          _langMeta: langAndAud.langMeta,
+          languageLabel: langAndAud.langMeta ? (currentLang === 'uk' ? langAndAud.langMeta.uk : langAndAud.langMeta.en) : '',
+          targetAudience: langAndAud.audienceClean,
           assessmentFormat: fAssessmentFormat.text,
-          learningOutcomes: fOutcomes.text,
+          learningOutcomes: outcomesClean,
           learningObjective: fObjective.text,
           lectureContent: fLectureContent.text,
           labWork: fLabWork.text,
-          independentStudy: fIndependent.text,
+          independentStudy: independentClean,
           gradingScale: fGrading.text,
-          resources: fResources.text,
-          category: categoryValue,
+          resources: resourcesClean,
           tags: fTags.text,
           tagList: tagList,
           externalLinks: externalLinks,
           extraFields: extraFields
         };
         item._searchBlob = [
-          item.id, item.moduleNumber, item.date, item.title, item.lead, item.fullText,
-          item.institution, item.lecturer, item.instructors, item.workload, item.ects,
-          item.language, item.targetAudience, item.assessmentFormat, item.learningOutcomes,
+          item.id, item.moduleLabel, item._moduleMeta ? `${item._moduleMeta.uk} ${item._moduleMeta.en}` : '',
+          item.date, item.title, item.lead, item.fullText,
+          item.institution, item.categoryLabel, item._deptMeta ? `${item._deptMeta.ukShort} ${item._deptMeta.enShort}` : '',
+          item.lecturer, item.instructors, item.workload, item.ects,
+          item.languageLabel, item.targetAudience, item.assessmentFormat, item.learningOutcomes,
           item.learningObjective, item.lectureContent, item.labWork, item.independentStudy,
-          item.gradingScale, item.resources, item.category, item.tags,
+          item.gradingScale, item.resources, item.tags,
           ...item.extraFields.map(ef => `${ef.label} ${ef.value}`)
         ].join(' ').toLowerCase();
         allNewsItems.push(item);
       });
+    }
+    function chooseSmartInitialSort(items) {
+      if (!items || items.length === 0) return;
+      const uniqueDates = new Set(items.filter(i => i.dateObj && i.dateObj.getTime() > 0).map(i => i.dateObj.toDateString()));
+      const hasModules = items.some(i => Boolean(i._moduleMeta));
+      if (uniqueDates.size <= 1 && hasModules) {
+        sortKey = 'id-asc';
+      } else {
+        sortKey = 'date-desc';
+      }
+      if (sortSelect) sortSelect.value = sortKey;
     }
     function convertToLocaleDate(day, month, year) {
       const dict = t();
@@ -2262,7 +2711,7 @@
     }
     function updateSortModuleOptions(items) {
       if (!sortSelect) return;
-      const hasModules = items.some(i => i.moduleNumber && i.moduleNumber.trim() !== '');
+      const hasModules = items.some(i => Boolean(i._moduleMeta));
       Array.from(sortSelect.options).forEach(opt => {
         if (opt.value === 'module-asc' || opt.value === 'module-desc') {
           opt.hidden = !hasModules;
@@ -2284,7 +2733,8 @@
         }
       });
       const sortedMonthKeys = Array.from(monthMap.keys()).sort().reverse();
-      if (sortedMonthKeys.length === 0) {
+      // Якщо місяць лише один або дат немає — не захаращуємо панель фільтрів
+      if (sortedMonthKeys.length < 2) {
         monthFilterWrapper.style.display = 'none';
         selectedMonth = 'all';
         return;
@@ -2307,22 +2757,27 @@
     function updateModuleDropdown(items) {
       if (!moduleSelect || !moduleFilterWrapper) return;
       const dict = t();
-      const modules = Array.from(new Set(
-        items.map(i => i.moduleNumber).filter(m => m && m.trim() !== '')
-      )).sort(compareModuleCodes);
-      if (modules.length < 2) {
+      const moduleMap = new Map();
+      items.forEach(i => {
+        if (i.moduleKey && i.moduleLabel && !moduleMap.has(i.moduleKey)) {
+          moduleMap.set(i.moduleKey, i._moduleMeta);
+        }
+      });
+      const sortedEntries = Array.from(moduleMap.entries()).sort((a, b) => compareModulesMeta(a[1], b[1]));
+      if (sortedEntries.length < 2) {
         moduleFilterWrapper.style.display = 'none';
         selectedModule = 'all';
         return;
       }
       moduleFilterWrapper.style.display = 'flex';
       let optionsHtml = `<option value="all">${dict.allModules}</option>`;
-      modules.forEach(m => {
-        const isSel = m === selectedModule ? 'selected' : '';
-        optionsHtml += `<option value="${escapeHtml(m)}" ${isSel}>${escapeHtml(m)}</option>`;
+      sortedEntries.forEach(([key, meta]) => {
+        const label = currentLang === 'uk' ? meta.uk : meta.en;
+        const isSel = key === selectedModule ? 'selected' : '';
+        optionsHtml += `<option value="${escapeHtml(key)}" ${isSel}>${escapeHtml(label)}</option>`;
       });
       moduleSelect.innerHTML = optionsHtml;
-      if (selectedModule !== 'all' && !modules.includes(selectedModule)) {
+      if (selectedModule !== 'all' && !moduleMap.has(selectedModule)) {
         selectedModule = 'all';
         moduleSelect.value = 'all';
       }
@@ -2330,22 +2785,26 @@
     function updateCategoryDropdown(items) {
       if (!categorySelect || !categoryFilterWrapper) return;
       const dict = t();
-      const cats = Array.from(new Set(
-        items.map(i => i.category).filter(c => c && c.trim() !== '')
-      )).sort();
-      if (cats.length < 2) {
+      const catMap = new Map();
+      items.forEach(i => {
+        if (i.categoryKey && i.categoryLabel && !catMap.has(i.categoryKey)) {
+          catMap.set(i.categoryKey, i.categoryLabel);
+        }
+      });
+      const sortedCats = Array.from(catMap.entries()).sort((a, b) => a[1].localeCompare(b[1]));
+      if (sortedCats.length < 2) {
         categoryFilterWrapper.style.display = 'none';
         selectedCategory = 'all';
         return;
       }
       categoryFilterWrapper.style.display = 'flex';
       let optionsHtml = `<option value="all">${dict.allCategories}</option>`;
-      cats.forEach(c => {
-        const isSel = c === selectedCategory ? 'selected' : '';
-        optionsHtml += `<option value="${escapeHtml(c)}" ${isSel}>${escapeHtml(c)}</option>`;
+      sortedCats.forEach(([key, label]) => {
+        const isSel = key === selectedCategory ? 'selected' : '';
+        optionsHtml += `<option value="${escapeHtml(key)}" ${isSel}>${escapeHtml(label)}</option>`;
       });
       categorySelect.innerHTML = optionsHtml;
-      if (selectedCategory !== 'all' && !cats.includes(selectedCategory)) {
+      if (selectedCategory !== 'all' && !catMap.has(selectedCategory)) {
         selectedCategory = 'all';
         categorySelect.value = 'all';
       }
@@ -2391,6 +2850,7 @@
       Array.from(formatSelect.options).forEach(opt => {
         if (opt.value === 'video') opt.hidden = !hasVideo;
         if (opt.value === 'lab') opt.hidden = !hasLab;
+        if (opt.value === 'theory') opt.hidden = !(hasLab && noLab);
         if (opt.value === 'notes') opt.hidden = !hasNotes;
       });
       if (selectedFormat !== 'all') {
@@ -2401,6 +2861,18 @@
         }
       }
     }
+    function syncSearchClearButtons() {
+      const hasVal = Boolean(searchTerm && searchTerm.length > 0);
+      if (mainSearchClearBtn) mainSearchClearBtn.classList.toggle('visible', hasVal);
+      if (floatingSearchClearBtn) floatingSearchClearBtn.classList.toggle('visible', hasVal);
+    }
+    function clearSearchQuery() {
+      searchTerm = '';
+      mainSearchInput.value = '';
+      floatingSearchInput.value = '';
+      syncSearchClearButtons();
+      updateAppUI();
+    }
     function resetAllFilters() {
       searchTerm = '';
       selectedMonth = 'all';
@@ -2410,6 +2882,7 @@
       selectedFormat = 'all';
       mainSearchInput.value = '';
       floatingSearchInput.value = '';
+      syncSearchClearButtons();
       if (monthSelect) monthSelect.value = 'all';
       if (moduleSelect) moduleSelect.value = 'all';
       if (categorySelect) categorySelect.value = 'all';
@@ -2422,6 +2895,7 @@
       searchTerm = tagText;
       mainSearchInput.value = tagText;
       floatingSearchInput.value = tagText;
+      syncSearchClearButtons();
       updateAppUI();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -2548,11 +3022,13 @@
       mainSearchInput.addEventListener('input', (e) => {
         searchTerm = e.target.value;
         floatingSearchInput.value = searchTerm;
+        syncSearchClearButtons();
         updateAppUI();
       });
       floatingSearchInput.addEventListener('input', (e) => {
         searchTerm = e.target.value;
         mainSearchInput.value = searchTerm;
+        syncSearchClearButtons();
         updateAppUI();
       });
       sortSelect.addEventListener('change', (e) => {
@@ -2604,17 +3080,17 @@
     function getProcessedDataset() {
       let data = [...allNewsItems];
       if (searchTerm) {
-        const term = searchTerm.toLowerCase();
+        const term = searchTerm.toLowerCase().trim();
         data = data.filter(item => (item._searchBlob || '').includes(term));
       }
       if (selectedMonth && selectedMonth !== 'all') {
         data = data.filter(item => item.monthKey === selectedMonth);
       }
       if (selectedModule && selectedModule !== 'all') {
-        data = data.filter(item => item.moduleNumber === selectedModule);
+        data = data.filter(item => item.moduleKey === selectedModule);
       }
       if (selectedCategory && selectedCategory !== 'all') {
-        data = data.filter(item => item.category === selectedCategory);
+        data = data.filter(item => item.categoryKey === selectedCategory);
       }
       if (selectedLecturer && selectedLecturer !== 'all') {
         data = data.filter(item => (item.lecturerNames || []).includes(selectedLecturer));
@@ -2624,6 +3100,8 @@
           data = data.filter(item => Boolean(item.youtubeId || item.youtubePlaylistId));
         } else if (selectedFormat === 'lab') {
           data = data.filter(item => Boolean(item.labWork));
+        } else if (selectedFormat === 'theory') {
+          data = data.filter(item => !item.labWork);
         } else if (selectedFormat === 'notes') {
           data = data.filter(item => Boolean(item.fullText));
         }
@@ -2664,7 +3142,7 @@
         });
       } else if (sortKey === 'module-asc') {
         data.sort((a, b) => {
-          const cmp = compareModuleCodes(a.moduleNumber, b.moduleNumber);
+          const cmp = compareModulesMeta(a._moduleMeta, b._moduleMeta);
           if (cmp !== 0) return cmp;
           const numA = parseInt(a.id, 10);
           const numB = parseInt(b.id, 10);
@@ -2673,7 +3151,7 @@
         });
       } else if (sortKey === 'module-desc') {
         data.sort((a, b) => {
-          const cmp = compareModuleCodes(b.moduleNumber, a.moduleNumber);
+          const cmp = compareModulesMeta(b._moduleMeta, a._moduleMeta);
           if (cmp !== 0) return cmp;
           const numA = parseInt(a.id, 10);
           const numB = parseInt(b.id, 10);
@@ -2683,9 +3161,39 @@
       }
       return data;
     }
+    function updateFilterVisualStates() {
+      const selects = [
+        [monthSelect, selectedMonth],
+        [moduleSelect, selectedModule],
+        [categorySelect, selectedCategory],
+        [lecturerSelect, selectedLecturer],
+        [formatSelect, selectedFormat]
+      ];
+      selects.forEach(([el, val]) => {
+        if (el) el.classList.toggle('filter-active', Boolean(val && val !== 'all'));
+      });
+      return Boolean(
+        (searchTerm && searchTerm.trim() !== '') ||
+        selectedMonth !== 'all' ||
+        selectedModule !== 'all' ||
+        selectedCategory !== 'all' ||
+        selectedLecturer !== 'all' ||
+        selectedFormat !== 'all'
+      );
+    }
     function updateAppUI() {
       const activeData = getProcessedDataset();
       const dict = t();
+      const hasActiveFilters = updateFilterVisualStates();
+      if (controlsStatusBar && resultsCountLabel) {
+        controlsStatusBar.style.display = allNewsItems.length > 0 ? 'flex' : 'none';
+        resultsCountLabel.innerText = dict.showingCount
+          .replace('{shown}', String(activeData.length))
+          .replace('{total}', String(allNewsItems.length));
+      }
+      if (inlineResetBtn) {
+        inlineResetBtn.style.display = hasActiveFilters ? 'inline-flex' : 'none';
+      }
       if (activeData.length === 0) {
         newsGrid.innerHTML = `
           <div class="no-results" style="width: 100%;">
@@ -2730,8 +3238,8 @@
           `;
         }
         const metaChips = [];
-        if (item.moduleNumber) {
-          metaChips.push(`<span class="meta-chip accent">${escapeHtml(item.moduleNumber)}</span>`);
+        if (item.moduleLabel) {
+          metaChips.push(`<span class="meta-chip accent">${escapeHtml(item.moduleLabel)}</span>`);
         }
         if (item.ects) {
           metaChips.push(`<span class="meta-chip">${escapeHtml(item.ects)}</span>`);
@@ -2739,8 +3247,8 @@
         if (item.totalHoursBadge) {
           metaChips.push(`<span class="meta-chip">${escapeHtml(item.totalHoursBadge)}</span>`);
         }
-        if (item.language) {
-          metaChips.push(`<span class="meta-chip">${escapeHtml(item.language)}</span>`);
+        if (item.languageLabel) {
+          metaChips.push(`<span class="meta-chip">${escapeHtml(item.languageLabel)}</span>`);
         }
         if (item.youtubeVideos && item.youtubeVideos.length > 1) {
           metaChips.push(`<span class="meta-chip">${item.youtubeVideos.length} ${dict.videosCountBadge}</span>`);
@@ -2751,13 +3259,12 @@
         const dateSuffix = item.date && item.date !== "—" ? ` • ${escapeHtml(item.date)}` : '';
         const attributionParts = [
           item.lecturerNames && item.lecturerNames.length > 0 ? item.lecturerNames.join(', ') : item.lecturer,
-          item.institutionShort || item.institution
+          item.categoryLabel || item.institution
         ].filter(Boolean);
         const attributionHtml = attributionParts.length > 0
           ? `<div class="news-card-attribution">${escapeHtml(attributionParts.join(' • '))}</div>`
           : '';
-        const excerptSource = item.lead || item.learningObjective || item.lectureContent || item.fullText || '';
-        const cleanLead = excerptSource ? escapeHtml(excerptSource.trim()) : '';
+        const cleanLead = item.lead ? escapeHtml(item.lead.trim()) : '';
         const actionBtnLabel = (item.youtubeId || item.youtubePlaylistId) ? dict.watchLectureBtn : dict.viewDetailsBtn;
         const cardHtml = `
           <article class="news-card" onclick="openModal('${escapeHtml(item._uid)}')">
@@ -3116,17 +3623,19 @@
           ${switcherHtml}
         `;
       }
+      const instDisplay = item._deptMeta
+        ? (currentLang === 'uk' ? item._deptMeta.ukFull : item._deptMeta.enFull)
+        : item.institution;
       const passportRows = [
-        { label: L.moduleNumber, val: item.moduleNumber, isTags: false },
-        { label: L.institution, val: item.institution, isTags: false },
+        { label: L.moduleNumber, val: item.moduleLabel, isTags: false },
+        { label: L.institution, val: instDisplay, isTags: false },
         { label: L.lecturer, val: item.lecturer, isTags: false },
         { label: L.instructors, val: item.instructors, isTags: false },
         { label: L.workload, val: item.workload, isTags: false },
         { label: L.ects, val: item.ects, isTags: false },
-        { label: L.language, val: item.language, isTags: false },
+        { label: L.language, val: item.languageLabel, isTags: false },
         { label: L.targetAudience, val: item.targetAudience, isTags: false },
         { label: L.assessmentFormat, val: item.assessmentFormat, isTags: false },
-        { label: L.category, val: (item.category && item.category !== item.institutionShort && item.category !== item.institution) ? item.category : '', isTags: false },
         { label: L.tags, val: item.tags, isTags: true }
       ].filter(r => r.val && String(r.val).trim() !== '');
       const passportHtml = passportRows.length > 0 ? `
@@ -3208,7 +3717,7 @@
       modalTarget.innerHTML = `
         ${!skipVideoRecreate ? videoSectionHtml : ''}
         <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 14px; gap: 8px; flex-wrap: wrap;">
-          ${item.moduleNumber ? `<span class="meta-chip accent">${escapeHtml(item.moduleNumber)}</span>` : ''}
+          ${item.moduleLabel ? `<span class="meta-chip accent">${escapeHtml(item.moduleLabel)}</span>` : ''}
           <div class="news-card-meta-text"><span>${dict.lectureNumberPrefix} ${escapeHtml(item.id)}${modalDateSuffix}</span></div>
         </div>
         <h1 class="modal-title">${escapeHtml(item.title)}</h1>
