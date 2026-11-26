@@ -896,55 +896,41 @@
         <p class="access-helper-desc" id="uiAccessHelperDesc">
           Введіть ідентифікатор учасника та персональний код доступу, видані координатором програми, щоб завантажити таблицю лекцій та навчальних модулів.
         </p>
-        <div id="accessPanelContainer" class="access-inputs-group" role="group" aria-labelledby="accessBadgeTitle">
+        <form id="accessPanelContainer" class="access-inputs-group" onsubmit="event.preventDefault(); handleAccessCheck();">
           <div>
-            <label for="participantIdInput" class="access-field-label" id="uiLabelId">Ідентифікатор (логін)</label>
+            <label for="participantIdInput" class="access-field-label" id="uiLabelId">Номер слухача або групи</label>
             <div class="access-field-slot">
               <i data-lucide="hash" class="access-field-icon"></i>
               <input
                 type="text"
                 id="participantIdInput"
-                name="course_participant_id"
+                name="participant_number"
                 class="access-field-input"
-                placeholder="Введіть ідентифікатор слухача"
-                autocomplete="off"
-                autocorrect="off"
-                autocapitalize="none"
-                spellcheck="false"
-                data-lpignore="true"
-                data-1p-ignore="true"
-                data-bwignore="true"
-                data-form-type="other"
+                placeholder="Введіть номер слухача"
+                required
               >
             </div>
           </div>
           <div>
-            <label for="participantCodeInput" class="access-field-label" id="uiLabelCode">Персональний код доступу</label>
+            <label for="participantCodeInput" class="access-field-label" id="uiLabelCode">Код навчальної групи</label>
             <div class="access-field-slot">
               <i data-lucide="bookmark-check" class="access-field-icon"></i>
               <input
                 type="text"
                 id="participantCodeInput"
-                name="course_access_code"
+                name="module_key"
                 class="access-field-input"
-                placeholder="Введіть персональний код"
-                autocomplete="off"
-                autocorrect="off"
-                autocapitalize="none"
-                spellcheck="false"
-                data-lpignore="true"
-                data-1p-ignore="true"
-                data-bwignore="true"
-                data-form-type="other"
+                placeholder="Введіть код курсу"
+                required
               >
             </div>
           </div>
-          <button type="button" id="accessSubmitBtn" class="access-submit-btn" onclick="handleAccessCheck()">
-            <span id="accessSubmitText">Завантажити матеріали</span>
+          <button type="submit" id="accessSubmitBtn" class="access-submit-btn">
+            <span id="accessSubmitText">Показати розклад і модулі</span>
             <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
           </button>
           <div id="accessStatusBanner" class="access-status-banner"></div>
-        </div>
+        </form>
       </div>
     </section>
     <div class="controls-card" id="controlsCard" style="display: none;">
