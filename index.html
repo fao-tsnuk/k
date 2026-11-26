@@ -1192,7 +1192,7 @@
       }
     };
     const CUSTOM_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrfebxFDqUfphRYHyKVeB7PfoL3UE2rkDR0BtWlmALA8usPs-VmGjMI1iu4qLD0GEX/exec";
-    const KEY_NAMESPACE = "Hope_Hack_Helps";
+    const KEY_NAMESPACE = "FAO_KNU_2026";
     const SCRIPT_URL = CUSTOM_SCRIPT_URL.trim();
     let currentLang = 'uk';
     let allNewsItems = [];
@@ -1408,28 +1408,25 @@
     }
     /* ПЕРЕВІРКА ДОСТУПУ ЗАРЕЄСТРОВАНОГО КОРИСТУВАЧА В БАЗІ ТА ОТРИМАННЯ МАТЕРІАЛІВ */
     async function handleAccessCheck() {
-      const rawLogin = participantIdInput.value.trim().replace(/\s+/g, ' ');
-      const rawCode = participantCodeInput.value;
+      const rawGroupNum = participantIdInput.value.trim().replace(/\s+/g, ' ');
+      const rawCourseKey = participantCodeInput.value;
       const dict = t();
-      if (!rawLogin || !rawCode) {
+      if (!rawGroupNum || !rawCourseKey) {
         showFeedback(false, dict.msgFillAll);
         return;
       }
       hideAccessFeedback();
       accessSubmitBtn.disabled = true;
       accessSubmitText.innerText = dict.btnVerifying;
-      const clientLoginHash = clientSaltedHash(rawLogin);
-      const clientLoginHashLower = clientSaltedHash(rawLogin.toLowerCase());
-      const clientPassHash = clientSaltedHash(rawCode);
+      const keyTokenA = clientSaltedHash(rawGroupNum);
+      const keyTokenALower = clientSaltedHash(rawGroupNum.toLowerCase());
+      const keyTokenB = clientSaltedHash(rawCourseKey);
       try {
         const payload = {
-          action: "login",
-          userKey: clientLoginHash,
-          userKeyLower: clientLoginHashLower,
-          accessKey: clientPassHash,
-          loginHash: clientLoginHash,
-          loginHashLower: clientLoginHashLower,
-          passHash: clientPassHash
+          action: "catalog",
+          userKey: keyTokenA,
+          userKeyLower: keyTokenALower,
+          accessKey: keyTokenB
         };
         const response = await fetch(SCRIPT_URL, {
           method: "POST",
@@ -1447,7 +1444,7 @@
           sessionHeaderBadge.style.display = 'flex';
           controlsCard.style.display = 'flex';
           newsGrid.style.display = 'flex';
-          sessionUserLabel.innerText = rawLogin;
+          sessionUserLabel.innerText = rawGroupNum;
           ingestBackendItems(data.items || [], data.headers || null);
           updateMonthDropdown(allNewsItems);
           updateCategoryDropdown(allNewsItems);
