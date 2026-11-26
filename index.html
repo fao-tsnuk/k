@@ -15,8 +15,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- YouTube IFrame API -->
   <script src="https://www.youtube.com/iframe_api"></script>
-  <!-- Іконки Lucide -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Іконки Lucide (фіксована стабільна версія) -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@1.52.0/dist/umd/lucide.min.js"></script>
   <style>
     :root {
       color-scheme: light;
@@ -69,13 +69,13 @@
       transition: width 0.1s ease;
     }
     header {
-      padding: 14px 20px;
+      padding: 16px 20px;
       position: relative;
       background: radial-gradient(circle at top, rgba(184, 0, 0, 0.12) 0%, transparent 60%), var(--daisi-navy);
       border-bottom: 4px solid var(--primary-red);
       border-radius: 16px;
       box-shadow: 0 8px 25px rgba(18, 59, 102, 0.18);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       width: 100%;
       flex-shrink: 0;
     }
@@ -94,25 +94,25 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      flex: 1 1 420px;
-      max-width: 650px;
+      flex: 1 1 500px;
+      max-width: 760px;
       min-width: 0;
     }
     .branding-header-row {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       width: 100%;
     }
     .daisi-header-logo {
-      width: clamp(44px, 10vw, 60px);
-      height: clamp(44px, 10vw, 60px);
+      width: clamp(46px, 10vw, 62px);
+      height: clamp(46px, 10vw, 62px);
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.35);
       background-color: #FFFFFF;
       display: block;
     }
@@ -130,7 +130,7 @@
       min-width: 0;
     }
     h1 {
-      font-size: clamp(1.15rem, 3.4vw, 1.5rem);
+      font-size: clamp(1.15rem, 3.4vw, 1.52rem);
       font-weight: 800;
       letter-spacing: -0.5px;
       margin-bottom: 2px;
@@ -138,28 +138,33 @@
       line-height: 1.2;
     }
     .subtitle {
-      font-size: clamp(0.72rem, 1.8vw, 0.8rem);
+      font-size: clamp(0.72rem, 1.8vw, 0.82rem);
       color: #E2E8F0 !important;
       margin: 0;
       font-weight: 500;
     }
     .project-description {
-      font-size: clamp(0.7rem, 1.4vw, 0.76rem);
+      font-size: clamp(0.72rem, 1.4vw, 0.78rem);
       color: #F4F7FB !important;
-      line-height: 1.45;
+      line-height: 1.5;
       margin: 0;
-      max-width: 580px;
+      max-width: 700px;
       opacity: 0.95;
     }
     /* ПРАВИЙ ВЕРХНІЙ БЛОК ШАПКИ */
     .header-right-zone {
-      flex: 0 0 320px;
-      max-width: 330px;
-      width: 100%;
+      flex: 0 0 auto;
+      max-width: 340px;
       margin-left: auto;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    body.logged-in .header-right-zone {
+      flex: 0 0 320px;
+      width: 100%;
+      align-items: stretch;
     }
     .lang-switcher-row {
       display: flex;
@@ -180,9 +185,9 @@
       border: none;
       color: #CBD5E1;
       font-family: var(--font-family);
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 2px 8px;
+      padding: 4px 10px;
       border-radius: 10px;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -194,143 +199,7 @@
       color: #FFFFFF;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
     }
-    .access-top-card {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 10px 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-top: 3px solid var(--primary-red);
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 8px;
-      animation: fadeIn 0.3s ease;
-      overflow: hidden;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-3px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .access-top-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 22px;
-      flex-shrink: 0;
-    }
-    .access-top-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: #FFFFFF;
-    }
-    .access-top-badge svg {
-      width: 14px;
-      height: 14px;
-      color: #4ADE80;
-      flex-shrink: 0;
-    }
-    .access-manual-pill {
-      font-size: 0.64rem;
-      font-weight: 600;
-      color: #E2E8F0;
-      background: rgba(255, 255, 255, 0.12);
-      padding: 2px 7px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-    }
-    .access-top-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .access-field-slot {
-      position: relative;
-      display: flex;
-      align-items: center;
-      height: 34px;
-    }
-    .access-top-icon {
-      position: absolute;
-      left: 10px;
-      color: #475569;
-      width: 13px;
-      height: 13px;
-      pointer-events: none;
-    }
-    .access-top-input {
-      width: 100%;
-      height: 34px;
-      padding: 4px 12px 4px 30px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 7px;
-      font-family: var(--font-family);
-      font-size: 0.78rem;
-      color: #0F172A !important;
-      background: #FFFFFF !important;
-      outline: none;
-      transition: all 0.2s ease;
-    }
-    .access-top-input::placeholder {
-      color: #64748B;
-      font-weight: 500;
-    }
-    .access-top-input:focus {
-      border-color: #FF6B6B;
-      box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3);
-    }
-    .access-top-btn {
-      background-color: var(--primary-red);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      height: 34px;
-      border-radius: 7px;
-      font-family: var(--font-family);
-      font-weight: 700;
-      font-size: 0.78rem;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      touch-action: manipulation;
-    }
-    .access-top-btn:hover {
-      background-color: var(--primary-red-hover);
-    }
-    .access-top-btn:disabled {
-      opacity: 0.7;
-      cursor: wait;
-    }
-    .access-status-banner {
-      font-size: 0.68rem;
-      font-weight: 600;
-      text-align: center;
-      padding: 4px 8px;
-      border-radius: 5px;
-      line-height: 1.3;
-      display: none;
-    }
-    .access-status-banner.error {
-      display: block;
-      background: rgba(254, 226, 226, 0.96);
-      color: #991B1B;
-      border: 1px solid #F87171;
-    }
-    .access-status-banner.success {
-      display: block;
-      background: rgba(220, 252, 231, 0.96);
-      color: #166534;
-      border: 1px solid #4ADE80;
-    }
-    /* ПОШУК ТА СЕСІЯ */
+    /* ПОШУК ТА СЕСІЯ В ШАПЦІ (ПІСЛЯ ВІДКРИТТЯ) */
     .header-search { width: 100%; }
     .search-container { position: relative; width: 100%; }
     .search-input {
@@ -407,49 +276,225 @@
       display: flex;
       flex-direction: column;
     }
-    body:not(.logged-in) main {
-      justify-content: center;
+    /* СТАРТОВИЙ ІНФОРМАЦІЙНИЙ БЛОК + ДОСТУП У MAIN */
+    .landing-overview-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.95fr);
+      gap: 20px;
+      align-items: stretch;
+      width: 100%;
+      margin: 4px 0 12px;
     }
-    .course-gate-notice {
+    .about-program-card {
       background: #FFFFFF;
       border: 1px solid var(--border-color);
-      border-left: 5px solid var(--primary-red);
-      border-radius: 14px;
-      padding: 20px 24px;
-      text-align: center;
-      max-width: 680px;
-      width: 100%;
-      margin: 12px auto;
-      box-shadow: 0 4px 16px rgba(11, 25, 44, 0.05);
+      border-left: 5px solid var(--daisi-navy);
+      border-radius: 16px;
+      padding: 24px 26px;
+      box-shadow: 0 4px 18px rgba(11, 25, 44, 0.04);
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .about-badge-row {
+      display: inline-flex;
       align-items: center;
+      gap: 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--daisi-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .about-program-card h2 {
+      font-size: clamp(1.08rem, 2.5vw, 1.28rem);
+      font-weight: 800;
+      color: var(--text-title);
+      line-height: 1.35;
+      margin: 0;
+    }
+    .about-program-card p {
+      font-size: 0.86rem;
+      color: var(--text-body);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .about-highlights-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .about-highlight-pill {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-title);
+      line-height: 1.4;
+    }
+    .about-highlight-pill svg {
+      width: 15px;
+      height: 15px;
+      color: var(--primary-red);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .about-contact-strip {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-color);
+      font-size: 0.78rem;
+      color: var(--text-body);
+    }
+    .access-gate-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-top: 4px solid var(--primary-red);
+      border-radius: 16px;
+      padding: 24px 22px;
+      box-shadow: 0 6px 22px rgba(11, 25, 44, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .access-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .access-card-title-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--text-title);
+    }
+    .access-card-title-wrap svg {
+      width: 18px;
+      height: 18px;
+      color: var(--primary-red);
+      flex-shrink: 0;
+    }
+    .access-manual-pill {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      background: var(--bg-light);
+      padding: 3px 9px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+    .access-helper-desc {
+      font-size: 0.79rem;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+    .access-inputs-group {
+      display: flex;
+      flex-direction: column;
       gap: 10px;
     }
-    .gate-icon-pill {
-      width: 42px;
+    .access-field-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-title);
+      margin-bottom: 4px;
+    }
+    .access-field-slot {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .access-field-icon {
+      position: absolute;
+      left: 12px;
+      color: var(--text-muted);
+      width: 15px;
+      height: 15px;
+      pointer-events: none;
+    }
+    .access-field-input {
+      width: 100%;
       height: 42px;
-      border-radius: 50%;
-      background: rgba(18, 59, 102, 0.08);
-      color: var(--daisi-navy);
+      padding: 8px 12px 8px 36px;
+      border: 1px solid var(--border-color);
+      border-radius: 9px;
+      font-family: var(--font-family);
+      font-size: 0.84rem;
+      color: var(--text-main);
+      background: var(--bg-light);
+      outline: none;
+      transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .access-field-input::placeholder {
+      color: #64748B;
+      font-weight: 500;
+    }
+    .access-field-input:focus {
+      background: #FFFFFF;
+      border-color: var(--primary-red);
+      box-shadow: 0 0 0 3px rgba(184, 0, 0, 0.12);
+    }
+    .access-submit-btn {
+      background-color: var(--primary-red);
+      color: #FFFFFF;
+      border: none;
+      height: 44px;
+      border-radius: 9px;
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
+      touch-action: manipulation;
+      margin-top: 2px;
     }
-    .course-gate-notice h2 { font-size: 1.12rem; color: #0B1F3A; font-weight: 800; margin: 0; }
-    .course-gate-notice p { font-size: 0.83rem; color: #44546A; line-height: 1.55; margin: 0; }
-    .gate-tip-box {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    .access-submit-btn:hover {
+      background-color: var(--primary-red-hover);
+    }
+    .access-submit-btn:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+    .access-status-banner {
       font-size: 0.75rem;
       font-weight: 600;
-      color: var(--accent-blue);
-      background: var(--bg-light);
-      padding: 5px 14px;
-      border-radius: 16px;
-      border: 1px solid var(--border-color);
-      margin-top: 2px;
+      text-align: center;
+      padding: 8px 10px;
+      border-radius: 8px;
+      line-height: 1.35;
+      display: none;
+    }
+    .access-status-banner.error {
+      display: block;
+      background: #FEF2F2;
+      color: #991B1B;
+      border: 1px solid #FCA5A5;
+    }
+    .access-status-banner.success {
+      display: block;
+      background: #F0FDF4;
+      color: #166534;
+      border: 1px solid #86EFAC;
     }
     .controls-card {
       background: #FFFFFF !important;
@@ -645,7 +690,6 @@
     .cp-volume-box { display: flex; align-items: center; gap: 6px; }
     .cp-volume-input { width: 70px; height: 4px; accent-color: var(--primary-red); cursor: pointer; }
     .modal-title { font-size: clamp(1.25rem, 3.8vw, 1.6rem); font-weight: 800; color: #0B1F3A !important; line-height: 1.35; margin-bottom: 14px; padding-right: 30px; }
-    /* СТРУКТУРОВАНІ ДАНІ МОДУЛЯ В МОДАЛЦІ */
     .module-passport-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -747,9 +791,11 @@
     .footer-link-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .footer-action-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: var(--accent-blue); text-decoration: none; }
     .footer-copy { font-size: 0.74rem; color: #94A3B8; text-align: left; margin-top: 12px; border-top: 1px dashed var(--border-color); padding-top: 10px; }
-    @media (max-width: 860px) {
+    @media (max-width: 880px) {
+      .landing-overview-grid { grid-template-columns: 1fr; }
       .header-container { flex-direction: column; align-items: stretch; }
-      .header-right-zone { max-width: 100%; width: 100%; margin-left: 0; }
+      .header-right-zone { max-width: 100%; width: 100%; margin-left: 0; align-items: flex-end; }
+      body.logged-in .header-right-zone { align-items: stretch; }
     }
     @media (max-width: 760px) {
       .news-card { flex-direction: column; }
@@ -766,21 +812,21 @@
       <div class="header-branding">
         <div class="branding-header-row">
           <img
-            src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/FAO_logo.svg/3840px-FAO_logo.svg.png?utm_source=uk.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+            src="https://upload.wikimedia.org/wikipedia/commons/d/db/FAO_logo.svg"
             alt="FAO Logo"
             class="daisi-header-logo"
             referrerpolicy="no-referrer"
             decoding="async"
-            style="object-fit: contain; padding: 3px;"
-            onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://upload.wikimedia.org/wikipedia/commons/d/db/FAO_logo.svg';}"
+            style="object-fit: contain; padding: 4px;"
+            onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/FAO_logo.svg/500px-FAO_logo.svg.png';}"
           >
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgjEQQ3vzGutwq4JX7hgVMt81j0-gDeM_tH_hG3xxvYP3zXAxQIjr88GQ&s=10"
+            src="https://upload.wikimedia.org/wikipedia/commons/9/9f/%D0%9A%D0%B8%D1%97%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BD%D0%B0%D1%86%D1%96%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%83%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82_%D1%96%D0%BC%D0%B5%D0%BD%D1%96_%D0%A2%D0%B0%D1%80%D0%B0%D1%81%D0%B0_%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%B0.png"
             alt="КНУ Logo"
             class="daisi-header-logo logo-tsnuk-crop"
             referrerpolicy="no-referrer"
             decoding="async"
-            onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://upload.wikimedia.org/wikipedia/commons/9/9f/%D0%9A%D0%B8%D1%97%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D0%BD%D0%B0%D1%86%D1%96%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D1%83%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82_%D1%96%D0%BC%D0%B5%D0%BD%D1%96_%D0%A2%D0%B0%D1%80%D0%B0%D1%81%D0%B0_%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%B0.png';}"
+            onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgjEQQ3vzGutwq4JX7hgVMt81j0-gDeM_tH_hG3xxvYP3zXAxQIjr88GQ&s=10';}"
           >
           <div class="branding-titles">
             <h1 id="uiHeaderTitle">FAO & КНУ імені Тараса Шевченка</h1>
@@ -791,64 +837,12 @@
           Співпраця Продовольчої та сільськогосподарської організації ООН (FAO) та Київського національного університету імені Тараса Шевченка присвячена проведенню циклу відкритих навчальних лекцій, практичних відеокурсів та експертних зустрічей. Тематика охоплює продовольчу безпеку, сталий розвиток агросектору, кліматичну стійкість та відновлення України.
         </p>
       </div>
-      <!-- ПРАВА ВЕРХНЯ ЗОНА -->
+      <!-- ПРАВА ВЕРХНЯ ЗОНА (до входу: тільки перемикач мови) -->
       <div class="header-right-zone">
-        <!-- Перемикач мов UA / EN -->
         <div class="lang-switcher-row">
           <div class="lang-switcher">
             <button type="button" id="langBtnUk" class="lang-btn active" onclick="switchLanguage('uk')">UA</button>
             <button type="button" id="langBtnEn" class="lang-btn" onclick="switchLanguage('en')">EN</button>
-          </div>
-        </div>
-        <!-- Панель перевірки учасників (без form, type="password" і css text-security) -->
-        <div id="accessGateTop" class="access-top-card">
-          <div class="access-top-header">
-            <span class="access-top-badge">
-              <i data-lucide="book-open-check" id="accessBadgeIcon"></i>
-              <span id="accessBadgeTitle">Доступ слухача</span>
-            </span>
-            <span class="access-manual-pill" id="uiManualRegPill">За реєстрацією</span>
-          </div>
-          <div id="accessPanelContainer" class="access-top-group" role="group" aria-labelledby="accessBadgeTitle">
-            <div class="access-field-slot">
-              <i data-lucide="user" class="access-top-icon"></i>
-              <input
-                type="text"
-                id="participantIdInput"
-                class="access-top-input"
-                placeholder="Ідентифікатор слухача"
-                autocomplete="off"
-                autocorrect="off"
-                autocapitalize="none"
-                spellcheck="false"
-                data-lpignore="true"
-                data-1p-ignore="true"
-                data-bwignore="true"
-                data-form-type="other"
-              >
-            </div>
-            <div class="access-field-slot">
-              <i data-lucide="key-round" class="access-top-icon"></i>
-              <input
-                type="text"
-                id="participantCodeInput"
-                class="access-top-input"
-                placeholder="Персональний код доступу"
-                autocomplete="off"
-                autocorrect="off"
-                autocapitalize="none"
-                spellcheck="false"
-                data-lpignore="true"
-                data-1p-ignore="true"
-                data-bwignore="true"
-                data-form-type="other"
-              >
-            </div>
-            <button type="button" id="accessSubmitBtn" class="access-top-btn" onclick="handleAccessCheck()">
-              <span id="accessSubmitText">Завантажити матеріали</span>
-              <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i>
-            </button>
-            <div id="accessStatusBanner" class="access-status-banner"></div>
           </div>
         </div>
         <div id="headerSearchBox" class="header-search" style="display: none;">
@@ -871,19 +865,103 @@
     </div>
   </header>
   <main>
-    <div id="courseGateNotice" class="course-gate-notice">
-      <div class="gate-icon-pill">
-        <i data-lucide="graduation-cap" style="width: 20px; height: 20px;"></i>
+    <!-- Стартовий інформаційний блок + панель доступу слухачів (усі матеріали підвантажуються виключно з бази даних) -->
+    <section id="landingOverviewGrid" class="landing-overview-grid">
+      <div id="aboutProgramCard" class="about-program-card">
+        <div class="about-badge-row">
+          <i data-lucide="graduation-cap" style="width: 16px; height: 16px;"></i>
+          <span id="uiAboutBadge">Спільна навчально-наукова платформа</span>
+        </div>
+        <h2 id="uiAboutTitle">Освітня програма та матеріали курсу FAO & КНУ імені Тараса Шевченка</h2>
+        <p id="uiAboutP1">
+          Цей ресурс призначений для слухачів та учасників навчальних модулів, що проводяться в межах співпраці Продовольчої та сільськогосподарської організації ООН (FAO) та Київського національного університету імені Тараса Шевченка.
+        </p>
+        <div class="about-highlights-list">
+          <div class="about-highlight-pill">
+            <i data-lucide="book-open"></i>
+            <span id="uiHighlight1">Робочі програми модулів, силабуси та конспекти</span>
+          </div>
+          <div class="about-highlight-pill">
+            <i data-lucide="flask-conical"></i>
+            <span id="uiHighlight2">Методи польових та лабораторних досліджень ґрунтів</span>
+          </div>
+          <div class="about-highlight-pill">
+            <i data-lucide="play-circle"></i>
+            <span id="uiHighlight3">Відеозаписи лекцій та практичних занять</span>
+          </div>
+          <div class="about-highlight-pill">
+            <i data-lucide="library"></i>
+            <span id="uiHighlight4">Завдання для самостійної роботи та наукові джерела</span>
+          </div>
+        </div>
+        <div class="about-contact-strip">
+          <i data-lucide="mail" style="width: 15px; height: 15px; color: var(--primary-red);"></i>
+          <span id="uiAboutTip">Координація слухачів та отримання реєстраційних кодів курсу:</span>
+          <a href="mailto:grant.ndch@knu.ua" class="contact-email">grant.ndch@knu.ua</a>
+        </div>
       </div>
-      <h2 id="uiLockNoticeH2">Освітній портал курсу FAO & КНУ</h2>
-      <p id="uiLockNoticeP">
-        Усіх учасників програми реєструє координатор курсу вручну. Щоб завантажити відеолекції, модулі та навчальні матеріали з бази курсу, введіть надані вам ідентифікатор слухача та персональний код доступу у панелі праворуч угорі.
-      </p>
-      <div class="gate-tip-box">
-        <i data-lucide="mail" style="width: 13px; height: 13px;"></i>
-        <span id="uiLockNoticeTip">Питання щодо реєстрації учасників: grant.ndch@knu.ua</span>
+      <div id="accessGateCard" class="access-gate-card">
+        <div class="access-card-header">
+          <span class="access-card-title-wrap">
+            <i data-lucide="folder-open" id="accessBadgeIcon"></i>
+            <span id="accessBadgeTitle">Доступ до матеріалів</span>
+          </span>
+          <span class="access-manual-pill" id="uiManualRegPill">За реєстрацією</span>
+        </div>
+        <p class="access-helper-desc" id="uiAccessHelperDesc">
+          Введіть ідентифікатор учасника та персональний код доступу, видані координатором програми, щоб завантажити таблицю лекцій та навчальних модулів.
+        </p>
+        <div id="accessPanelContainer" class="access-inputs-group" role="group" aria-labelledby="accessBadgeTitle">
+          <div>
+            <label for="participantIdInput" class="access-field-label" id="uiLabelId">Ідентифікатор (логін)</label>
+            <div class="access-field-slot">
+              <i data-lucide="hash" class="access-field-icon"></i>
+              <input
+                type="text"
+                id="participantIdInput"
+                name="course_participant_id"
+                class="access-field-input"
+                placeholder="Введіть ідентифікатор слухача"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="none"
+                spellcheck="false"
+                data-lpignore="true"
+                data-1p-ignore="true"
+                data-bwignore="true"
+                data-form-type="other"
+              >
+            </div>
+          </div>
+          <div>
+            <label for="participantCodeInput" class="access-field-label" id="uiLabelCode">Персональний код доступу</label>
+            <div class="access-field-slot">
+              <i data-lucide="bookmark-check" class="access-field-icon"></i>
+              <input
+                type="text"
+                id="participantCodeInput"
+                name="course_access_code"
+                class="access-field-input"
+                placeholder="Введіть персональний код"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="none"
+                spellcheck="false"
+                data-lpignore="true"
+                data-1p-ignore="true"
+                data-bwignore="true"
+                data-form-type="other"
+              >
+            </div>
+          </div>
+          <button type="button" id="accessSubmitBtn" class="access-submit-btn" onclick="handleAccessCheck()">
+            <span id="accessSubmitText">Завантажити матеріали</span>
+            <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
+          </button>
+          <div id="accessStatusBanner" class="access-status-banner"></div>
+        </div>
       </div>
-    </div>
+    </section>
     <div class="controls-card" id="controlsCard" style="display: none;">
       <div class="controls-left-group">
         <div class="control-item-wrapper">
@@ -980,10 +1058,21 @@
         headerTitle: "FAO & КНУ імені Тараса Шевченка",
         headerSubtitle: "Цикл відкритих лекцій, спільні дослідження та відеоматеріали партнерства",
         projectDesc: "Співпраця Продовольчої та сільськогосподарської організації ООН (FAO) та Київського національного університету імені Тараса Шевченка присвячена проведенню циклу відкритих навчальних лекцій, практичних відеокурсів та експертних зустрічей. Тематика охоплює продовольчу безпеку, сталий розвиток агросектору, кліматичну стійкість та відновлення України.",
-        badgePortal: "Доступ слухача",
+        aboutBadge: "Спільна навчально-наукова платформа",
+        aboutTitle: "Освітня програма та матеріали курсу FAO & КНУ імені Тараса Шевченка",
+        aboutP1: "Цей ресурс призначений для слухачів та учасників навчальних модулів, що проводяться в межах співпраці Продовольчої та сільськогосподарської організації ООН (FAO) та Київського національного університету імені Тараса Шевченка.",
+        highlight1: "Робочі програми модулів, силабуси та конспекти",
+        highlight2: "Методи польових та лабораторних досліджень ґрунтів",
+        highlight3: "Відеозаписи лекцій та практичних занять",
+        highlight4: "Завдання для самостійної роботи та наукові джерела",
+        aboutTip: "Координація слухачів та отримання реєстраційних кодів курсу:",
+        badgePortal: "Доступ до матеріалів",
         manualRegPill: "За реєстрацією",
-        loginPlaceholder: "Ідентифікатор слухача",
-        codePlaceholder: "Персональний код доступу",
+        accessHelperDesc: "Введіть ідентифікатор учасника та персональний код доступу, видані координатором програми, щоб завантажити таблицю лекцій та навчальних модулів.",
+        labelId: "Ідентифікатор (логін)",
+        labelCode: "Персональний код доступу",
+        loginPlaceholder: "Введіть ідентифікатор слухача",
+        codePlaceholder: "Введіть персональний код",
         btnOpenMaterials: "Завантажити матеріали",
         btnVerifying: "Завантаження...",
         msgFillAll: "Введіть ідентифікатор слухача та персональний код доступу!",
@@ -992,9 +1081,6 @@
         searchPlaceholder: "Шукати лекцію, модуль, лектора або тему...",
         floatingSearchPlaceholder: "Пошук модуля/лекції...",
         btnLogout: "Вийти",
-        lockH2: "Освітній портал курсу FAO & КНУ",
-        lockP: "Усіх учасників програми реєструє координатор курсу вручну. Щоб завантажити відеолекції, модулі та навчальні матеріали з бази курсу, введіть надані вам ідентифікатор слухача та персональний код доступу у панелі праворуч угорі.",
-        lockTip: "Питання щодо реєстрації учасників: grant.ndch@knu.ua",
         sortLabel: "Сортувати:",
         sortNewest: "Найновіші",
         sortOldest: "Найстаріші",
@@ -1055,21 +1141,29 @@
         headerTitle: "FAO & Taras Shevchenko National University of Kyiv",
         headerSubtitle: "Open lecture series, joint research, and partnership video materials",
         projectDesc: "The partnership between the Food and Agriculture Organization of the United Nations (FAO) and Taras Shevchenko National University of Kyiv is dedicated to conducting open educational lectures, practical video courses, and expert meetings. Topics include food security, sustainable agricultural development, climate resilience, and Ukraine's recovery.",
-        badgePortal: "Participant Access",
+        aboutBadge: "Joint Academic & Research Platform",
+        aboutTitle: "FAO & Taras Shevchenko National University of Kyiv Course Materials",
+        aboutP1: "This resource is intended for participants of educational modules delivered within the partnership between the Food and Agriculture Organization of the United Nations (FAO) and Taras Shevchenko National University of Kyiv.",
+        highlight1: "Module syllabi, curricula, and detailed lecture notes",
+        highlight2: "Field and laboratory soil investigation methods",
+        highlight3: "Video recordings of lectures and practical training",
+        highlight4: "Independent study tasks and scientific references",
+        aboutTip: "Participant registration & access inquiries:",
+        badgePortal: "Course Materials Access",
         manualRegPill: "Pre-registered",
-        loginPlaceholder: "Participant ID",
-        codePlaceholder: "Personal Access Key",
+        accessHelperDesc: "Enter the participant ID and personal access code issued by the program coordinator to load the lectures and module table.",
+        labelId: "Participant ID (Login)",
+        labelCode: "Personal Access Code",
+        loginPlaceholder: "Enter Participant ID",
+        codePlaceholder: "Enter Personal Access Code",
         btnOpenMaterials: "Load Materials",
         btnVerifying: "Loading...",
-        msgFillAll: "Please enter both your Participant ID and Personal Access Key!",
-        msgLoginError: "Participant record was not found in the course table or access key does not match!",
+        msgFillAll: "Please enter both your Participant ID and Personal Access Code!",
+        msgLoginError: "Participant record was not found in the course table or access code does not match!",
         msgFetchError: "Failed to retrieve materials. Please check your internet connection.",
         searchPlaceholder: "Search lecture, module, lecturer, or topic...",
         floatingSearchPlaceholder: "Search module/lecture...",
         btnLogout: "Log Out",
-        lockH2: "FAO & KNU Course Materials Portal",
-        lockP: "All course participants are registered manually by the coordinator. To load video lectures, module syllabi, and learning materials from the course database, enter your assigned Participant ID and Personal Access Key in the top-right panel.",
-        lockTip: "Participant registration inquiries: grant.ndch@knu.ua",
         sortLabel: "Sort by:",
         sortNewest: "Newest",
         sortOldest: "Oldest",
@@ -1149,7 +1243,6 @@
         window.lucide.createIcons();
       }
     }
-    // Чисте обчислення SHA-256
     function sha256Hex(ascii) {
       function rotr(n, x) { return (x >>> n) | (x << (32 - n)); }
       const K = [
@@ -1214,7 +1307,6 @@
     function clientSaltedHash(str) {
       return sha256Hex(KEY_NAMESPACE + String(str));
     }
-    /* Універсальне вилучення 11-символьного YouTube ID з будь-якого посилання або сирого ID */
     function extractYoutubeId(val) {
       if (val === null || val === undefined) return '';
       const raw = String(val).trim();
@@ -1242,7 +1334,7 @@
       return `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
     }
     // DOM посилання
-    const accessGateTop = document.getElementById('accessGateTop');
+    const landingOverviewGrid = document.getElementById('landingOverviewGrid');
     const participantIdInput = document.getElementById('participantIdInput');
     const participantCodeInput = document.getElementById('participantCodeInput');
     const accessSubmitBtn = document.getElementById('accessSubmitBtn');
@@ -1252,7 +1344,6 @@
     const headerSearchBox = document.getElementById('headerSearchBox');
     const sessionHeaderBadge = document.getElementById('sessionHeaderBadge');
     const sessionUserLabel = document.getElementById('sessionUserLabel');
-    const courseGateNotice = document.getElementById('courseGateNotice');
     const controlsCard = document.getElementById('controlsCard');
     const mainSearchInput = document.getElementById('mainSearchInput');
     const floatingSearchInput = document.getElementById('floatingSearchInput');
@@ -1274,7 +1365,6 @@
       initUIListeners();
       applyLanguage(currentLang);
     });
-    /* ПЕРЕМИКАННЯ МОВ */
     function switchLanguage(lang) {
       if (!TRANSLATIONS[lang]) return;
       currentLang = lang;
@@ -1294,15 +1384,23 @@
       document.getElementById('uiHeaderTitle').innerText = dict.headerTitle;
       document.getElementById('uiHeaderSubtitle').innerText = dict.headerSubtitle;
       document.getElementById('uiProjectDesc').innerText = dict.projectDesc;
+      document.getElementById('uiAboutBadge').innerText = dict.aboutBadge;
+      document.getElementById('uiAboutTitle').innerText = dict.aboutTitle;
+      document.getElementById('uiAboutP1').innerText = dict.aboutP1;
+      document.getElementById('uiHighlight1').innerText = dict.highlight1;
+      document.getElementById('uiHighlight2').innerText = dict.highlight2;
+      document.getElementById('uiHighlight3').innerText = dict.highlight3;
+      document.getElementById('uiHighlight4').innerText = dict.highlight4;
+      document.getElementById('uiAboutTip').innerText = dict.aboutTip;
       accessBadgeTitle.innerText = dict.badgePortal;
       document.getElementById('uiManualRegPill').innerText = dict.manualRegPill;
+      document.getElementById('uiAccessHelperDesc').innerText = dict.accessHelperDesc;
+      document.getElementById('uiLabelId').innerText = dict.labelId;
+      document.getElementById('uiLabelCode').innerText = dict.labelCode;
       participantIdInput.placeholder = dict.loginPlaceholder;
       participantCodeInput.placeholder = dict.codePlaceholder;
       accessSubmitText.innerText = dict.btnOpenMaterials;
       document.getElementById('uiLogoutBtnText').innerText = dict.btnLogout;
-      document.getElementById('uiLockNoticeH2').innerText = dict.lockH2;
-      document.getElementById('uiLockNoticeP').innerText = dict.lockP;
-      document.getElementById('uiLockNoticeTip').innerText = dict.lockTip;
       document.getElementById('uiSortLabel').innerText = dict.sortLabel;
       document.getElementById('uiMonthLabel').innerText = dict.monthLabel;
       document.getElementById('uiCategoryLabel').innerText = dict.categoryLabel;
@@ -1332,7 +1430,7 @@
         updateCategoryDropdown(allNewsItems);
         updateAppUI();
         if (currentModalUid && modalOverlay.classList.contains('active')) {
-          openModal(currentModalUid, true);
+          openModal(currentModalUid, false);
         }
       }
       refreshIcons();
@@ -1373,8 +1471,7 @@
         refreshIcons();
         if (data && data.success) {
           document.body.classList.add('logged-in');
-          accessGateTop.style.display = 'none';
-          courseGateNotice.style.display = 'none';
+          landingOverviewGrid.style.display = 'none';
           headerSearchBox.style.display = 'block';
           sessionHeaderBadge.style.display = 'flex';
           controlsCard.style.display = 'flex';
@@ -1424,8 +1521,7 @@
       participantCodeInput.value = '';
       participantIdInput.value = '';
       hideAccessFeedback();
-      accessGateTop.style.display = 'flex';
-      courseGateNotice.style.display = 'flex';
+      landingOverviewGrid.style.display = 'grid';
       sessionUserLabel.innerText = '';
       refreshIcons();
     }
