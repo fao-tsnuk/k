@@ -933,6 +933,14 @@
         </form>
       </div>
     </section>
+    <section id="publicSchedulePreview" class="about-program-card" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1rem;">Тематичні напрями відкритих лекцій</h2>
+      <p>
+        Програма об’єднує модулі з оцінки стану ґрунтів, польового відбору зразків, лабораторних методів аналізу,
+        геоінформаційного моніторингу та сталого відновлення аграрних екосистем України. Після введення номера слухача
+        та коду курсу відкривається повний перелік відеолекцій, силабусів, методичних вказівок та наукових джерел.
+      </p>
+    </section>
     <div class="controls-card" id="controlsCard" style="display: none;">
       <div class="controls-left-group">
         <div class="control-item-wrapper">
@@ -1440,6 +1448,8 @@
         if (data && data.success) {
           document.body.classList.add('logged-in');
           landingOverviewGrid.style.display = 'none';
+          const prevBox = document.getElementById('publicSchedulePreview');
+          if (prevBox) prevBox.style.display = 'none';
           headerSearchBox.style.display = 'block';
           sessionHeaderBadge.style.display = 'flex';
           controlsCard.style.display = 'flex';
@@ -1490,6 +1500,8 @@
       participantIdInput.value = '';
       hideAccessFeedback();
       landingOverviewGrid.style.display = 'grid';
+      const prevBox = document.getElementById('publicSchedulePreview');
+      if (prevBox) prevBox.style.display = 'flex';
       sessionUserLabel.innerText = '';
       refreshIcons();
     }
